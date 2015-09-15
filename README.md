@@ -56,8 +56,11 @@ Note: The Framework will not modify the Status bar of the app.
 CocoaPods is a dependency manager for Objective-C, which automates and simplifies the process of using 3rd-party libraries like AcuantMobileSDK in your projects.
 
 ###Podfile
+
 > platform :ios, '8.1'
+>
 > pod 'AcuantMobileSDK', 'https://github.com/Acuant/iOSSDKCocoaPods'
+>
 
 ##  Add AcuantMobileSDK.framework on each project 
 
