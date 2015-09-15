@@ -28,9 +28,11 @@ Pod::Spec.new do |s|
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   s.license = { 
-    :type => "MIT", 
-    :file => "LICENSE" 
-    }
+        :type => 'commercial',
+        :text => <<-LICENSE
+                Copyright 2015 Acuant, Inc. All Rights Reserved.
+                LICENSE
+        }
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
