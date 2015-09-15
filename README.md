@@ -1,4 +1,4 @@
-![alt tag](https://github.com/DiegoArenaOlivera/ExampleRepo/blob/master/Logo.png)
+![alt tag](https://github.com/Acuant/AcuantiOSMobileSDKCocoaPods/blob/master/Logo.png)
 
 Acuant iOS SDK API
 ==================
