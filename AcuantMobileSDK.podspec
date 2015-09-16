@@ -62,10 +62,11 @@ Pod::Spec.new do |s|
   #s.ios.requires_arc = false
   
   s.ios.xcconfig = { 
-        'GCC_PREPROCESSOR_DEFINITIONS' => 'DEBUG=1 $(inherited) CVLIB_IMG_NOCODEC'
+        'GCC_PREPROCESSOR_DEFINITIONS' => 'DEBUG=1 $(inherited) CVLIB_IMG_NOCODEC',
+        'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/AcuantMobileSDK/AcuantMobileSDK.embeddedframework"'
   }
 
-  s.ios.frameworks = 'AcuantMobileSDK', 'AssetLibrary', 'SystemConfiguration', 'AudioToolbox', 'AVFoundation', 'CoreMedia', 'CoreVideo', 'CoreGraphics', 'QuartzCore'
+  s.ios.frameworks = 'AcuantMobileSDK', 'SystemConfiguration', 'AudioToolbox', 'AVFoundation', 'CoreMedia', 'CoreVideo', 'CoreGraphics', 'QuartzCore'
   s.ios.libraries = 'iconv', 'c++', 'z'
 
 end
