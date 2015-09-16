@@ -59,7 +59,7 @@ CocoaPods is a dependency manager for Objective-C, which automates and simplifie
 
 > platform :ios, '8.1'
 >
-> pod 'AcuantMobileSDK', 'https://github.com/Acuant/iOSSDKCocoaPods'
+> pod 'AcuantMobileSDK', :git => 'https://github.com/Acuant/AcuantiOSMobileSDKCocoaPods'
 >
 
 ##  Add AcuantMobileSDK.framework on each project 
