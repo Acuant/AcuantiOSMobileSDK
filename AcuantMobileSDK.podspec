@@ -23,9 +23,7 @@ Pod::Spec.new do |s|
                     Acuant Web Services supports processing of drivers licenses, state IDs, other govt issued IDs, custom IDs, driver’s license barcodes, passports, medical insurance cards etc.
                    DESC
 
-  s.screenshots  = [
-        'https://github.com/Acuant/AcuantiOSMobileSDKCocoaPods/blob/master/Logo.png'
-  ]
+  #s.screenshots  = ['https://github.com/Acuant/AcuantiOSMobileSDKCocoaPods/blob/master/Logo.png']
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
@@ -45,7 +43,7 @@ Pod::Spec.new do |s|
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   s.source = { 
-        :git => 'https://github.com/Acuant/iOSSDKCocoaPods.git', 
+        :git => 'https://github.com/Acuant/AcuantiOSMobileSDKCocoaPods.git', 
         :tag => 'v4.5' 
   }
 
