@@ -2,9 +2,10 @@ Pod::Spec.new do |s|
 
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   
-  s.name = "AcuantMobileSDK"
-  s.version = "4.5"
-  s.summary = "AcuantMobileSDK"
+  s.name = 'AcuantMobileSDK'
+  s.version = '4.5'
+  s.summary = 'AcuantMobileSDK'
+  s.homepage = 'http://www.acuantcorp.com'
 
   s.description  = <<-DESC
                    The AcuantMobileSDK.framework is a Cocoa Framework is designed to simplify your development efforts. The processing of the captured images takes place via Acuant’s Web Services. Our Web Services offer fast data extraction and zero maintenance as software is looked after by Acuant on our optimized cloud infrastructure.
@@ -22,8 +23,9 @@ Pod::Spec.new do |s|
                     Acuant Web Services supports processing of drivers licenses, state IDs, other govt issued IDs, custom IDs, driver’s license barcodes, passports, medical insurance cards etc.
                    DESC
 
-  s.homepage = "https://github.com/Acuant/iOSSDKCocoaPods"
-  # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
+  s.screenshots  = [
+        'https://github.com/Acuant/AcuantiOSMobileSDKCocoaPods/blob/master/Logo.png'
+  ]
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
@@ -32,47 +34,40 @@ Pod::Spec.new do |s|
         :text => <<-LICENSE
                 Copyright 2015 Acuant, Inc. All Rights Reserved.
                 LICENSE
-        }
+  }
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   s.author = { 
-    "vgargacuant" => "vgarg@acuantcorp.com" 
-    }
+        'vgargacuant' => 'vgarg@acuantcorp.com' 
+  }
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-  s.source = { :git => "https://github.com/Acuant/iOSSDKCocoaPods.git", :tag => 'v4.5' }
+  s.source = { 
+        :git => 'https://github.com/Acuant/iOSSDKCocoaPods.git', 
+        :tag => 'v4.5' 
+  }
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
+  s.preserve_paths = 'AcuantMobileSDK.embeddedframework/*'
   s.platform = :ios
 
-  s.ios.deployment_target = "8.1"
+  # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
+  s.ios.deployment_target = '8.1'
+  s.ios.source_files = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.5/Headers/*.{h}'
+  s.ios.header_dir = 'AcuantMobileSDK'
+  s.ios.public_header_files = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.5/Headers/*.h'
+  s.ios.resources = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.5/Resources/*.{strings,wav,png}'
+  #s.ios.requires_arc = false
+  
   s.ios.xcconfig = { 
         'GCC_PREPROCESSOR_DEFINITIONS' => 'DEBUG=1 $(inherited) CVLIB_IMG_NOCODEC'
   }
 
-  # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-
-  s.ios.source_files = "AcuantMobileSDK.framework/Versions/4.5/Headers/*.{h}"
-  s.ios.header_dir = 'AcuantMobileSDK'
-  s.ios.public_header_files = "AcuantMobileSDK.framework/Versions/4.5/Headers/*.h"
-
-
-  # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  
-  s.ios.resources = "AcuantMobileSDK.framework/Versions/4.5/Resources/*.{*}"
-
-  # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-
-  s.frameworks = 'AcuantMobileSDK', 'AssetLibrary', 'SystemConfiguration', 'AudioToolbox', 'AVFoundation', 'CoreMedia', 'CoreVideo', 'CoreGraphics', 'QuartzCore'
-  s.libraries = "iconv", "c++", "z"
-
-
-  # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-
-  s.ios.requires_arc = false
+  s.ios.frameworks = 'AcuantMobileSDK', 'AssetLibrary', 'SystemConfiguration', 'AudioToolbox', 'AVFoundation', 'CoreMedia', 'CoreVideo', 'CoreGraphics', 'QuartzCore'
+  s.ios.libraries = 'iconv', 'c++', 'z'
 
 end
