@@ -66,7 +66,7 @@ CocoaPods is a dependency manager for Objective-C, which automates and simplifie
 
 In order to add the framework to your project, drag the AcuantMobileSDK.framework folder into your project's file structure.
 
-##  Natives frameworks and libraries
+###  Natives frameworks and libraries
 
 Go to the target.
 
@@ -100,13 +100,13 @@ Add following frameworks.
 
 - libz.dylib.
 
-## Targets 
+### Targets 
 
 Go to the target.
 
 Click on “Build Settings”.
 
-### Change following targets
+#### Change following targets
 
 > Set “C Language Dialect” with GNU99
 >
@@ -114,7 +114,7 @@ Click on “Build Settings”.
 >
 > Set “C++ Standard Library” with Compiler Default
 
-### Change following flags
+#### Change following flags
 
 > Add on “PreProcessor” = CVLIB\_IMG\_NOCODEC (GCC\_PREPROCESSOR\_DEFINITIONS = DEBUG=1 $(inherited) CVLIB\_IMG\_NOCODEC)
 

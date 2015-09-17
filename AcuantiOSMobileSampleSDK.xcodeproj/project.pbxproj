@@ -7,20 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		49E435CB1933AAA000C3CA65 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E435CA1933AAA000C3CA65 /* AssetsLibrary.framework */; };
 		95019F221758F30A001C4F94 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95019F211758F30A001C4F94 /* UIKit.framework */; };
-		95019F241758F30A001C4F94 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95019F231758F30A001C4F94 /* Foundation.framework */; };
-		95019F261758F30A001C4F94 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95019F251758F30A001C4F94 /* CoreGraphics.framework */; };
-		9509DC611784AF7600E60572 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9509DC581784AF3500E60572 /* SystemConfiguration.framework */; };
-		9509DC621784AF7600E60572 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9509DC511784AF3400E60572 /* AudioToolbox.framework */; };
-		9509DC631784AF7600E60572 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9509DC521784AF3400E60572 /* AVFoundation.framework */; };
-		9509DC641784AF7600E60572 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9509DC531784AF3400E60572 /* CoreMedia.framework */; };
-		9509DC651784AF7600E60572 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9509DC541784AF3400E60572 /* CoreVideo.framework */; };
-		9509DC661784AF7600E60572 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9509DC571784AF3500E60572 /* QuartzCore.framework */; };
-		9509DC671784AF7600E60572 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9509DC551784AF3500E60572 /* libc++.dylib */; };
-		9509DC681784AF7600E60572 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9509DC561784AF3500E60572 /* libz.dylib */; };
-		98032D631B78FB7A00C4F2CC /* AcuantMobileSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98032D621B78FB7A00C4F2CC /* AcuantMobileSDK.framework */; };
-		98BA9D2E191842EA002094EC /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BA9D2D191842EA002094EC /* libiconv.dylib */; };
+		989432CB1BAAFA4000C1B95A /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432CA1BAAFA4000C1B95A /* AssetsLibrary.framework */; };
+		989432CC1BAAFBF500C1B95A /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432C61BAAF9E200C1B95A /* libc++.tbd */; };
+		989432CD1BAAFBFE00C1B95A /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432C81BAAFA1200C1B95A /* libiconv.tbd */; };
+		989432CF1BAAFC1C00C1B95A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432CE1BAAFC1C00C1B95A /* SystemConfiguration.framework */; };
+		989432D11BAAFC6400C1B95A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432D01BAAFC6400C1B95A /* AVFoundation.framework */; };
+		989432D31BAAFC6C00C1B95A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432D21BAAFC6C00C1B95A /* CoreMedia.framework */; };
+		989432D51BAAFC7200C1B95A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432D41BAAFC7200C1B95A /* CoreVideo.framework */; };
+		989432D71BAAFC7900C1B95A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432D61BAAFC7900C1B95A /* CoreGraphics.framework */; };
+		989432D91BAAFC7E00C1B95A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432D81BAAFC7E00C1B95A /* QuartzCore.framework */; };
+		989432DB1BAAFC8500C1B95A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432DA1BAAFC8500C1B95A /* libz.tbd */; };
+		989432DD1BAAFCB900C1B95A /* AcuantMobileSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432DC1BAAFCB900C1B95A /* AcuantMobileSDK.framework */; };
+		989432DF1BAAFD8B00C1B95A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432DE1BAAFD8B00C1B95A /* AudioToolbox.framework */; };
 		98F1508C1B39B8C400CE3F5E /* ISGRegionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F150621B39B8C400CE3F5E /* ISGRegionViewController.m */; };
 		98F1508D1B39B8C400CE3F5E /* ISGResultScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F150641B39B8C400CE3F5E /* ISGResultScreenViewController.m */; };
 		98F1508E1B39B8C400CE3F5E /* ISGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F150661B39B8C400CE3F5E /* ISGViewController.m */; };
@@ -51,21 +50,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		49E435CA1933AAA000C3CA65 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		95019F1E1758F30A001C4F94 /* AcuantiOSMobileSampleSDK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AcuantiOSMobileSampleSDK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95019F211758F30A001C4F94 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		95019F231758F30A001C4F94 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		95019F251758F30A001C4F94 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		9509DC511784AF3400E60572 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		9509DC521784AF3400E60572 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		9509DC531784AF3400E60572 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
-		9509DC541784AF3400E60572 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
-		9509DC551784AF3500E60572 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
-		9509DC561784AF3500E60572 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		9509DC571784AF3500E60572 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		9509DC581784AF3500E60572 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		98032D621B78FB7A00C4F2CC /* AcuantMobileSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AcuantMobileSDK.framework; sourceTree = "<group>"; };
-		98BA9D2D191842EA002094EC /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		989432C61BAAF9E200C1B95A /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		989432C81BAAFA1200C1B95A /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		989432CA1BAAFA4000C1B95A /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		989432CE1BAAFC1C00C1B95A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		989432D01BAAFC6400C1B95A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		989432D21BAAFC6C00C1B95A /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		989432D41BAAFC7200C1B95A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		989432D61BAAFC7900C1B95A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		989432D81BAAFC7E00C1B95A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		989432DA1BAAFC8500C1B95A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		989432DC1BAAFCB900C1B95A /* AcuantMobileSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AcuantMobileSDK.framework; path = AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework; sourceTree = "<group>"; };
+		989432DE1BAAFD8B00C1B95A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		98F150611B39B8C400CE3F5E /* ISGRegionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISGRegionViewController.h; sourceTree = "<group>"; };
 		98F150621B39B8C400CE3F5E /* ISGRegionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISGRegionViewController.m; sourceTree = "<group>"; };
 		98F150631B39B8C400CE3F5E /* ISGResultScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISGResultScreenViewController.h; sourceTree = "<group>"; };
@@ -109,20 +107,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49E435CB1933AAA000C3CA65 /* AssetsLibrary.framework in Frameworks */,
-				98BA9D2E191842EA002094EC /* libiconv.dylib in Frameworks */,
-				9509DC611784AF7600E60572 /* SystemConfiguration.framework in Frameworks */,
-				9509DC621784AF7600E60572 /* AudioToolbox.framework in Frameworks */,
-				9509DC631784AF7600E60572 /* AVFoundation.framework in Frameworks */,
-				9509DC641784AF7600E60572 /* CoreMedia.framework in Frameworks */,
-				9509DC651784AF7600E60572 /* CoreVideo.framework in Frameworks */,
-				98032D631B78FB7A00C4F2CC /* AcuantMobileSDK.framework in Frameworks */,
-				9509DC661784AF7600E60572 /* QuartzCore.framework in Frameworks */,
-				9509DC671784AF7600E60572 /* libc++.dylib in Frameworks */,
-				9509DC681784AF7600E60572 /* libz.dylib in Frameworks */,
-				95019F261758F30A001C4F94 /* CoreGraphics.framework in Frameworks */,
+				989432DF1BAAFD8B00C1B95A /* AudioToolbox.framework in Frameworks */,
+				989432DD1BAAFCB900C1B95A /* AcuantMobileSDK.framework in Frameworks */,
+				989432DB1BAAFC8500C1B95A /* libz.tbd in Frameworks */,
+				989432D91BAAFC7E00C1B95A /* QuartzCore.framework in Frameworks */,
+				989432D71BAAFC7900C1B95A /* CoreGraphics.framework in Frameworks */,
+				989432D51BAAFC7200C1B95A /* CoreVideo.framework in Frameworks */,
+				989432D31BAAFC6C00C1B95A /* CoreMedia.framework in Frameworks */,
+				989432D11BAAFC6400C1B95A /* AVFoundation.framework in Frameworks */,
+				989432CF1BAAFC1C00C1B95A /* SystemConfiguration.framework in Frameworks */,
+				989432CB1BAAFA4000C1B95A /* AssetsLibrary.framework in Frameworks */,
+				989432CD1BAAFBFE00C1B95A /* libiconv.tbd in Frameworks */,
+				989432CC1BAAFBF500C1B95A /* libc++.tbd in Frameworks */,
 				95019F221758F30A001C4F94 /* UIKit.framework in Frameworks */,
-				95019F241758F30A001C4F94 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,20 +146,19 @@
 		95019F201758F30A001C4F94 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				98032D621B78FB7A00C4F2CC /* AcuantMobileSDK.framework */,
-				49E435CA1933AAA000C3CA65 /* AssetsLibrary.framework */,
-				98BA9D2D191842EA002094EC /* libiconv.dylib */,
-				9509DC581784AF3500E60572 /* SystemConfiguration.framework */,
-				9509DC511784AF3400E60572 /* AudioToolbox.framework */,
-				9509DC521784AF3400E60572 /* AVFoundation.framework */,
-				9509DC531784AF3400E60572 /* CoreMedia.framework */,
-				9509DC541784AF3400E60572 /* CoreVideo.framework */,
-				9509DC571784AF3500E60572 /* QuartzCore.framework */,
-				9509DC551784AF3500E60572 /* libc++.dylib */,
-				9509DC561784AF3500E60572 /* libz.dylib */,
-				95019F251758F30A001C4F94 /* CoreGraphics.framework */,
+				989432DE1BAAFD8B00C1B95A /* AudioToolbox.framework */,
+				989432DC1BAAFCB900C1B95A /* AcuantMobileSDK.framework */,
+				989432DA1BAAFC8500C1B95A /* libz.tbd */,
+				989432D81BAAFC7E00C1B95A /* QuartzCore.framework */,
+				989432D61BAAFC7900C1B95A /* CoreGraphics.framework */,
+				989432D41BAAFC7200C1B95A /* CoreVideo.framework */,
+				989432D21BAAFC6C00C1B95A /* CoreMedia.framework */,
+				989432D01BAAFC6400C1B95A /* AVFoundation.framework */,
+				989432CE1BAAFC1C00C1B95A /* SystemConfiguration.framework */,
+				989432CA1BAAFA4000C1B95A /* AssetsLibrary.framework */,
+				989432C81BAAFA1200C1B95A /* libiconv.tbd */,
+				989432C61BAAF9E200C1B95A /* libc++.tbd */,
 				95019F211758F30A001C4F94 /* UIKit.framework */,
-				95019F231758F30A001C4F94 /* Foundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -432,13 +428,15 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Nicolas  Amarelle (P4MUQJY232)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nicolas  Amarelle (P4MUQJY232)";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
 					"$(PROJECT_DIR)",
 					"/Users/DiegoArena/Work/Varun/MobileApps/IOS/Frameworks/MobileSDK/CSSNMobileSDKFramework-iOS/Products",
+					"$(PROJECT_DIR)/AcuantMobileSDK.embeddedframework",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AcuantServiceSample/Main/AcuantMobileSDKSample-Prefix.pch";
@@ -470,13 +468,15 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: CSSN, Inc (E67326HC5Q)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CSSN, Inc (E67326HC5Q)";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
 					"$(PROJECT_DIR)",
 					"/Users/DiegoArena/Work/Varun/MobileApps/IOS/Frameworks/MobileSDK/CSSNMobileSDKFramework-iOS/Products",
+					"$(PROJECT_DIR)/AcuantMobileSDK.embeddedframework",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AcuantServiceSample/Main/AcuantMobileSDKSample-Prefix.pch";
