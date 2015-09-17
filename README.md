@@ -1247,7 +1247,7 @@ The following methods were renamed.
 
 ### New methods.
 
-The following methods are news.
+The following methods are new.
 
 > /\*\*
 > 
