@@ -1,6 +1,6 @@
 ![alt tag](https://github.com/Acuant/AcuantiOSMobileSDKCocoaPods/blob/master/Logo.png)
 
-Acuant iOS SDK API
+Acuant iOS Mobile SDK API
 ==================
 
 Last updated on – 8/18/2015
@@ -1247,7 +1247,7 @@ The following methods were renamed.
 
 ### New methods.
 
-The following methods are news.
+The following methods are new.
 
 > /\*\*
 > 
