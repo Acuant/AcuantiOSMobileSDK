@@ -43,7 +43,7 @@ Pod::Spec.new do |s|
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   s.source = { 
-        :git => 'https://github.com/Acuant/AcuantiOSMobileSDKCocoaPods.git', 
+        :git => 'https://github.com/Acuant/AcuantiOSMobileSDK.git', 
         :tag => 'v4.5' 
   }
 
