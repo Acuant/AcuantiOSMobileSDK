@@ -64,6 +64,8 @@ CocoaPods is a dependency manager for Objective-C, which automates and simplifie
 
 ##  Add AcuantMobileSDK.framework on each project 
 
+If you are not using CocoaPods for Acuant iOS Mobile SDK installation, then you would have to add the AcuantMobileSDK.framework into your project. You can download the Acuant iOS Mobile SDK and frameowrk from GitHub - <https://github.com/Acuant/AcuantiOSMobileSDK>.
+
 In order to add the framework to your project, drag the AcuantMobileSDK.framework folder into your project's file structure.
 
 ###  Natives frameworks and libraries
