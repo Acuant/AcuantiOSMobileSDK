@@ -451,8 +451,8 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = AcuantiOSMobileSampleSDK;
-				PROVISIONING_PROFILE = "cdd70cde-1ae6-4c14-b713-be3088bac0dd";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cdd70cde-1ae6-4c14-b713-be3088bac0dd";
+				PROVISIONING_PROFILE = "977eaa0e-310e-4b99-898e-bfa22f2be150";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "977eaa0e-310e-4b99-898e-bfa22f2be150";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "$(ARCHS_STANDARD)";
@@ -487,8 +487,8 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = AcuantiOSMobileSampleSDK;
-				PROVISIONING_PROFILE = "affde7f0-b627-4915-baf1-386e2e1d07a6";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "affde7f0-b627-4915-baf1-386e2e1d07a6";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "$(ARCHS_STANDARD)";

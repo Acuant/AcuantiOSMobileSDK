@@ -3,7 +3,7 @@
 Acuant iOS Mobile SDK API
 ==================
 
-Last updated on – 9/17/2015
+Last updated on – 9/28/2015
 
 #Introduction
 
@@ -57,9 +57,9 @@ CocoaPods is a dependency manager for Objective-C, which automates and simplifie
 
 ###Podfile
 
-> platform :ios, '8.1'
+> platform :ios, '8.0'
 >
-> pod 'AcuantMobileSDK', '~> 4.5'
+> pod 'AcuantMobileSDK', '~> 4.5.1'
 >
 
 ##  Add AcuantMobileSDK.framework on each project 
