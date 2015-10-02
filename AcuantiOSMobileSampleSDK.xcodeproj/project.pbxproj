@@ -24,7 +24,6 @@
 		98F1508D1B39B8C400CE3F5E /* ISGResultScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F150641B39B8C400CE3F5E /* ISGResultScreenViewController.m */; };
 		98F1508E1B39B8C400CE3F5E /* ISGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F150661B39B8C400CE3F5E /* ISGViewController.m */; };
 		98F1508F1B39B8C400CE3F5E /* UIAlertView+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F150681B39B8C400CE3F5E /* UIAlertView+Custom.m */; };
-		98F150911B39B8C400CE3F5E /* AcuantMobileSDKSample-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 98F1506C1B39B8C400CE3F5E /* AcuantMobileSDKSample-Info.plist */; };
 		98F150921B39B8C400CE3F5E /* ISGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F1506F1B39B8C400CE3F5E /* ISGAppDelegate.m */; };
 		98F150931B39B8C400CE3F5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F150701B39B8C400CE3F5E /* main.m */; };
 		98F150941B39B8C400CE3F5E /* Back-Gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 98F150731B39B8C400CE3F5E /* Back-Gray@2x.png */; };
@@ -289,7 +288,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = ISG;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Diego Arena";
 				TargetAttributes = {
 					95019F1D1758F30A001C4F94 = {
@@ -333,7 +332,6 @@
 				98F1509F1B39B8C400CE3F5E /* SVProgressHUD.bundle in Resources */,
 				98F150961B39B8C400CE3F5E /* Back-Withe@2x.png in Resources */,
 				98F1509D1B39B8C400CE3F5E /* photoFront.JPG in Resources */,
-				98F150911B39B8C400CE3F5E /* AcuantMobileSDKSample-Info.plist in Resources */,
 				98F150A51B39B8C400CE3F5E /* ISGViewController_iPad.xib in Resources */,
 				98F1509E1B39B8C400CE3F5E /* PDF417.png in Resources */,
 				98F1509C1B39B8C400CE3F5E /* photoBack.png in Resources */,
@@ -376,6 +374,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -428,7 +427,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Nicolas  Amarelle (P4MUQJY232)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nicolas  Amarelle (P4MUQJY232)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -450,6 +449,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cssn.CSSNMobileSDKSample;
 				PRODUCT_NAME = AcuantiOSMobileSampleSDK;
 				PROVISIONING_PROFILE = "977eaa0e-310e-4b99-898e-bfa22f2be150";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "977eaa0e-310e-4b99-898e-bfa22f2be150";
@@ -468,8 +468,8 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CSSN, Inc (E67326HC5Q)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Acuant Inc. (E67326HC5Q)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Acuant Inc. (E67326HC5Q)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -486,9 +486,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cssn.CSSNMobileSDKSample;
 				PRODUCT_NAME = AcuantiOSMobileSampleSDK;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "527ac4f9-2497-4b13-bdbb-1e58bd0cc445";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "527ac4f9-2497-4b13-bdbb-1e58bd0cc445";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "$(ARCHS_STANDARD)";

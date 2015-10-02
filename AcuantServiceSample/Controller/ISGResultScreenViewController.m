@@ -155,12 +155,22 @@
         height = viewSize.height - y;
         [_TextFooterView setFrame:CGRectMake(x, y, width, height)];
         
-        //Result Text
-        CGSize messageSize = [_result sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:14.0] constrainedToSize:CGSizeMake(290, MAXFLOAT) lineBreakMode: NSLineBreakByWordWrapping];
+        //Result Text        
+        CGSize maximumLabelSize = CGSizeMake(290, MAXFLOAT);
+        
+        NSStringDrawingOptions options = NSStringDrawingUsesLineFragmentOrigin;
+        
+        NSDictionary *attr = @{NSFontAttributeName: [UIFont fontWithName:@"Arial" size:14]};
+        CGRect labelBounds = [_result boundingRectWithSize:maximumLabelSize
+                                                  options:options
+                                               attributes:attr
+                                                  context:nil];
+
+        CGSize messageSize = labelBounds.size;
         x = 0;
         y = 0;
         width = viewSize.width - 40;
-        height = messageSize.height + 50;
+        height = messageSize.height + 10;
         [_resultText setFrame:CGRectMake(x, y, width, height)];
         [_resultText setText:_result];
         
@@ -228,11 +238,21 @@
         [_TextFooterView setFrame:CGRectMake(x, y, width, height)];
         
         //Result Text
-        CGSize messageSize = [_result sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:14.0] constrainedToSize:CGSizeMake(290, MAXFLOAT) lineBreakMode: NSLineBreakByWordWrapping];
+        CGSize maximumLabelSize = CGSizeMake(290, MAXFLOAT);
+        
+        NSStringDrawingOptions options = NSStringDrawingUsesLineFragmentOrigin;
+        
+        NSDictionary *attr = @{NSFontAttributeName: [UIFont fontWithName:@"Arial" size:14]};
+        CGRect labelBounds = [_result boundingRectWithSize:maximumLabelSize
+                                                   options:options
+                                                attributes:attr
+                                                   context:nil];
+        
+        CGSize messageSize = labelBounds.size;
         x = 0;
         y = 0;
         width = viewSize.width - 40;
-        height = messageSize.height + 50;
+        height = messageSize.height + 10;
         [_resultText setFrame:CGRectMake(x, y, width, height)];
         [_resultText setText:_result];
         

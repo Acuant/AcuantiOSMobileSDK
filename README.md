@@ -80,9 +80,9 @@ Click on plus to add frameworks and libraries.
 
 Add following frameworks.
 
-- libc++.dylib.
+- libc++.tdb.
 
-- libiconv.dylib.
+- libiconv.tdb.
 
 - AssetLibrary.framework
 
@@ -100,7 +100,7 @@ Add following frameworks.
 
 - QuartzCore.framework.
 
-- libz.dylib.
+- libz.tdb.
 
 ### Targets 
 
@@ -438,6 +438,13 @@ In order to retrieve the barcode string by the barcode capture interface for Acu
 > return YES;
 > 
 > }
+>
+> -(BOOL)cameraPrefersStatusBarHidden{
+> 
+> return YES;
+> 
+> }
+>
 > 
 > -(BOOL)showFlashlightButton{
 > 
@@ -1201,93 +1208,23 @@ If using the AcuantCardTypePassportCard, add the following code:
 
 #Change Log
 
-If you are updating the CSSN iOS MobileSDK from version 4.4, please be careful with the names of the methods.
-
-## Renamed methods.
-
-The following methods were renamed.
-
-> /\*\*
-> 
-> Use this method to obtain an instance of the AcuantMobileSDKController if License key is correct and show the camera interface after the key was validated and approved
-> 
-> @param key your License Key
-> 
-> @param viewController the UIViewController object from which we'll present the card capture interface
-> 
-> @param delegate the delegate of the card capture interface
-> 
-> @param typeCard the type of the card capture interface
-> 
-> @param isBarcodeSide the side of the card and type of capture interface
-> 
-> @discussion never try to alloc/init this class, always obtain an instance through this method.
-> 
-> @return the AcuantMobileSDKController instance
-> 
-> \*/
-> 
-> +(AcuantMobileSDKController\*)initAcuantMobileSDKWithLicenseKey:(NSString\*)key AndShowCardCaptureInterfaceInViewController:(UIViewController\*)vc delegate:(> id&lt;AcuantMobileSDKControllerCapturingDelegate, AcuantMobileSDKControllerProcessingDelegate&gt;)delegate typeCard:(AcuantCardType)typeCard region:(AcuantCardRegion)> region isBarcodeSide:\_isBarcodeSide;
-> 
-> /\*\*
-> 
-> Use this method to present the card capture interface.
-> 
-> @param viewController the UIViewController object from which we'll present the card capture interface
-> 
-> @param delegate the delegate of the card capture interface
-> 
-> @param typeCard the type of the card capture interface
-> 
-> @param region the region of the card and type of capture interface
-> 
-> @discussion a valid viewController is required
-> 
-> \*/
-> 
-> -((void)showCameraInterfaceInViewController:(UIViewController\*)vc delegate:(id&lt;AcuantMobileSDKControllerCapturingDelegate&gt;)delegate cardType:(AcuantCardType)> cardType region:(AcuantCardRegion)region isBarcodeSide:(BOOL)isBarcodeSide;
+If you are updating the Acuant iOS MobileSDK from version 4.5, please check your dynamic libraries.
 
 ### New methods.
 
 The following methods are new.
 
-> /\*\*
+>/**
+>These methods control the attributes of the status bar when this view controller is shown.
+>*/
+> -(BOOL)cameraPrefersStatusBarHidden{
 > 
-> Called to obtain the flashlight button image displayed in the card capture interface
+> return YES;
 > 
-> @return the flashlight button image
-> 
-> @discussion if this method is not implemented or nil is returned, we'll display a white rounded button with "flash" text
-> 
-> @discussion this delegate method is only called when presenting the card capture interface full screen. If card capture interface is presented in a > UIPopOverController, this method is not called at all because a Cancel UIBarButtonItem in the UINavigationBar is used instead.
-> 
-> \*/
-> 
-> -((UIImage\*)imageForFlashlightButton;
-> 
-> /\*\*
-> 
-> Called to obtain the flashlight button position in the screen.
-> 
-> @return the point where the flashlight button should be positioned
-> 
-> @discussion in case this method is not implemented by the delegate, we'll set a default location for the button though we encourage you to set the position manually.
-> 
-> @discussion if your application supports multiple screen sizes then you are in charge of returning the correct position for each screen size.
-> 
-> \*/
-> 
-> -((CGRect)frameForFlashlightButton;
-> 
-> /\*\*
-> 
-> Called to show or not show the flashlight button in the card capture interface
-> 
-> @return show or not show the flashlight button
-> 
-> @discussion if this method is not implemented or nil is returned, we'll display a the button with "flash" text
-> 
-> \*/
-> 
-> -((BOOL)showFlashlightButton;
-> 
+> }
+
+###	Update Variable.
+
+The data type of following fields of AcuantDriversLicenseCard has been changed to Boolean: 
+>isBarcodeRead, isIDVerified, isOcrRead, isAddressCorrected and isAddressVerified.
+
