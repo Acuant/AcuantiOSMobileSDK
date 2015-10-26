@@ -59,7 +59,7 @@ CocoaPods is a dependency manager for Objective-C, which automates and simplifie
 
 > platform :ios, '8.0'
 >
-> pod 'AcuantMobileSDK', '~> 4.6'
+> pod 'AcuantMobileSDK', '~> 4.6.1'
 >
 
 ##  Add AcuantMobileSDK.framework on each project 
@@ -79,14 +79,9 @@ Expand “Link binary with libraries”.
 Click on plus to add frameworks and libraries.
 
 Add following frameworks.
-
-- libc++.tdb.
-
-- libiconv.tdb.
-
 - AssetLibrary.framework
 
-- SystemConfiguration.framework.
+- SystemConfiguration.framework. 
 
 - AudioToolbox.framework
 
@@ -100,7 +95,21 @@ Add following frameworks.
 
 - QuartzCore.framework.
 
+Add following libraries
+
+- libc++.tdb.
+
+- libiconv.tdb.
+
 - libz.tdb.
+
+**Note: For lower version of Xcode to 7.0 should use .dylib**
+
+- libc++.dylib.
+
+- libiconv.dylib.
+
+- libz.dylib.
 
 ### Targets 
 
@@ -205,7 +214,7 @@ Note: if you are going to use any customization method, then you should create a
 Ex:
 
 > \_instance = \[AcuantMobileSDKController initAcuantMobileSDK\];
-> \[\_instance setWidth:1009\];
+> \[\_instance setWidth:1012\];
 > \[AcuantMobileSDKController initAcuantMobileSDKWithLicenseKey:licenseKey AndShowCardCaptureInterfaceInViewController:self delegate:self typeCard:\_cardType region:\_region isBarcodeSide:\_isBarcodeSide\];
 
 ### Card capture interface without initialization
@@ -221,12 +230,12 @@ If the proper card size is not set, MobileSDK will not be able to process the ca
 **For Driver's License Cards**
 
 > -(void)showCameraInterface{
-> \[\_instance setWidth:1009\];
+> \[\_instance setWidth:1012\];
 
 **For Medical Insurance Cards**
 
 > -(void)showCameraInterface{
-> \[\_instance setWidth:1009\];
+> \[\_instance setWidth:1012\];
 
 **For Passport Documents**
 
@@ -235,13 +244,15 @@ If the proper card size is not set, MobileSDK will not be able to process the ca
 
 ### Optional methods to customize the appearance and final message on the camera screen. 
 
-Customize the initial message, default implementation says "Align and Tap" or “Tap to Focus”.
+Customize the initial message, default implementation says "Align and Tap" or “Tap to Focus”.  
+For Driver License Front side, Driver License Back side, Medical Insurance and Passport
 
-> \[\_instance setInitialMessage:@"Initial Message" frame:CGRectMake(0, 0, 0, 0) backgroundColor:\[UIColor redColor\] duration:5.0 orientation:AcuantHUDLandscape \];
+> \[\_instance setInitialMessage:@"Initial Message" frame:CGRectMake(0, 0, 0, 0) backgroundColor:\[UIColor blueColor\] duration:5.0 orientation:AcuantHUDLandscape \];
 
 Customize the capturing message, default implementation says "hold steady".
+For Driver License Front Side and Medical Insurance
 
-> \[\_instance setCapturingMessage:@"Capturing Message" frame:CGRectMake(0, 0, 0, 0) backgroundColor:\[UIColor greenColor\] duration:5.0 orientation:AcuantHUDLandscape\];
+> \[\_instance setCapturingMessage:@"Capturing Message" frame:CGRectMake(0, 0, 0, 0) backgroundColor:\[UIColor blueColor\] duration:5.0 orientation:AcuantHUDLandscape\];
 
 ### Optional method to enable cropping of the barcode image. 
 
@@ -250,6 +261,12 @@ By default it is disabled.
 > \[\_instance setCanCropBarcode:YES\];
 
 Note: The barcode cropped image will be received with the didCaptureImage delegate method.
+
+### Optional method to enable the initial message on the barcode camera interface. 
+By default it is disabled.
+
+> \[\_instance setCanShowMessage:YES\];
+
 
 ## AcuantMobileSDKControllerCapturingDelegate protocol to handle the capturing.
 
@@ -1208,23 +1225,14 @@ If using the AcuantCardTypePassportCard, add the following code:
 
 #Change Log
 
-If you are updating the Acuant iOS MobileSDK from version 4.5, please check your dynamic libraries.
+Acuant iOS MobileSDK version 4.6.1.
 
-### New methods.
+### 	Added Initial message to Barcode camera.
 
-The following methods are new.
+> \[\_instance setInitialMessage:@"Initial Message" frame:CGRectMake(0, 0, 0, 0) backgroundColor:\[UIColor blueColor\] duration:5.0 orientation:AcuantHUDLandscape \];
 
->/**
->These methods control the attributes of the status bar when this view controller is shown.
->*/
-> -(BOOL)cameraPrefersStatusBarHidden{
-> 
-> return YES;
-> 
-> }
+### New Methods
 
-###	Update Variable.
+Optional method to enable the initial message on the barcode camera interface. By default, it is disabled.
 
-The data type of following fields of AcuantDriversLicenseCard has been changed to Boolean: 
->isBarcodeRead, isIDVerified, isOcrRead, isAddressCorrected and isAddressVerified.
-
+> \[\_instance setCanShowMessage:YES\];

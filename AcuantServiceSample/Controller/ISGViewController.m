@@ -325,12 +325,12 @@
     //showManualCardCaptureInterfaceInViewController
     
     //Use the following methods to customize the appear and final message.
-    /*[_instance setInitialMessage:@"Initial Message" frame:CGRectMake(0, 0, 0, 0) backgroundColor:[UIColor redColor] duration:5.0];
-     [_instance setCapturingMessage:@"Capturing Message" frame:CGRectMake(0, 0, 0, 0) backgroundColor:[UIColor greenColor] duration:5.0];*/
+    //[_instance setInitialMessage:@"ALING AND TAP" frame:CGRectMake(0, 0, 0, 0) backgroundColor:nil duration:10.0 orientation: AcuantHUDLandscape];
+    /*[_instance setCapturingMessage:@"Capturing Message" frame:CGRectMake(0, 0, 0, 0) backgroundColor:nil duration:10.0 orientation: AcuantHUDLandscape];*/
     if (_cardType == AcuantCardTypePassportCard) {
         [_instance setWidth:1478];
     }else{
-        [_instance setWidth:1009];
+        [_instance setWidth:1012];
     }
     _canShowBackButton = YES;
     if (_sideTouch == BackSide && _cardType == AcuantCardTypeDriversLicenseCard) {
@@ -338,6 +338,7 @@
     }
     //Uncomment to Capture backside image of the Barcode
     //[_instance setCanCropBarcode:YES];
+    //[_instance setCanShowMessage:YES];
     [_instance showCameraInterfaceInViewController:self delegate:self cardType:_cardType region:_region isBarcodeSide:_isBarcodeSide];
 }
 
