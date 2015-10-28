@@ -3,7 +3,7 @@
 Acuant iOS Mobile SDK API
 ==================
 
-Last updated on – 10/23/2015
+Last updated on – 10/28/2015
 
 #Introduction
 
@@ -37,7 +37,7 @@ Note: The Framework will not modify the Status bar of the app.
 
 -   iOS 8.0 or later is required.
 
--   iPhone 4 and above.
+-   iPhone 4S and above.
 
 -   iPad 3 and above.
 
@@ -59,7 +59,7 @@ CocoaPods is a dependency manager for Objective-C, which automates and simplifie
 
 > platform :ios, '8.0'
 >
-> pod 'AcuantMobileSDK', '~> 4.6.1'
+> pod 'AcuantMobileSDK', '~> 4.6.2'
 >
 
 ##  Add AcuantMobileSDK.framework on each project 
@@ -1225,14 +1225,6 @@ If using the AcuantCardTypePassportCard, add the following code:
 
 #Change Log
 
-Acuant iOS MobileSDK version 4.6.1.
+Acuant iOS MobileSDK version 4.6.2.
 
-### 	Added Initial message to Barcode camera.
-
-> \[\_instance setInitialMessage:@"Initial Message" frame:CGRectMake(0, 0, 0, 0) backgroundColor:\[UIColor blueColor\] duration:5.0 orientation:AcuantHUDLandscape \];
-
-### New Methods
-
-Optional method to enable the initial message on the barcode camera interface. By default, it is disabled.
-
-> \[\_instance setCanShowMessage:YES\];
+Hotfix to solve the problem of compiling the framework using SDK simulator..
