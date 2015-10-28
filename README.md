@@ -53,7 +53,7 @@ Note: The Framework will not modify the Status bar of the app.
 
 ## Installation with CocoaPods
 
-CocoaPods is a dependency manager for Objective-C, which automates and simplifies the process of using 3rd-party libraries like AcuantMobileSDK in your projects.
+Acuant iOS Mobile SDK can be installed using CocoaPods. CocoaPods is a dependency manager for Objective-C, which automates and simplifies the process of using 3rd-party libraries like AcuantMobileSDK in your projects.
 
 ###Podfile
 
@@ -1223,8 +1223,18 @@ If using the AcuantCardTypePassportCard, add the following code:
 > 
 > }
 
+
+#Miscellaneous
+##How to check version of the SDK.
+
+Open the AcuantMobileSDK.framework 
+Open the Version folder.
+Open the folder with number version.
+Open the Resources folder 
+Open the Info.plist file inside you can find the version number 
+
 #Change Log
 
 Acuant iOS MobileSDK version 4.6.2.
 
-Hotfix to solve the problem of compiling the framework using SDK simulator..
+Hotfix to solve the problem of compiling the framework using SDK simulator.
