@@ -55,10 +55,10 @@ Pod::Spec.new do |s|
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   s.ios.deployment_target = '8.0'
-  s.ios.source_files = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.6.3/Headers/*.{h}'
+  s.source_files = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.6.3/Headers/*.{h}'
   s.ios.header_dir = 'AcuantMobileSDK'
-  s.ios.public_header_files = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.6.3/Headers/*.h'
-  s.ios.resources = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.6.3/Resources/*.{strings,wav,png}'
+  s.public_header_files = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.6.3/Headers/*.h'
+  s.resources = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.6.3/Resources/*.{strings,wav,png}'
   #s.ios.requires_arc = false
   
   s.ios.xcconfig = { 
