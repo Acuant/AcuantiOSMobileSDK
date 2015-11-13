@@ -3,7 +3,7 @@
 Acuant iOS Mobile SDK API
 ==================
 
-Last updated on – 10/28/2015
+Last updated on – 11/12/2015
 
 #Introduction
 
@@ -59,7 +59,7 @@ Acuant iOS Mobile SDK can be installed using CocoaPods. CocoaPods is a dependenc
 
 > platform :ios, '8.0'
 >
-> pod 'AcuantMobileSDK', '~> 4.6.2'
+> pod 'AcuantMobileSDK', '~> 4.6.3'
 >
 
 ##  Add AcuantMobileSDK.framework on each project 
@@ -813,7 +813,7 @@ If using the AcuantCardTypeDriversLicenseCard, add the following code:
 > 
 > AcuantDriversLicenseCard \*data = (AcuantDriversLicenseCard\*)result;
 > 
-> message =\[NSString stringWithFormat:@"First Name - %@ \\nMiddle Name - %@ \\nLast Name - %@ \\nName Suffix - %@ \\nID - %@ \\nLicense - %@ \\nDOB Long - %@ \\nDOB > Short - %@ \\nDate Of Birth Local - %@ \\nIssue Date Long - %@ \\nIssue Date Short - %@ \\nIssue Date Local - %@ \\nExpiration Date Long - %@ \\nExpiration Date Short ->  %@ \\nEye Color - %@ \\nHair Color - %@ \\nHeight - %@ \\nWeight - %@ \\nAddress - %@ \\nAddress 2 - %@ \\nAddress 3 - %@ \\nAddress 4 - %@ \\nAddress 5 - %@ \\> nAddress 6 - %@ \\nCity - %@ \\nZip - %@ \\nState - %@ \\nCounty - %@ \\nCountry Short - %@ \\nCountry Long - %@ \\nClass - %@ \\nRestriction - %@ \\nSex - %@ \\nAudit > - %@ \\nEndorsements - %@ \\nFee - %@ \\nCSC - %@ \\nSigNum - %@ \\nText1 - %@ \\nText2 - %@ \\nText3 - %@ \\nType - %@ \\nDoc Type - %@ \\nFather Name - %@ \\nMother > Name - %@ \\nNameFirst\_NonMRZ - %@ \\nNameLast\_NonMRZ - %@ \\nNameLast1 - %@ \\nNameLast2 - %@ \\nNameMiddle\_NonMRZ - %@ \\nNameSuffix\_NonMRZ - %@ \\nNationality - > %@ \\nOriginal - %@ \\nPlaceOfBirth - %@ \\nPlaceOfIssue - %@ \\nSocial Security - %@ \\nIsAddressCorrected - %@ \\nIsAddressVerified - %@", data.nameFirst, data.> nameMiddle, data.nameLast, data.nameSuffix, data.licenceId, data.license, data.dateOfBirth4, data.dateOfBirth, data.dateOfBirthLocal, data.issueDate4, data.issueDate, > data.issueDateLocal, data.expirationDate4, data.expirationDate, data.eyeColor, data.hairColor, data.height, data.weight, data.address, data.address2, data.address3, > data.address4, data.address5, data.address6, data.city, data.zip, data.state, data.county, data.countryShort, data.idCountry, data.licenceClass, data.restriction, data.> sex, data.audit, data.endorsements, data.fee, data.CSC, data.sigNum, data.text1, data.text2, data.text3, data.type, data.docType, data.fatherName, data.motherName, data> .nameFirst\_NonMRZ, data.nameLast\_NonMRZ, data.nameLast1, data.nameLast2, data.nameMiddle\_NonMRZ, data.nameSuffix\_NonMRZ, data.nationality, data.original, data.> placeOfBirth, data.placeOfIssue, data.socialSecurity, data.isAddressCorrected, data.isAddressVerified\];
+> message =\[NSString stringWithFormat:@"First Name - %@ \\nMiddle Name - %@ \\nLast Name - %@ \\nName Suffix - %@ \\nID - %@ \\nLicense - %@ \\nDOB Long - %@ \\nDOB > Short - %@ \\nDate Of Birth Local - %@ \\nIssue Date Long - %@ \\nIssue Date Short - %@ \\nIssue Date Local - %@ \\nExpiration Date Long - %@ \\nExpiration Date Short ->  %@ \\nEye Color - %@ \\nHair Color - %@ \\nHeight - %@ \\nWeight - %@ \\nAddress - %@ \\nAddress 2 - %@ \\nAddress 3 - %@ \\nAddress 4 - %@ \\nAddress 5 - %@ \\> nAddress 6 - %@ \\nCity - %@ \\nZip - %@ \\nState - %@ \\nCounty - %@ \\nCountry Short - %@ \\nCountry Long - %@ \\nClass - %@ \\nRestriction - %@ \\nSex - %@ \\nAudit > - %@ \\nEndorsements - %@ \\nFee - %@ \\nCSC - %@ \\nSigNum - %@ \\nText1 - %@ \\nText2 - %@ \\nText3 - %@ \\nType - %@ \\nDoc Type - %@ \\nFather Name - %@ \\nMother > Name - %@ \\nNameFirst\_NonMRZ - %@ \\nNameLast\_NonMRZ - %@ \\nNameLast1 - %@ \\nNameLast2 - %@ \\nNameMiddle\_NonMRZ - %@ \\nNameSuffix\_NonMRZ - %@ \\nDocument Detected Name - %@ \\nDocument Detected Name Short - %@ \\nNationality - > %@ \\nOriginal - %@ \\nPlaceOfBirth - %@ \\nPlaceOfIssue - %@ \\nSocial Security - %@ \\nIsAddressCorrected - %@ \\nIsAddressVerified - %@", data.nameFirst, data.> nameMiddle, data.nameLast, data.nameSuffix, data.licenceId, data.license, data.dateOfBirth4, data.dateOfBirth, data.dateOfBirthLocal, data.issueDate4, data.issueDate, > data.issueDateLocal, data.expirationDate4, data.expirationDate, data.eyeColor, data.hairColor, data.height, data.weight, data.address, data.address2, data.address3, > data.address4, data.address5, data.address6, data.city, data.zip, data.state, data.county, data.countryShort, data.idCountry, data.licenceClass, data.restriction, data.> sex, data.audit, data.endorsements, data.fee, data.CSC, data.sigNum, data.text1, data.text2, data.text3, data.type, data.docType, data.fatherName, data.motherName, data.nameFirst\_NonMRZ, data.nameLast\_NonMRZ, data.nameLast1, data.nameLast2, data.nameMiddle\_NonMRZ, data.nameSuffix\_NonMRZ, data.documentDetectedName, data.documentDetectedNameShort, data.nationality, data.original, data.> placeOfBirth, data.placeOfIssue, data.socialSecurity, data.isAddressCorrected, data.isAddressVerified\];
 > 
 > if (\_region == AcuantCardRegionUnitedStates || \_region == AcuantCardRegionCanada) {
 > 
@@ -1235,6 +1235,6 @@ Open the Info.plist file inside you can find the version number
 
 #Change Log
 
-Acuant iOS MobileSDK version 4.6.2.
+Acuant iOS MobileSDK version 4.6.3.
 
-Hotfix to solve the problem of compiling the framework using SDK simulator.
+Added “documentDetectedNameShort” and “CountryShort” fields to driver licenses.
