@@ -42,7 +42,7 @@ Pod::Spec.new do |s|
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-  s.source = { 
+  s.source = {
         :git => 'https://github.com/Acuant/AcuantiOSMobileSDK.git', 
         :tag => 'v4.6.3' 
   }
@@ -70,3 +70,4 @@ Pod::Spec.new do |s|
   s.ios.libraries = 'iconv', 'c++', 'z'
 
 end
+ 
