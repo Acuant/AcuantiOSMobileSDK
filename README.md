@@ -3,7 +3,7 @@
 Acuant iOS Mobile SDK API
 ==================
 
-Last updated on – 11/12/2015
+Last updated on – 11/27/2015
 
 #Introduction
 
@@ -59,12 +59,12 @@ Acuant iOS Mobile SDK can be installed using CocoaPods. CocoaPods is a dependenc
 
 > platform :ios, '8.0'
 >
-> pod 'AcuantMobileSDK', '~> 4.6.3'
+> pod 'AcuantMobileSDK', '~> 4.6.4'
 >
 
 ##  Add AcuantMobileSDK.framework on each project 
 
-If you are not using CocoaPods for Acuant iOS Mobile SDK installation, then you would have to add the AcuantMobileSDK.framework into your project. You can download the Acuant iOS Mobile SDK and frameowrk from GitHub - <https://github.com/Acuant/AcuantiOSMobileSDK>.
+If you are not using CocoaPods for Acuant iOS Mobile SDK installation, then you would have to add the AcuantMobileSDK.framework into your project. You can download the Acuant iOS Mobile SDK and framework from GitHub - <https://github.com/Acuant/AcuantiOSMobileSDK>.
 
 In order to add the framework to your project, drag the AcuantMobileSDK.framework folder into your project's file structure.
 
@@ -139,6 +139,7 @@ Click on “Build Settings”.
 In the below call, license key is validated and instance is created. 
 
 >//Obtain the main controller instance
+>
 > \_instance = \[AcuantMobileSDKController initAcuantMobileSDKWithLicenseKey:@"MyLicensekey" andDelegate:self\];
 
 ### With license key and cloud address.
@@ -151,11 +152,13 @@ Ex: “https://cloud.myAddress.com/” must be written “cloud.myAddress.com”
 In the below call, license key is validated and instance is created with the specified cloud address.
 
 > //Obtain the main controller instance
+> 
 > \_instance = \[AcuantMobileSDKController initAcuantMobileSDKWithLicenseKey:@"MyLicensekey" delegate:self andCloudAddress:@"cloud.myAddress.com"\];
 
 ### If your instance was created previously
 
 > //Obtain the main controller instance
+> 
 > \_instance = \[AcuantMobileSDKController initAcuantMobileSDK\];
 
 # Validating a license key
@@ -165,7 +168,9 @@ In the below call, license key is validated and instance is created with the spe
 In order to activate the license key, just set the license key and add the following code:
 
 > -((IBAction)activateAction:(id)sender {
+> 
 > \[\_instance activateLicenseKey:\_licenseKeyText.text\];
+> 
 > }
 
 ## Optionally, in order to check if the license key validation was successful or not, use the method below.
@@ -173,25 +178,26 @@ In order to activate the license key, just set the license key and add the follo
 In order to know if the license key validation has finished or to know if it was successful, use the method below. This method is called after the instance of the MobileSDK has been created.
 
 > -(void)mobileSDKWasValidated:(BOOL)wasValidated{
+> 
 >   \_wasValidated = wasValidated;
+>   
 > }
 
 # Capturing a card
 
 ## SDK Configuration for card capture interface.
 
-In order to show the camera interface, set the AcuantCardType (AcuantCardTypeMedicalInsuranceCard, AcuantCardTypeDriversLicenseCard, AcuantCardTypePassportCard).
-Depending what you will select, it will show the correct camera interface.
+In order to show the camera interface choose between auto capture interface, manual capture interface or barcode capture interface depending on the card type.(AcuantCardTypeMedicalInsuranceCard, AcuantCardTypeDriversLicenseCard, AcuantCardTypePassportCard).
 
 For AcuantCardTypeMedicalInsuranceCard you can only use the manual capture interface.
 
 For AcuantCardTypeDriversLicenseCard, depending on the region, you can only use the manual capture interface and the barcode capture interface.
 
-For IDs from USA and Canada, use manual capture interface for the front side and use barcode capture or manual capture interface for back side.
+For IDs from USA and Canada, use manual capture interface for the front side and use barcode capture or manual capture interface for backside.
 
-For IDs from South America, Europe, Asia, Australia, Africa region use manual capture interface for both front and back side.
+For IDs from South America, Europe, Asia, Australia, Africa region use manual capture interface for both front and backside.
 
-For AcuantCardTypePassportCard you can only use the auto capture interface.
+For AcuantCardTypePassportCard you can choose between auto capture interface and manual capture interface.
 
 ### In the header file where you'll be doing the parsing, add the following import.
 
@@ -214,14 +220,25 @@ Note: if you are going to use any customization method, then you should create a
 Ex:
 
 > \_instance = \[AcuantMobileSDKController initAcuantMobileSDK\];
+> 
 > \[\_instance setWidth:1012\];
+> 
 > \[AcuantMobileSDKController initAcuantMobileSDKWithLicenseKey:licenseKey AndShowCardCaptureInterfaceInViewController:self delegate:self typeCard:\_cardType region:\_region isBarcodeSide:\_isBarcodeSide\];
 
-### Card capture interface without initialization
-
+### Auto Card capture interface without initialization
 In order to call this function, you will need to initialize the SDK first and create an instance of the SDK to call the function (see point 4)
 
-> \[\_instance showCameraInterfaceInViewController:self delegate:self cardType:\_cardType region:\_region isBarcodeSide:\_isBarcodeSide\];
+[_instance showAutoCameraInterfaceInViewController:self delegate:self cardType:_cardType];
+
+### Manual Card capture interface without initialization
+In order to call this function, you will need to initialize the SDK first and create an instance of the SDK to call the function (see point 4)
+
+[_instance showManualCameraInterfaceInViewController:self delegate:self cardType:_cardType region:_region];
+
+### Barcode capture interface without initialization
+In order to call this function, you will need to initialize the SDK first and create an instance of the SDK to call the function (see point 4)
+
+[_instance showBarcodeCameraInterfaceInViewController:self delegate:self];
 
 ### Methods to set the size of the card. 
 
@@ -230,16 +247,19 @@ If the proper card size is not set, MobileSDK will not be able to process the ca
 **For Driver's License Cards**
 
 > -(void)showCameraInterface{
+> 
 > \[\_instance setWidth:1012\];
 
 **For Medical Insurance Cards**
 
 > -(void)showCameraInterface{
+> 
 > \[\_instance setWidth:1012\];
 
 **For Passport Documents**
 
 > -(void)showCameraInterface{
+> 
 > \[\_instance setWidth:1478\];
 
 ### Optional methods to customize the appearance and final message on the camera screen. 
@@ -272,43 +292,105 @@ By default it is disabled.
 
 ### Required delegate method
 
-#### didCaptureImage 
+#### didCaptureCropImage 
 
-In order to retrieve the image captured by all card capture interface must use the following method:
+In order to retrieve the crop image captured by all card capture interface must use the following method:
 
-> -(void)didCaptureImage:(UIImage \*)cardImage scanBackSide:(BOOL)scanBackSide{
->
+> -(void)didCaptureCropImage:(UIImage \*)cardImage scanBackSide:(BOOL)scanBackSide{
+> 
+> \_isCameraTouched = NO;
+> 
+> \[\_instance dismissCardCaptureInterface\];
+> 
+> \_isBarcodeSide = scanBackSide;
+> 
 > switch (\_sideTouch) {
 > 
-> case FrontSide:
-> 
-> \[\_frontImage setImage:cardImage\];
-> 
-> break;
-> 
-> case BackSide:
-> 
-> \[\_backImage setImage:cardImage\];
-> 
-> break;
-> 
-> default:
-> 
-> break;
-> 
+>  case FrontSide:
+>  
+>   \[\_frontImage setImage:cardImage\];
+>   
+>   break;
+>   
+>  case BackSide:
+>  
+>   \[\_backImage setImage:cardImage\];
+>   
+>   \[\_frontImageLabel setText:@""\];
+>   
+>   \[\_backImageLabel setText:@""\];
+>   
+>   \[self cardHolderPositions\];
+>   
+>   \_frontImage.layer.masksToBounds = YES;
+>   
+>   \_frontImage.layer.cornerRadius = 10.0f;
+>   
+>   \_frontImage.layer.borderWidth = 1.0f;
+>   
+>   \_backImage.layer.masksToBounds = YES;
+>   
+>   \_backImage.layer.cornerRadius = 10.0f;
+>   
+>   \_backImage.layer.borderWidth = 1.0f;
+>   
+>   \[\_backImage setUserInteractionEnabled:YES\];
+>   
+>   break;
+>   
+>  default:
+>  
+>   break;
+>   
 > }
+> 
+> \[\_sendRequestButton setEnabled:YES\];
+> 
+> \[\_sendRequestButton setHidden:NO\];
 > 
 > if (scanBackSide) {
 > 
-> \_sideTouch = BackSide;
-> 
-> \[UIAlertView showSimpleAlertWithTitle:@"AcuantiOSMobileSDKSample" Message:@"Scan the backside of the license." FirstButton:ButtonOK SecondButton:nil Delegate:self > Tag:1\];
-> 
+>  \_sideTouch = BackSide;
+>  
+>  \[UIAlertController showSimpleAlertWithTitle:@"AcuantiOSMobileSDKSample"
+>  
+>  Message:@"Scan the backside of the license."
+>         
+>  FirstButton:ButtonOK
+>   
+>  SecondButton:nil
+>  
+>  FirstHandler:^(UIAlertAction \*action) {
+>    
+>   \_sideTouch = BackSide;
+>   
+>   \_isCameraTouched = YES;
+>   
+>   \[self showCameraInterface\];
+>        
+>   }
+>    
+>  SecondHandler:nil
+>   
+>  Tag:1
+>             
+>  ViewController:self\];
+>                               
 > }
 > 
 > }
 
 Note: For AcuantCardTypeMedicalInsuranceCard capturing backside is optional but for AcuantCardTypeDriverLicenseCard capturing back side is a must.
+
+#### didCaptureOriginalImage
+
+In order to retrieve the original image captured by all card capture interface must use the following method:
+
+> -(void)didCaptureOriginalImage:(UIImage \*)cardImage{
+> 
+>    \_originalImage = cardImage;
+>    
+> }
 
 #### didCaptureData delegate method
 
@@ -321,6 +403,7 @@ In order to retrieve the barcode string by the barcode capture interface for Acu
 > }
 
 #### didFailWithError delegate method
+In order to inform that the scan or the process failed. You must use the following method:
 
 > -(void)didFailWithError:(AcuantError \*)error{
 > 
@@ -424,128 +507,212 @@ In order to retrieve the barcode string by the barcode capture interface for Acu
 > 
 > }
 > 
-> \[self showSimpleAlertWithMessage:message\];
+> \[UIAlertController showSimpleAlertWithTitle:@"AcuantiOSMobileSDK"
+>    
+> Message:message
+>      
+> FirstButton:ButtonOK
+>  
+> SecondButton:nil
 > 
+> FirstHandler:^(UIAlertAction \*action) {
+>                                   
+>  if (tag == 1) {
+>  
+>   \_sideTouch = BackSide;
+>   
+>   \_isCameraTouched = YES;
+>   
+>   \[self showCameraInterface\];
+>      
+>  }else if(tag == 7388467) {
+>  
+>   \[\[UIApplication sharedApplication\] openURL:\[>NSURL URLWithString:UIApplicationOpenSettingsURLString\]>];
+>      
+>  }
+>                                       
+> }
+> SecondHandler:nil
+>  
+> Tag:tag
+>            
+> ViewController:self\];
+>                                 
 > }
 
 ### Optional delegate methods
 
+Call to inform the delegate that the time of the barcode scan expired
+> - (void)barcodeScanTimeOut{
+> 
+>     \[self showSimpleAlertWithMessage:message\];
+>     
+> }
+> 
+Call to show or not show the iPad brackets on the card capture interface
+> - (BOOL)showiPadBrackets{
+> 
+>     return YES;
+>     
+> }
+> 
+Call to inform the delegate that the user pressed the back button
 > -(void)didPressBackButton{
 > 
-> \[\_instance dismissCardCaptureInterface\];
-> 
+>    \[\_instance dismissCardCaptureInterface\];
+>     
 > }
 > 
-> -(UIImage\*)imageForBackButton{
+Call to obtain the back button image displayed in the card capture interface
+> - (UIImage\*)imageForBackButton{
 > 
-> UIImage \*image = \[UIImage imageNamed:@"Back-Withe.png"\];
-> 
-> return image;
-> 
+>     UIImage *image = \[UIImage imageNamed:@"BackButton.png"\];
+>     
+>     return image;
+>     
 > }
 > 
+Call to obtain the back button position in the screen.
 > -(CGRect)frameForBackButton{
 > 
-> return CGRectZero;
-> 
+>    return CGRectZero;
+>     
 > }
 > 
-> -(BOOL)showBackButton{
+Call to show or not show the back button in the card capture interface
+> - (BOOL)showBackButton{
 > 
-> return YES;
-> 
-> }
->
-> -(BOOL)cameraPrefersStatusBarHidden{
-> 
-> return YES;
-> 
-> }
->
-> 
-> -(BOOL)showFlashlightButton{
-> 
-> return YES;
-> 
+>     return YES;
+>     
 > }
 > 
+These methods control the attributes of the status bar when this view controller is shown.
+> - (BOOL)cameraPrefersStatusBarHidden{
+> 
+>     return YES;
+>     
+> }
+> 
+Call to show or not show the flashlight button in the card capture interface
+> - (BOOL)showFlashlightButton{
+> 
+>     return YES;
+>     
+> }
+> 
+Call to obtain the flashlight button position in the screen.
 > -(CGRect)frameForFlashlightButton{
 > 
-> return CGRectZero;
-> 
+>    return CGRectZero;
+>     
 > }
 > 
-> -(UIImage\*)imageForFlashlightButton{
+Call to obtain the flashlight button image displayed in the card capture interface
+> - (UIImage\*)imageForFlashlightButton{
 > 
-> UIImage \*image = \[UIImage imageNamed:@"FlashlightButton.png"\];
-> 
-> return image;
-> 
+>     UIImage \*image = \[UIImage imageNamed:@"FlashlightButton.png"\];
+>     
+>     return image;
+>     
 > }
 > 
-> -(UIImage\*)imageForHelpImageView{
+Call to obtain the help image displayed in the card capture interface
+> - (UIImage\*)imageForHelpImageView{
 > 
-> UIImage \*image = \[UIImage imageNamed:@"PDF417"\];
-> 
-> return \[image imageByApplyingAlpha:0.7\];
-> 
+>     UIImage \*image = \[UIImage imageNamed:@"PDF417"\];
+>     
+>     return \[image imageByApplyingAlpha:0.7\];
+>     
 > }
 > 
+Call to obtain the help image position in the screen.
 > -(CGRect)frameForHelpImageView{
 > 
-> UIImage \*image = \[UIImage imageNamed:@"PDF417"\];
-> 
-> CGRect frame = CGRectMake(self.view.frame.size.width/2 - image.size.width/2, self.view.frame.size.height/2 - image.size.height/3 , image.size.width, image.size.height);
-> 
-> return frame;
-> 
+>    UIImage \*image = \[UIImage imageNamed:@"PDF417"\];
+>     
+>    CGRect frame = CGRectMake(self.view.frame.size.width/2 - image.size.width/2, self.view.> frame.size.height/2 - image.size.height/3 , image.size.width, image.size.height);
+>     
+>    return frame;
+>         
 > }
 > 
+Call to obtain the watermark Message displayed in the card capture interface
 > -(NSString \*)stringForWatermarkLabel{
 > 
-> NSString \*string = @"Powered by Acuant";
-> 
-> return string;
-> 
+>    NSString *string = @"Powered by Acuant";
+>     
+>    return string;
+>     
 > }
 > 
+Call to obtain the watermark label position in the screen.
 > -(CGRect)frameForWatermarkImageView{
 > 
-> UIImage \*image = \[UIImage imageNamed:@"Logo.png"\];
+>    UIImage \*image = \[UIImage imageNamed:@"Logo.png"\];
+>     
+>    CGRect frame = CGRectMake(self.view.frame.size.width/2 - image.size.width/2, self.view.> frame.size.height/2 - image.size.height/2 + 20 , image.size.width, image.size.height);
+>          
+>    return frame;
+>     
+> }
 > 
-> CGRect frame = CGRectMake(self.view.frame.size.width/2 - image.size.width/2, self.view.frame.size.height/2 - image.size.height/2 + 20 , image.size.width, image.size.> height);
+Call to obtain the barcode error message displayed in the barcode capture interface
+> - (UIDeviceOrientation)orientationForBarcodeErrorMessage{
 > 
-> return frame;
+>     return UIDeviceOrientationPortrait;
 > 
 > }
 > 
-> -(NSString \*)stringForBarcodeErrorMessage{
+Call to obtain the barcode error message displayed in the barcode capture interface
+> - (NSString \*)stringForBarcodeErrorMessage{
 > 
-> NSString \*string = @"Unable to scan the barcode?";
-> 
-> return string;
-> 
+>     NSString \*string = @"Unable to scan the barcode?";
+>     
+>     return string;
+>     
 > }
 > 
-> -(NSString \*)stringForBarcodeTitleError{
+Call to obtain the barcode title error displayed in the barcode capture interface
+> - (NSString \*)stringForBarcodeTitleError{
 > 
-> NSString \*string = @"Title Sample";
-> 
-> return string;
-> 
+>     NSString \*string = @"Title Sample";
+>     
+>     return string;
+>     
 > }
 > 
-> -(int)timeForBarcodeErrorMessage{
+Call to obtain the time elapse to appear in the barcode capture interface
+> - (int)timeForBarcodeErrorMessage{
 > 
-> return 10;
-> 
+>     return 10;
+>     
 > }
 > 
-> -(BOOL)isHiddenBarcodeErrorMessage{
+Call to set if the error message is hidden or not.
+> - (BOOL)isHiddenBarcodeErrorMessage{
 > 
-> return YES;
-> 
+>     return YES;
+>     
 > }
+> 
+Call to obtain the barcode button text for the second button displayed in the barcode alert.
+> - (NSString \*)stringForBarcodeFirstButton{
+> 
+>     NSString \*string = @"Yes";
+>     
+>     return string;
+>     
+> }
+> 
+Call to obtain the barcode button text for the second button displayed in the barcode alert.
+> -(NSString \*)stringForBarcodeSecondButton{
+> 
+>    NSString *string = @"Try Again";
+>     
+>    return string;
+>     
+> }
+
 
 #Processing a card
 
@@ -935,8 +1102,37 @@ If using the AcuantCardTypeDriversLicenseCard, add the following code:
 > 
 > }
 > 
-> \[self showSimpleAlertWithMessage:message\];
+> \[UIAlertController showSimpleAlertWithTitle:@"AcuantiOSMobileSDK"
+>    
+> Message:message
+>      
+> FirstButton:ButtonOK
+>  
+> SecondButton:nil
 > 
+> FirstHandler:^(UIAlertAction \*action) {
+>                                   
+>  if (tag == 1) {
+>  
+>   \_sideTouch = BackSide;
+>   
+>   \_isCameraTouched = YES;
+>   
+>   \[self showCameraInterface\];
+>      
+>  }else if(tag == 7388467) {
+>  
+>   \[\[UIApplication sharedApplication\] openURL:\[>NSURL URLWithString:UIApplicationOpenSettingsURLString\]>];
+>      
+>  }
+>                                       
+> }
+> SecondHandler:nil
+>  
+> Tag:tag
+>            
+> ViewController:self\];
+>                                 
 > }
 
 ### For Medical Insurance Cards
@@ -1077,8 +1273,37 @@ If using the AcuantCardTypeMedicalInsuranceCard, add the following code:
 > 
 > }
 > 
-> \[self showSimpleAlertWithMessage:message\];
+> \[UIAlertController showSimpleAlertWithTitle:@"AcuantiOSMobileSDK"
+>    
+> Message:message
+>      
+> FirstButton:ButtonOK
+>  
+> SecondButton:nil
 > 
+> FirstHandler:^(UIAlertAction \*action) {
+>                                   
+>  if (tag == 1) {
+>  
+>   \_sideTouch = BackSide;
+>   
+>   \_isCameraTouched = YES;
+>   
+>   \[self showCameraInterface\];
+>      
+>  }else if(tag == 7388467) {
+>  
+>   \[\[UIApplication sharedApplication\] openURL:\[>NSURL URLWithString:UIApplicationOpenSettingsURLString\]>];
+>      
+>  }
+>                                       
+> }
+> SecondHandler:nil
+>  
+> Tag:tag
+>            
+> ViewController:self\];
+>                                 
 > }
 
 ### For Passport.
@@ -1219,13 +1444,42 @@ If using the AcuantCardTypePassportCard, add the following code:
 > 
 > }
 > 
-> \[self showSimpleAlertWithMessage:message\];
+> \[UIAlertController showSimpleAlertWithTitle:@"AcuantiOSMobileSDK"
+>    
+> Message:message
+>      
+> FirstButton:ButtonOK
+>  
+> SecondButton:nil
 > 
+> FirstHandler:^(UIAlertAction \*action) {
+>                                   
+>  if (tag == 1) {
+>  
+>   \_sideTouch = BackSide;
+>   
+>   \_isCameraTouched = YES;
+>   
+>   \[self showCameraInterface\];
+>      
+>  }else if(tag == 7388467) {
+>  
+>   \[\[UIApplication sharedApplication\] openURL:\[>NSURL URLWithString:UIApplicationOpenSettingsURLString\]>];
+>      
+>  }
+>                                       
+> }
+> SecondHandler:nil
+>  
+> Tag:tag
+>            
+> ViewController:self\];
+>                                 
 > }
 
 
-#Miscellaneous
-##How to check version of the SDK.
+# Miscellaneous
+## How to check version of the SDK.
 
 Open the AcuantMobileSDK.framework 
 Open the Version folder.
@@ -1233,8 +1487,21 @@ Open the folder with number version.
 Open the Resources folder 
 Open the Info.plist file inside you can find the version number 
 
-#Change Log
+# Change Log
 
-Acuant iOS MobileSDK version 4.6.3.
+Acuant iOS MobileSDK version 4.6.4.
 
-Added “documentDetectedNameShort” and “CountryShort” fields to driver licenses.
+Renamed the didCaptureImage method to didCaptureCropImage.
+
+Removed the showCameraInterfaceInViewController method
+ 
+Added the following methods:
+-	showAutoCameraInterfaceInViewController
+-	showManualCameraInterfaceInViewController
+-	showBarcodeCameraInterfaceInViewController
+-	didCaptureOriginalImage
+-	barcodeScanTimeOut
+-	showiPadBrackets
+-	orientationForBarcodeErrorMessage
+-	stringForBarcodeFirstButton
+-	stringForBarcodeSecondButton

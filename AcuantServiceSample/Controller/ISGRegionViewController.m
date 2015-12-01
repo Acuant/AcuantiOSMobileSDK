@@ -76,9 +76,9 @@
 
 
 -(void)tapRegion:(UIButton*)sender{
-    NSLog(@"Tap Region %@", [_keys objectAtIndex:sender.tag]);
+    NSLog(@"Tap Region %@", [self.keys objectAtIndex:sender.tag]);
     if ([self.delegate respondsToSelector:(@selector(setRegion:))]) {
-        [self.delegate setRegion:[[_regions objectForKey:[_keys objectAtIndex:sender.tag]] intValue]];
+        [self.delegate setRegion:[[self.regions objectForKey:[self.keys objectAtIndex:sender.tag]] intValue]];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
