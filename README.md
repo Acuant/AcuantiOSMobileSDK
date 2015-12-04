@@ -3,7 +3,7 @@
 Acuant iOS Mobile SDK API
 ==================
 
-Last updated on – 11/27/2015
+Last updated on – 12/04/2015
 
 #Introduction
 
@@ -59,7 +59,7 @@ Acuant iOS Mobile SDK can be installed using CocoaPods. CocoaPods is a dependenc
 
 > platform :ios, '8.0'
 >
-> pod 'AcuantMobileSDK', '~> 4.6.4'
+> pod 'AcuantMobileSDK', '~> 4.6.5'
 >
 
 ##  Add AcuantMobileSDK.framework on each project 
@@ -1489,19 +1489,6 @@ Open the Info.plist file inside you can find the version number
 
 # Change Log
 
-Acuant iOS MobileSDK version 4.6.4.
+Acuant iOS MobileSDK version 4.6.5.
 
-Renamed the didCaptureImage method to didCaptureCropImage.
-
-Removed the showCameraInterfaceInViewController method
- 
-Added the following methods:
--	showAutoCameraInterfaceInViewController
--	showManualCameraInterfaceInViewController
--	showBarcodeCameraInterfaceInViewController
--	didCaptureOriginalImage
--	barcodeScanTimeOut
--	showiPadBrackets
--	orientationForBarcodeErrorMessage
--	stringForBarcodeFirstButton
--	stringForBarcodeSecondButton
+Hot fix for memory leaks

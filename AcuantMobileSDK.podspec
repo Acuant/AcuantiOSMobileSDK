@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   
   s.name = 'AcuantMobileSDK'
-  s.version = '4.6.4'
+  s.version = '4.6.5'
   s.summary = 'AcuantMobileSDK'
   s.homepage = 'http://www.acuantcorp.com'
 
@@ -44,7 +44,7 @@ Pod::Spec.new do |s|
 
   s.source = {
         :git => 'https://github.com/Acuant/AcuantiOSMobileSDK.git', 
-        :tag => 'v4.6.4' 
+        :tag => 'v4.6.5' 
   }
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -55,10 +55,10 @@ Pod::Spec.new do |s|
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   s.ios.deployment_target = '8.0'
-  s.source_files = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.6.4/Headers/*.{h}'
+  s.source_files = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.6.5/Headers/*.{h}'
   s.ios.header_dir = 'AcuantMobileSDK'
-  s.public_header_files = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.6.4/Headers/*.h'
-  s.resources = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.6.4/Resources/*.{strings,wav,png}'
+  s.public_header_files = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.6.5/Headers/*.h'
+  s.resources = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.6.5/Resources/*.{strings,wav,png}'
   #s.ios.requires_arc = false
   
   s.ios.xcconfig = { 
