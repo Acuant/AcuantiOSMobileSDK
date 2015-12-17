@@ -14,6 +14,6 @@
 #define ButtonNO @"NO"
 
 @interface UIAlertController (Custom)
-+(void)showSimpleAlertWithTitle:(NSString*)title Message:(NSString*)message FirstButton:(NSString*)firstButton SecondButton:(NSString*)secondButton FirstHandler:(void (^)(UIAlertAction *action))firstHandler SecondHandler:(void (^)(UIAlertAction *action))secondHandler Tag:(int)tag ViewController:(UIViewController *)view;
++(void)showSimpleAlertWithTitle:(NSString*)title Message:(NSString*)message FirstButton:(NSString*)firstButton SecondButton:(NSString*)secondButton FirstHandler:(void (^)(UIAlertAction *action))firstHandler SecondHandler:(void (^)(UIAlertAction *action))secondHandler Tag:(int)tag ViewController:(UIViewController *)view Orientation:(UIDeviceOrientation)orientation;
 
 @end

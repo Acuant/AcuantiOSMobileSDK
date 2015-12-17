@@ -19,7 +19,7 @@
 		989432D91BAAFC7E00C1B95A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432D81BAAFC7E00C1B95A /* QuartzCore.framework */; };
 		989432DB1BAAFC8500C1B95A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432DA1BAAFC8500C1B95A /* libz.tbd */; };
 		989432DF1BAAFD8B00C1B95A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432DE1BAAFD8B00C1B95A /* AudioToolbox.framework */; };
-		98E8C1031BD92421007D9197 /* AcuantMobileSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98E8C1021BD92421007D9197 /* AcuantMobileSDK.framework */; };
+		98B288BE1C2312A700D6DBED /* AcuantMobileSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B288BB1C2312A700D6DBED /* AcuantMobileSDK.framework */; };
 		98F1508C1B39B8C400CE3F5E /* ISGRegionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F150621B39B8C400CE3F5E /* ISGRegionViewController.m */; };
 		98F1508D1B39B8C400CE3F5E /* ISGResultScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F150641B39B8C400CE3F5E /* ISGResultScreenViewController.m */; };
 		98F1508E1B39B8C400CE3F5E /* ISGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F150661B39B8C400CE3F5E /* ISGViewController.m */; };
@@ -62,7 +62,8 @@
 		989432D81BAAFC7E00C1B95A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		989432DA1BAAFC8500C1B95A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		989432DE1BAAFD8B00C1B95A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		98E8C1021BD92421007D9197 /* AcuantMobileSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AcuantMobileSDK.framework; sourceTree = "<group>"; };
+		98B288BB1C2312A700D6DBED /* AcuantMobileSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AcuantMobileSDK.framework; sourceTree = "<group>"; };
+		98B288BD1C2312A700D6DBED /* shutter.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shutter.wav; sourceTree = "<group>"; };
 		98F150611B39B8C400CE3F5E /* ISGRegionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISGRegionViewController.h; sourceTree = "<group>"; };
 		98F150621B39B8C400CE3F5E /* ISGRegionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISGRegionViewController.m; sourceTree = "<group>"; };
 		98F150631B39B8C400CE3F5E /* ISGResultScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISGResultScreenViewController.h; sourceTree = "<group>"; };
@@ -107,7 +108,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				989432DF1BAAFD8B00C1B95A /* AudioToolbox.framework in Frameworks */,
-				98E8C1031BD92421007D9197 /* AcuantMobileSDK.framework in Frameworks */,
+				98B288BE1C2312A700D6DBED /* AcuantMobileSDK.framework in Frameworks */,
 				989432DB1BAAFC8500C1B95A /* libz.tbd in Frameworks */,
 				989432D91BAAFC7E00C1B95A /* QuartzCore.framework in Frameworks */,
 				989432D71BAAFC7900C1B95A /* CoreGraphics.framework in Frameworks */,
@@ -145,7 +146,7 @@
 		95019F201758F30A001C4F94 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				98E8C1011BD92421007D9197 /* AcuantMobileSDK.embeddedframework */,
+				98B288BA1C2312A700D6DBED /* AcuantMobileSDK.embeddedframework */,
 				989432DE1BAAFD8B00C1B95A /* AudioToolbox.framework */,
 				989432DA1BAAFC8500C1B95A /* libz.tbd */,
 				989432D81BAAFC7E00C1B95A /* QuartzCore.framework */,
@@ -162,12 +163,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		98E8C1011BD92421007D9197 /* AcuantMobileSDK.embeddedframework */ = {
+		98B288BA1C2312A700D6DBED /* AcuantMobileSDK.embeddedframework */ = {
 			isa = PBXGroup;
 			children = (
-				98E8C1021BD92421007D9197 /* AcuantMobileSDK.framework */,
+				98B288BB1C2312A700D6DBED /* AcuantMobileSDK.framework */,
+				98B288BC1C2312A700D6DBED /* Resources */,
 			);
 			path = AcuantMobileSDK.embeddedframework;
+			sourceTree = "<group>";
+		};
+		98B288BC1C2312A700D6DBED /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				98B288BD1C2312A700D6DBED /* shutter.wav */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		98F1505F1B39B8C400CE3F5E /* AcuantServiceSample */ = {
@@ -440,8 +450,8 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)",
 					"$(PROJECT_DIR)",
+					"$(SRCROOT)",
 					"$(PROJECT_DIR)/AcuantMobileSDK.embeddedframework",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -480,8 +490,8 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)",
 					"$(PROJECT_DIR)",
+					"$(SRCROOT)",
 					"$(PROJECT_DIR)/AcuantMobileSDK.embeddedframework",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

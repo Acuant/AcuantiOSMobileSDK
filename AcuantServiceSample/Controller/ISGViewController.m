@@ -84,7 +84,7 @@
 - (IBAction)captureDriverLicense:(id)sender {
     self.cardType = AcuantCardTypeDriversLicenseCard;
     self.isBarcodeSide = NO;
-
+    
     ISGRegionViewController *regionListView = [[ISGRegionViewController alloc]initWithNibName:@"ISGRegionViewController" bundle:nil];
     regionListView.delegate = self;
     [self presentViewController:regionListView animated:YES completion:nil];
@@ -92,7 +92,7 @@
 - (IBAction)captureMedicInsurance:(id)sender {
     self.cardType = AcuantCardTypeMedicalInsuranceCard;
     self.isBarcodeSide = NO;
-
+    
     [self.frontImage setImage:nil];
     [self.frontImageLabel setText:@"Tap to capture front side"];
     [self.backImage setImage:nil];
@@ -173,10 +173,10 @@
     
     // Now, perform the request
     [self.instance processFrontCardImage:frontSideImage
-                       BackCardImage:backSideImage
-                       andStringData:self.barcodeString
-                        withDelegate:self
-                         withOptions:options];
+                           BackCardImage:backSideImage
+                           andStringData:self.barcodeString
+                            withDelegate:self
+                             withOptions:options];
     
 }
 
@@ -194,7 +194,8 @@
                                        FirstHandler:nil
                                       SecondHandler:nil
                                                 Tag:0
-                                     ViewController:self];
+                                     ViewController:self
+                                        Orientation:UIDeviceOrientationUnknown];
     }
     [[NSUserDefaults standardUserDefaults]setObject:self.licenseKeyText.text forKey:@"LICENSEKEY"];
 }
@@ -488,7 +489,8 @@
                                    }
                                   SecondHandler:nil
                                             Tag:tag
-                                 ViewController:self];
+                                 ViewController:self
+                                    Orientation:UIDeviceOrientationUnknown];
 }
 
 #pragma mark -
@@ -548,7 +550,8 @@
                                        }
                                       SecondHandler:nil
                                                 Tag:1
-                                     ViewController:self];
+                                     ViewController:self
+                                        Orientation:UIDeviceOrientationUnknown];
     }
 }
 
@@ -557,9 +560,22 @@
 }
 
 -(void)barcodeScanTimeOut{
-    /*UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"AcuantiOSMobileSDKSample" message:@"Unable to scan the barcode?" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
     
-    [alert show];*/
+    [_instance pauseScanningBarcodeCamera];
+    
+    [UIAlertController showSimpleAlertWithTitle:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"]
+                                        Message:@"Unable to scan the barcode?"
+                                    FirstButton:@"Yes"
+                                   SecondButton:@"Try Again"
+                                   FirstHandler:^(UIAlertAction *action) {
+                                       [_instance dismissCardCaptureInterface];
+                                   }
+                                  SecondHandler:^(UIAlertAction *action) {
+                                      [_instance resumeScanningBarcodeCamera];
+                                  }
+                                            Tag:1
+                                 ViewController:self.presentedViewController.presentedViewController
+                                    Orientation:[UIDevice currentDevice].orientation];
 }
 
 -(void)didPressBackButton{
@@ -596,37 +612,9 @@
     return self.canShowBackButton;
 }
 
-- (NSString *)stringForBarcodeErrorMessage{
-    NSString *string = @"Unable to scan the barcode?";
-    return string;
-}
-- (NSString *)stringForBarcodeTitleError{
-    NSString *string = @"AcuantiOSMobileSDKSample";
-    return string;
-}
-- (int)timeForBarcodeErrorMessage{
-    return 10;
-}
-- (BOOL)isHiddenBarcodeErrorMessage{
-    return NO;
-}
-- (NSString *)stringForBarcodeFirstButton{
-    NSString *string = @"Yes";
-    return string;
-}
-
--(NSString *)stringForBarcodeSecondButton{
-    NSString *string = @"Try Again";
-    return string;
-}
-
 -(BOOL)showiPadBrackets{
     return NO;
 }
-
-/*-(UIDeviceOrientation)orientationForBarcodeErrorMessage{
-    return UIDeviceOrientationLandscapeLeft;
-}*/
 
 -(UIImage *)imageForHelpImageView{
     UIImage *image = [UIImage imageNamed:@"PDF417.png"];
