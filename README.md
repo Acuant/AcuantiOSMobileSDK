@@ -926,6 +926,8 @@ In order to setup AcuantCardTypePassportCard, just set the following values.
 
 > options.signatureDetection = YES;
 
+> options.sourceImage = 101;
+
 > // Now, perform the request
 
 > \[\_instance processFrontCardImage:frontSideImage
@@ -959,6 +961,9 @@ Enhanced Image – 5
 **DPI -** Integer value up to 600. Reformats the image to the provided DPI value. Size of the image will depend on the DPI value. Lower value (150) is recommended to get a smaller image.
 
 **cropImage –** Boolean value. When true, cloud will crop the RAW image. Boolean value. Since MobileSDK crops the image, leave this flag to false.
+
+**sourceImage –** Define the source or type of image.
+MobileSDK – 101
 
 ##AcuantMobileSDKControllerProcessingDelegate protocol to handle the processing.
 
