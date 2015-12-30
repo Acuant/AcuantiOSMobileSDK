@@ -3,7 +3,7 @@
 Acuant iOS Mobile SDK API
 ==================
 
-Last updated on – 12/04/2015
+Last updated on – 12/30/2015
 
 #Introduction
 
@@ -59,7 +59,7 @@ Acuant iOS Mobile SDK can be installed using CocoaPods. CocoaPods is a dependenc
 
 > platform :ios, '8.0'
 >
-> pod 'AcuantMobileSDK', '~> 4.6.6'
+> pod 'AcuantMobileSDK', '~> 4.7'
 >
 
 ##  Add AcuantMobileSDK.framework on each project 
@@ -228,17 +228,17 @@ Ex:
 ### Auto Card capture interface without initialization
 In order to call this function, you will need to initialize the SDK first and create an instance of the SDK to call the function (see point 4)
 
-[_instance showAutoCameraInterfaceInViewController:self delegate:self cardType:_cardType];
+> \[\_instance showAutoCameraInterfaceInViewController:self delegate:self cardType:\_cardType\];
 
 ### Manual Card capture interface without initialization
 In order to call this function, you will need to initialize the SDK first and create an instance of the SDK to call the function (see point 4)
 
-[_instance showManualCameraInterfaceInViewController:self delegate:self cardType:_cardType region:_region];
+> \[\_instance showManualCameraInterfaceInViewController:self delegate:self cardType:\_cardType region:\_region andBackSide:YES\];
 
 ### Barcode capture interface without initialization
 In order to call this function, you will need to initialize the SDK first and create an instance of the SDK to call the function (see point 4)
 
-[_instance showBarcodeCameraInterfaceInViewController:self delegate:self];
+> \[\_instance showBarcodeCameraInterfaceInViewController:self delegate:self cardType:\_cardType region:\_region\];
 
 ### Methods to set the size of the card. 
 
@@ -286,6 +286,14 @@ Note: The barcode cropped image will be received with the didCaptureImage delega
 By default it is disabled.
 
 > \[\_instance setCanShowMessage:YES\];
+
+###	Optional method to pause the scanning of the barcode camera
+
+> \[\_instance pauseScanningBarcodeCamera\];
+
+###	Optional method to resume the scanning of the barcode camera
+> \[\_instance resumeScanningBarcodeCamera\];
+
 
 
 ## AcuantMobileSDKControllerCapturingDelegate protocol to handle the capturing.
@@ -1489,6 +1497,13 @@ Open the Info.plist file inside you can find the version number
 
 # Change Log
 
-Acuant iOS MobileSDK version 4.6.6.
+Acuant iOS MobileSDK version 4.7
 
-Hot fix: Rotation for initial message on iPad
+-	Added new manual capture interface for passports.
+-	Enhanced ID cropping functionality.
+-	Enhanced barcode scanning functionality.
+
+There are two new methods for pausing and resuming the scanning of the barcode camera interface.
+>  \[\_instance resumeScanningBarcodeCamera\];
+>  \[\_instance pauseScanningBarcodeCamera\];
+

@@ -270,9 +270,9 @@
     if (!self.isCameraTouched) {
         
         int widthiPhone = (UIInterfaceOrientationIsPortrait([self orientation])) ? self.view.frame.size.width - 90 : self.view.frame.size.height - 90;
-        int heightiPhone = (self.cardType == AcuantCardTypePassportCard) ? widthiPhone*0.675 : widthiPhone*0.631;
+        int heightiPhone = (self.cardType == AcuantCardTypePassportCard) ? widthiPhone*0.7 : widthiPhone*0.631;
         int widthiPad = (UIInterfaceOrientationIsPortrait([self orientation])) ? self.view.frame.size.width - 342 : self.view.frame.size.height - 342;
-        int heightiPad = (self.cardType == AcuantCardTypePassportCard) ? widthiPad*0.675 : widthiPad*0.631;
+        int heightiPad = (self.cardType == AcuantCardTypePassportCard) ? widthiPad*0.7 : widthiPad*0.631;
         int centerX = self.view.frame.size.width / 2;
         
         if (UIInterfaceOrientationIsLandscape([self orientation])) {
@@ -348,7 +348,10 @@
     if (self.cardType != AcuantCardTypePassportCard) {
         [self.instance showManualCameraInterfaceInViewController:self delegate:self cardType:self.cardType region:self.cardRegion andBackSide:NO];
     }else{
-        [self.instance showAutoCameraInterfaceInViewController:self delegate:self cardType:self.cardType];
+        //Uncomment the line below to capture the passport with the auto camera interface
+        //[self.instance showAutoCameraInterfaceInViewController:self delegate:self cardType:self.cardType];
+        //comment the line below if the auto camera interface above is uncommented
+        [self.instance showManualCameraInterfaceInViewController:self delegate:self cardType:self.cardType region:self.cardRegion andBackSide:NO];
     }
 }
 
@@ -613,7 +616,7 @@
 }
 
 -(BOOL)showiPadBrackets{
-    return NO;
+    return YES;
 }
 
 -(UIImage *)imageForHelpImageView{
