@@ -333,26 +333,20 @@
     //If you will use the manual camera interface must use the methods
     //showManualCardCaptureInterfaceInViewController
     
-    //Use the following methods to customize the appear and final message.
-    //[self.instance setInitialMessage:@"ALING AND TAP" frame:CGRectMake(0, 0, 0, 0) backgroundColor:[UIColor redColor] duration:10.0 orientation: AcuantHUDPortrait];
-    //[self.instance setCapturingMessage:@"Capturing Message" frame:CGRectMake(0, 0, 0, 0) backgroundColor:nil duration:10.0 orientation: AcuantHUDLandscape];
     if (self.cardType == AcuantCardTypePassportCard) {
         [self.instance setWidth:1478];
     }else{
         [self.instance setWidth:1012];
     }
     self.canShowBackButton = YES;
-    //Uncomment to Capture backside image of the Barcode
+    //Use the following methods to customize the initial and capturing message.
+    //[self.instance setInitialMessage:nil frame:CGRectMake(0, 0, 0, 0) backgroundColor:nil duration:10.0 orientation: AcuantHUDLandscape];
+    //[self.instance setCapturingMessage:@"Capturing Message" frame:CGRectMake(0, 0, 0, 0) backgroundColor:nil duration:10.0 orientation: AcuantHUDLandscape];
+    //Use the following methods to capture backside image of the Barcode
     //[self.instance setCanCropBarcode:YES];
+    //Use the following methods to show the initial message
     //[self.instance setCanShowMessage:YES];
-    if (self.cardType != AcuantCardTypePassportCard) {
-        [self.instance showManualCameraInterfaceInViewController:self delegate:self cardType:self.cardType region:self.cardRegion andBackSide:NO];
-    }else{
-        //Uncomment the line below to capture the passport with the auto camera interface
-        //[self.instance showAutoCameraInterfaceInViewController:self delegate:self cardType:self.cardType];
-        //comment the line below if the auto camera interface above is uncommented
-        [self.instance showManualCameraInterfaceInViewController:self delegate:self cardType:self.cardType region:self.cardRegion andBackSide:NO];
-    }
+    [self.instance showManualCameraInterfaceInViewController:self delegate:self cardType:self.cardType region:self.cardRegion andBackSide:NO];
 }
 
 

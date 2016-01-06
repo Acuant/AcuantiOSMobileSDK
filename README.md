@@ -3,9 +3,9 @@
 Acuant iOS Mobile SDK API
 ==================
 
-Last updated on – 12/30/2015
+Last updated on – 01/05/2016
 
-#Introduction
+# Introduction
 
 The AcuantMobileSDK.framework is a Cocoa Framework is designed to simplify your development efforts. The processing of the captured images takes place via Acuant’s Web Services. Our Web Services offer fast data extraction and zero maintenance as software is looked after by Acuant on our optimized cloud infrastructure.
 
@@ -33,7 +33,7 @@ This Acuant iOS Mobile SDK API documentation document has the detailed descripti
 
 Note: The Framework will not modify the Status bar of the app.
 
-#Requirements
+# Requirements
 
 -   iOS 8.0 or later is required.
 
@@ -49,17 +49,17 @@ Note: The Framework will not modify the Status bar of the app.
 
 -   The card must preferably be fitted with in the brackets on the camera screen, to allow the picture to be taken at a maximum resolution.
 
-#Integration
+# Integration
 
 ## Installation with CocoaPods
 
 Acuant iOS Mobile SDK can be installed using CocoaPods. CocoaPods is a dependency manager for Objective-C, which automates and simplifies the process of using 3rd-party libraries like AcuantMobileSDK in your projects.
 
-###Podfile
+### Podfile
 
 > platform :ios, '8.0'
 >
-> pod 'AcuantMobileSDK', '~> 4.7'
+> pod 'AcuantMobileSDK', '~> 4.7.1'
 >
 
 ##  Add AcuantMobileSDK.framework on each project 
@@ -722,11 +722,11 @@ Call to obtain the barcode button text for the second button displayed in the ba
 > }
 
 
-#Processing a card
+# Processing a card
 
-##SDK Configuration for card capture interface.
+## SDK Configuration for card capture interface.
 
-###In the header file where you'll be doing the parsing, add the following import.
+### In the header file where you'll be doing the parsing, add the following import.
 
 > \#import &lt;AcuantMobileSDK/AcuantMobileSDKController.h&gt;
 
@@ -734,7 +734,7 @@ Call to obtain the barcode button text for the second button displayed in the ba
 
 > @interface ISGViewController () &lt;AcuantMobileSDKControllerCapturingDelegate, AcuantMobileSDKControllerProcessingDelegate&gt;
 
-##Card processing method.
+## Card processing method.
 
 ### For Driver's License Cards
 
@@ -965,9 +965,9 @@ Enhanced Image – 5
 **sourceImage –** Define the source or type of image.
 MobileSDK – 101
 
-##AcuantMobileSDKControllerProcessingDelegate protocol to handle the processing.
+## AcuantMobileSDKControllerProcessingDelegate protocol to handle the processing.
 
-###For Driver's License Cards
+### For Driver's License Cards
 
 If using the AcuantCardTypeDriversLicenseCard, add the following code:
 
@@ -1502,13 +1502,6 @@ Open the Info.plist file inside you can find the version number
 
 # Change Log
 
-Acuant iOS MobileSDK version 4.7
+Acuant iOS MobileSDK version 4.7.1
 
--	Added new manual capture interface for passports.
--	Enhanced ID cropping functionality.
--	Enhanced barcode scanning functionality.
-
-There are two new methods for pausing and resuming the scanning of the barcode camera interface.
->  \[\_instance resumeScanningBarcodeCamera\];
->  \[\_instance pauseScanningBarcodeCamera\];
-
+Removed expiration time from initial message of barcode camera interface.
