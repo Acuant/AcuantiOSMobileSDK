@@ -3,7 +3,7 @@
 Acuant iOS Mobile SDK API
 ==================
 
-Last updated on – 01/05/2016
+Last updated on – 01/19/2016
 
 # Introduction
 
@@ -59,7 +59,7 @@ Acuant iOS Mobile SDK can be installed using CocoaPods. CocoaPods is a dependenc
 
 > platform :ios, '8.0'
 >
-> pod 'AcuantMobileSDK', '~> 4.7.1'
+> pod 'AcuantMobileSDK', '~> 4.7.2'
 >
 
 ##  Add AcuantMobileSDK.framework on each project 
@@ -129,9 +129,19 @@ Click on “Build Settings”.
 
 > Add on “PreProcessor” = CVLIB\_IMG\_NOCODEC (GCC\_PREPROCESSOR\_DEFINITIONS = DEBUG=1 $(inherited) CVLIB\_IMG\_NOCODEC)
 
-## Add the import header in your appDelegate’s header file.
+## Integration with Objective-C.
+Add the import header in your appDelegate’s header file.
 
 > \#import &lt;AcuantMobileSDK/AcuantMobileSDKController.h&gt;
+
+## Integration with Swift
+
+In order to integrate our SDK on a Swift project you just need to create an Objective-C bridging header to expose those files to Swift. 
+
+Create this bridge is very simple, after you add an Objective-C file, the Xcode propts an alert suggesting to create the header file.
+
+*Apple Reference:* <https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html>
+
 
 ##Create and initialize the instance in your appDelegate’s implementation file.
 
@@ -293,7 +303,6 @@ By default it is disabled.
 
 ###	Optional method to resume the scanning of the barcode camera
 > \[\_instance resumeScanningBarcodeCamera\];
-
 
 
 ## AcuantMobileSDKControllerCapturingDelegate protocol to handle the capturing.
@@ -1502,6 +1511,6 @@ Open the Info.plist file inside you can find the version number
 
 # Change Log
 
-Acuant iOS MobileSDK version 4.7.1
+Acuant iOS MobileSDK version 4.7.2
 
-Removed expiration time from initial message of barcode camera interface.
+Added support to Enable Bitcode.

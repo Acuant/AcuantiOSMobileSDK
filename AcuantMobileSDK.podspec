@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   
   s.name = 'AcuantMobileSDK'
-  s.version = '4.7.1'
+  s.version = '4.7.2'
   s.summary = 'AcuantMobileSDK'
   s.homepage = 'http://www.acuantcorp.com'
 
@@ -44,7 +44,7 @@ Pod::Spec.new do |s|
 
   s.source = {
         :git => 'https://github.com/Acuant/AcuantiOSMobileSDK.git', 
-        :tag => 'v4.7.1' 
+        :tag => 'v4.7.2' 
   }
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -55,11 +55,11 @@ Pod::Spec.new do |s|
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   s.ios.deployment_target = '8.0'
-  s.source_files = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.7.1/Headers/*.{h}'
+  s.source_files = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.7.2/Headers/*.{h}'
   s.ios.header_dir = 'AcuantMobileSDK'
-  s.public_header_files = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.7.1/Headers/*.h'
-  s.resources = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.7.1/Resources/*.{strings,wav,png}'
-  #s.ios.requires_arc = false
+  s.public_header_files = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.7.2/Headers/*.h'
+  s.resources = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.7.2/Resources/*.{strings,wav,png}'
+  #s.ios.requires_arc = true
   
   s.ios.xcconfig = { 
         'GCC_PREPROCESSOR_DEFINITIONS' => 'DEBUG=1 $(inherited) CVLIB_IMG_NOCODEC',

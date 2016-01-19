@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		95019F221758F30A001C4F94 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95019F211758F30A001C4F94 /* UIKit.framework */; };
-		981826D31C3426FC00F73B4B /* AcuantMobileSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 981826D01C3426FC00F73B4B /* AcuantMobileSDK.framework */; };
 		989432CB1BAAFA4000C1B95A /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432CA1BAAFA4000C1B95A /* AssetsLibrary.framework */; };
 		989432CC1BAAFBF500C1B95A /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432C61BAAF9E200C1B95A /* libc++.tbd */; };
 		989432CD1BAAFBFE00C1B95A /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432C81BAAFA1200C1B95A /* libiconv.tbd */; };
@@ -20,6 +19,8 @@
 		989432D91BAAFC7E00C1B95A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432D81BAAFC7E00C1B95A /* QuartzCore.framework */; };
 		989432DB1BAAFC8500C1B95A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432DA1BAAFC8500C1B95A /* libz.tbd */; };
 		989432DF1BAAFD8B00C1B95A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432DE1BAAFD8B00C1B95A /* AudioToolbox.framework */; };
+		98F05DB01C4936D60004515D /* AcuantMobileSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98F05DAD1C4936D60004515D /* AcuantMobileSDK.framework */; };
+		98F05DB11C4936D60004515D /* shutter.wav in Resources */ = {isa = PBXBuildFile; fileRef = 98F05DAF1C4936D60004515D /* shutter.wav */; };
 		98F1508C1B39B8C400CE3F5E /* ISGRegionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F150621B39B8C400CE3F5E /* ISGRegionViewController.m */; };
 		98F1508D1B39B8C400CE3F5E /* ISGResultScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F150641B39B8C400CE3F5E /* ISGResultScreenViewController.m */; };
 		98F1508E1B39B8C400CE3F5E /* ISGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F150661B39B8C400CE3F5E /* ISGViewController.m */; };
@@ -51,8 +52,6 @@
 /* Begin PBXFileReference section */
 		95019F1E1758F30A001C4F94 /* AcuantiOSMobileSampleSDK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AcuantiOSMobileSampleSDK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95019F211758F30A001C4F94 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		981826D01C3426FC00F73B4B /* AcuantMobileSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AcuantMobileSDK.framework; sourceTree = "<group>"; };
-		981826D21C3426FC00F73B4B /* shutter.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shutter.wav; sourceTree = "<group>"; };
 		989432C61BAAF9E200C1B95A /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		989432C81BAAFA1200C1B95A /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		989432CA1BAAFA4000C1B95A /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
@@ -64,6 +63,8 @@
 		989432D81BAAFC7E00C1B95A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		989432DA1BAAFC8500C1B95A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		989432DE1BAAFD8B00C1B95A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		98F05DAD1C4936D60004515D /* AcuantMobileSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AcuantMobileSDK.framework; sourceTree = "<group>"; };
+		98F05DAF1C4936D60004515D /* shutter.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shutter.wav; sourceTree = "<group>"; };
 		98F150611B39B8C400CE3F5E /* ISGRegionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISGRegionViewController.h; sourceTree = "<group>"; };
 		98F150621B39B8C400CE3F5E /* ISGRegionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISGRegionViewController.m; sourceTree = "<group>"; };
 		98F150631B39B8C400CE3F5E /* ISGResultScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISGResultScreenViewController.h; sourceTree = "<group>"; };
@@ -108,7 +109,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				989432DF1BAAFD8B00C1B95A /* AudioToolbox.framework in Frameworks */,
-				981826D31C3426FC00F73B4B /* AcuantMobileSDK.framework in Frameworks */,
+				98F05DB01C4936D60004515D /* AcuantMobileSDK.framework in Frameworks */,
 				989432DB1BAAFC8500C1B95A /* libz.tbd in Frameworks */,
 				989432D91BAAFC7E00C1B95A /* QuartzCore.framework in Frameworks */,
 				989432D71BAAFC7900C1B95A /* CoreGraphics.framework in Frameworks */,
@@ -146,7 +147,7 @@
 		95019F201758F30A001C4F94 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				981826CF1C3426FC00F73B4B /* AcuantMobileSDK.embeddedframework */,
+				98F05DAC1C4936D60004515D /* AcuantMobileSDK.embeddedframework */,
 				989432DE1BAAFD8B00C1B95A /* AudioToolbox.framework */,
 				989432DA1BAAFC8500C1B95A /* libz.tbd */,
 				989432D81BAAFC7E00C1B95A /* QuartzCore.framework */,
@@ -163,19 +164,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		981826CF1C3426FC00F73B4B /* AcuantMobileSDK.embeddedframework */ = {
+		98F05DAC1C4936D60004515D /* AcuantMobileSDK.embeddedframework */ = {
 			isa = PBXGroup;
 			children = (
-				981826D01C3426FC00F73B4B /* AcuantMobileSDK.framework */,
-				981826D11C3426FC00F73B4B /* Resources */,
+				98F05DAD1C4936D60004515D /* AcuantMobileSDK.framework */,
+				98F05DAE1C4936D60004515D /* Resources */,
 			);
 			path = AcuantMobileSDK.embeddedframework;
 			sourceTree = "<group>";
 		};
-		981826D11C3426FC00F73B4B /* Resources */ = {
+		98F05DAE1C4936D60004515D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				981826D21C3426FC00F73B4B /* shutter.wav */,
+				98F05DAF1C4936D60004515D /* shutter.wav */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -340,6 +341,7 @@
 				98F150A81B39B8D100CE3F5E /* Images.xcassets in Resources */,
 				98F150951B39B8C400CE3F5E /* Back-Withe.png in Resources */,
 				98F150A21B39B8C400CE3F5E /* CSSNResultScreen_iPad.xib in Resources */,
+				98F05DB11C4936D60004515D /* shutter.wav in Resources */,
 				98F150941B39B8C400CE3F5E /* Back-Gray@2x.png in Resources */,
 				98F150981B39B8C400CE3F5E /* camera-capture-button.png in Resources */,
 				98F150A31B39B8C400CE3F5E /* CSSNResultScreen_iPhone.xib in Resources */,
@@ -447,7 +449,7 @@
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Nicolas  Amarelle (P4MUQJY232)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nicolas  Amarelle (P4MUQJY232)";
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -487,7 +489,7 @@
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Acuant Inc. (E67326HC5Q)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Acuant Inc. (E67326HC5Q)";
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
