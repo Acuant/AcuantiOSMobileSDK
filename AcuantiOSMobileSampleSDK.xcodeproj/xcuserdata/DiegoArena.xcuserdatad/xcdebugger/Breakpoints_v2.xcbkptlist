@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AcuantServiceSample/Controller/ISGViewController.m"
-            timestampString = "473785527.424364"
+            timestampString = "476207336.72782"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "506"
-            endingLineNumber = "506"
-            landmarkName = "-didCaptureCropImage:scanBackSide:"
+            startingLineNumber = "336"
+            endingLineNumber = "336"
+            landmarkName = "-showCameraInterface"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

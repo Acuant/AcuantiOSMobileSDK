@@ -335,6 +335,8 @@
     
     if (self.cardType == AcuantCardTypePassportCard) {
         [self.instance setWidth:1478];
+    }else if(self.cardType == AcuantCardTypeDriversLicenseCard){
+        [self.instance setWidth:1250];
     }else{
         [self.instance setWidth:1012];
     }
@@ -418,6 +420,7 @@
     [SVProgressHUD dismiss];
     NSString *message;
     int tag = 0;
+    BOOL showAlert = YES;
     switch (error.errorType) {
         case AcuantErrorTimedOut:
             message = error.errorMessage;
@@ -433,6 +436,9 @@
             break;
         case AcuantErrorCouldNotReachServer:
             message = error.errorMessage;
+            if (_isCameraTouched) {
+                showAlert = NO;
+            }
             break;
         case AcuantErrorUnableToAuthenticate:
             message = error.errorMessage;
@@ -471,23 +477,21 @@
             return;
             break;
     }
-    [UIAlertController showSimpleAlertWithTitle:@"AcuantiOSMobileSDK"
-                                        Message:message
-                                    FirstButton:ButtonOK
-                                   SecondButton:nil
-                                   FirstHandler:^(UIAlertAction *action) {
-                                       if (tag == 1) {
-                                           self.sideTouch = BackSide;
-                                           self.isCameraTouched = YES;
-                                           [self showCameraInterface];
-                                       }else if(tag == 7388467) {
-                                           [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+    if (showAlert) {
+        [UIAlertController showSimpleAlertWithTitle:@"AcuantiOSMobileSDK"
+                                            Message:message
+                                        FirstButton:ButtonOK
+                                       SecondButton:nil
+                                       FirstHandler:^(UIAlertAction *action) {
+                                           if(tag == 7388467) {
+                                               [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+                                           }
                                        }
-                                   }
-                                  SecondHandler:nil
-                                            Tag:tag
-                                 ViewController:self
-                                    Orientation:UIDeviceOrientationUnknown];
+                                      SecondHandler:nil
+                                                Tag:tag
+                                     ViewController:self
+                                        Orientation:UIDeviceOrientationUnknown];
+    }
 }
 
 #pragma mark -
@@ -503,6 +507,7 @@
 }
 
 -(void)didCaptureCropImage:(UIImage *)cardImage scanBackSide:(BOOL)scanBackSide{
+    //UIImageWriteToSavedPhotosAlbum(cardImage, nil, nil, nil);
     self.isCameraTouched = NO;
     [self.instance dismissCardCaptureInterface];
     self.isBarcodeSide = scanBackSide;
@@ -656,8 +661,9 @@
         AcuantDriversLicenseCard *data = (AcuantDriversLicenseCard*)result;
         message =[NSString stringWithFormat:@"First Name - %@ \nMiddle Name - %@ \nLast Name - %@ \nName Suffix - %@ \nID - %@ \nLicense - %@ \nDOB Long - %@ \nDOB Short - %@ \nDate Of Birth Local - %@ \nIssue Date Long - %@ \nIssue Date Short - %@ \nIssue Date Local - %@ \nExpiration Date Long - %@ \nExpiration Date Short - %@ \nEye Color - %@ \nHair Color - %@ \nHeight - %@ \nWeight - %@ \nAddress - %@ \nAddress 2 - %@ \nAddress 3 - %@ \nAddress 4 - %@ \nAddress 5 - %@ \nAddress 6  - %@ \nCity - %@ \nZip - %@ \nState - %@ \nCounty - %@ \nCountry Short - %@ \nCountry Long - %@ \nClass - %@ \nRestriction - %@ \nSex - %@ \nAudit - %@ \nEndorsements - %@ \nFee - %@ \nCSC - %@ \nSigNum - %@ \nText1 - %@ \nText2 - %@ \nText3 - %@ \nType - %@ \nDoc Type - %@ \nFather Name - %@ \nMother Name - %@ \nNameFirst_NonMRZ - %@ \nNameLast_NonMRZ - %@ \nNameLast1 - %@ \nNameLast2 - %@ \nNameMiddle_NonMRZ - %@ \nNameSuffix_NonMRZ - %@ \nDocument Detected Name - %@ \nDocument Detected Name Short - %@ \nNationality - %@ \nOriginal - %@ \nPlaceOfBirth - %@ \nPlaceOfIssue - %@ \nSocial Security - %@ \nIsAddressCorrected - %hhd \nIsAddressVerified - %hhd", data.nameFirst, data.nameMiddle, data.nameLast, data.nameSuffix, data.licenceId, data.license, data.dateOfBirth4, data.dateOfBirth, data.dateOfBirthLocal, data.issueDate4, data.issueDate, data.issueDateLocal, data.expirationDate4, data.expirationDate, data.eyeColor, data.hairColor, data.height, data.weight, data.address, data.address2, data.address3, data.address4, data.address5, data.address6, data.city, data.zip, data.state, data.county, data.countryShort, data.idCountry, data.licenceClass, data.restriction, data.sex, data.audit, data.endorsements, data.fee, data.CSC, data.sigNum, data.text1, data.text2, data.text3, data.type, data.docType, data.fatherName, data.motherName, data.nameFirst_NonMRZ, data.nameLast_NonMRZ, data.nameLast1, data.nameLast2, data.nameMiddle_NonMRZ, data.nameSuffix_NonMRZ, data.documentDetectedName, data.documentDetectedNameShort, data.nationality, data.original, data.placeOfBirth, data.placeOfIssue, data.socialSecurity, data.isAddressCorrected, data.isAddressVerified];
         if (self.cardRegion == AcuantCardRegionUnitedStates || self.cardRegion == AcuantCardRegionCanada) {
-            message = [NSString stringWithFormat:@"%@ \nIsBarcodeRead - %hhd \nIsIDVerified - %hhd \nIsOcrRead - %hhd \nDocument Verification Confidence Rating - %@", message, data.isBarcodeRead, data.isIDVerified, data.isOcrRead, data.documentVerificationRating];
+            message = [NSString stringWithFormat:@"%@ \nIsBarcodeRead - %hhd \nIsIDVerified - %hhd \nIsOcrRead - %hhd", message, data.isBarcodeRead, data.isIDVerified, data.isOcrRead];
         }
+        message = [NSString stringWithFormat:@"%@ \nDocument Verification Confidence Rating - %@",message, data.documentVerificationRating];
         
         faceimage = [UIImage imageWithData:data.faceImage];
         signatureImage = [UIImage imageWithData:data.signatureImage];
