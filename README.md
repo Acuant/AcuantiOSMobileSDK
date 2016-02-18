@@ -3,7 +3,7 @@
 Acuant iOS Mobile SDK API
 ==================
 
-Last updated on – 02/03/2016
+Last updated on – 02/18/2016
 
 # Introduction
 
@@ -59,7 +59,7 @@ Acuant iOS Mobile SDK can be installed using CocoaPods. CocoaPods is a dependenc
 
 > platform :ios, '8.0'
 >
-> pod 'AcuantMobileSDK', '~> 4.7.3'
+> pod 'AcuantMobileSDK', '~> 4.7.4'
 >
 
 ##  Add AcuantMobileSDK.framework on each project 
@@ -143,39 +143,9 @@ Create this bridge is very simple, after you add an Objective-C file, the Xcode 
 *Apple Reference:* <https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html>
 
 
-##Create and initialize the instance in your appDelegate’s implementation file.
+# Activate the license key.
 
-### With license key
-In the below call, license key is validated and instance is created. 
-
->//Obtain the main controller instance
->
-> \_instance = \[AcuantMobileSDKController initAcuantMobileSDKWithLicenseKey:@"MyLicensekey" andDelegate:self\];
-
-### With license key and cloud address.
-
-The cloud Address must not contain “https://”
-Ex: “https://cloud.myAddress.com/” must be written “cloud.myAddress.com”
-
-**Note:** Only set cloud address if you are hosting Acuant web services in your own data center. By default, iOS MobileSDK communicates with the Acuant data center.
-
-In the below call, license key is validated and instance is created with the specified cloud address.
-
-> //Obtain the main controller instance
-> 
-> \_instance = \[AcuantMobileSDKController initAcuantMobileSDKWithLicenseKey:@"MyLicensekey" delegate:self andCloudAddress:@"cloud.myAddress.com"\];
-
-### If your instance was created previously
-
-> //Obtain the main controller instance
-> 
-> \_instance = \[AcuantMobileSDKController initAcuantMobileSDK\];
-
-# Validating a license key
-
-## To activate a license key.
-
-In order to activate the license key, just set the license key and add the following code:
+In order to activate the license key, use the following method:
 
 > -((IBAction)activateAction:(id)sender {
 > 
@@ -183,7 +153,43 @@ In order to activate the license key, just set the license key and add the follo
 > 
 > }
 
-## Optionally, in order to check if the license key validation was successful or not, use the method below.
+**Note:** The license key only needs to be activated once. Execute this method only one time. Some licensees are issued by Acuant pre-activated and don’t need further actions.
+
+
+# Initialize and create the SDK’s instance
+
+## With license key
+In the below call, license key is validated and instance is created. 
+
+>//Obtain the main controller instance
+>
+> \_instance = \[AcuantMobileSDKController initAcuantMobileSDKWithLicenseKey:@"MyLicensekey" andDelegate:self\];
+
+**Note:** This method verifies if the license key is valid and it returns an instance that can be used to reference the methods. We recommend that you create one instance per session in order to optimize your resources.
+
+## With license key and cloud address.
+
+In the below call, license key is validated, the instance is created with the specified cloud address if you are hosting Acuant web services in your own data center. By default, iOS MobileSDK communicates with the Acuant data center. 
+
+> //Obtain the main controller instance
+> 
+> \_instance = \[AcuantMobileSDKController initAcuantMobileSDKWithLicenseKey:@"MyLicensekey" delegate:self andCloudAddress:@"cloud.myAddress.com"\];
+
+
+The cloud Address must not contain “https://”
+Ex: “https://cloud.myAddress.com/” must be written “cloud.myAddress.com”
+
+**Note:** This method verifies if the license key is valid and it returns an instance that can be used to reference the methods. We recommend that you create one instance per session in order to optimize your resources.
+
+
+## If your instance was created previously
+
+> //Obtain the main controller instance
+> 
+> \_instance = \[AcuantMobileSDKController initAcuantMobileSDK\];
+
+
+##  Check if the license key validation was successful or not
 
 In order to know if the license key validation has finished or to know if it was successful, use the method below. This method is called after the instance of the MobileSDK has been created.
 
@@ -1542,9 +1548,7 @@ Open the Info.plist file inside you can find the version number
 
 # Change Log
 
-Acuant iOS MobileSDK version 4.7.3
+Acuant iOS MobileSDK version 4.7.4
 
 Changes:
--	Update image size to 1250 for IDs only.
--	Removed the check for internet to open up the camera interface. 
--	Added error type AcuantErrorOpenCamera
+-	Fixed the corrupt shutter.wav file.
