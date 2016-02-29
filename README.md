@@ -62,11 +62,11 @@ Acuant iOS Mobile SDK can be installed using CocoaPods. CocoaPods is a dependenc
 > pod 'AcuantMobileSDK', '~> 4.7.4'
 >
 
-##  Add AcuantMobileSDK.framework on each project 
+##  Add AcuantMobileSDK.embeddedframework on each project 
 
-If you are not using CocoaPods for Acuant iOS Mobile SDK installation, then you would have to add the AcuantMobileSDK.framework into your project. You can download the Acuant iOS Mobile SDK and framework from GitHub - <https://github.com/Acuant/AcuantiOSMobileSDK>.
+If you are not using CocoaPods for Acuant iOS Mobile SDK installation, then you would have to add the AcuantMobileSDK.embeddedframework into your project. You can download the Acuant iOS Mobile SDK and embeddedframework from GitHub - <https://github.com/Acuant/AcuantiOSMobileSDK>.
 
-In order to add the framework to your project, drag the AcuantMobileSDK.framework folder into your project's file structure.
+In order to add the framework to your project, drag the AcuantMobileSDK.embeddedframework folder into your project's file structure.
 
 ###  Natives frameworks and libraries
 
