@@ -3,7 +3,7 @@
 Acuant iOS Mobile SDK API
 ==================
 
-Last updated on – 02/18/2016
+Last updated on – 03/01/2016
 
 # Introduction
 
@@ -1552,3 +1552,4 @@ Acuant iOS MobileSDK version 4.7.4
 
 Changes:
 -	Fixed the corrupt shutter.wav file.
+-   Updated documentation.
