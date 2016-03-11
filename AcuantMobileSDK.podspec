@@ -44,7 +44,7 @@ Pod::Spec.new do |s|
 
   s.source = {
         :git => 'https://github.com/Acuant/AcuantiOSMobileSDK.git', 
-        :tag => 'v4.7.4' 
+        :tag => 'v4.7.5' 
   }
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
