@@ -3,7 +3,7 @@
 Acuant iOS Mobile SDK API
 ==================
 
-Last updated on – 03/01/2016
+Last updated on – 03/11/2016
 
 # Introduction
 
@@ -59,7 +59,7 @@ Acuant iOS Mobile SDK can be installed using CocoaPods. CocoaPods is a dependenc
 
 > platform :ios, '8.0'
 >
-> pod 'AcuantMobileSDK', '~> 4.7.4'
+> pod 'AcuantMobileSDK', '~> 4.7.5'
 >
 
 ##  Add AcuantMobileSDK.embeddedframework on each project 
@@ -127,7 +127,7 @@ Click on “Build Settings”.
 
 #### Change following flags
 
-> Add on “PreProcessor” = CVLIB\_IMG\_NOCODEC (GCC\_PREPROCESSOR\_DEFINITIONS = DEBUG=1 $(inherited) CVLIB\_IMG\_NOCODEC)
+> Add on “GCC\_PREPROCESSOR\_DEFINITIONS” = CVLIB\_IMG\_NOCODEC
 
 ## Integration with Objective-C.
 Add the import header in your appDelegate’s header file.
@@ -1551,5 +1551,4 @@ Open the Info.plist file inside you can find the version number
 Acuant iOS MobileSDK version 4.7.4
 
 Changes:
--	Fixed the corrupt shutter.wav file.
--   Updated documentation.
+-	Removed definition "Debug = 1" from "GCC_PREPROCESSOR_DEFINITIONS".

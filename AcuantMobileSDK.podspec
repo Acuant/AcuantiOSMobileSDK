@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   
   s.name = 'AcuantMobileSDK'
-  s.version = '4.7.4'
+  s.version = '4.7.5'
   s.summary = 'AcuantMobileSDK'
   s.homepage = 'http://www.acuantcorp.com'
 
@@ -55,14 +55,14 @@ Pod::Spec.new do |s|
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   s.ios.deployment_target = '8.0'
-  s.source_files = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.7.4/Headers/*.{h}'
+  s.source_files = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.7.5/Headers/*.{h}'
   s.ios.header_dir = 'AcuantMobileSDK'
-  s.public_header_files = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.7.4/Headers/*.h'
-  s.resources = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.7.4/Resources/*.{strings,wav,png}'
+  s.public_header_files = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.7.5/Headers/*.h'
+  s.resources = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.7.5/Resources/*.{strings,wav,png}'
   #s.ios.requires_arc = true
   
   s.ios.xcconfig = { 
-        'GCC_PREPROCESSOR_DEFINITIONS' => 'DEBUG=1 $(inherited) CVLIB_IMG_NOCODEC',
+        'GCC_PREPROCESSOR_DEFINITIONS' => 'CVLIB_IMG_NOCODEC',
         'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/AcuantMobileSDK/AcuantMobileSDK.embeddedframework"'
   }
 

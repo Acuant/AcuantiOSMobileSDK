@@ -311,7 +311,7 @@
 				ORGANIZATIONNAME = Acuant;
 				TargetAttributes = {
 					95019F1D1758F30A001C4F94 = {
-						DevelopmentTeam = E67326HC5Q;
+						DevelopmentTeam = 2CMUT2F3B9;
 					};
 				};
 			};
@@ -447,48 +447,8 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Nicolas  Amarelle (P4MUQJY232)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nicolas  Amarelle (P4MUQJY232)";
-				ENABLE_BITCODE = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/AcuantMobileSDK.embeddedframework",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "AcuantServiceSample/Main/AcuantMobileSDKSample-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-					CVLIB_IMG_NOCODEC,
-				);
-				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "$(SRCROOT)/AcuantServiceSample/Main/AcuantMobileSDKSample-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cssn.CSSNMobileSDKSample;
-				PRODUCT_NAME = AcuantiOSMobileSampleSDK;
-				PROVISIONING_PROFILE = "f0df4bdc-f9a9-4373-95a3-784b4f3dcfb2";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "f0df4bdc-f9a9-4373-95a3-784b4f3dcfb2";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "$(ARCHS_STANDARD)";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		95019F461758F30A001C4F94 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
-				CLANG_CXX_LIBRARY = "compiler-default";
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Acuant Inc. (E67326HC5Q)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Acuant Inc. (E67326HC5Q)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -506,8 +466,44 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cssn.CSSNMobileSDKSample;
 				PRODUCT_NAME = AcuantiOSMobileSampleSDK;
-				PROVISIONING_PROFILE = "527ac4f9-2497-4b13-bdbb-1e58bd0cc445";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "527ac4f9-2497-4b13-bdbb-1e58bd0cc445";
+				PROVISIONING_PROFILE = "f110ea12-a4d1-49e1-b7d9-634cd933cdc4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "f110ea12-a4d1-49e1-b7d9-634cd933cdc4";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		95019F461758F30A001C4F94 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/AcuantMobileSDK.embeddedframework",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AcuantServiceSample/Main/AcuantMobileSDKSample-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = CVLIB_IMG_NOCODEC;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "$(SRCROOT)/AcuantServiceSample/Main/AcuantMobileSDKSample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cssn.CSSNMobileSDKSample;
+				PRODUCT_NAME = AcuantiOSMobileSampleSDK;
+				PROVISIONING_PROFILE = "0d2fbc32-2464-4da4-8ea8-d75dac381e68";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0d2fbc32-2464-4da4-8ea8-d75dac381e68";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "$(ARCHS_STANDARD)";
