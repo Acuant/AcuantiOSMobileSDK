@@ -1548,7 +1548,7 @@ Open the Info.plist file inside you can find the version number
 
 # Change Log
 
-Acuant iOS MobileSDK version 4.7.4
+Acuant iOS MobileSDK version 4.7.5
 
 Changes:
 -	Removed definition "Debug = 1" from "GCC_PREPROCESSOR_DEFINITIONS".
