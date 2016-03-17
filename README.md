@@ -79,7 +79,7 @@ Expand “Link binary with libraries”.
 Click on plus to add frameworks and libraries.
 
 Add following frameworks.
-- AssetLibrary.framework
+- AssetsLibrary.framework
 
 - SystemConfiguration.framework. 
 
