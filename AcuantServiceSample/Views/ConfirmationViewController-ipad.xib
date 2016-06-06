@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConfirmationViewController">
+            <connections>
+                <outlet property="confirmButton" destination="UwS-RW-VcE" id="V8p-FR-NIa"/>
+                <outlet property="imageHeightConstraint" destination="q4E-vU-nXS" id="fVK-gl-evv"/>
+                <outlet property="imagePreview" destination="szs-lV-BfZ" id="SCX-cu-mSY"/>
+                <outlet property="imageRetrySpacingConstraint" destination="rg7-dc-Ppb" id="aQt-Ne-bFP"/>
+                <outlet property="imageWidthConstraint" destination="oQK-y6-LDz" id="5iT-de-ZGK"/>
+                <outlet property="messageLabel" destination="54E-Rj-9MC" id="pKd-ib-WV2"/>
+                <outlet property="messageTopSpacingConstraint" destination="CXo-8Y-6CG" id="IeO-dk-mM3"/>
+                <outlet property="retryButtomSpacingConstraint" destination="51G-nY-lEr" id="xic-wi-nwE"/>
+                <outlet property="retryButton" destination="Sf2-Iv-VVF" id="l4c-vH-0Nr"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UwS-RW-VcE">
+                    <rect key="frame" x="10" y="600" width="394" height="55"/>
+                    <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="55" id="5JB-xI-dwW"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="Confirm">
+                        <color key="titleColor" red="1" green="0.9862960798" blue="0.98609552410000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <state key="focused">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="confirmTapped:" destination="-1" eventType="touchUpInside" id="IQO-dA-NCt"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54E-Rj-9MC">
+                    <rect key="frame" x="10" y="130" width="394" height="80"/>
+                    <color key="tintColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="DKY-DH-83Q"/>
+                    </constraints>
+                    <attributedString key="attributedText">
+                        <fragment content="Label">
+                            <attributes>
+                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="NSFont" size="20" name="HelveticaNeue"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="szs-lV-BfZ">
+                    <rect key="frame" x="10" y="279" width="394" height="216"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="394" id="oQK-y6-LDz"/>
+                        <constraint firstAttribute="height" constant="216" id="q4E-vU-nXS"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sf2-Iv-VVF">
+                    <rect key="frame" x="10" y="525" width="394" height="55"/>
+                    <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="55" id="2Fm-og-8Jc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="Retry">
+                        <color key="titleColor" red="1" green="0.9862960798" blue="0.98609552410000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <state key="focused">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="retryTapped:" destination="-1" eventType="touchUpInside" id="xOF-nB-PSs"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.80392163989999998" green="0.83529418710000003" blue="0.88235300780000003" alpha="1" colorSpace="deviceRGB"/>
+            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="szs-lV-BfZ" secondAttribute="trailing" constant="10" id="2lt-gq-kKb"/>
+                <constraint firstAttribute="bottom" secondItem="Sf2-Iv-VVF" secondAttribute="bottom" constant="156" id="51G-nY-lEr"/>
+                <constraint firstItem="54E-Rj-9MC" firstAttribute="trailing" secondItem="szs-lV-BfZ" secondAttribute="trailing" id="7oc-06-TI6"/>
+                <constraint firstItem="54E-Rj-9MC" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="130" id="CXo-8Y-6CG"/>
+                <constraint firstItem="54E-Rj-9MC" firstAttribute="leading" secondItem="szs-lV-BfZ" secondAttribute="leading" id="Hh5-EN-pO1"/>
+                <constraint firstItem="UwS-RW-VcE" firstAttribute="leading" secondItem="Sf2-Iv-VVF" secondAttribute="leading" id="SM4-jT-QQg"/>
+                <constraint firstItem="UwS-RW-VcE" firstAttribute="top" secondItem="Sf2-Iv-VVF" secondAttribute="bottom" constant="20" id="Tjk-hJ-hQB"/>
+                <constraint firstItem="szs-lV-BfZ" firstAttribute="width" secondItem="UwS-RW-VcE" secondAttribute="width" id="Ws7-wF-Wo6"/>
+                <constraint firstItem="Sf2-Iv-VVF" firstAttribute="leading" secondItem="szs-lV-BfZ" secondAttribute="leading" id="ZLq-wp-QYW"/>
+                <constraint firstItem="szs-lV-BfZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="egf-sD-zQc"/>
+                <constraint firstItem="Sf2-Iv-VVF" firstAttribute="trailing" secondItem="szs-lV-BfZ" secondAttribute="trailing" id="iGz-9R-T9V"/>
+                <constraint firstAttribute="bottom" secondItem="Sf2-Iv-VVF" secondAttribute="bottom" constant="156" id="jTf-Y3-Zvh"/>
+                <constraint firstItem="UwS-RW-VcE" firstAttribute="trailing" secondItem="Sf2-Iv-VVF" secondAttribute="trailing" id="lt5-rI-ec3"/>
+                <constraint firstItem="szs-lV-BfZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="54E-Rj-9MC" secondAttribute="bottom" constant="20" id="p5A-T6-1bu"/>
+                <constraint firstItem="Sf2-Iv-VVF" firstAttribute="top" secondItem="szs-lV-BfZ" secondAttribute="bottom" constant="30" id="rg7-dc-Ppb"/>
+                <constraint firstItem="54E-Rj-9MC" firstAttribute="width" secondItem="szs-lV-BfZ" secondAttribute="width" id="t3n-nH-biH"/>
+                <constraint firstItem="szs-lV-BfZ" firstAttribute="width" secondItem="Sf2-Iv-VVF" secondAttribute="width" id="yBC-hg-voi"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+            <point key="canvasLocation" x="218" y="353"/>
+        </view>
+    </objects>
+</document>

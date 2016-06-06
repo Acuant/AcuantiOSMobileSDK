@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		138CD3031D023736009CB48D /* AcuantMobileSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 138CD2FC1D023736009CB48D /* AcuantMobileSDK.framework */; };
+		138CD3041D023736009CB48D /* beep-7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 138CD2FE1D023736009CB48D /* beep-7.mp3 */; };
+		138CD3081D023736009CB48D /* shutter.wav in Resources */ = {isa = PBXBuildFile; fileRef = 138CD3021D023736009CB48D /* shutter.wav */; };
+		13958D781CFF5D83008CA3FD /* ConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13958D771CFF5D83008CA3FD /* ConfirmationViewController.m */; };
+		13958D7B1CFF5D8B008CA3FD /* ConfirmationViewController-ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13958D791CFF5D8B008CA3FD /* ConfirmationViewController-ipad.xib */; };
+		13958D7C1CFF5D8B008CA3FD /* ConfirmationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13958D7A1CFF5D8B008CA3FD /* ConfirmationViewController.xib */; };
+		13958D7F1CFF606D008CA3FD /* HelpScreenTip_ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 13958D7D1CFF606D008CA3FD /* HelpScreenTip_ipad.png */; };
+		13958D801CFF606D008CA3FD /* HelpScreenTip_iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 13958D7E1CFF606D008CA3FD /* HelpScreenTip_iphone.png */; };
 		95019F221758F30A001C4F94 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95019F211758F30A001C4F94 /* UIKit.framework */; };
 		989432CB1BAAFA4000C1B95A /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432CA1BAAFA4000C1B95A /* AssetsLibrary.framework */; };
 		989432CC1BAAFBF500C1B95A /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432C61BAAF9E200C1B95A /* libc++.tbd */; };
@@ -19,8 +27,6 @@
 		989432D91BAAFC7E00C1B95A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432D81BAAFC7E00C1B95A /* QuartzCore.framework */; };
 		989432DB1BAAFC8500C1B95A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432DA1BAAFC8500C1B95A /* libz.tbd */; };
 		989432DF1BAAFD8B00C1B95A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432DE1BAAFD8B00C1B95A /* AudioToolbox.framework */; };
-		98F05DB01C4936D60004515D /* AcuantMobileSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98F05DAD1C4936D60004515D /* AcuantMobileSDK.framework */; };
-		98F05DB11C4936D60004515D /* shutter.wav in Resources */ = {isa = PBXBuildFile; fileRef = 98F05DAF1C4936D60004515D /* shutter.wav */; };
 		98F1508C1B39B8C400CE3F5E /* ISGRegionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F150621B39B8C400CE3F5E /* ISGRegionViewController.m */; };
 		98F1508D1B39B8C400CE3F5E /* ISGResultScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F150641B39B8C400CE3F5E /* ISGResultScreenViewController.m */; };
 		98F1508E1B39B8C400CE3F5E /* ISGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F150661B39B8C400CE3F5E /* ISGViewController.m */; };
@@ -50,6 +56,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		138CD2FC1D023736009CB48D /* AcuantMobileSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AcuantMobileSDK.framework; sourceTree = "<group>"; };
+		138CD2FE1D023736009CB48D /* beep-7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "beep-7.mp3"; sourceTree = "<group>"; };
+		138CD3021D023736009CB48D /* shutter.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shutter.wav; sourceTree = "<group>"; };
+		13958D761CFF5D83008CA3FD /* ConfirmationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmationViewController.h; sourceTree = "<group>"; };
+		13958D771CFF5D83008CA3FD /* ConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmationViewController.m; sourceTree = "<group>"; };
+		13958D791CFF5D8B008CA3FD /* ConfirmationViewController-ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ConfirmationViewController-ipad.xib"; sourceTree = "<group>"; };
+		13958D7A1CFF5D8B008CA3FD /* ConfirmationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmationViewController.xib; sourceTree = "<group>"; };
+		13958D7D1CFF606D008CA3FD /* HelpScreenTip_ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpScreenTip_ipad.png; sourceTree = "<group>"; };
+		13958D7E1CFF606D008CA3FD /* HelpScreenTip_iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpScreenTip_iphone.png; sourceTree = "<group>"; };
 		95019F1E1758F30A001C4F94 /* AcuantiOSMobileSampleSDK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AcuantiOSMobileSampleSDK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95019F211758F30A001C4F94 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		989432C61BAAF9E200C1B95A /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -63,8 +78,6 @@
 		989432D81BAAFC7E00C1B95A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		989432DA1BAAFC8500C1B95A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		989432DE1BAAFD8B00C1B95A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		98F05DAD1C4936D60004515D /* AcuantMobileSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AcuantMobileSDK.framework; sourceTree = "<group>"; };
-		98F05DAF1C4936D60004515D /* shutter.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shutter.wav; sourceTree = "<group>"; };
 		98F150611B39B8C400CE3F5E /* ISGRegionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISGRegionViewController.h; sourceTree = "<group>"; };
 		98F150621B39B8C400CE3F5E /* ISGRegionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISGRegionViewController.m; sourceTree = "<group>"; };
 		98F150631B39B8C400CE3F5E /* ISGResultScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISGResultScreenViewController.h; sourceTree = "<group>"; };
@@ -109,7 +122,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				989432DF1BAAFD8B00C1B95A /* AudioToolbox.framework in Frameworks */,
-				98F05DB01C4936D60004515D /* AcuantMobileSDK.framework in Frameworks */,
+				138CD3031D023736009CB48D /* AcuantMobileSDK.framework in Frameworks */,
 				989432DB1BAAFC8500C1B95A /* libz.tbd in Frameworks */,
 				989432D91BAAFC7E00C1B95A /* QuartzCore.framework in Frameworks */,
 				989432D71BAAFC7900C1B95A /* CoreGraphics.framework in Frameworks */,
@@ -127,6 +140,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		138CD2FB1D023736009CB48D /* AcuantMobileSDK.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				138CD2FC1D023736009CB48D /* AcuantMobileSDK.framework */,
+				138CD2FD1D023736009CB48D /* Resources */,
+			);
+			path = AcuantMobileSDK.embeddedframework;
+			sourceTree = "<group>";
+		};
+		138CD2FD1D023736009CB48D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				138CD2FE1D023736009CB48D /* beep-7.mp3 */,
+				138CD3021D023736009CB48D /* shutter.wav */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		95019F151758F30A001C4F94 = {
 			isa = PBXGroup;
 			children = (
@@ -147,7 +178,7 @@
 		95019F201758F30A001C4F94 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				98F05DAC1C4936D60004515D /* AcuantMobileSDK.embeddedframework */,
+				138CD2FB1D023736009CB48D /* AcuantMobileSDK.embeddedframework */,
 				989432DE1BAAFD8B00C1B95A /* AudioToolbox.framework */,
 				989432DA1BAAFC8500C1B95A /* libz.tbd */,
 				989432D81BAAFC7E00C1B95A /* QuartzCore.framework */,
@@ -162,23 +193,6 @@
 				95019F211758F30A001C4F94 /* UIKit.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		98F05DAC1C4936D60004515D /* AcuantMobileSDK.embeddedframework */ = {
-			isa = PBXGroup;
-			children = (
-				98F05DAD1C4936D60004515D /* AcuantMobileSDK.framework */,
-				98F05DAE1C4936D60004515D /* Resources */,
-			);
-			path = AcuantMobileSDK.embeddedframework;
-			sourceTree = "<group>";
-		};
-		98F05DAE1C4936D60004515D /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				98F05DAF1C4936D60004515D /* shutter.wav */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		98F1505F1B39B8C400CE3F5E /* AcuantServiceSample */ = {
@@ -197,6 +211,8 @@
 		98F150601B39B8C400CE3F5E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				13958D761CFF5D83008CA3FD /* ConfirmationViewController.h */,
+				13958D771CFF5D83008CA3FD /* ConfirmationViewController.m */,
 				98F150611B39B8C400CE3F5E /* ISGRegionViewController.h */,
 				98F150621B39B8C400CE3F5E /* ISGRegionViewController.m */,
 				98F150631B39B8C400CE3F5E /* ISGResultScreenViewController.h */,
@@ -234,6 +250,8 @@
 		98F150721B39B8C400CE3F5E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				13958D7D1CFF606D008CA3FD /* HelpScreenTip_ipad.png */,
+				13958D7E1CFF606D008CA3FD /* HelpScreenTip_iphone.png */,
 				98F150731B39B8C400CE3F5E /* Back-Gray@2x.png */,
 				98F150741B39B8C400CE3F5E /* Back-Withe.png */,
 				98F150751B39B8C400CE3F5E /* Back-Withe@2x.png */,
@@ -271,6 +289,8 @@
 		98F150861B39B8C400CE3F5E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				13958D791CFF5D8B008CA3FD /* ConfirmationViewController-ipad.xib */,
+				13958D7A1CFF5D8B008CA3FD /* ConfirmationViewController.xib */,
 				98F150871B39B8C400CE3F5E /* CSSNResultScreen_iPad.xib */,
 				98F150881B39B8C400CE3F5E /* CSSNResultScreen_iPhone.xib */,
 				98F150891B39B8C400CE3F5E /* ISGRegionViewController.xib */,
@@ -309,11 +329,6 @@
 				CLASSPREFIX = Acuant;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = Acuant;
-				TargetAttributes = {
-					95019F1D1758F30A001C4F94 = {
-						DevelopmentTeam = 2CMUT2F3B9;
-					};
-				};
 			};
 			buildConfigurationList = 95019F191758F30A001C4F94 /* Build configuration list for PBXProject "AcuantiOSMobileSampleSDK" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -338,17 +353,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				98F150A41B39B8C400CE3F5E /* ISGRegionViewController.xib in Resources */,
+				138CD3081D023736009CB48D /* shutter.wav in Resources */,
 				98F150A81B39B8D100CE3F5E /* Images.xcassets in Resources */,
 				98F150951B39B8C400CE3F5E /* Back-Withe.png in Resources */,
 				98F150A21B39B8C400CE3F5E /* CSSNResultScreen_iPad.xib in Resources */,
-				98F05DB11C4936D60004515D /* shutter.wav in Resources */,
+				138CD3041D023736009CB48D /* beep-7.mp3 in Resources */,
 				98F150941B39B8C400CE3F5E /* Back-Gray@2x.png in Resources */,
 				98F150981B39B8C400CE3F5E /* camera-capture-button.png in Resources */,
+				13958D7B1CFF5D8B008CA3FD /* ConfirmationViewController-ipad.xib in Resources */,
+				13958D7C1CFF5D8B008CA3FD /* ConfirmationViewController.xib in Resources */,
 				98F150A31B39B8C400CE3F5E /* CSSNResultScreen_iPhone.xib in Resources */,
 				98F150991B39B8C400CE3F5E /* Medic_back.png in Resources */,
 				98F1509A1B39B8C400CE3F5E /* Medic_front.png in Resources */,
 				98F1509B1B39B8C400CE3F5E /* PassportImage.jpg in Resources */,
 				98F150971B39B8C400CE3F5E /* BackButton.png in Resources */,
+				13958D7F1CFF606D008CA3FD /* HelpScreenTip_ipad.png in Resources */,
+				13958D801CFF606D008CA3FD /* HelpScreenTip_iphone.png in Resources */,
 				98F1509F1B39B8C400CE3F5E /* SVProgressHUD.bundle in Resources */,
 				98F150961B39B8C400CE3F5E /* Back-Withe@2x.png in Resources */,
 				98F1509D1B39B8C400CE3F5E /* photoFront.JPG in Resources */,
@@ -370,6 +390,7 @@
 				98F150A11B39B8C400CE3F5E /* UIDevice+Resolutions.m in Sources */,
 				98F1508C1B39B8C400CE3F5E /* ISGRegionViewController.m in Sources */,
 				98F1508F1B39B8C400CE3F5E /* UIAlertController+Custom.m in Sources */,
+				13958D781CFF5D83008CA3FD /* ConfirmationViewController.m in Sources */,
 				98F150A01B39B8C400CE3F5E /* SVProgressHUD.m in Sources */,
 				98F150921B39B8C400CE3F5E /* ISGAppDelegate.m in Sources */,
 				98F150931B39B8C400CE3F5E /* main.m in Sources */,
@@ -455,6 +476,7 @@
 					"$(SRCROOT)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/AcuantMobileSDK.embeddedframework",
+					"$(PROJECT_DIR)/AcuantiOSMobileSampleSDK/AcuantMobileSDK.embeddedframework",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AcuantServiceSample/Main/AcuantMobileSDKSample-Prefix.pch";
@@ -466,8 +488,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cssn.CSSNMobileSDKSample;
 				PRODUCT_NAME = AcuantiOSMobileSampleSDK;
-				PROVISIONING_PROFILE = "f110ea12-a4d1-49e1-b7d9-634cd933cdc4";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "f110ea12-a4d1-49e1-b7d9-634cd933cdc4";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "$(ARCHS_STANDARD)";
@@ -483,7 +505,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -491,6 +513,7 @@
 					"$(SRCROOT)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/AcuantMobileSDK.embeddedframework",
+					"$(PROJECT_DIR)/AcuantiOSMobileSampleSDK/AcuantMobileSDK.embeddedframework",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AcuantServiceSample/Main/AcuantMobileSDKSample-Prefix.pch";
@@ -502,8 +525,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cssn.CSSNMobileSDKSample;
 				PRODUCT_NAME = AcuantiOSMobileSampleSDK;
-				PROVISIONING_PROFILE = "0d2fbc32-2464-4da4-8ea8-d75dac381e68";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0d2fbc32-2464-4da4-8ea8-d75dac381e68";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "$(ARCHS_STANDARD)";

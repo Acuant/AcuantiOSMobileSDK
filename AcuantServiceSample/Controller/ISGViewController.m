@@ -14,8 +14,12 @@
 #import "UIDevice+Resolutions.h"
 #import <QuartzCore/QuartzCore.h>
 #import <AcuantMobileSDK/AcuantMobileSDKController.h>
+#import "AcuantMobileSDK/AcuantFacialData.h"
+#import "AcuantMobileSDK/AcuantFacialCaptureDelegate.h"
+#import "AcuantMobileSDK/AcuantFacialRecognitionViewController.h"
+#import "ConfirmationViewController.h"
 
-@interface ISGViewController () <UITextFieldDelegate,AcuantMobileSDKControllerCapturingDelegate, AcuantMobileSDKControllerProcessingDelegate, ISGRegionViewControllerDelegate>
+@interface ISGViewController () <UITextFieldDelegate,AcuantMobileSDKControllerCapturingDelegate, AcuantMobileSDKControllerProcessingDelegate, ISGRegionViewControllerDelegate,AcuantFacialCaptureDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *frontImage;
 @property (strong, nonatomic) IBOutlet UILabel *frontImageLabel;
@@ -26,6 +30,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *licenseKeyLabel;
 @property (strong, nonatomic) IBOutlet UIButton *activateButton;
 @property (strong, nonatomic) IBOutlet UIButton *driverLicenseButton;
+@property (strong, nonatomic) IBOutlet UIButton *driverLicenseWithFacialButton;
 @property (strong, nonatomic) IBOutlet UIButton *passportButton;
 @property (strong, nonatomic) IBOutlet UIButton *medicalInsuranceButton;
 @property (strong, nonatomic) NSString *barcodeString;
@@ -41,6 +46,13 @@
 @property (nonatomic) BOOL isCameraTouched;
 @property (nonatomic) BOOL canShowBackButton;
 @property (nonatomic) UIInterfaceOrientation orientation;
+@property (strong, nonatomic) ISGResultScreenViewController *resultViewController;
+@property (strong, nonatomic) NSString *selfieMatched;
+@property (nonatomic) BOOL capturingData;
+@property (nonatomic) BOOL validatingSelfie;
+@property (nonatomic) BOOL isFacialFlow;
+@property (nonatomic,strong) NSString* TID;
+@property (nonatomic) BOOL frontImageConfirmed;
 @end
 
 @implementation ISGViewController
@@ -48,6 +60,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receivedConfirmationNotification:)
+                                                 name:@"ConfirmationNotification"
+                                               object:nil];
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.toolbar.translucent = NO;
     self.wasValidated = NO;
@@ -59,6 +75,11 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.licenseKeyText.text = [[NSUserDefaults standardUserDefaults]valueForKey:@"LICENSEKEY"];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
 }
 
 - (void)viewWillLayoutSubviews
@@ -82,17 +103,29 @@
 #pragma mark -
 #pragma mark IBAction
 - (IBAction)captureDriverLicense:(id)sender {
+    _frontImageConfirmed = NO;
     self.cardType = AcuantCardTypeDriversLicenseCard;
     self.isBarcodeSide = NO;
-    
+    _isFacialFlow = NO;
+    ISGRegionViewController *regionListView = [[ISGRegionViewController alloc]initWithNibName:@"ISGRegionViewController" bundle:nil];
+    regionListView.delegate = self;
+    [self presentViewController:regionListView animated:YES completion:nil];
+}
+
+- (IBAction)captureDriverLicenseWithFacial:(id)sender {
+    _frontImageConfirmed = NO;
+    self.cardType = AcuantCardTypeDriversLicenseCard;
+    self.isBarcodeSide = NO;
+    _isFacialFlow = YES;
     ISGRegionViewController *regionListView = [[ISGRegionViewController alloc]initWithNibName:@"ISGRegionViewController" bundle:nil];
     regionListView.delegate = self;
     [self presentViewController:regionListView animated:YES completion:nil];
 }
 - (IBAction)captureMedicInsurance:(id)sender {
+    _frontImageConfirmed = NO;
     self.cardType = AcuantCardTypeMedicalInsuranceCard;
     self.isBarcodeSide = NO;
-    
+    _isFacialFlow = NO;
     [self.frontImage setImage:nil];
     [self.frontImageLabel setText:@"Tap to capture front side"];
     [self.backImage setImage:nil];
@@ -111,8 +144,31 @@
     [self.backImage setUserInteractionEnabled:YES];
 }
 - (IBAction)capturePassport:(id)sender {
+    _frontImageConfirmed = NO;
     self.isBarcodeSide = NO;
+    _isFacialFlow = NO;
+    self.cardType = AcuantCardTypePassportCard;
+    [self.backImageLabel setText:@""];
+    [self.backImage setImage:nil];
+    [self.frontImage setImage:nil];
+    [self.frontImageLabel setText:@"Tap to capture card"];
+    self.barcodeString = nil;
+    [self cardHolderPositions];
+    [self.sendRequestButton setEnabled:NO];
+    [self.sendRequestButton setHidden:NO];
+    self.frontImage.layer.masksToBounds = YES;
+    self.frontImage.layer.cornerRadius = 10.0f;
+    self.frontImage.layer.borderWidth = 1.0f;
     
+    self.backImage.layer.masksToBounds = NO;
+    self.backImage.layer.cornerRadius = 10.0f;
+    self.backImage.layer.borderWidth = 0.0f;
+    [self.backImage setUserInteractionEnabled:NO];
+}
+- (IBAction)capturePassportWithFacial:(id)sender {
+    _frontImageConfirmed = NO;
+    self.isBarcodeSide = NO;
+    _isFacialFlow = YES;
     self.cardType = AcuantCardTypePassportCard;
     [self.backImageLabel setText:@""];
     [self.backImage setImage:nil];
@@ -136,6 +192,7 @@
     if (self.cardType) {
         self.sideTouch = FrontSide;
         self.isCameraTouched = YES;
+        _frontImageConfirmed=NO;
         [self showCameraInterface];
     }
 }
@@ -149,7 +206,9 @@
 
 - (IBAction)sendRequest:(id)sender {
     self.view.userInteractionEnabled = NO;
-    [SVProgressHUD showWithStatus:@"Capturing Data"];
+    if(!_isFacialFlow){
+        [SVProgressHUD showWithStatus:@"Capturing Data"];
+    }
     
     //Obtain the front side of the card image
     UIImage *frontSideImage = [self frontSideCardImage];
@@ -170,13 +229,16 @@
     options.signatureDetection = YES;
     options.region = self.cardRegion;
     options.imageSource = 101;
-    
+    _capturingData = YES;
     // Now, perform the request
     [self.instance processFrontCardImage:frontSideImage
                            BackCardImage:backSideImage
                            andStringData:self.barcodeString
                             withDelegate:self
                              withOptions:options];
+    if(_isFacialFlow){
+        [self captureSelfie];
+    }
     
 }
 
@@ -309,10 +371,10 @@
                 [self.backImage setFrame:CGRectMake(centerX - widthiPad/2, 600, widthiPad, heightiPad)];
                 [self.backImageLabel setFrame:CGRectMake(centerX - widthiPad/2, 600, widthiPad, heightiPad)];
             }else{
-                [self.frontImage setFrame:CGRectMake(centerX- widthiPhone/2, 143, widthiPhone, heightiPhone)];
-                [self.frontImageLabel setFrame:CGRectMake(centerX- widthiPhone/2, 143, widthiPhone, heightiPhone)];
-                [self.backImage setFrame:CGRectMake(centerX- widthiPhone/2, 353, widthiPhone, heightiPhone)];
-                [self.backImageLabel setFrame:CGRectMake(centerX- widthiPhone/2, 353, widthiPhone, heightiPhone)];
+                [self.frontImage setFrame:CGRectMake(centerX- widthiPhone/2, 184, widthiPhone, heightiPhone)];
+                [self.frontImageLabel setFrame:CGRectMake(centerX- widthiPhone/2, 184, widthiPhone, heightiPhone)];
+                [self.backImage setFrame:CGRectMake(centerX- widthiPhone/2, self.frontImageLabel.frame.origin.y+self.frontImageLabel.frame.size.height+20, widthiPhone, heightiPhone)];
+                [self.backImageLabel setFrame:CGRectMake(centerX- widthiPhone/2, self.frontImageLabel.frame.origin.y+self.frontImageLabel.frame.size.height+20, widthiPhone, heightiPhone)];
             }
         }
     }
@@ -333,22 +395,28 @@
     //If you will use the manual camera interface must use the methods
     //showManualCardCaptureInterfaceInViewController
     
+    //Use the following methods to customize the appear and final message.
+    //[self.instance setInitialMessage:@"ALING AND TAP" frame:CGRectMake(0, 0, 0, 0) backgroundColor:[UIColor redColor] duration:10.0 orientation: AcuantHUDPortrait];
+    //[self.instance setCapturingMessage:@"Capturing Message" frame:CGRectMake(0, 0, 0, 0) backgroundColor:nil duration:10.0 orientation: AcuantHUDLandscape];
     if (self.cardType == AcuantCardTypePassportCard) {
         [self.instance setWidth:1478];
-    }else if(self.cardType == AcuantCardTypeDriversLicenseCard){
-        [self.instance setWidth:1250];
     }else{
-        [self.instance setWidth:1012];
+        [self.instance setWidth:1250];
     }
     self.canShowBackButton = YES;
-    //Use the following methods to customize the initial and capturing message.
-    //[self.instance setInitialMessage:nil frame:CGRectMake(0, 0, 0, 0) backgroundColor:nil duration:10.0 orientation: AcuantHUDLandscape];
-    //[self.instance setCapturingMessage:@"Capturing Message" frame:CGRectMake(0, 0, 0, 0) backgroundColor:nil duration:10.0 orientation: AcuantHUDLandscape];
-    //Use the following methods to capture backside image of the Barcode
+    //Uncomment to Capture backside image of the Barcode
     //[self.instance setCanCropBarcode:YES];
-    //Use the following methods to show the initial message
     //[self.instance setCanShowMessage:YES];
-    [self.instance showManualCameraInterfaceInViewController:self delegate:self cardType:self.cardType region:self.cardRegion andBackSide:NO];
+    if (self.cardType != AcuantCardTypePassportCard) {
+        if(!_frontImageConfirmed){
+            [self.instance showManualCameraInterfaceInViewController:self delegate:self cardType:self.cardType region:self.cardRegion andBackSide:NO];
+        }else{
+            [self.instance showManualCameraInterfaceInViewController:self delegate:self cardType:self.cardType region:self.cardRegion andBackSide:YES];
+        }
+    }else{
+        //comment the line below if the auto camera interface above is uncommented
+        [self.instance showManualCameraInterfaceInViewController:self delegate:self cardType:self.cardType region:self.cardRegion andBackSide:NO];
+    }
 }
 
 
@@ -420,7 +488,6 @@
     [SVProgressHUD dismiss];
     NSString *message;
     int tag = 0;
-    BOOL showAlert = YES;
     switch (error.errorType) {
         case AcuantErrorTimedOut:
             message = error.errorMessage;
@@ -436,9 +503,6 @@
             break;
         case AcuantErrorCouldNotReachServer:
             message = error.errorMessage;
-            if (_isCameraTouched) {
-                showAlert = NO;
-            }
             break;
         case AcuantErrorUnableToAuthenticate:
             message = error.errorMessage;
@@ -477,21 +541,23 @@
             return;
             break;
     }
-    if (showAlert) {
-        [UIAlertController showSimpleAlertWithTitle:@"AcuantiOSMobileSDK"
-                                            Message:message
-                                        FirstButton:ButtonOK
-                                       SecondButton:nil
-                                       FirstHandler:^(UIAlertAction *action) {
-                                           if(tag == 7388467) {
-                                               [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
-                                           }
+    [UIAlertController showSimpleAlertWithTitle:@"AcuantiOSMobileSDK"
+                                        Message:message
+                                    FirstButton:ButtonOK
+                                   SecondButton:nil
+                                   FirstHandler:^(UIAlertAction *action) {
+                                       if (tag == 1) {
+                                           self.sideTouch = BackSide;
+                                           self.isCameraTouched = YES;
+                                           [self showCameraInterface];
+                                       }else if(tag == 7388467) {
+                                           [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
                                        }
-                                      SecondHandler:nil
-                                                Tag:tag
-                                     ViewController:self
-                                        Orientation:UIDeviceOrientationUnknown];
-    }
+                                   }
+                                  SecondHandler:nil
+                                            Tag:tag
+                                 ViewController:self
+                                    Orientation:UIDeviceOrientationUnknown];
 }
 
 #pragma mark -
@@ -507,7 +573,85 @@
 }
 
 -(void)didCaptureCropImage:(UIImage *)cardImage scanBackSide:(BOOL)scanBackSide{
-    //UIImageWriteToSavedPhotosAlbum(cardImage, nil, nil, nil);
+    
+    NSString* message;
+    if(self.cardType == AcuantCardTypePassportCard){
+        message = @"Please make sure all the text on the Passport image is readable, otherwise retry.";
+    }else{
+        message = @"Please make sure all the text on the ID image is readable, otherwise retry.";
+    }
+    
+    ConfirmationViewController* confirmVC = [[ConfirmationViewController alloc] initWithImage:cardImage andMessage:message scanBackSide:scanBackSide failed:NO];
+    if ([self presentedViewController]) {
+        [[self presentedViewController] dismissViewControllerAnimated:NO completion:^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self presentViewController:confirmVC animated:YES completion:nil];
+            });
+        }];
+    } else {
+        [self presentViewController:confirmVC animated:YES completion:nil];
+        
+    }
+}
+
+-(void)didFailToCaptureCropImage{
+    NSString* message;
+    if(self.cardType == AcuantCardTypePassportCard){
+        message = @"Unable to detect the passport, please retry.";
+    }else{
+        message = @"Unable to detect the ID, please retry.";
+    }
+    
+    UIImage* helpImage ;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"HelpScreenTip_ipad" ofType:@"png"];
+        helpImage = [[UIImage alloc] initWithContentsOfFile:imagePath];
+    }else{
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"HelpScreenTip_iphone" ofType:@"png"];
+        helpImage = [[UIImage alloc] initWithContentsOfFile:imagePath];
+    }
+    ConfirmationViewController* confirmVC = [[ConfirmationViewController alloc] initWithImage:helpImage andMessage:message scanBackSide:NO failed:YES];
+    if ([self presentedViewController]) {
+        [[self presentedViewController] dismissViewControllerAnimated:NO completion:^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self presentViewController:confirmVC animated:YES completion:nil];
+            });
+        }];
+    } else {
+        [self presentViewController:confirmVC animated:YES completion:nil];
+        
+    }
+}
+
+
+-(void)receivedConfirmationNotification:(NSNotification *) notification
+{
+    NSDictionary *userInfo = notification.userInfo;
+    BOOL scanBackSide;
+    if([[userInfo objectForKey:@"scanBackSide"] isEqualToString:@"YES"]){
+        scanBackSide = YES;
+    }else{
+        scanBackSide = NO;
+    }
+    
+    BOOL confirmed;
+    if([[userInfo objectForKey:@"Confirmed"] isEqualToString:@"YES"]){
+        confirmed = YES;
+    }else{
+        confirmed = NO;
+    }
+    UIImage* image = [userInfo objectForKey:@"OriginalImage"];
+    if(confirmed){
+        [self imageCapturedCorrectly:image scanBackSide:scanBackSide];
+    }else{
+        [self showCameraInterface];
+    }
+}
+
+-(void)imageCapturedCorrectly:(UIImage*)cardImage scanBackSide:(BOOL)scanBackSide{
+    if(!_frontImageConfirmed){
+        _frontImageConfirmed = YES;
+    }
     self.isCameraTouched = NO;
     [self.instance dismissCardCaptureInterface];
     self.isBarcodeSide = scanBackSide;
@@ -556,6 +700,13 @@
                                         Orientation:UIDeviceOrientationUnknown];
     }
 }
+
+//Method to bring up the Selfie capturing interface
+- (void)showSelfiCaptureInterface{
+    [AcuantFacialRecognitionViewController
+ presentFacialCatureInterfaceWithDelegate:self inViewController:self withCancelButton:YES withWatherMark:@"Powered by Acuant" withBlinkMessage:@"Blink Slowly" inRect:CGRectZero andFontSize:17];
+}
+
 
 -(void)didCaptureOriginalImage:(UIImage *)cardImage{
     self.originalImage = cardImage;
@@ -639,8 +790,75 @@
     return NO;
 }
 
+-(UIImage*)imageForFlashlightOffButton{
+    return nil;
+}
+
+-(void)didFinishFacialRecognition:(UIImage*)image{
+    self.view.userInteractionEnabled = NO;
+    [SVProgressHUD showWithStatus:@"Capturing Data"];
+    
+    //Selfie Image
+    UIImage *frontSideImage = image;
+    //DL Photo
+    UIImage *backSideImage =_resultViewController.faceImage;
+    
+    //Obtain the default AcuantCardProcessRequestOptions object for the type of card you want to process (License card for this example)
+    AcuantCardProcessRequestOptions *options = [AcuantCardProcessRequestOptions defaultRequestOptionsForCardType:AcuantCardTypeFacial];
+    
+    //Optionally, configure the options to the desired value
+    options.autoDetectState = YES;
+    options.stateID = -1;
+    options.reformatImage = YES;
+    options.reformatImageColor = 0;
+    options.DPI = 150.0f;
+    options.cropImage = NO;
+    options.faceDetection = YES;
+    options.signatureDetection = YES;
+    options.region = self.cardRegion;
+    options.imageSource = 101;
+    
+    // Now, perform the request
+    [self.instance processFrontCardImage:frontSideImage
+                           BackCardImage:backSideImage
+                           andStringData:nil
+                            withDelegate:self
+                             withOptions:options];
+}
+
+-(void)didCancelFacialRecognition{
+    _validatingSelfie = NO;
+    [self presentResultView];
+}
+
 #pragma mark -
 #pragma mark CardProcessing Delegate
+
+- (void)didFinishValidatingImageWithResult:(AcuantFacialData*)result{
+    [SVProgressHUD dismiss];
+     self.view.userInteractionEnabled = YES;
+    _resultViewController.result = [NSString stringWithFormat:@"%@\nFTID - %@\nTID - %@",_resultViewController.result,result.transactionId,_TID];
+    if(result.isFacialEnabled==YES){
+        NSLog(@"Success");
+        _selfieMatched = result.isMatch ? @"1" : @"0";
+        _resultViewController.result = [NSString stringWithFormat:@"%@\nFacial Matched - %@",_resultViewController.result,_selfieMatched];
+        _resultViewController.result = [NSString stringWithFormat:@"%@\nFacial Enabled - 1",_resultViewController.result];
+        _resultViewController.result = [NSString stringWithFormat:@"%@\nFace Liveness Detection - %@",_resultViewController.result,result.faceLivelinessDetection ? @"1" : @"0"];
+        _validatingSelfie = NO;
+        _resultViewController.result = [NSString stringWithFormat:@"%@\nFacial Match Confidence Rating - %@",_resultViewController.result,result.facialMatchConfidenceRating];
+        _validatingSelfie = NO;
+        [self presentResultView];
+    }else{
+        _selfieMatched = result.isMatch ? @"1" : @"0";
+        _resultViewController.result = [NSString stringWithFormat:@"%@\nFacial Matched - %@",_resultViewController.result,_selfieMatched];
+        _resultViewController.result = [NSString stringWithFormat:@"%@\nFacial Enabled - 0",_resultViewController.result];
+        _resultViewController.result = [NSString stringWithFormat:@"%@\nFace Liveness Detection - %@",_resultViewController.result,result.faceLivelinessDetection ? @"1" : @"0"];
+        _validatingSelfie = NO;
+        [self presentResultView];
+    }
+    
+}
+
 -(void)didFinishProcessingCardWithResult:(AcuantCardResult *)result{
     self.view.userInteractionEnabled = YES;
     [SVProgressHUD dismiss];
@@ -652,18 +870,21 @@
     UIImage *backImage;
     if (self.cardType == AcuantCardTypeMedicalInsuranceCard) {
         AcuantMedicalInsuranceCard *data = (AcuantMedicalInsuranceCard*)result;
-        message =[NSString stringWithFormat:@"First Name - %@ \nLast Name - %@ \nMiddle Name - %@ \nMemberID - %@ \nGroup No. - %@ \nContract Code - %@ \nCopay ER - %@ \nCopay OV - %@ \nCopay SP - %@ \nCopay UC - %@ \nCoverage - %@ \nDate of Birth - %@ \nDeductible - %@ \nEffective Date - %@ \nEmployer - %@ \nExpire Date - %@ \nGroup Name - %@ \nIssuer Number - %@ \nOther - %@ \nPayer ID - %@ \nPlan Admin - %@ \nPlan Provider - %@ \nPlan Type - %@ \nRX Bin - %@ \nRX Group - %@ \nRX ID - %@ \nRX PCN - %@ \nTelephone - %@ \nWeb - %@ \nEmail - %@ \nAddress - %@ \nCity - %@ \nZip - %@ \nState - %@", data.firstName, data.lastName, data.middleName, data.memberId, data.groupNumber, data.contractCode, data.copayEr, data.copayOv, data.copaySp, data.copayUc, data.coverage, data.dateOfBirth, data.deductible, data.effectiveDate, data.employer, data.expirationDate, data.groupName, data.issuerNumber, data.other, data.payerId, data.planAdmin, data.planProvider, data.planType, data.rxBin, data.rxGroup, data.rxId, data.rxPcn, data.phoneNumber, data.webAddress, data.email, data.fullAddress, data.city, data.zip, data.state];
+        message =[NSString stringWithFormat:@"First Name - %@ \nLast Name - %@ \nMiddle Name - %@ \nMemberID - %@ \nGroup No. - %@ \nContract Code - %@ \nCopay ER - %@ \nCopay OV - %@ \nCopay SP - %@ \nCopay UC - %@ \nCoverage - %@ \nDate of Birth - %@ \nDeductible - %@ \nEffective Date - %@ \nEmployer - %@ \nExpire Date - %@ \nGroup Name - %@ \nIssuer Number - %@ \nOther - %@ \nPayer ID - %@ \nPlan Admin - %@ \nPlan Provider - %@ \nPlan Type - %@ \nRX Bin - %@ \nRX Group - %@ \nRX ID - %@ \nRX PCN - %@ \nTelephone - %@ \nWeb - %@ \nEmail - %@ \nAddress - %@ \nCity - %@ \nZip - %@ \nState - %@\nTID - %@", data.firstName, data.lastName, data.middleName, data.memberId, data.groupNumber, data.contractCode, data.copayEr, data.copayOv, data.copaySp, data.copayUc, data.coverage, data.dateOfBirth, data.deductible, data.effectiveDate, data.employer, data.expirationDate, data.groupName, data.issuerNumber, data.other, data.payerId, data.planAdmin, data.planProvider, data.planType, data.rxBin, data.rxGroup, data.rxId, data.rxPcn, data.phoneNumber, data.webAddress, data.email, data.fullAddress, data.city, data.zip, data.state,data.transactionId];
         
         frontImage = [UIImage imageWithData:data.reformattedImage];
         backImage = [UIImage imageWithData:data.reformattedImageTwo];
         
     }else if (self.cardType == AcuantCardTypeDriversLicenseCard) {
         AcuantDriversLicenseCard *data = (AcuantDriversLicenseCard*)result;
-        message =[NSString stringWithFormat:@"First Name - %@ \nMiddle Name - %@ \nLast Name - %@ \nName Suffix - %@ \nID - %@ \nLicense - %@ \nDOB Long - %@ \nDOB Short - %@ \nDate Of Birth Local - %@ \nIssue Date Long - %@ \nIssue Date Short - %@ \nIssue Date Local - %@ \nExpiration Date Long - %@ \nExpiration Date Short - %@ \nEye Color - %@ \nHair Color - %@ \nHeight - %@ \nWeight - %@ \nAddress - %@ \nAddress 2 - %@ \nAddress 3 - %@ \nAddress 4 - %@ \nAddress 5 - %@ \nAddress 6  - %@ \nCity - %@ \nZip - %@ \nState - %@ \nCounty - %@ \nCountry Short - %@ \nCountry Long - %@ \nClass - %@ \nRestriction - %@ \nSex - %@ \nAudit - %@ \nEndorsements - %@ \nFee - %@ \nCSC - %@ \nSigNum - %@ \nText1 - %@ \nText2 - %@ \nText3 - %@ \nType - %@ \nDoc Type - %@ \nFather Name - %@ \nMother Name - %@ \nNameFirst_NonMRZ - %@ \nNameLast_NonMRZ - %@ \nNameLast1 - %@ \nNameLast2 - %@ \nNameMiddle_NonMRZ - %@ \nNameSuffix_NonMRZ - %@ \nDocument Detected Name - %@ \nDocument Detected Name Short - %@ \nNationality - %@ \nOriginal - %@ \nPlaceOfBirth - %@ \nPlaceOfIssue - %@ \nSocial Security - %@ \nIsAddressCorrected - %hhd \nIsAddressVerified - %hhd", data.nameFirst, data.nameMiddle, data.nameLast, data.nameSuffix, data.licenceId, data.license, data.dateOfBirth4, data.dateOfBirth, data.dateOfBirthLocal, data.issueDate4, data.issueDate, data.issueDateLocal, data.expirationDate4, data.expirationDate, data.eyeColor, data.hairColor, data.height, data.weight, data.address, data.address2, data.address3, data.address4, data.address5, data.address6, data.city, data.zip, data.state, data.county, data.countryShort, data.idCountry, data.licenceClass, data.restriction, data.sex, data.audit, data.endorsements, data.fee, data.CSC, data.sigNum, data.text1, data.text2, data.text3, data.type, data.docType, data.fatherName, data.motherName, data.nameFirst_NonMRZ, data.nameLast_NonMRZ, data.nameLast1, data.nameLast2, data.nameMiddle_NonMRZ, data.nameSuffix_NonMRZ, data.documentDetectedName, data.documentDetectedNameShort, data.nationality, data.original, data.placeOfBirth, data.placeOfIssue, data.socialSecurity, data.isAddressCorrected, data.isAddressVerified];
-        if (self.cardRegion == AcuantCardRegionUnitedStates || self.cardRegion == AcuantCardRegionCanada) {
-            message = [NSString stringWithFormat:@"%@ \nIsBarcodeRead - %hhd \nIsIDVerified - %hhd \nIsOcrRead - %hhd", message, data.isBarcodeRead, data.isIDVerified, data.isOcrRead];
+        message =[NSString stringWithFormat:@"First Name - %@ \nMiddle Name - %@ \nLast Name - %@ \nName Suffix - %@ \nID - %@ \nLicense - %@ \nDOB Long - %@ \nDOB Short - %@ \nDate Of Birth Local - %@ \nIssue Date Long - %@ \nIssue Date Short - %@ \nIssue Date Local - %@ \nExpiration Date Long - %@ \nExpiration Date Short - %@ \nEye Color - %@ \nHair Color - %@ \nHeight - %@ \nWeight - %@ \nAddress - %@ \nAddress 2 - %@ \nAddress 3 - %@ \nAddress 4 - %@ \nAddress 5 - %@ \nAddress 6  - %@ \nCity - %@ \nZip - %@ \nState - %@ \nCounty - %@ \nCountry Short - %@ \nCountry Long - %@ \nClass - %@ \nRestriction - %@ \nSex - %@ \nAudit - %@ \nEndorsements - %@ \nFee - %@ \nCSC - %@ \nSigNum - %@ \nText1 - %@ \nText2 - %@ \nText3 - %@ \nType - %@ \nDoc Type - %@ \nFather Name - %@ \nMother Name - %@ \nNameFirst_NonMRZ - %@ \nNameLast_NonMRZ - %@ \nNameLast1 - %@ \nNameLast2 - %@ \nNameMiddle_NonMRZ - %@ \nNameSuffix_NonMRZ - %@ \nDocument Detected Name - %@ \nDocument Detected Name Short - %@ \nNationality - %@ \nOriginal - %@ \nPlaceOfBirth - %@ \nPlaceOfIssue - %@ \nSocial Security - %@", data.nameFirst, data.nameMiddle, data.nameLast, data.nameSuffix, data.licenceId, data.license, data.dateOfBirth4, data.dateOfBirth, data.dateOfBirthLocal, data.issueDate4, data.issueDate, data.issueDateLocal, data.expirationDate4, data.expirationDate, data.eyeColor, data.hairColor, data.height, data.weight, data.address, data.address2, data.address3, data.address4, data.address5, data.address6, data.city, data.zip, data.state, data.county, data.countryShort, data.idCountry, data.licenceClass, data.restriction, data.sex, data.audit, data.endorsements, data.fee, data.CSC, data.sigNum, data.text1, data.text2, data.text3, data.type, data.docType, data.fatherName, data.motherName, data.nameFirst_NonMRZ, data.nameLast_NonMRZ, data.nameLast1, data.nameLast2, data.nameMiddle_NonMRZ, data.nameSuffix_NonMRZ, data.documentDetectedName, data.documentDetectedNameShort, data.nationality, data.original, data.placeOfBirth, data.placeOfIssue, data.socialSecurity];
+        _TID = data.transactionId;
+        if(!_isFacialFlow){
+            message = [NSString stringWithFormat:@"%@\nTID - %@",message,_TID];
         }
-        message = [NSString stringWithFormat:@"%@ \nDocument Verification Confidence Rating - %@",message, data.documentVerificationRating];
+        //if (self.cardRegion == AcuantCardRegionUnitedStates || self.cardRegion == AcuantCardRegionCanada) {
+            message = [NSString stringWithFormat:@"%@ \nIsBarcodeRead - %hhd \nIsIDVerified - %hhd \nIsOcrRead - %hhd \nDocument Verification Confidence Rating - %@", message, data.isBarcodeRead, data.isIDVerified, data.isOcrRead, data.documentVerificationRating];
+        //}
         
         faceimage = [UIImage imageWithData:data.faceImage];
         signatureImage = [UIImage imageWithData:data.signatureImage];
@@ -672,6 +893,10 @@
     }else if (self.cardType == AcuantCardTypePassportCard){
         AcuantPassaportCard *data = (AcuantPassaportCard*)result;
         message =[NSString stringWithFormat:@"First Name - %@ \nMiddle Name - %@ \nLast Name - %@ \nPassport Number - %@ \nPersonal Number - %@ \nSex - %@ \nCountry Long - %@ \nNationality Long - %@ \nDOB Long - %@ \nIssue Date Long - %@ \nExpiration Date Long - %@ \nPlace of Birth - %@", data.nameFirst, data.nameMiddle, data.nameLast, data.passportNumber, data.personalNumber, data.sex, data.countryLong, data.nationalityLong, data.dateOfBirth4, data.issueDate4, data.expirationDate4, data.end_POB];
+        _TID = data.transactionId;
+        if(!_isFacialFlow){
+            message = [NSString stringWithFormat:@"%@\nTID - %@",message,_TID];
+        }
         
         faceimage = [UIImage imageWithData:data.faceImage];
         frontImage = [UIImage imageWithData:data.passportImage];
@@ -680,21 +905,44 @@
         message =@"Error";
     }
     
-    ISGResultScreenViewController *resultViewController;
-    
     if ([[UIDevice currentDevice]userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        resultViewController = [[ISGResultScreenViewController alloc]initWithNibName:@"CSSNResultScreen_iPhone" bundle:nil];
+        _resultViewController = [[ISGResultScreenViewController alloc]initWithNibName:@"CSSNResultScreen_iPhone" bundle:nil];
     }else{
-        resultViewController = [[ISGResultScreenViewController alloc]initWithNibName:@"CSSNResultScreen_iPad" bundle:nil];
+        _resultViewController = [[ISGResultScreenViewController alloc]initWithNibName:@"CSSNResultScreen_iPad" bundle:nil];
     }
-    resultViewController.result = message;
-    resultViewController.faceImage = faceimage;
-    resultViewController.signatureImage = signatureImage;
-    resultViewController.frontImage = frontImage;
-    resultViewController.backImage = backImage;
-    resultViewController.cardType = self.cardType;
-    
-    [self presentViewController:resultViewController animated:YES completion:nil];
-    //    [self showSimpleAlertWithMessage:message];
+    _resultViewController.result = message;
+    _resultViewController.faceImage = faceimage;
+    _resultViewController.signatureImage = signatureImage;
+    _resultViewController.frontImage = frontImage;
+    _resultViewController.backImage = backImage;
+    _resultViewController.cardType = self.cardType;
+    _capturingData = NO;
+    [self presentResultView];
+}
+
+-(void)presentResultView{
+    if(!_capturingData && !_validatingSelfie){
+        [self presentViewController:_resultViewController animated:YES completion:nil];
+    }
+}
+
+-(void)captureSelfie{
+    if(_instance.isFacialEnabled){
+        _validatingSelfie = YES;
+        [UIAlertController showSimpleAlertWithTitle:@"AcuantiOSMobileSDK"
+                                            Message:@"Please position your face in front of the front camera and blink when red rectangle appears."
+                                        FirstButton:ButtonOK
+                                       SecondButton:ButtonCancel
+                                       FirstHandler:^(UIAlertAction *action) {
+                                           [self showSelfiCaptureInterface];
+                                       }
+                                      SecondHandler:nil
+                                                Tag:1
+                                     ViewController:self
+                                        Orientation:UIDeviceOrientationUnknown];
+        
+    }else{
+        _validatingSelfie = NO;
+    }
 }
 @end
