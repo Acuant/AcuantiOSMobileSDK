@@ -3,7 +3,7 @@
 Acuant iOS Mobile SDK API
 ==================
 
-Last updated on – 03/11/2016
+Last updated on – 06/01/2016
 
 # Introduction
 
@@ -641,13 +641,23 @@ Call to obtain the flashlight button position in the screen.
 >     
 > }
 > 
-Call to obtain the flashlight button image displayed in the card capture interface
+
+Call to obtain the flashlight button image displayed in the card capture interface when camera flash is turned on.
 > - (UIImage\*)imageForFlashlightButton{
-> 
->     UIImage \*image = \[UIImage imageNamed:@"FlashlightButton.png"\];
->     
+>
+>     UIImage \*image = [UIImage imageNamed:@"FlashlightButton.png"];
+>
 >     return image;
->     
+>
+> }
+>
+Call to obtain the flashlight button image displayed in the card capture interface when camera flash is turned off.
+> - (UIImage\*)imageForFlashlightOffButton{
+>
+>   UIImage \*image = [UIImage imageNamed:@"FlashlightOffButton.png"];
+>
+>   return image;
+>
 > }
 > 
 Call to obtain the help image displayed in the card capture interface
@@ -1548,7 +1558,9 @@ Open the Info.plist file inside you can find the version number
 
 # Change Log
 
-Acuant iOS MobileSDK version 4.7.5
+Acuant iOS MobileSDK version 4.8.1
 
 Changes:
--	Removed definition "Debug = 1" from "GCC_PREPROCESSOR_DEFINITIONS".
+-	Added facial recognition and match feature. 
+- Added camera flash off button. 
+- Added captured image review screen to verify the captured image.
