@@ -577,14 +577,14 @@ In order to inform that the scan or the process failed. You must use the followi
 ### Optional delegate methods
 
 Call to inform the delegate that the time of the barcode scan expired
-> - (void)barcodeScanTimeOut{
+> -(void)barcodeScanTimeOut{
 > 
 >     \[self showSimpleAlertWithMessage:message\];
 >     
 > }
 > 
 Call to show or not show the iPad brackets on the card capture interface
-> - (BOOL)showiPadBrackets{
+> -(BOOL)showiPadBrackets{
 > 
 >     return YES;
 >     
@@ -598,7 +598,7 @@ Call to inform the delegate that the user pressed the back button
 > }
 > 
 Call to obtain the back button image displayed in the card capture interface
-> - (UIImage\*)imageForBackButton{
+> -(UIImage\*)imageForBackButton{
 > 
 >     UIImage *image = \[UIImage imageNamed:@"BackButton.png"\];
 >     
@@ -614,14 +614,14 @@ Call to obtain the back button position in the screen.
 > }
 > 
 Call to show or not show the back button in the card capture interface
-> - (BOOL)showBackButton{
+> -(BOOL)showBackButton{
 > 
 >     return YES;
 >     
 > }
 > 
 These methods control the attributes of the status bar when this view controller is shown.
-> - (BOOL)cameraPrefersStatusBarHidden{
+> -(BOOL)cameraPrefersStatusBarHidden{
 > 
 >     return YES;
 >     
@@ -701,14 +701,14 @@ Call to obtain the watermark label position in the screen.
 > }
 > 
 Call to obtain the barcode error message displayed in the barcode capture interface
-> - (UIDeviceOrientation)orientationForBarcodeErrorMessage{
+> -(UIDeviceOrientation)orientationForBarcodeErrorMessage{
 > 
 >     return UIDeviceOrientationPortrait;
 > 
 > }
 > 
 Call to obtain the barcode error message displayed in the barcode capture interface
-> - (NSString \*)stringForBarcodeErrorMessage{
+> -(NSString \*)stringForBarcodeErrorMessage{
 > 
 >     NSString \*string = @"Unable to scan the barcode?";
 >     
@@ -717,7 +717,7 @@ Call to obtain the barcode error message displayed in the barcode capture interf
 > }
 > 
 Call to obtain the barcode title error displayed in the barcode capture interface
-> - (NSString \*)stringForBarcodeTitleError{
+> -(NSString \*)stringForBarcodeTitleError{
 > 
 >     NSString \*string = @"Title Sample";
 >     
@@ -726,21 +726,21 @@ Call to obtain the barcode title error displayed in the barcode capture interfac
 > }
 > 
 Call to obtain the time elapse to appear in the barcode capture interface
-> - (int)timeForBarcodeErrorMessage{
+> -(int)timeForBarcodeErrorMessage{
 > 
 >     return 10;
 >     
 > }
 > 
 Call to set if the error message is hidden or not.
-> - (BOOL)isHiddenBarcodeErrorMessage{
+> -(BOOL)isHiddenBarcodeErrorMessage{
 > 
 >     return YES;
 >     
 > }
 > 
 Call to obtain the barcode button text for the second button displayed in the barcode alert.
-> - (NSString \*)stringForBarcodeFirstButton{
+> -(NSString \*)stringForBarcodeFirstButton{
 > 
 >     NSString \*string = @"Yes";
 >     
