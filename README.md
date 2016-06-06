@@ -1527,6 +1527,112 @@ If using the AcuantCardTypePassportCard, add the following code:
 >                                 
 > }
 
+#	Facial Recognition and Match Feature
+
+Acuant FRM (Facial Recognition Match) is a person authentication solution for mobile devices based on biometric face recognition.
+
+Acuant FRM 
+•	Opens the front camera
+•	Ensures the user is correctly placed in front of the camera
+•	Detects a live person 
+•	Detects spoofing attacks by presenting eye blink challenge 
+•	Acquires biometric samples
+•	Verifies the identity of a user
+•	All the steps are done in real time.
+
+Benefits of Acuant FRM 
+
+•	Helps in reducing fraud by matching the face biometrics to the face image on the driver’s license or passport.
+•	Easy to integrate
+•	Secure
+•	Fast and convenient
+•	Real time checks and processing within seconds
+
+The Acuant FRM performs following checks to recognize a live face and match face biometrics to the face picture on the driver’s license or passport. 
+1)	Face position checks: check that the face is well detected, correctly centered and in a good distance from the camera.
+a)	Distance to person algorithm ensures that person’s face is at optimal distance from the front camera. 
+b)	Ensures that person is only presenting frontal face (Side faces are rejected).
+2)	Tracks eye blinks as an added layer to check for face liveliness and avoid spoofing attacks.
+3)	Captures face biometrics and matches it to the face picture on the driver’s license or passport.
+
+Following are the APIs/Classes to use the Facial Match feature.
+
+##a.	AcuantFacialCaptureDelegate
+This is the delegate to be used to get the call back from the SDK interface. It has two protocols
+
+i.	-(void)didFinishFacialRecognition:(UIImage*)image;
+This is called when a live face is successfully recognized. The parameter “image” contains the face image recognized by facial recognition.
+
+ii.	-(void)didCancelFacialRecognition
+This is called when the user cancels facial recognition.
+
+##b.	AcuantFacialRecognitionViewController
+This class has the following utility method which can be called to present the facial recognition interface.
+
+i.	+(id)presentFacialCatureInterfaceWithDelegate:(id<AcuantFacialCaptureDelegate>)delegate inViewController:(UIViewController*)parentVC withCancelButton:(BOOL)cancelVisible withWatherMark:(NSString* )watermarkText
+withBlinkMessage:(NSString*)message
+inRect:(CGRect)rect 
+andFontSize:(NSUInteger)size;
+
+	Following are the input parameters:
+-	(id<AcuantFacialCaptureDelegate>)delegate : Delegate where the control to be returned.
+-	(UIViewController*)parentVC : The parent view controller which presents the camera interface.
+-	(BOOL)cancelVisible : Whether to show cancel button or not
+-	(NSString* )watermarkText : Brand watermark text
+-	(NSString*)message : Instruction message (For example “Blink Slowly.”)
+-	(CGRect)rect : Frame in which instruction to be shown within the camera interface.
+-	(NSUInteger)size : Font size of the instruction
+
+
+##c.	Facial Match function call
+
+The facial match function call can be made the same way as the other card processing function calls. Below is an example:
+    
+    //Face Image
+    UIImage *selfiImage = image;
+    //DL Photo
+    UIImage *faceImage =_resultViewController.faceImage;
+    
+    //Obtain the default AcuantCardProcessRequestOptions object for the type of card you want to process (License card for this example)
+    AcuantCardProcessRequestOptions *options = [AcuantCardProcessRequestOptions defaultRequestOptionsForCardType:AcuantCardTypeFacial];
+    
+    [self.instance processFrontCardImage:selfiImage
+                           BackCardImage:faceImage
+                           andStringData:nil
+                            withDelegate:self
+                             withOptions:options];
+
+i.	The first paramerter is the face image returned in the callback -(void)didFinishFacialRecognition:(UIImage*)image;
+ii.	The second parameter is the face image from the ID/Passport against which the face image needs to be matched.
+iii.	The string data has to be nil for this service call
+iv.	Delegate is the web service delegate where the control will be after the function call returns.
+v.	AcuantCardProcessRequestOptions is the last argument which is initialized with card type as AcuantCardTypeFacial as shown above.
+
+
+The following delegate method will be called after the function call returns
+
+- (void)didFinishValidatingImageWithResult:(AcuantCardResult*)result{
+	- (void)didFinishValidatingImageWithResult:(AcuantCardResult*)cardResult{
+    AcuantFacialData* result =(AcuantFacialData*)cardResult;
+	
+}
+
+##d.	AcuantFacialData
+Following are the parameters.
+
+	@property (nonatomic, assign) BOOL  isMatch ; // If both images matched.
+
+	@property (nonatomic, assign) BOOL  isFacialEnabled;// If facial feature is enabled.
+
+	@property (nonatomic, assign) BOOL  faceLivelinessDetection; // If a live face was detected.
+
+	@property (nonatomic, strong) NSString  *transactionId; // Facial match transaction id
+	
+	@property (nonatomic, strong) NSString  *errorMessage; // Any service error description. If the transaction has gone through successfully then this field will be nil.
+	
+	@property (nonatomic, strong) NSString  *facialMatchConfidenceRating; // Confidence level out of 100
+
+
 # Error Types
 
 AcuantErrorCouldNotReachServer = 0, //check internet connection
