@@ -628,7 +628,7 @@ These methods control the attributes of the status bar when this view controller
 > }
 > 
 Call to show or not show the flashlight button in the card capture interface
-> - (BOOL)showFlashlightButton{
+> -(BOOL)showFlashlightButton{
 > 
 >     return YES;
 >     
@@ -643,7 +643,7 @@ Call to obtain the flashlight button position in the screen.
 > 
 
 Call to obtain the flashlight button image displayed in the card capture interface when camera flash is turned on.
-> - (UIImage\*)imageForFlashlightButton{
+> -(UIImage\*)imageForFlashlightButton{
 >
 >     UIImage \*image = [UIImage imageNamed:@"FlashlightButton.png"];
 >
@@ -652,7 +652,7 @@ Call to obtain the flashlight button image displayed in the card capture interfa
 > }
 >
 Call to obtain the flashlight button image displayed in the card capture interface when camera flash is turned off.
-> - (UIImage\*)imageForFlashlightOffButton{
+> -(UIImage\*)imageForFlashlightOffButton{
 >
 >   UIImage \*image = [UIImage imageNamed:@"FlashlightOffButton.png"];
 >
@@ -661,7 +661,7 @@ Call to obtain the flashlight button image displayed in the card capture interfa
 > }
 > 
 Call to obtain the help image displayed in the card capture interface
-> - (UIImage\*)imageForHelpImageView{
+> -(UIImage\*)imageForHelpImageView{
 > 
 >     UIImage \*image = \[UIImage imageNamed:@"PDF417"\];
 >     
