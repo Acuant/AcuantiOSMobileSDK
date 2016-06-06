@@ -1532,21 +1532,33 @@ If using the AcuantCardTypePassportCard, add the following code:
 Acuant FRM (Facial Recognition Match) is a person authentication solution for mobile devices based on biometric face recognition.
 
 Acuant FRM 
-•	Opens the front camera
-•	Ensures the user is correctly placed in front of the camera
-•	Detects a live person 
-•	Detects spoofing attacks by presenting eye blink challenge 
-•	Acquires biometric samples
-•	Verifies the identity of a user
-•	All the steps are done in real time.
+>
+>•	Opens the front camera
+>
+>•	Ensures the user is correctly placed in front of the camera
+>
+>•	Detects a live person 
+>
+>•	Detects spoofing attacks by presenting eye blink challenge 
+>
+>•	Acquires biometric samples
+>
+>•	Verifies the identity of a user
+>
+>•	All the steps are done in real time.
+>
 
 Benefits of Acuant FRM 
-
-•	Helps in reducing fraud by matching the face biometrics to the face image on the driver’s license or passport.
-•	Easy to integrate
-•	Secure
-•	Fast and convenient
-•	Real time checks and processing within seconds
+>
+>•	Helps in reducing fraud by matching the face biometrics to the face image on the driver’s license or passport.
+>
+>•	Easy to integrate
+>
+>•	Secure
+>
+>•	Fast and convenient
+>
+>•	Real time checks and processing within seconds
 
 The Acuant FRM performs following checks to recognize a live face and match face biometrics to the face picture on the driver’s license or passport. 
 1)	Face position checks: check that the face is well detected, correctly centered and in a good distance from the camera.
