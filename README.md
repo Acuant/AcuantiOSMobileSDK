@@ -59,7 +59,7 @@ Acuant iOS Mobile SDK can be installed using CocoaPods. CocoaPods is a dependenc
 
 > platform :ios, '8.0'
 >
-> pod 'AcuantMobileSDK', '~> 4.7.5'
+> pod 'AcuantMobileSDK', '~> 4.8.1'
 >
 
 ##  Add AcuantMobileSDK.embeddedframework on each project 
