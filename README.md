@@ -55,7 +55,7 @@ Note: The Framework will not modify the Status bar of the app.
 
 Acuant iOS Mobile SDK can be installed using CocoaPods. CocoaPods is a dependency manager for Objective-C, which automates and simplifies the process of using 3rd-party libraries like AcuantMobileSDK in your projects.
 
-Note : GitHub has recently changed the versioning for large files. To be able to download large files while cloning from GitHub or CocoaPods repositories please make sure git-lfs is installed in the build machine. More information for git-lfs is available at https://git-lfs.github.com/.Please clone/update our SDK repository only after the git-lfs is installed.
+Note : GitHub has recently changed the versioning for large files. To be able to download large files while cloning from GitHub or CocoaPods repositories please make sure git-lfs is installed in the build machine. More information for git-lfs is available at https://git-lfs.github.com/. Please clone/update our SDK repository only after the git-lfs is installed.
 
 ### Podfile
 
