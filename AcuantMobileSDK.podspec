@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   
   s.name = 'AcuantMobileSDK'
-  s.version = '4.8.1'
+  s.version = '4.9'
   s.summary = 'AcuantMobileSDK'
   s.homepage = 'http://www.acuantcorp.com'
 
@@ -44,7 +44,7 @@ Pod::Spec.new do |s|
 
   s.source = {
         :git => 'https://github.com/Acuant/AcuantiOSMobileSDK.git', 
-        :tag => 'v4.8.1' 
+        :tag => 'v4.9' 
   }
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

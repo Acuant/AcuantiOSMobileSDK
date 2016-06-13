@@ -35,6 +35,7 @@
 @property (nonatomic, strong) NSString  *sex;
 @property (nonatomic, strong) NSData    *faceImage;
 @property (nonatomic, strong) NSData    *signImage;
-
+@property (nonatomic, strong) NSString  *authenticationResult;
+@property (nonatomic, strong) NSArray  *authenticationResultSummaryList;
 @property (nonatomic, strong) NSData    *passportImage;
 @end

@@ -14,9 +14,9 @@
 #import "UIDevice+Resolutions.h"
 #import <QuartzCore/QuartzCore.h>
 #import <AcuantMobileSDK/AcuantMobileSDKController.h>
-#import "AcuantMobileSDK/AcuantFacialData.h"
-#import "AcuantMobileSDK/AcuantFacialCaptureDelegate.h"
-#import "AcuantMobileSDK/AcuantFacialRecognitionViewController.h"
+#import <AcuantMobileSDK/AcuantFacialData.h>
+#import <AcuantMobileSDK/AcuantFacialCaptureDelegate.h>
+#import <AcuantMobileSDK/AcuantFacialRecognitionViewController.h>
 #import "ConfirmationViewController.h"
 
 @interface ISGViewController () <UITextFieldDelegate,AcuantMobileSDKControllerCapturingDelegate, AcuantMobileSDKControllerProcessingDelegate, ISGRegionViewControllerDelegate,AcuantFacialCaptureDelegate>
@@ -52,6 +52,7 @@
 @property (nonatomic) BOOL validatingSelfie;
 @property (nonatomic) BOOL isFacialFlow;
 @property (nonatomic,strong) NSString* TID;
+@property (nonatomic,strong) NSString* FTID;
 @property (nonatomic) BOOL frontImageConfirmed;
 @end
 
@@ -205,9 +206,18 @@
 }
 
 - (IBAction)sendRequest:(id)sender {
+    
+    if ([[UIDevice currentDevice]userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        _resultViewController = [[ISGResultScreenViewController alloc]initWithNibName:@"CSSNResultScreen_iPhone" bundle:nil];
+    }else{
+        _resultViewController = [[ISGResultScreenViewController alloc]initWithNibName:@"CSSNResultScreen_iPad" bundle:nil];
+    }
+    
     self.view.userInteractionEnabled = NO;
     if(!_isFacialFlow){
         [SVProgressHUD showWithStatus:@"Capturing Data"];
+    }else{
+        [self captureSelfie];
     }
     
     //Obtain the front side of the card image
@@ -236,9 +246,6 @@
                            andStringData:self.barcodeString
                             withDelegate:self
                              withOptions:options];
-    if(_isFacialFlow){
-        [self captureSelfie];
-    }
     
 }
 
@@ -573,7 +580,6 @@
 }
 
 -(void)didCaptureCropImage:(UIImage *)cardImage scanBackSide:(BOOL)scanBackSide{
-    
     NSString* message;
     if(self.cardType == AcuantCardTypePassportCard){
         message = @"Please make sure all the text on the Passport image is readable, otherwise retry.";
@@ -795,8 +801,20 @@
 }
 
 -(void)didFinishFacialRecognition:(UIImage*)image{
-    self.view.userInteractionEnabled = NO;
     [SVProgressHUD showWithStatus:@"Capturing Data"];
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+        while(_capturingData){
+            [NSThread sleepForTimeInterval:1.0];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            [self processFaceImages:image];
+        });
+    });
+    
+}
+
+-(void)processFaceImages:(UIImage*)image{
+    self.view.userInteractionEnabled = NO;
     
     //Selfie Image
     UIImage *frontSideImage = image;
@@ -824,6 +842,8 @@
                            andStringData:nil
                             withDelegate:self
                              withOptions:options];
+
+    
 }
 
 -(void)didCancelFacialRecognition{
@@ -837,23 +857,33 @@
 - (void)didFinishValidatingImageWithResult:(AcuantFacialData*)result{
     [SVProgressHUD dismiss];
      self.view.userInteractionEnabled = YES;
-    _resultViewController.result = [NSString stringWithFormat:@"%@\nFTID - %@\nTID - %@",_resultViewController.result,result.transactionId,_TID];
+    if(_resultViewController.result==nil){
+        _resultViewController.result = @"";
+    }
+    
+    _FTID = result.transactionId;
     if(result.isFacialEnabled==YES){
         NSLog(@"Success");
         _selfieMatched = result.isMatch ? @"1" : @"0";
-        _resultViewController.result = [NSString stringWithFormat:@"%@\nFacial Matched - %@",_resultViewController.result,_selfieMatched];
-        _resultViewController.result = [NSString stringWithFormat:@"%@\nFacial Enabled - 1",_resultViewController.result];
-        _resultViewController.result = [NSString stringWithFormat:@"%@\nFace Liveness Detection - %@",_resultViewController.result,result.faceLivelinessDetection ? @"1" : @"0"];
+        NSString* message = [NSString stringWithFormat:@"%@\nFacial Matched - %@",_resultViewController.result,_selfieMatched];
+        message = [NSString stringWithFormat:@"%@\nFacial Enabled - 1",message];
+        message = [NSString stringWithFormat:@"%@\nFace Liveness Detection - %@",message,result.faceLivelinessDetection ? @"1" : @"0"];
         _validatingSelfie = NO;
-        _resultViewController.result = [NSString stringWithFormat:@"%@\nFacial Match Confidence Rating - %@",_resultViewController.result,result.facialMatchConfidenceRating];
+        message = [NSString stringWithFormat:@"%@\nFacial Match Confidence Rating - %@",message,result.facialMatchConfidenceRating];
         _validatingSelfie = NO;
+        
+        _resultViewController.result = message;
+        
         [self presentResultView];
     }else{
         _selfieMatched = result.isMatch ? @"1" : @"0";
-        _resultViewController.result = [NSString stringWithFormat:@"%@\nFacial Matched - %@",_resultViewController.result,_selfieMatched];
-        _resultViewController.result = [NSString stringWithFormat:@"%@\nFacial Enabled - 0",_resultViewController.result];
-        _resultViewController.result = [NSString stringWithFormat:@"%@\nFace Liveness Detection - %@",_resultViewController.result,result.faceLivelinessDetection ? @"1" : @"0"];
+        NSString* message = [NSString stringWithFormat:@"%@\nFacial Matched - %@",_resultViewController.result,_selfieMatched];
+        message = [NSString stringWithFormat:@"%@\nFacial Enabled - 0",message];
+        message = [NSString stringWithFormat:@"%@\nFace Liveness Detection - %@",message,result.faceLivelinessDetection ? @"1" : @"0"];
         _validatingSelfie = NO;
+        
+        _resultViewController.result = message;
+        
         [self presentResultView];
     }
     
@@ -877,14 +907,14 @@
         
     }else if (self.cardType == AcuantCardTypeDriversLicenseCard) {
         AcuantDriversLicenseCard *data = (AcuantDriversLicenseCard*)result;
-        message =[NSString stringWithFormat:@"First Name - %@ \nMiddle Name - %@ \nLast Name - %@ \nName Suffix - %@ \nID - %@ \nLicense - %@ \nDOB Long - %@ \nDOB Short - %@ \nDate Of Birth Local - %@ \nIssue Date Long - %@ \nIssue Date Short - %@ \nIssue Date Local - %@ \nExpiration Date Long - %@ \nExpiration Date Short - %@ \nEye Color - %@ \nHair Color - %@ \nHeight - %@ \nWeight - %@ \nAddress - %@ \nAddress 2 - %@ \nAddress 3 - %@ \nAddress 4 - %@ \nAddress 5 - %@ \nAddress 6  - %@ \nCity - %@ \nZip - %@ \nState - %@ \nCounty - %@ \nCountry Short - %@ \nCountry Long - %@ \nClass - %@ \nRestriction - %@ \nSex - %@ \nAudit - %@ \nEndorsements - %@ \nFee - %@ \nCSC - %@ \nSigNum - %@ \nText1 - %@ \nText2 - %@ \nText3 - %@ \nType - %@ \nDoc Type - %@ \nFather Name - %@ \nMother Name - %@ \nNameFirst_NonMRZ - %@ \nNameLast_NonMRZ - %@ \nNameLast1 - %@ \nNameLast2 - %@ \nNameMiddle_NonMRZ - %@ \nNameSuffix_NonMRZ - %@ \nDocument Detected Name - %@ \nDocument Detected Name Short - %@ \nNationality - %@ \nOriginal - %@ \nPlaceOfBirth - %@ \nPlaceOfIssue - %@ \nSocial Security - %@", data.nameFirst, data.nameMiddle, data.nameLast, data.nameSuffix, data.licenceId, data.license, data.dateOfBirth4, data.dateOfBirth, data.dateOfBirthLocal, data.issueDate4, data.issueDate, data.issueDateLocal, data.expirationDate4, data.expirationDate, data.eyeColor, data.hairColor, data.height, data.weight, data.address, data.address2, data.address3, data.address4, data.address5, data.address6, data.city, data.zip, data.state, data.county, data.countryShort, data.idCountry, data.licenceClass, data.restriction, data.sex, data.audit, data.endorsements, data.fee, data.CSC, data.sigNum, data.text1, data.text2, data.text3, data.type, data.docType, data.fatherName, data.motherName, data.nameFirst_NonMRZ, data.nameLast_NonMRZ, data.nameLast1, data.nameLast2, data.nameMiddle_NonMRZ, data.nameSuffix_NonMRZ, data.documentDetectedName, data.documentDetectedNameShort, data.nationality, data.original, data.placeOfBirth, data.placeOfIssue, data.socialSecurity];
+        message =[NSString stringWithFormat:@"First Name - %@ \nMiddle Name - %@ \nLast Name - %@ \nName Suffix - %@\nID - %@ \nLicense - %@ \nDOB Long - %@ \nDOB Short - %@ \nDate Of Birth Local - %@ \nIssue Date Long - %@ \nIssue Date Short - %@ \nIssue Date Local - %@ \nExpiration Date Long - %@ \nExpiration Date Short - %@ \nEye Color - %@ \nHair Color - %@ \nHeight - %@ \nWeight - %@ \nAddress - %@ \nAddress 2 - %@ \nAddress 3 - %@ \nAddress 4 - %@ \nAddress 5 - %@ \nAddress 6  - %@ \nCity - %@ \nZip - %@ \nState - %@ \nCounty - %@ \nCountry Short - %@ \nCountry Long - %@ \nClass - %@ \nRestriction - %@ \nSex - %@ \nAudit - %@ \nEndorsements - %@ \nFee - %@ \nCSC - %@ \nSigNum - %@ \nText1 - %@ \nText2 - %@ \nText3 - %@ \nType - %@ \nDoc Type - %@ \nFather Name - %@ \nMother Name - %@ \nNameFirst_NonMRZ - %@ \nNameLast_NonMRZ - %@ \nNameLast1 - %@ \nNameLast2 - %@ \nNameMiddle_NonMRZ - %@ \nNameSuffix_NonMRZ - %@ \nDocument Detected Name - %@ \nDocument Detected Name Short - %@ \nNationality - %@ \nOriginal - %@ \nPlaceOfBirth - %@ \nPlaceOfIssue - %@ \nSocial Security - %@ \nIsAddressCorrected - %d \nIsAddressVerified - %d\nAuthentication Result - %@ \nAunthentication Summary - %@", data.nameFirst, data.nameMiddle, data.nameLast, data.nameSuffix, data.licenceId, data.license, data.dateOfBirth4, data.dateOfBirth, data.dateOfBirthLocal, data.issueDate4, data.issueDate, data.issueDateLocal, data.expirationDate4, data.expirationDate, data.eyeColor, data.hairColor, data.height, data.weight, data.address, data.address2, data.address3, data.address4, data.address5, data.address6, data.city, data.zip, data.state, data.county, data.countryShort, data.idCountry, data.licenceClass, data.restriction, data.sex, data.audit, data.endorsements, data.fee, data.CSC, data.sigNum, data.text1, data.text2, data.text3, data.type, data.docType, data.fatherName, data.motherName, data.nameFirst_NonMRZ, data.nameLast_NonMRZ, data.nameLast1, data.nameLast2, data.nameMiddle_NonMRZ, data.nameSuffix_NonMRZ, data.documentDetectedName, data.documentDetectedNameShort, data.nationality, data.original, data.placeOfBirth, data.placeOfIssue, data.socialSecurity, data.isAddressCorrected, data.isAddressVerified,data.authenticationResult,[self arrayToString:data.authenticationResultSummaryList]];
         _TID = data.transactionId;
         if(!_isFacialFlow){
             message = [NSString stringWithFormat:@"%@\nTID - %@",message,_TID];
         }
-        //if (self.cardRegion == AcuantCardRegionUnitedStates || self.cardRegion == AcuantCardRegionCanada) {
-            message = [NSString stringWithFormat:@"%@ \nIsBarcodeRead - %hhd \nIsIDVerified - %hhd \nIsOcrRead - %hhd \nDocument Verification Confidence Rating - %@", message, data.isBarcodeRead, data.isIDVerified, data.isOcrRead, data.documentVerificationRating];
-        //}
+        if (self.cardRegion == AcuantCardRegionUnitedStates || self.cardRegion == AcuantCardRegionCanada) {
+            message = [NSString stringWithFormat:@"%@ \nIsBarcodeRead - %d \nIsIDVerified - %d \nIsOcrRead - %d \nDocument Verification Confidence Rating - %@", message, data.isBarcodeRead, data.isIDVerified, data.isOcrRead, data.documentVerificationRating];
+        }
         
         faceimage = [UIImage imageWithData:data.faceImage];
         signatureImage = [UIImage imageWithData:data.signatureImage];
@@ -892,7 +922,7 @@
         backImage = [UIImage imageWithData:data.licenceImageTwo];
     }else if (self.cardType == AcuantCardTypePassportCard){
         AcuantPassaportCard *data = (AcuantPassaportCard*)result;
-        message =[NSString stringWithFormat:@"First Name - %@ \nMiddle Name - %@ \nLast Name - %@ \nPassport Number - %@ \nPersonal Number - %@ \nSex - %@ \nCountry Long - %@ \nNationality Long - %@ \nDOB Long - %@ \nIssue Date Long - %@ \nExpiration Date Long - %@ \nPlace of Birth - %@", data.nameFirst, data.nameMiddle, data.nameLast, data.passportNumber, data.personalNumber, data.sex, data.countryLong, data.nationalityLong, data.dateOfBirth4, data.issueDate4, data.expirationDate4, data.end_POB];
+        message =[NSString stringWithFormat:@"First Name - %@ \nMiddle Name - %@ \nLast Name - %@\nPassport Number - %@ \nPersonal Number - %@ \nSex - %@ \nCountry Long - %@ \nNationality Long - %@ \nDOB Long - %@ \nIssue Date Long - %@ \nExpiration Date Long - %@ \nPlace of Birth - %@\nAuthentication Result - %@ \nAunthentication Summary - %@ ", data.nameFirst, data.nameMiddle, data.nameLast, data.passportNumber, data.personalNumber, data.sex, data.countryLong, data.nationalityLong, data.dateOfBirth4, data.issueDate4, data.expirationDate4, data.end_POB,data.authenticationResult,[self arrayToString:data.authenticationResultSummaryList]];
         _TID = data.transactionId;
         if(!_isFacialFlow){
             message = [NSString stringWithFormat:@"%@\nTID - %@",message,_TID];
@@ -904,13 +934,11 @@
     }else{
         message =@"Error";
     }
-    
-    if ([[UIDevice currentDevice]userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        _resultViewController = [[ISGResultScreenViewController alloc]initWithNibName:@"CSSNResultScreen_iPhone" bundle:nil];
+    if(_resultViewController.result==nil || [_resultViewController.result isEqualToString:@""]){
+        _resultViewController.result = message;
     }else{
-        _resultViewController = [[ISGResultScreenViewController alloc]initWithNibName:@"CSSNResultScreen_iPad" bundle:nil];
+        _resultViewController.result = [NSString stringWithFormat:@"%@\n%@",message,_resultViewController.result];
     }
-    _resultViewController.result = message;
     _resultViewController.faceImage = faceimage;
     _resultViewController.signatureImage = signatureImage;
     _resultViewController.frontImage = frontImage;
@@ -922,6 +950,9 @@
 
 -(void)presentResultView{
     if(!_capturingData && !_validatingSelfie){
+        if(_isFacialFlow){
+            _resultViewController.result = [NSString stringWithFormat:@"%@\nFTID - %@\nTID - %@",_resultViewController.result,_FTID,_TID];
+        }
         [self presentViewController:_resultViewController animated:YES completion:nil];
     }
 }
@@ -944,5 +975,17 @@
     }else{
         _validatingSelfie = NO;
     }
+}
+
+-(NSString*)arrayToString:(NSArray*)array{
+    NSString* retStr = @"";
+    for(NSString* str in array){
+        if([retStr isEqualToString:@""]){
+            retStr = str;
+        }else{
+            retStr = [NSString stringWithFormat:@"%@,%@",retStr,str];
+        }
+    }
+    return retStr;
 }
 @end

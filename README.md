@@ -3,23 +3,13 @@
 Acuant iOS Mobile SDK API
 ==================
 
-Last updated on – 06/01/2016
+Last updated on – 06/13/2016
 
 # Introduction
 
-The AcuantMobileSDK.framework is a Cocoa Framework is designed to simplify your development efforts. The processing of the captured images takes place via Acuant’s Web Services. Our Web Services offer fast data extraction and zero maintenance as software is looked after by Acuant on our optimized cloud infrastructure.
+The AcuantMobileSDK.framework is a Cocoa Framework.  Processing of the captured images takes place via Acuant’s Web Services.  Acuant’s Web Services offer fast data extraction and authentication with zero downtime. Benefits:
 
-Benefits:
-
--   Process Enhancement: Faster data extraction and process images via Acuant’s Web Services.
-
--   Easy to set up and deploy.
-
--   No maintenance and support: All maintenance and updates are done on Acuant servers.
-
--   Secured Connection: Secured via SSL and HTTPS AES 256-bit encryption.
-
-Acuant Web Services supports processing of drivers licenses, state IDs, other govt issued IDs, custom IDs, driver’s license barcodes, passports, medical insurance cards etc. It also supports address verification, identity verification and personal verification.
+* 	Process Enhancement: Faster data extraction and authentication process images via Acuant’s Web Services.* 	Easy to set up and deploy.* 	No maintenance and support: All maintenance and updates are done on Acuant servers.* 	Secured Connection: Secured via SSL and HTTPS AES 256-bit encryption.Acuant Web Services supports data extraction from of drivers licenses, state IDs, other govt issued IDs, custom IDs, driver’s license barcodes, passports, medical insurance cards etc. It also supports document authentication and facial recognition to verify and authenticate the identity. 
 
 For IDs from Asia, Australia, Europe, South America, Africa – we are support dd-mm-yyyy date format.
 
@@ -61,7 +51,7 @@ Note : GitHub has recently changed the versioning for large files. To be able to
 
 > platform :ios, '8.0'
 >
-> pod 'AcuantMobileSDK', '~> 4.8.1'
+> pod 'AcuantMobileSDK', '~> 4.9'
 >
 
 ##  Add AcuantMobileSDK.embeddedframework on each project 
@@ -1678,9 +1668,8 @@ Open the Info.plist file inside you can find the version number
 
 # Change Log
 
-Acuant iOS MobileSDK version 4.8.1
+Acuant iOS MobileSDK version 4.9
 
 Changes:
--	Added facial recognition and match feature. 
-- Added camera flash off button. 
-- Added captured image review screen to verify the captured image.
+
+* Added Assure ID document authentication feature.
