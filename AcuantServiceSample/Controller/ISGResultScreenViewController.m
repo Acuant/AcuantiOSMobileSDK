@@ -63,6 +63,11 @@
     [super viewDidAppear:animated];
 }
 
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    self.result = nil;
+}
+
 - (IBAction)backAction:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }

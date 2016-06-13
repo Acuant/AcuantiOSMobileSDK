@@ -73,6 +73,8 @@
 @property (nonatomic, strong) NSString  *documentDetectedNameShort;
 @property (nonatomic, strong) NSNumber  *regionID;
 @property (nonatomic, strong) NSString  *transactionId;
+@property (nonatomic, strong) NSString  *authenticationResult;
+@property (nonatomic, strong) NSArray  *authenticationResultSummaryList;
 @property (nonatomic) BOOL  isBarcodeRead;
 @property (nonatomic) BOOL  isIDVerified;
 @property (nonatomic) BOOL  isOcrRead;
