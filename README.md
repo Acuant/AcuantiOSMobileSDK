@@ -78,9 +78,6 @@ pod 'AcuantMobileSDK', '~> 4.9'
 	#import "AcuantMobileSDK/AcuantPassaportCard.h"
 
 
-
-
-
 ##  Add AcuantMobileSDK.embeddedframework on each project 
 
 If you are not using CocoaPods for Acuant iOS Mobile SDK installation, then you would have to add the AcuantMobileSDK.embeddedframework into your project. You can download the Acuant iOS Mobile SDK and embeddedframework from GitHub - <https://github.com/Acuant/AcuantiOSMobileSDK>.
