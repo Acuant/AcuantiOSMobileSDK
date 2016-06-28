@@ -49,10 +49,37 @@ Note : GitHub has recently changed the versioning for large files. To be able to
 
 ### Podfile
 
-> platform :ios, '8.0'
+- Create a Podfile with following lines
+
+platform :ios, '8.0'
+
+pod 'AcuantMobileSDK', '~> 4.9'
+
+- Execute 'Pod install' to add the AcuantMobileSDK
+- If it is a Swift project then add the follwoing imports in the Objective-C bridging file
+- *Apple Reference:* <https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html>
+ 
+>	
+>	
 >
-> pod 'AcuantMobileSDK', '~> 4.9'
->
+	#import <Foundation/Foundation.h>
+	#import <UIKit/UIKit.h>
+	#import "AcuantMobileSDK/AcuantCardProcessRequestOptions.h"
+	#import "AcuantMobileSDK/AcuantCardRegion.h"
+	#import "AcuantMobileSDK/AcuantCardResult.h"
+	#import "AcuantMobileSDK/AcuantCardType.h"
+	#import "AcuantMobileSDK/AcuantDriversLicenseCard.h"
+	#import "AcuantMobileSDK/AcuantError.h"
+	#import "AcuantMobileSDK/AcuantFacialCaptureDelegate.h"
+	#import "AcuantMobileSDK/AcuantFacialData.h"
+	#import "AcuantMobileSDK/AcuantFacialRecognitionViewController.h"
+	#import "AcuantMobileSDK/AcuantMedicalInsuranceCard.h"
+	#import "AcuantMobileSDK/AcuantMobileSDKController.h"
+	#import "AcuantMobileSDK/AcuantPassaportCard.h"
+
+
+
+
 
 ##  Add AcuantMobileSDK.embeddedframework on each project 
 

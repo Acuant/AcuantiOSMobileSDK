@@ -329,6 +329,11 @@
 				CLASSPREFIX = Acuant;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = Acuant;
+				TargetAttributes = {
+					95019F1D1758F30A001C4F94 = {
+						DevelopmentTeam = E67326HC5Q;
+					};
+				};
 			};
 			buildConfigurationList = 95019F191758F30A001C4F94 /* Build configuration list for PBXProject "AcuantiOSMobileSampleSDK" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -506,7 +511,7 @@
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
