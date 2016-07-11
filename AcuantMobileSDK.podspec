@@ -66,7 +66,7 @@ Pod::Spec.new do |s|
         'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/AcuantMobileSDK/AcuantMobileSDK.embeddedframework"'
   }
 
-  s.ios.frameworks = 'AcuantMobileSDK','SystemConfiguration','AudioToolbox','AVFoundation','CoreMedia','CoreVideo','CoreGraphics','QuartzCore'
+  s.ios.frameworks = 'SystemConfiguration','AudioToolbox','AVFoundation','CoreMedia','CoreVideo','CoreGraphics','QuartzCore'
   s.ios.libraries = 'iconv', 'c++', 'z'
 
 end
