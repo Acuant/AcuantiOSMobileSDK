@@ -47,19 +47,19 @@
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>13E230</string>
+	<string>14A5297c</string>
 	<key>DTPlatformName</key>
 	<string>iphoneos</string>
 	<key>DTPlatformVersion</key>
-	<string>9.3</string>
+	<string>10.0</string>
 	<key>DTSDKBuild</key>
-	<string>13E230</string>
+	<string>14A5297c</string>
 	<key>DTSDKName</key>
-	<string>iphoneos9.3</string>
+	<string>iphoneos10.0</string>
 	<key>DTXcode</key>
-	<string>0730</string>
+	<string>0800</string>
 	<key>DTXcodeBuild</key>
-	<string>7D175</string>
+	<string>8S162m</string>
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>UIDeviceFamily</key>

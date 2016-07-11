@@ -398,5 +398,6 @@ typedef enum{
                   withOptions:(AcuantCardProcessRequestOptions*)options;
 
 -(BOOL)isFacialEnabled;
+-(BOOL)isAssureIDAllowed;
 
 @end
