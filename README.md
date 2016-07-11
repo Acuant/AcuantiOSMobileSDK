@@ -53,7 +53,8 @@ Note : GitHub has recently changed the versioning for large files. To be able to
 
 		platform :ios, '8.0'
 
-		pod 'AcuantMobileSDK', '~> 4.9.1'
+		pod 'AcuantMobileSDK', '~> <version number>' 
+		(example pod 'AcuantMobileSDK', '~> 4.9')
 
 - Execute 'Pod install' to add the AcuantMobileSDK
 - If it is a Swift project then add the follwoing imports in the Objective-C bridging file
