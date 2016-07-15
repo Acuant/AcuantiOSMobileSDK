@@ -1697,4 +1697,4 @@ Acuant iOS MobileSDK version 4.9.1
 
 Changes:
 
-* Fixed the cocoapod integration issue
+* Changes to internal directory structure
