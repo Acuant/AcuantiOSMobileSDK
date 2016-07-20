@@ -3,7 +3,7 @@
 Acuant iOS Mobile SDK API
 ==================
 
-Last updated on – 07/11/2016
+Last updated on – 07/20/2016
 
 # Introduction
 
@@ -54,7 +54,7 @@ Note : GitHub has recently changed the versioning for large files. To be able to
 		platform :ios, '8.0'
 
 		pod 'AcuantMobileSDK', '~> <version number>' 
-		(example pod 'AcuantMobileSDK', '~> 4.9')
+		(example pod 'AcuantMobileSDK', '~> 4.9.2')
 
 - Execute 'Pod install' to add the AcuantMobileSDK
 - If it is a Swift project then add the follwoing imports in the Objective-C bridging file
@@ -279,21 +279,25 @@ If the proper card size is not set, MobileSDK will not be able to process the ca
 
 **For Driver's License Cards**
 
-> -(void)showCameraInterface{
-> 
-> \[\_instance setWidth:1250\];
+	-(void)showCameraInterface{
+		if(_instance.isAssureIDAllowed){  	//If AssureId is enabled
+        	[_instance setWidth:2024];
+    	}else{
+        	[_instance setWidth:1250];     	//If AssureId is not enabled
+    	}
+    }
 
 **For Medical Insurance Cards**
 
-> -(void)showCameraInterface{
-> 
-> \[\_instance setWidth:1012\];
+	-(void)showCameraInterface{ 
+		[_instance setWidth:1012];
+	}
 
 **For Passport Documents**
 
-> -(void)showCameraInterface{
-> 
-> \[\_instance setWidth:1478\];
+	-(void)showCameraInterface{
+		[_instance setWidth:1478];
+	}
 
 ### Optional methods to customize the appearance and final message on the camera screen. 
 
@@ -1693,8 +1697,8 @@ Open the Info.plist file inside you can find the version number
 
 # Change Log
 
-Acuant iOS MobileSDK version 4.9.1
+Acuant iOS MobileSDK version 4.9.2
 
 Changes:
 
-* Changes to internal directory structure
+* Image size optimization for AssureID document authentication feature

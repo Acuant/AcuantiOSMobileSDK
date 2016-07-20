@@ -63,11 +63,6 @@
     [super viewDidAppear:animated];
 }
 
--(void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
-    self.result = nil;
-}
-
 - (IBAction)backAction:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -175,7 +170,7 @@
         x = 0;
         y = 0;
         width = viewSize.width - 40;
-        height = messageSize.height + 10;
+        height = messageSize.height + 50;
         [_resultText setFrame:CGRectMake(x, y, width, height)];
         [_resultText setText:_result];
         
@@ -257,7 +252,7 @@
         x = 0;
         y = 0;
         width = viewSize.width - 40;
-        height = messageSize.height + 10;
+        height = messageSize.height + 50;
         [_resultText setFrame:CGRectMake(x, y, width, height)];
         [_resultText setText:_result];
         
