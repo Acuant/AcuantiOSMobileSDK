@@ -129,10 +129,10 @@
         _imagePreview.frame = CGRectMake(0, 0, imageWidth, imageHeight);
         _imagePreview.center = centerPoint;
         
-        _retryButton.frame = CGRectMake(_imagePreview.frame.origin.x,_imagePreview.frame.origin.y+_imagePreview.frame.size.height+space,_imagePreview.frame.size.width,_retryButton.frame.size.height);
+        _confirmButton.frame = CGRectMake(_imagePreview.frame.origin.x,_imagePreview.frame.origin.y+_imagePreview.frame.size.height+space,_imagePreview.frame.size.width,_retryButton.frame.size.height);
         
         
-        _confirmButton.frame = CGRectMake(_retryButton.frame.origin.x,_retryButton.frame.origin.y+_retryButton.frame.size.height+space,_retryButton.frame.size.width,_confirmButton.frame.size.height);
+        _retryButton.frame = CGRectMake(_confirmButton.frame.origin.x,_confirmButton.frame.origin.y+_confirmButton.frame.size.height+space,_confirmButton.frame.size.width,_confirmButton.frame.size.height);
         
         _messageLabel.frame = CGRectMake(_imagePreview.frame.origin.x,_imagePreview.frame.origin.y-space-_messageLabel.frame.size.height,_imagePreview.frame.size.width,_messageLabel.frame.size.height);
         

@@ -415,7 +415,7 @@
     if (self.cardType == AcuantCardTypePassportCard) {
         [self.instance setWidth:1478];
     }else if (self.cardType == AcuantCardTypeMedicalInsuranceCard) {
-        [self.instance setWidth:1012];
+        [self.instance setWidth:1500];
     }else{
         if(self.instance.isAssureIDAllowed){
             [self.instance setWidth:2024];
