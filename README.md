@@ -7,9 +7,18 @@ Last updated on – 08/05/2016
 
 # Introduction
 
-The AcuantMobileSDK.framework is a Cocoa Framework.  Processing of the captured images takes place via Acuant’s Web Services.  Acuant’s Web Services offer fast data extraction and authentication with zero downtime. Benefits:
+The AcuantMobileSDK.framework is a Cocoa Framework.  Processing of the captured images takes place via Acuant’s Web Services.  Acuant’s Web Services offer fast data extraction and authentication with zero downtime. 
 
-* 	Process Enhancement: Faster data extraction and authentication process images via Acuant’s Web Services.* 	Easy to set up and deploy.* 	No maintenance and support: All maintenance and updates are done on Acuant servers.* 	Secured Connection: Secured via SSL and HTTPS AES 256-bit encryption.Acuant Web Services supports data extraction from of drivers licenses, state IDs, other govt issued IDs, custom IDs, driver’s license barcodes, passports, medical insurance cards etc. It also supports document authentication and facial recognition to verify and authenticate the identity. 
+Benefits:
+
+
+* 	Process Enhancement: Faster data extraction and authentication process images via Acuant’s Web Services.
+* 	Easy to set up and deploy.
+* 	No maintenance and support: All maintenance and updates are done on Acuant servers.
+* 	Secured Connection: Secured via SSL and HTTPS AES 256-bit encryption.
+
+Acuant Web Services supports data extraction from of drivers licenses, state IDs, other govt issued IDs, custom IDs, driver’s license barcodes, passports, medical insurance cards etc. It also supports document authentication and facial recognition to verify and authenticate the identity. 
+
 
 For IDs from Asia, Australia, Europe, South America, Africa – we are support dd-mm-yyyy date format.
 
@@ -1030,17 +1039,312 @@ If using the AcuantCardTypeDriversLicenseCard, add the following code:
 
 
 	#pragma mark -
-	#pragma mark CardProcessing Delegate	-(void)didFinishProcessingCardWithResult:(AcuantCardResult *)result{    	self.view.userInteractionEnabled = YES;    	[SVProgressHUD dismiss];    	NSString *message;    	UIImage *faceimage;    	UIImage *signatureImage;    	UIImage *frontImage;    	UIImage *backImage;    	AcuantDriversLicenseCard *data = (AcuantDriversLicenseCard*)result;    	message [NSString stringWithFormat:@"First Name - %@ \nMiddle Name - %@ \nLast Name - 		%@ 	\nName Suffix - %@ \nAuthentication Result - %@ \nAunthentication Summary - %@ 		\nID - 	%@ 	\nLicense - %@ \nDOB Long - %@ \nDOB Short - %@ \nDate Of Birth Local - %@ 		\nIssue 	Date 	Long - %@ \nIssue Date Short - %@ \nIssue Date Local - %@ 		\nExpiration Date Long - 	%@ 	\nExpiration Date Short - %@ \nEye Color - %@ \nHair 		Color - %@ \nHeight - %@ \nWeight 	- 	%@ \nAddress - %@ \nAddress 2 - %@ \nAddress 3 		- %@ \nAddress 4 - %@ \nAddress 5 - %@ 		\nAddress 6  - %@ \nCity - %@ \nZip - %@ \nState - %@ \nCounty - %@ \nCountry Short - 		%@ 	\nCountry Long - %@ \nClass - %@ \nRestriction - %@ \nSex - %@ \nAudit - %@ 		\nEndorsements 	- %@ \nFee - %@ \nCSC - %@ \nSigNum - %@ \nText1 - %@ \nText2 - %@ 		\nText3 - %@ \nType - 	%@ \nDoc Type - %@ \nFather Name - %@ \nMother Name - %@ 		\nNameFirst_NonMRZ - %@ 	\nNameLast_NonMRZ - %@ \nNameLast1 - %@ \nNameLast2 - %@ 		\nNameMiddle_NonMRZ - %@ 	\nNameSuffix_NonMRZ - %@ \nDocument Detected Name - %@ 		\nDocument Detected Name Short - %@ 	\nNationality - %@ \nOriginal - %@ 		\nPlaceOfBirth - %@ \nPlaceOfIssue - %@ \nSocial 		Security - %@ \nIsAddressCorrected - %d \nIsAddressVerified - %d", data.nameFirst, 		data.nameMiddle, data.nameLast, data.nameSuffix,data.authenticationResult,[self 		arrayToString:data.authenticationResultSummaryList], data.licenceId, data.license, 		data.dateOfBirth4, data.dateOfBirth, data.dateOfBirthLocal, data.issueDate4, 		data.issueDate, data.issueDateLocal, data.expirationDate4, data.expirationDate, 		data.eyeColor, data.hairColor, data.height, data.weight, data.address, data.address2, 		data.address3, data.address4, data.address5, data.address6, data.city, data.zip, 		data.state, data.county, data.countryShort, data.idCountry, data.licenceClass, 		data.restriction, data.sex, data.audit, data.endorsements, data.fee, data.CSC, 		data.sigNum, data.text1, data.text2, data.text3, data.type, data.docType, 		data.fatherName, 	data.motherName, data.nameFirst_NonMRZ, data.nameLast_NonMRZ, 		data.nameLast1, 	data.nameLast2, data.nameMiddle_NonMRZ, data.nameSuffix_NonMRZ, 		data.documentDetectedName, 	data.documentDetectedNameShort, data.nationality, 		data.original, data.placeOfBirth, 	data.placeOfIssue, data.socialSecurity, 		data.isAddressCorrected, data.isAddressVerified];		if (_region == AcuantCardRegionUnitedStates || _region == AcuantCardRegionCanada) {            message = [NSString stringWithFormat:@"%@ \nIsBarcodeRead - %hhd \nIsIDVerified - 			%hhd \nIsOcrRead - %hhd", message, data.isBarcodeRead, data.isIDVerified, 			data.isOcrRead];		}        	faceimage = [UIImage imageWithData:data.faceImage];    	signatureImage = [UIImage imageWithData:data.signatureImage];    	frontImage = [UIImage imageWithData:data.licenceImage];    	backImage = [UIImage imageWithData:data.licenceImageTwo]
-	}	-(void)didFailWithError:(AcuantError *)error{    	self.view.userInteractionEnabled = YES;    	[SVProgressHUD dismiss];    	NSString *message;    	switch (error.errorType) {        	case AcuantErrorTimedOut:            	message = error.errorMessage;            	break;        	case AcuantErrorUnknown:            	message = error.errorMessage;            	break;        	case AcuantErrorUnableToProcess:            	message = error.errorMessage;            	break;        	case AcuantErrorInternalServerError:            	message = error.errorMessage;            	break;        	case AcuantErrorCouldNotReachServer:            	message = error.errorMessage;            	break;        	case AcuantErrorUnableToAuthenticate:            	message = error.errorMessage;            	break;        	case AcuantErrorAutoDetectState:            	message = error.errorMessage;            	break;        	case AcuantErrorWebResponse:            	message = error.errorMessage;            	break;        	case AcuantErrorUnableToCrop:            	message = error.errorMessage;            	break;        	case AcuantErrorInvalidLicenseKey:           		message = error.errorMessage;            	break;        	case AcuantErrorInactiveLicenseKey:            	message = error.errorMessage;            	break;        	case AcuantErrorAccountDisabled:            	message = error.errorMessage;            	break;        	case AcuantErrorOnActiveLicenseKey:            	message = error.errorMessage;            	break;        	case AcuantErrorValidatingLicensekey:            	message = error.errorMessage;            	break;        	case AcuantErrorCameraUnauthorized:            	message = error.errorMessage;            	break;        	default:            	break;    	}    
-    [UIAlertController showSimpleAlertWithTitle:@"AcuantiOSMobileSDK"                                        Message:message                                    FirstButton:ButtonOK                                   SecondButton:nil                                   FirstHandler:^(UIAlertAction *action) {                                       if (tag == 1) {                                           _sideTouch = BackSide;                                           _isCameraTouched = YES;                                           [self showCameraInterface];                                       }else if(tag == 7388467) {                                           [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];                                       }                                   }                                  SecondHandler:nil                                            Tag:tag                                 ViewController:self];}
+	#pragma mark CardProcessing Delegate
+
+	-(void)didFinishProcessingCardWithResult:(AcuantCardResult *)result{
+    	self.view.userInteractionEnabled = YES;
+    	[SVProgressHUD dismiss];
+    	NSString *message;
+    	UIImage *faceimage;
+    	UIImage *signatureImage;
+    	UIImage *frontImage;
+    	UIImage *backImage;
+    	AcuantDriversLicenseCard *data = (AcuantDriversLicenseCard*)result;
+    	message [NSString stringWithFormat:@"First Name - %@ \nMiddle Name - %@ \nLast Name - 		%@ 	\nName Suffix - %@ \nAuthentication Result - %@ \nAunthentication Summary - %@ 		\nID - 	%@ 	\nLicense - %@ \nDOB Long - %@ \nDOB Short - %@ \nDate Of Birth Local - %@ 		\nIssue 	Date 	Long - %@ \nIssue Date Short - %@ \nIssue Date Local - %@ 		\nExpiration Date Long - 	%@ 	\nExpiration Date Short - %@ \nEye Color - %@ \nHair 		Color - %@ \nHeight - %@ \nWeight 	- 	%@ \nAddress - %@ \nAddress 2 - %@ \nAddress 3 		- %@ \nAddress 4 - %@ \nAddress 5 - %@ 		\nAddress 6  - %@ \nCity - %@ \nZip - %@ \nState - %@ \nCounty - %@ \nCountry Short - 		%@ 	\nCountry Long - %@ \nClass - %@ \nRestriction - %@ \nSex - %@ \nAudit - %@ 		\nEndorsements 	- %@ \nFee - %@ \nCSC - %@ \nSigNum - %@ \nText1 - %@ \nText2 - %@ 		\nText3 - %@ \nType - 	%@ \nDoc Type - %@ \nFather Name - %@ \nMother Name - %@ 		\nNameFirst_NonMRZ - %@ 	\nNameLast_NonMRZ - %@ \nNameLast1 - %@ \nNameLast2 - %@ 		\nNameMiddle_NonMRZ - %@ 	\nNameSuffix_NonMRZ - %@ \nDocument Detected Name - %@ 		\nDocument Detected Name Short - %@ 	\nNationality - %@ \nOriginal - %@ 		\nPlaceOfBirth - %@ \nPlaceOfIssue - %@ \nSocial 		Security - %@ \nIsAddressCorrected - %d \nIsAddressVerified - %d", data.nameFirst, 		data.nameMiddle, data.nameLast, data.nameSuffix,data.authenticationResult,[self 		arrayToString:data.authenticationResultSummaryList], data.licenceId, data.license, 		data.dateOfBirth4, data.dateOfBirth, data.dateOfBirthLocal, data.issueDate4, 		data.issueDate, data.issueDateLocal, data.expirationDate4, data.expirationDate, 		data.eyeColor, data.hairColor, data.height, data.weight, data.address, data.address2, 		data.address3, data.address4, data.address5, data.address6, data.city, data.zip, 		data.state, data.county, data.countryShort, data.idCountry, data.licenceClass, 		data.restriction, data.sex, data.audit, data.endorsements, data.fee, data.CSC, 		data.sigNum, data.text1, data.text2, data.text3, data.type, data.docType, 		data.fatherName, 	data.motherName, data.nameFirst_NonMRZ, data.nameLast_NonMRZ, 		data.nameLast1, 	data.nameLast2, data.nameMiddle_NonMRZ, data.nameSuffix_NonMRZ, 		data.documentDetectedName, 	data.documentDetectedNameShort, data.nationality, 		data.original, data.placeOfBirth, 	data.placeOfIssue, data.socialSecurity, 		data.isAddressCorrected, data.isAddressVerified];
+
+
+		if (_region == AcuantCardRegionUnitedStates || _region == AcuantCardRegionCanada) {
+            message = [NSString stringWithFormat:@"%@ \nIsBarcodeRead - %hhd \nIsIDVerified - 			%hhd \nIsOcrRead - %hhd", message, data.isBarcodeRead, data.isIDVerified, 			data.isOcrRead];
+		}
+    
+    	faceimage = [UIImage imageWithData:data.faceImage];
+    	signatureImage = [UIImage imageWithData:data.signatureImage];
+    	frontImage = [UIImage imageWithData:data.licenceImage];
+    	backImage = [UIImage imageWithData:data.licenceImageTwo]
+
+	}
+
+	-(void)didFailWithError:(AcuantError *)error{
+    	self.view.userInteractionEnabled = YES;
+    	[SVProgressHUD dismiss];
+    	NSString *message;
+    	switch (error.errorType) {
+        	case AcuantErrorTimedOut:
+            	message = error.errorMessage;
+            	break;
+        	case AcuantErrorUnknown:
+            	message = error.errorMessage;
+            	break;
+        	case AcuantErrorUnableToProcess:
+            	message = error.errorMessage;
+            	break;
+        	case AcuantErrorInternalServerError:
+            	message = error.errorMessage;
+            	break;
+        	case AcuantErrorCouldNotReachServer:
+            	message = error.errorMessage;
+            	break;
+        	case AcuantErrorUnableToAuthenticate:
+            	message = error.errorMessage;
+            	break;
+        	case AcuantErrorAutoDetectState:
+            	message = error.errorMessage;
+            	break;
+        	case AcuantErrorWebResponse:
+            	message = error.errorMessage;
+            	break;
+        	case AcuantErrorUnableToCrop:
+            	message = error.errorMessage;
+            	break;
+        	case AcuantErrorInvalidLicenseKey:
+           		message = error.errorMessage;
+            	break;
+        	case AcuantErrorInactiveLicenseKey:
+            	message = error.errorMessage;
+            	break;
+        	case AcuantErrorAccountDisabled:
+            	message = error.errorMessage;
+            	break;
+        	case AcuantErrorOnActiveLicenseKey:
+            	message = error.errorMessage;
+            	break;
+        	case AcuantErrorValidatingLicensekey:
+            	message = error.errorMessage;
+            	break;
+        	case AcuantErrorCameraUnauthorized:
+            	message = error.errorMessage;
+            	break;
+        	default:
+            	break;
+    	}
+    
+
+    [UIAlertController showSimpleAlertWithTitle:@"AcuantiOSMobileSDK"
+                                        Message:message
+                                    FirstButton:ButtonOK
+                                   SecondButton:nil
+                                   FirstHandler:^(UIAlertAction *action) {
+                                       if (tag == 1) {
+                                           _sideTouch = BackSide;
+                                           _isCameraTouched = YES;
+                                           [self showCameraInterface];
+                                       }else if(tag == 7388467) {
+                                           [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+                                       }
+                                   }
+                                  SecondHandler:nil
+                                            Tag:tag
+                                 ViewController:self];
+}
+
 ### For Medical Insurance Cards
 
-If using the AcuantCardTypeMedicalInsuranceCard, add the following code:	#pragma mark -	#pragma mark CardProcessing Delegate	-(void)didFinishProcessingCardWithResult:(AcuantCardResult *)result{    self.view.userInteractionEnabled = YES;    [SVProgressHUD dismiss];    NSString *message;    UIImage *faceimage;    UIImage *signatureImage;    UIImage *frontImage;    UIImage *backImage;    AcuantMedicalInsuranceCard *data = (AcuantMedicalInsuranceCard*)result;    message =[NSString stringWithFormat:@"First Name - %@ \nLast Name - %@ \nMiddle Name - %@ \nMemberID - %@ \nGroup No. - %@ \nContract Code - %@ \nCopay ER - %@ \nCopay OV - %@ \nCopay SP - %@ \nCopay UC - %@ \nCoverage - %@ \nDate of Birth - %@ \nDeductible - %@ \nEffective Date - %@ \nEmployer - %@ \nExpire Date - %@ \nGroup Name - %@ \nIssuer Number - %@ \nOther - %@ \nPayer ID - %@ \nPlan Admin - %@ \nPlan Provider - %@ \nPlan Type - %@ \nRX Bin - %@ \nRX Group - %@ \nRX ID - %@ \nRX PCN - %@ \nTelephone - %@ \nWeb - %@ \nEmail - %@ \nAddress - %@ \nCity - %@ \nZip - %@ \nState - %@", data.firstName, data.lastName, data.middleName, data.memberId, data.groupNumber, data.contractCode, data.copayEr, data.copayOv, data.copaySp, data.copayUc, data.coverage, data.dateOfBirth, data.deductible, data.effectiveDate, data.employer, data.expirationDate, data.groupName, data.issuerNumber, data.other, data.payerId, data.planAdmin, data.planProvider, data.planType, data.rxBin, data.rxGroup, data.rxId, data.rxPcn, data.phoneNumber, data.webAddress, data.email, data.fullAddress, data.city, data.zip, data.state];    frontImage = [UIImage imageWithData:data.reformattedImage];    backImage = [UIImage imageWithData:data.reformattedImageTwo];	}	-(void)didFailWithError:(AcuantError *)error{    self.view.userInteractionEnabled = YES;    [SVProgressHUD dismiss];    NSString *message;    switch (error.errorType) {        case AcuantErrorTimedOut:            message = error.errorMessage;            break;        case AcuantErrorUnknown:            message = error.errorMessage;            break;        case AcuantErrorUnableToProcess:            message = error.errorMessage;            break;        case AcuantErrorInternalServerError:            message = error.errorMessage;            break;        case AcuantErrorCouldNotReachServer:            message = error.errorMessage;            break;        case AcuantErrorUnableToAuthenticate:            message = error.errorMessage;            break;        case AcuantErrorAutoDetectState:            message = error.errorMessage;            break;        case AcuantErrorWebResponse:            message = error.errorMessage;            break;        case AcuantErrorUnableToCrop:            message = error.errorMessage;            break;        case AcuantErrorInvalidLicenseKey:            message = error.errorMessage;            break;        case AcuantErrorInactiveLicenseKey:            message = error.errorMessage;            break;        case AcuantErrorAccountDisabled:            message = error.errorMessage;            break;        case AcuantErrorOnActiveLicenseKey:            message = error.errorMessage;            break;        case AcuantErrorValidatingLicensekey:            message = error.errorMessage;            break;                case AcuantErrorCameraUnauthorized:            message = error.errorMessage;            break;                default:            break;    }    [UIAlertController showSimpleAlertWithTitle:@"AcuantiOSMobileSDK"                                        Message:message                                    FirstButton:ButtonOK                                   SecondButton:nil                                   FirstHandler:^(UIAlertAction *action) {                                       if (tag == 1) {                                           _sideTouch = BackSide;                                           _isCameraTouched = YES;                                           [self showCameraInterface];                                       }else if(tag == 7388467) {                                           [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];                                       }                                   }                                  SecondHandler:nil                                            Tag:tag                                 ViewController:self];}
+If using the AcuantCardTypeMedicalInsuranceCard, add the following code:
+
+	#pragma mark -
+	#pragma mark CardProcessing Delegate
+	-(void)didFinishProcessingCardWithResult:(AcuantCardResult *)result{
+    self.view.userInteractionEnabled = YES;
+    [SVProgressHUD dismiss];
+    NSString *message;
+    UIImage *faceimage;
+    UIImage *signatureImage;
+    UIImage *frontImage;
+    UIImage *backImage;
+    AcuantMedicalInsuranceCard *data = (AcuantMedicalInsuranceCard*)result;
+    message =[NSString stringWithFormat:@"First Name - %@ \nLast Name - %@ \nMiddle Name - %@ \nMemberID - %@ \nGroup No. - %@ \nContract Code - %@ \nCopay ER - %@ \nCopay OV - %@ \nCopay SP - %@ \nCopay UC - %@ \nCoverage - %@ \nDate of Birth - %@ \nDeductible - %@ \nEffective Date - %@ \nEmployer - %@ \nExpire Date - %@ \nGroup Name - %@ \nIssuer Number - %@ \nOther - %@ \nPayer ID - %@ \nPlan Admin - %@ \nPlan Provider - %@ \nPlan Type - %@ \nRX Bin - %@ \nRX Group - %@ \nRX ID - %@ \nRX PCN - %@ \nTelephone - %@ \nWeb - %@ \nEmail - %@ \nAddress - %@ \nCity - %@ \nZip - %@ \nState - %@", data.firstName, data.lastName, data.middleName, data.memberId, data.groupNumber, data.contractCode, data.copayEr, data.copayOv, data.copaySp, data.copayUc, data.coverage, data.dateOfBirth, data.deductible, data.effectiveDate, data.employer, data.expirationDate, data.groupName, data.issuerNumber, data.other, data.payerId, data.planAdmin, data.planProvider, data.planType, data.rxBin, data.rxGroup, data.rxId, data.rxPcn, data.phoneNumber, data.webAddress, data.email, data.fullAddress, data.city, data.zip, data.state];
+
+    frontImage = [UIImage imageWithData:data.reformattedImage];
+    backImage = [UIImage imageWithData:data.reformattedImageTwo];
+	}
+
+	-(void)didFailWithError:(AcuantError *)error{
+    self.view.userInteractionEnabled = YES;
+    [SVProgressHUD dismiss];
+    NSString *message;
+    switch (error.errorType) {
+        case AcuantErrorTimedOut:
+            message = error.errorMessage;
+            break;
+        case AcuantErrorUnknown:
+            message = error.errorMessage;
+            break;
+        case AcuantErrorUnableToProcess:
+            message = error.errorMessage;
+            break;
+        case AcuantErrorInternalServerError:
+            message = error.errorMessage;
+            break;
+        case AcuantErrorCouldNotReachServer:
+            message = error.errorMessage;
+            break;
+        case AcuantErrorUnableToAuthenticate:
+            message = error.errorMessage;
+            break;
+        case AcuantErrorAutoDetectState:
+            message = error.errorMessage;
+            break;
+        case AcuantErrorWebResponse:
+            message = error.errorMessage;
+            break;
+        case AcuantErrorUnableToCrop:
+            message = error.errorMessage;
+            break;
+        case AcuantErrorInvalidLicenseKey:
+            message = error.errorMessage;
+            break;
+        case AcuantErrorInactiveLicenseKey:
+            message = error.errorMessage;
+            break;
+        case AcuantErrorAccountDisabled:
+            message = error.errorMessage;
+            break;
+        case AcuantErrorOnActiveLicenseKey:
+            message = error.errorMessage;
+            break;
+        case AcuantErrorValidatingLicensekey:
+            message = error.errorMessage;
+            break;        
+        case AcuantErrorCameraUnauthorized:
+            message = error.errorMessage;
+            break;
+        
+        default:
+            break;
+    }
+    [UIAlertController showSimpleAlertWithTitle:@"AcuantiOSMobileSDK"
+                                        Message:message
+                                    FirstButton:ButtonOK
+                                   SecondButton:nil
+                                   FirstHandler:^(UIAlertAction *action) {
+                                       if (tag == 1) {
+                                           _sideTouch = BackSide;
+                                           _isCameraTouched = YES;
+                                           [self showCameraInterface];
+                                       }else if(tag == 7388467) {
+                                           [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+                                       }
+                                   }
+                                  SecondHandler:nil
+                                            Tag:tag
+                                 ViewController:self];
+}
+
 
 ### For Passport.
 
-If using the AcuantCardTypePassportCard, add the following code:			#pragma mark -	#pragma mark CardProcessing Delegate	-(void)didFinishProcessingCardWithResult:(AcuantCardResult *)result{    self.view.userInteractionEnabled = YES;    [SVProgressHUD dismiss];    NSString *message;    UIImage *faceimage;    UIImage *signatureImage;    UIImage *frontImage;    UIImage *backImage;    AcuantPassaportCard *data = (AcuantPassaportCard*)result;    message =[NSString stringWithFormat:@"First Name - %@ \nMiddle Name - %@ \nLast Name - %@ \nAuthentication Result - %@ \nAunthentication Summary - %@ \nPassport Number - %@ \nPersonal Number - %@ \nSex - %@ \nCountry Long - %@ \nNationality Long - %@ \nDOB Long - %@ \nIssue Date Long - %@ \nExpiration Date Long - %@ \nPlace of Birth - %@", data.nameFirst, data.nameMiddle, data.nameLast,data.authenticationResult,[self arrayToString:data.authenticationResultSummaryList], data.passportNumber, data.personalNumber, data.sex, data.countryLong, data.nationalityLong, data.dateOfBirth4, data.issueDate4, data.expirationDate4, data.end_POB];            faceimage = [UIImage imageWithData:data.faceImage];    frontImage = [UIImage imageWithData:data.passportImage];
-    }	-(void)didFailWithError:(AcuantError *)error{    self.view.userInteractionEnabled = YES;    [SVProgressHUD dismiss];    NSString *message;    switch (error.errorType) {        case AcuantErrorTimedOut:            message = error.errorMessage;            break;        case AcuantErrorUnknown:            message = error.errorMessage;            break;        case AcuantErrorUnableToProcess:            message = error.errorMessage;            break;        case AcuantErrorInternalServerError:            message = error.errorMessage;            break;        case AcuantErrorCouldNotReachServer:            message = error.errorMessage;            break;        case AcuantErrorUnableToAuthenticate:            message = error.errorMessage;            break;        case AcuantErrorAutoDetectState:            message = error.errorMessage;            break;        case AcuantErrorWebResponse:            message = error.errorMessage;            break;        case AcuantErrorUnableToCrop:            message = error.errorMessage;            break;        case AcuantErrorInvalidLicenseKey:            message = error.errorMessage;            break;        case AcuantErrorInactiveLicenseKey:            message = error.errorMessage;            break;        case AcuantErrorAccountDisabled:            message = error.errorMessage;            break;        case AcuantErrorOnActiveLicenseKey:            message = error.errorMessage;            break;        case AcuantErrorValidatingLicensekey:            message = error.errorMessage;            break;        case AcuantErrorCameraUnauthorized:            message = error.errorMessage;            break;        default:            break;    }    [UIAlertController showSimpleAlertWithTitle:@"AcuantiOSMobileSDK"                                        Message:message                                    FirstButton:ButtonOK                                   SecondButton:nil                                   FirstHandler:^(UIAlertAction *action) {                                       if (tag == 1) {                                           _sideTouch = BackSide;                                           _isCameraTouched = YES;                                           [self showCameraInterface];                                       }else if(tag == 7388467) {                                           [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];                                       }                                   }                                  SecondHandler:nil                                            Tag:tag                                 ViewController:self];	}	//Function to convert Authentication Summary list to a single NSString object	-(NSString*)arrayToString:(NSArray*)array{    	NSString* retStr = @"";    	for(NSString* str in array){        	if([retStr isEqualToString:@""]){            	retStr = str;        	}else{            	retStr = [NSString stringWithFormat:@"%@,%@",retStr,str];        	}    	}    	return retStr;	}Note : For Driving license and Passport , in order to see AssureID results, please look for these two fields : “AuthenticationResult”, “AuthenticationResultSummary”.“AuthenticationResult” can have either of the following values: Success , Failed ,Attention “AuthenticationResultSummary” will be empty for Success and Failed results. When “AuthenticationResult” will have value “Attention”, “AuthenticationResultSummary” will contain the reason for “attention’.
+If using the AcuantCardTypePassportCard, add the following code:
+		
+	#pragma mark -
+	#pragma mark CardProcessing Delegate
+	-(void)didFinishProcessingCardWithResult:(AcuantCardResult *)result{
+    self.view.userInteractionEnabled = YES;
+    [SVProgressHUD dismiss];
+    NSString *message;
+    UIImage *faceimage;
+    UIImage *signatureImage;
+    UIImage *frontImage;
+    UIImage *backImage;
+    AcuantPassaportCard *data = (AcuantPassaportCard*)result;
+    message =[NSString stringWithFormat:@"First Name - %@ \nMiddle Name - %@ \nLast Name - %@ \nAuthentication Result - %@ \nAunthentication Summary - %@ \nPassport Number - %@ \nPersonal Number - %@ \nSex - %@ \nCountry Long - %@ \nNationality Long - %@ \nDOB Long - %@ \nIssue Date Long - %@ \nExpiration Date Long - %@ \nPlace of Birth - %@", data.nameFirst, data.nameMiddle, data.nameLast,data.authenticationResult,[self arrayToString:data.authenticationResultSummaryList], data.passportNumber, data.personalNumber, data.sex, data.countryLong, data.nationalityLong, data.dateOfBirth4, data.issueDate4, data.expirationDate4, data.end_POB];
+        
+    faceimage = [UIImage imageWithData:data.faceImage];
+    frontImage = [UIImage imageWithData:data.passportImage];
+
+    }
+
+
+	-(void)didFailWithError:(AcuantError *)error{
+    self.view.userInteractionEnabled = YES;
+    [SVProgressHUD dismiss];
+    NSString *message;
+    switch (error.errorType) {
+        case AcuantErrorTimedOut:
+            message = error.errorMessage;
+            break;
+        case AcuantErrorUnknown:
+            message = error.errorMessage;
+            break;
+        case AcuantErrorUnableToProcess:
+            message = error.errorMessage;
+            break;
+        case AcuantErrorInternalServerError:
+            message = error.errorMessage;
+            break;
+        case AcuantErrorCouldNotReachServer:
+            message = error.errorMessage;
+            break;
+        case AcuantErrorUnableToAuthenticate:
+            message = error.errorMessage;
+            break;
+        case AcuantErrorAutoDetectState:
+            message = error.errorMessage;
+            break;
+        case AcuantErrorWebResponse:
+            message = error.errorMessage;
+            break;
+        case AcuantErrorUnableToCrop:
+            message = error.errorMessage;
+            break;
+        case AcuantErrorInvalidLicenseKey:
+            message = error.errorMessage;
+            break;
+        case AcuantErrorInactiveLicenseKey:
+            message = error.errorMessage;
+            break;
+        case AcuantErrorAccountDisabled:
+            message = error.errorMessage;
+            break;
+        case AcuantErrorOnActiveLicenseKey:
+            message = error.errorMessage;
+            break;
+        case AcuantErrorValidatingLicensekey:
+            message = error.errorMessage;
+            break;
+        case AcuantErrorCameraUnauthorized:
+            message = error.errorMessage;
+            break;
+        default:
+            break;
+    }
+    [UIAlertController showSimpleAlertWithTitle:@"AcuantiOSMobileSDK"
+                                        Message:message
+                                    FirstButton:ButtonOK
+                                   SecondButton:nil
+                                   FirstHandler:^(UIAlertAction *action) {
+                                       if (tag == 1) {
+                                           _sideTouch = BackSide;
+                                           _isCameraTouched = YES;
+                                           [self showCameraInterface];
+                                       }else if(tag == 7388467) {
+                                           [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+                                       }
+                                   }
+                                  SecondHandler:nil
+                                            Tag:tag
+                                 ViewController:self];
+	}
+
+
+	//Function to convert Authentication Summary list to a single NSString object
+	-(NSString*)arrayToString:(NSArray*)array{
+    	NSString* retStr = @"";
+    	for(NSString* str in array){
+        	if([retStr isEqualToString:@""]){
+            	retStr = str;
+        	}else{
+            	retStr = [NSString stringWithFormat:@"%@,%@",retStr,str];
+        	}
+    	}
+    	return retStr;
+	}
+
+Note : For Driving license and Passport , in order to see AssureID results, please look for these two fields : “AuthenticationResult”, “AuthenticationResultSummary”.
+
+“AuthenticationResult” can have either of the following values: Success , Failed ,Attention
+ 
+“AuthenticationResultSummary” will be empty for Success and Failed results. When “AuthenticationResult” will have value “Attention”, “AuthenticationResultSummary” will contain the reason for “attention’.
+
 
 #	Facial Recognition and Match Feature
 
@@ -1195,4 +1499,6 @@ Acuant iOS MobileSDK version 4.9.3
 
 Changes:
 
-* Image cropping improvements. 
+* Image cropping improvements. 
+* Updated image size to 1500 for Medical Insurance Cards only.
+
