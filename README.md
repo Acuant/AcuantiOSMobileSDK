@@ -3,7 +3,7 @@
 Acuant iOS Mobile SDK API
 ==================
 
-Last updated on – 08/05/2016
+Last updated on – 08/07/2016
 
 # Introduction
 
@@ -63,7 +63,7 @@ Note : GitHub has recently changed the versioning for large files. To be able to
 		platform :ios, '8.0'
 
 		pod 'AcuantMobileSDK', '~> <version number>' 
-		(example pod 'AcuantMobileSDK', '~> 4.9.3')
+		(example pod 'AcuantMobileSDK', '~> 4.9.4')
 
 - Execute 'Pod install' to add the AcuantMobileSDK
 - If it is a Swift project then add the follwoing imports in the Objective-C bridging file
@@ -1495,10 +1495,9 @@ Open the Info.plist file inside you can find the version number
 
 # Change Log
 
-Acuant iOS MobileSDK version 4.9.3
+Acuant iOS MobileSDK version 4.9.4
 
 Changes:
 
-* Image cropping improvements. 
-* Updated image size to 1500 for Medical Insurance Cards only.
+* Fixed podspec defect
 
