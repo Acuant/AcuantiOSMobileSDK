@@ -229,7 +229,7 @@ In order to know if the license key validation has finished or to know if it was
 
 ## SDK Configuration for card capture interface.
 
-In order to show the camera interface choose between auto capture interface, manual capture interface or barcode capture interface depending on the card type.(AcuantCardTypeMedicalInsuranceCard, AcuantCardTypeDriversLicenseCard, AcuantCardTypePassportCard).
+In order to show the camera interface choose between manual capture interface or barcode capture interface depending on the card type.(AcuantCardTypeMedicalInsuranceCard, AcuantCardTypeDriversLicenseCard, AcuantCardTypePassportCard).
 
 For AcuantCardTypeMedicalInsuranceCard you can only use the manual capture interface.
 
@@ -239,7 +239,7 @@ For IDs from USA and Canada, use manual capture interface for the front side and
 
 For IDs from South America, Europe, Asia, Australia, Africa region use manual capture interface for both front and backside.
 
-For AcuantCardTypePassportCard you can choose between auto capture interface and manual capture interface.
+For AcuantCardTypePassportCard you can choose only manual capture interface.
 
 ### In the header file where you'll be doing the parsing, add the following import.
 
@@ -267,10 +267,6 @@ Ex:
 > 
 > \[AcuantMobileSDKController initAcuantMobileSDKWithLicenseKey:licenseKey AndShowCardCaptureInterfaceInViewController:self delegate:self typeCard:\_cardType region:\_region isBarcodeSide:\_isBarcodeSide\];
 
-### Auto Card capture interface without initialization
-In order to call this function, you will need to initialize the SDK first and create an instance of the SDK to call the function (see point 4)
-
-> \[\_instance showAutoCameraInterfaceInViewController:self delegate:self cardType:\_cardType\];
 
 ### Manual Card capture interface without initialization
 In order to call this function, you will need to initialize the SDK first and create an instance of the SDK to call the function (see point 4)
