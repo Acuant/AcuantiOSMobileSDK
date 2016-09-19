@@ -1,21 +1,21 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "675F51FE8D7DE0BE37900352679400ABA7100B2D+++2E6708A",
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "675F51FE8D7DE0BE37900352679400ABA7100B2D",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
-    "3D7447CAB6C4AA1EA7BDE1AC17446129B3BFF079+++8752C22" : {
+    "675F51FE8D7DE0BE37900352679400ABA7100B2D" : {
 
     },
-    "675F51FE8D7DE0BE37900352679400ABA7100B2D+++2E6708A" : {
+    "3D7447CAB6C4AA1EA7BDE1AC17446129B3BFF079" : {
 
     }
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "3D7447CAB6C4AA1EA7BDE1AC17446129B3BFF079+++8752C22" : 0,
-    "675F51FE8D7DE0BE37900352679400ABA7100B2D+++2E6708A" : 0
+    "675F51FE8D7DE0BE37900352679400ABA7100B2D" : 9223372036854775807,
+    "3D7447CAB6C4AA1EA7BDE1AC17446129B3BFF079" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "42B5DF80-26BE-447A-BC4F-07F2631CEEFF",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "3D7447CAB6C4AA1EA7BDE1AC17446129B3BFF079+++8752C22" : "AcuantiOSMobileSDK\/",
-    "675F51FE8D7DE0BE37900352679400ABA7100B2D+++2E6708A" : "AcuantiOSMobileSDK\/"
+    "675F51FE8D7DE0BE37900352679400ABA7100B2D" : "AcuantiOSMobileSDK\/",
+    "3D7447CAB6C4AA1EA7BDE1AC17446129B3BFF079" : "AcuantiOSMobileSDK\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "AcuantiOSMobileSampleSDK",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -24,12 +24,12 @@
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/54.187.198.16\/svn\/MobileApps",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3D7447CAB6C4AA1EA7BDE1AC17446129B3BFF079+++8752C22"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3D7447CAB6C4AA1EA7BDE1AC17446129B3BFF079"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Acuant\/AcuantiOSMobileSDK.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "675F51FE8D7DE0BE37900352679400ABA7100B2D+++2E6708A"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "675F51FE8D7DE0BE37900352679400ABA7100B2D"
     }
   ]
 }
