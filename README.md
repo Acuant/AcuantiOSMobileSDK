@@ -59,6 +59,16 @@ Note : GitHub has recently changed the versioning for large files. To be able to
 After cloning the repository execute the following command to make sure all files are pulled.
 
 	git lfs pull
+	
+## Common Error
+
+If git-lfs is not setup in the build machine then GitHub doesn't download files with size larger than 100MB.Acuant's iOS SDK file is bigger than 100MB.Therefore if the following build error appears while building the iOS app, that means the SDK file is missing. 
+
+	ld: warning: ignoring file ../com.acuant.plugin.AcuantMobileSDK/AcuantMobileSDK.framework/AcuantMobileSDK, file was built for unsupported file format ( 0x76 0x65 0x72 0x73 0x69 0x6F 0x6E 0x20 0x68 0x74 0x74 0x70 0x73 0x3A 0x2F 0x2F ) which is not the architecture being linked (armv7): ../com.acuant.plugin.AcuantMobileSDK/AcuantMobileSDK.framework/AcuantMobileSDK	Undefined symbols for architecture armv7:
+	"_OBJC_CLASS_$_AcuantCardProcessRequestOptions", referenced from:
+		objc-class-ref in AcuantMobileSDK.o
+	"_OBJC_CLASS_$_AcuantMobileSDKController", referenced from:
+		objc-class-ref in AcuantMobileSDK.o	ld: symbol(s) not found for architecture armv7	clang: error: linker command failed with exit code 1 (use -v to see invocation)
 
 ### Podfile
 
