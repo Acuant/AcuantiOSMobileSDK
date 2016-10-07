@@ -124,13 +124,6 @@ typedef enum{
 - (BOOL)showFlashlightButton;
 
 /**
- Called to automatically turn on/off torch in the card capture interface based on ambient light
- @return turn on or off torch automatically
- @discussion If this method is implemented then a flashlight will be shown when required based on lighing conditions.This will override the implementation of showFlashlightButton if autoFlashlight returns YES.
- */
-- (BOOL)autoFlashlight;
-
-/**
  Called to show or not show the iPad brackets on the card capture interface
  @return show or not show the iPad brackets
  @discussion if this method is not implemented, we'll not display a brackets on the view

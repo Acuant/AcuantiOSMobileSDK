@@ -592,14 +592,6 @@ Call to show or not show the flashlight button in the card capture interface
 	     return YES;
 	} 
 
-If this method is implemented, then a flashlight will be shown when required 
-based on lighting conditions for ID caputre. This will override the 
-implementation of showFlashlightButton if autoFlashlight returns YES.
- 
-		- (BOOL)autoFlashlight{
-			return YES;
-		}
-
 Call to obtain the flashlight button position in the screen.
 
  	-(CGRect)frameForFlashlightButton{
@@ -1450,20 +1442,6 @@ Following are the parameters.
 		5. Facial liveliness time out functionality if live face is not detected. 
 
 	-	Optimized captured image size for faster uploads.
-
-	-	Added auto flash for ID capture. 
-
-			/**
-			Called to automatically turn on/off torch in the card capture 
-			interface based on ambient light
- 			@return turn on or off torch automatically
-			@discussion If this method is implemented then a flashlight will be 
-			shown when required based on lighing conditions.This will override the 
-			implementation of showFlashlightButton if autoFlashlight returns YES.
- 			*/
-			- (BOOL)autoFlashlight{
-				return YES;
-			}
 
 	-	Added API to provide custom image for Facial screen “Back” button
 					

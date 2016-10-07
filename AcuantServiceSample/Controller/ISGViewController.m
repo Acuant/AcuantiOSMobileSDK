@@ -830,10 +830,6 @@
     return string;
 }
 
--(BOOL)autoFlashlight{
-    return YES;
-}
-
 -(BOOL)showFlashlightButton{
     return YES;
 }
