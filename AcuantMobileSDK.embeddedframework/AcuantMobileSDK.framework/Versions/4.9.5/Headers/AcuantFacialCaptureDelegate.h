@@ -12,4 +12,9 @@
 @required
 -(void)didFinishFacialRecognition:(UIImage*)image;
 -(void)didCancelFacialRecognition;
+-(void)didTimeoutFacialRecognition:(UIImage*)lastImage;
+-(UIImage*)imageForFacialBackButton;
+-(int)facialRecognitionTimeout;
+-(NSAttributedString*)messageToBeShownAfterFaceRectangleAppears;
+-(CGRect)frameWhereMessageToBeShownAfterFaceRectangleAppears;
 @end

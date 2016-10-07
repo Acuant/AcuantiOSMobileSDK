@@ -15,6 +15,7 @@
 		13958D7F1CFF606D008CA3FD /* HelpScreenTip_ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 13958D7D1CFF606D008CA3FD /* HelpScreenTip_ipad.png */; };
 		13958D801CFF606D008CA3FD /* HelpScreenTip_iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 13958D7E1CFF606D008CA3FD /* HelpScreenTip_iphone.png */; };
 		139D06161D0F3A73000A6CA5 /* ConfirmationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 139D06151D0F3A73000A6CA5 /* ConfirmationViewController.xib */; };
+		13DDE9441DA5A2E300E4F5EB /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13DDE9431DA5A2E300E4F5EB /* CoreMotion.framework */; };
 		95019F221758F30A001C4F94 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95019F211758F30A001C4F94 /* UIKit.framework */; };
 		989432CB1BAAFA4000C1B95A /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432CA1BAAFA4000C1B95A /* AssetsLibrary.framework */; };
 		989432CC1BAAFBF500C1B95A /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432C61BAAF9E200C1B95A /* libc++.tbd */; };
@@ -65,6 +66,7 @@
 		13958D7D1CFF606D008CA3FD /* HelpScreenTip_ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpScreenTip_ipad.png; sourceTree = "<group>"; };
 		13958D7E1CFF606D008CA3FD /* HelpScreenTip_iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpScreenTip_iphone.png; sourceTree = "<group>"; };
 		139D06151D0F3A73000A6CA5 /* ConfirmationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmationViewController.xib; sourceTree = "<group>"; };
+		13DDE9431DA5A2E300E4F5EB /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		95019F1E1758F30A001C4F94 /* AcuantiOSMobileSampleSDK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AcuantiOSMobileSampleSDK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95019F211758F30A001C4F94 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		989432C61BAAF9E200C1B95A /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -121,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13DDE9441DA5A2E300E4F5EB /* CoreMotion.framework in Frameworks */,
 				989432DF1BAAFD8B00C1B95A /* AudioToolbox.framework in Frameworks */,
 				138CD3031D023736009CB48D /* AcuantMobileSDK.framework in Frameworks */,
 				989432DB1BAAFC8500C1B95A /* libz.tbd in Frameworks */,
@@ -178,6 +181,7 @@
 		95019F201758F30A001C4F94 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				13DDE9431DA5A2E300E4F5EB /* CoreMotion.framework */,
 				138CD2FB1D023736009CB48D /* AcuantMobileSDK.embeddedframework */,
 				989432DE1BAAFD8B00C1B95A /* AudioToolbox.framework */,
 				989432DA1BAAFC8500C1B95A /* libz.tbd */,

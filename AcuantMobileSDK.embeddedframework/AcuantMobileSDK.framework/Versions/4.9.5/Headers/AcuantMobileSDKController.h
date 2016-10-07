@@ -124,6 +124,13 @@ typedef enum{
 - (BOOL)showFlashlightButton;
 
 /**
+ Called to automatically turn on/off torch in the card capture interface based on ambient light
+ @return turn on or off torch automatically
+ @discussion If this method is implemented then a flashlight will be shown when required based on lighing conditions.This will override the implementation of showFlashlightButton if autoFlashlight returns YES.
+ */
+- (BOOL)autoFlashlight;
+
+/**
  Called to show or not show the iPad brackets on the card capture interface
  @return show or not show the iPad brackets
  @discussion if this method is not implemented, we'll not display a brackets on the view
@@ -397,7 +404,25 @@ typedef enum{
                  withDelegate:(id<AcuantMobileSDKControllerProcessingDelegate>)delegate
                   withOptions:(AcuantCardProcessRequestOptions*)options;
 
+
+/**
+ Use this method to do facial match.
+ @param selfieImage The captured selfie Image.
+ @param imageTwo Face Image from ID or Passport card
+ @param delegate the delegate of the process request
+ @param options the options of the process request.
+ @discussion you must always provide a selfieImage and a face image to match
+ @discussion use the options object to indicate the type as AcuantCardTypeFacial. Processing will fail if you don't provide this parameter.
+ @discussion you're encourage to provide a delegate to be informed about what happened with your processing request. You can change the delegate using the cardProcessingDelegate property of this class.
+ @discussion you should call this method only once and wait until your delegate is informed. If you call this method while we're already processing a card, we'll ignore your second call.
+ */
+-(void)validatePhotoOne:(UIImage *)selfieImage
+              withImage:(NSData *)imageTwo
+           withDelegate:(id<AcuantMobileSDKControllerProcessingDelegate>)delegate
+            withOptions:(AcuantCardProcessRequestOptions*)option;
+
 -(BOOL)isFacialEnabled;
 -(BOOL)isAssureIDAllowed;
+-(void)setLiveFace:(BOOL)liveFace;
 
 @end

@@ -16,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *frontImageView;
 @property (strong, nonatomic) IBOutlet UIImageView *backImageView;
 @property (strong, nonatomic) UIImage *faceImage;
+@property (strong, nonatomic) NSData *faceImageData;
 @property (strong, nonatomic) UIImage *signatureImage;
 @property (strong, nonatomic) UIImage *frontImage;
 @property (strong, nonatomic) UIImage *backImage;

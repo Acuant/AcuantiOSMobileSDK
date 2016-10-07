@@ -19,6 +19,8 @@
 #import <AcuantMobileSDK/AcuantFacialRecognitionViewController.h>
 #import "ConfirmationViewController.h"
 
+#define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
+
 @interface ISGViewController () <UITextFieldDelegate,AcuantMobileSDKControllerCapturingDelegate, AcuantMobileSDKControllerProcessingDelegate, ISGRegionViewControllerDelegate,AcuantFacialCaptureDelegate>{
     NSString* resultMessage;
 }
@@ -133,7 +135,6 @@
     _TID = @"";
     self.cardType = AcuantCardTypeMedicalInsuranceCard;
     self.isBarcodeSide = NO;
-    _isFacialFlow = NO;
     [self.frontImage setImage:nil];
     [self.frontImageLabel setText:@"Tap to capture front side"];
     [self.backImage setImage:nil];
@@ -220,7 +221,7 @@
     self.view.userInteractionEnabled = NO;
     resultMessage = @"";
     _TID = @"";
-    if(!_isFacialFlow){
+    if(!_instance.isFacialEnabled || self.cardType == AcuantCardTypeMedicalInsuranceCard){
         [SVProgressHUD showWithStatus:@"Capturing Data"];
     }
     
@@ -330,7 +331,7 @@
                     [self.medicalInsuranceButton setFrame:CGRectMake(236, 75, 83, 24)];
                 }else if ([[UIDevice currentDevice]resolution] == UIDeviceResolution_iPhoneRetina47){
                     [self.driverLicenseButton setFrame:CGRectMake(12, 75, 97, 24)];
-                    [self.passportButton setFrame:CGRectMake(137, 75, 60, 24)];
+                    [self.passportButton setFrame:CGRectMake(165, 75, 60, 24)];
                     [self.medicalInsuranceButton setFrame:CGRectMake(276, 75, 83, 24)];
                 }else if ([[UIDevice currentDevice]resolution] == UIDeviceResolution_iPhoneRetina55){
                     [self.driverLicenseButton setFrame:CGRectMake(12, 75, 97, 24)];
@@ -723,8 +724,26 @@
 
 //Method to bring up the Selfie capturing interface
 - (void)showSelfiCaptureInterface{
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    CGRect messageFrame = CGRectMake(0,50,screenWidth,20);
+    
+    NSMutableAttributedString* message = [[NSMutableAttributedString alloc] initWithString:@"Get closer until Red Rectangle appears and Blink Slowly"];
+    [message addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, message.length)];
+    NSRange range=[message.string rangeOfString:@"Red Rectangle"];
+    UIFont *font = [UIFont systemFontOfSize:13];
+    UIFont *boldFont = [UIFont boldSystemFontOfSize:14];
+    
+    if(IS_IPHONE_5){
+        font = [UIFont systemFontOfSize:11];
+        boldFont = [UIFont boldSystemFontOfSize:12];
+    }
+    [message addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:range];
+    [message addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, message.length)];
+    [message addAttribute:NSFontAttributeName value:boldFont range:range];
+    
     [AcuantFacialRecognitionViewController
- presentFacialCatureInterfaceWithDelegate:self inViewController:self withCancelButton:YES withWatherMark:@"Powered by Acuant" withBlinkMessage:@"Blink Slowly" inRect:CGRectZero andFontSize:17];
+ presentFacialCatureInterfaceWithDelegate:self withSDK:_instance inViewController:self withCancelButton:YES withWatherMark:@"Powered by Acuant" withBlinkMessage:message inRect:messageFrame];
 }
 
 
@@ -775,6 +794,11 @@
     return image;
 }
 
+- (UIImage*)imageForFacialBackButton{
+    UIImage *image = [UIImage imageNamed:@"BackButton.png"];
+    return image;
+}
+
 //- (CGRect)frameForBackButton
 // {
 // NSLog(@"reached frameForBackButton");
@@ -806,9 +830,14 @@
     return string;
 }
 
--(BOOL)showFlashlightButton{
-    return NO;
+-(BOOL)autoFlashlight{
+    return YES;
 }
+
+-(BOOL)showFlashlightButton{
+    return YES;
+}
+
 
 -(UIImage*)imageForFlashlightOffButton{
     return nil;
@@ -825,7 +854,7 @@
             //Selfie Image
             UIImage *frontSideImage = image;
             //DL Photo
-            UIImage *backSideImage =_resultViewController.faceImage;
+            NSData *dlPhoto =_resultViewController.faceImageData;
             
             //Obtain the default AcuantCardProcessRequestOptions object for the type of card you want to process (License card for this example)
             AcuantCardProcessRequestOptions *options = [AcuantCardProcessRequestOptions defaultRequestOptionsForCardType:AcuantCardTypeFacial];
@@ -843,11 +872,9 @@
             options.imageSource = 101;
             
             // Now, perform the request
-            [self.instance processFrontCardImage:frontSideImage
-                                   BackCardImage:backSideImage
-                                   andStringData:nil
-                                    withDelegate:self
-                                     withOptions:options];
+            [self.instance validatePhotoOne:frontSideImage withImage:dlPhoto
+                      withDelegate:self
+                       withOptions:options];
 
         });
     });
@@ -859,6 +886,21 @@
     [self presentResultView];
 }
 
+-(void)didTimeoutFacialRecognition:(UIImage*)lastImage{
+    [self didFinishFacialRecognition:lastImage];
+}
+
+-(int)facialRecognitionTimeout{
+    return 20; // returns timeout in seconds
+}
+
+-(NSAttributedString*)messageToBeShownAfterFaceRectangleAppears{
+    return [[NSAttributedString alloc] initWithString:@"Analyzing.." attributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor] }];
+}
+
+-(CGRect)frameWhereMessageToBeShownAfterFaceRectangleAppears{
+    return CGRectZero; // By default the message will be shown below the instruction message
+}
 #pragma mark -
 #pragma mark CardProcessing Delegate
 
@@ -890,11 +932,12 @@
 }
 
 -(void)didFinishProcessingCardWithResult:(AcuantCardResult *)result{
-    if(!_isFacialFlow){
+    if(!_instance.isFacialEnabled || self.cardType == AcuantCardTypeMedicalInsuranceCard){
         self.view.userInteractionEnabled = YES;
         [SVProgressHUD dismiss];
     }
     UIImage *faceimage;
+    NSData  *faceImageData;
     UIImage *signatureImage;
     UIImage *frontImage;
     
@@ -918,6 +961,7 @@
         }
         
         faceimage = [UIImage imageWithData:data.faceImage];
+        faceImageData = data.faceImage;
         signatureImage = [UIImage imageWithData:data.signatureImage];
         frontImage = [UIImage imageWithData:data.licenceImage];
         backImage = [UIImage imageWithData:data.licenceImageTwo];
@@ -930,6 +974,7 @@
         }
         
         faceimage = [UIImage imageWithData:data.faceImage];
+        faceImageData = data.faceImage;
         frontImage = [UIImage imageWithData:data.passportImage];
         signatureImage = [UIImage imageWithData:data.signImage];
     }else{
@@ -942,7 +987,9 @@
         _resultViewController = [[ISGResultScreenViewController alloc]initWithNibName:@"CSSNResultScreen_iPad" bundle:nil];
     }
     _resultViewController.result = resultMessage;
+    
     _resultViewController.faceImage = faceimage;
+    _resultViewController.faceImageData = faceImageData;
     _resultViewController.signatureImage = signatureImage;
     _resultViewController.frontImage = frontImage;
     _resultViewController.backImage = backImage;
@@ -953,12 +1000,13 @@
 
 -(void)presentResultView{
     if(!_capturingData && !_validatingSelfie){
+        self.view.userInteractionEnabled = YES;
         [self presentViewController:_resultViewController animated:YES completion:nil];
     }
 }
 
 -(void)captureSelfie{
-    if(_instance.isFacialEnabled){
+    if(_instance.isFacialEnabled && self.cardType != AcuantCardTypeMedicalInsuranceCard){
         _validatingSelfie = YES;
         [UIAlertController showSimpleAlertWithTitle:@"AcuantiOSMobileSDK"
                                             Message:@"Please position your face in front of the front camera and blink when red rectangle appears."
@@ -967,7 +1015,9 @@
                                        FirstHandler:^(UIAlertAction *action) {
                                            [self showSelfiCaptureInterface];
                                        }
-                                      SecondHandler:nil
+                                      SecondHandler:^(UIAlertAction *action){
+                                          self.view.userInteractionEnabled = YES;
+                                      }
                                                 Tag:1
                                      ViewController:self
                                         Orientation:UIDeviceOrientationUnknown];

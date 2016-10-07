@@ -3,7 +3,7 @@
 Acuant iOS Mobile SDK API
 ==================
 
-Last updated on – 08/07/2016
+Last updated on – 10/06/2016
 
 # Introduction
 
@@ -84,29 +84,26 @@ If git-lfs is not setup then GitHub doesn't download of large files. Therefore, 
 		platform :ios, '8.0'
 
 		pod 'AcuantMobileSDK', '~> <version number>' 
-		(example pod 'AcuantMobileSDK', '~> 4.9.4')
+		(example pod 'AcuantMobileSDK', '~> 4.9.5')
 
 - Execute 'Pod install' to add the AcuantMobileSDK
 - If it is a Swift project then add the follwoing imports in the Objective-C bridging file
 - *Apple Reference:* <https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html>
  
->	
->	
->
-	#import <Foundation/Foundation.h>
-	#import <UIKit/UIKit.h>
-	#import "AcuantMobileSDK/AcuantCardProcessRequestOptions.h"
-	#import "AcuantMobileSDK/AcuantCardRegion.h"
-	#import "AcuantMobileSDK/AcuantCardResult.h"
-	#import "AcuantMobileSDK/AcuantCardType.h"
-	#import "AcuantMobileSDK/AcuantDriversLicenseCard.h"
-	#import "AcuantMobileSDK/AcuantError.h"
-	#import "AcuantMobileSDK/AcuantFacialCaptureDelegate.h"
-	#import "AcuantMobileSDK/AcuantFacialData.h"
-	#import "AcuantMobileSDK/AcuantFacialRecognitionViewController.h"
-	#import "AcuantMobileSDK/AcuantMedicalInsuranceCard.h"
-	#import "AcuantMobileSDK/AcuantMobileSDKController.h"
-	#import "AcuantMobileSDK/AcuantPassaportCard.h"
+ 		#import <Foundation/Foundation.h>
+		#import <UIKit/UIKit.h>
+		#import "AcuantMobileSDK/AcuantCardProcessRequestOptions.h"
+		#import "AcuantMobileSDK/AcuantCardRegion.h"
+		#import "AcuantMobileSDK/AcuantCardResult.h"
+		#import "AcuantMobileSDK/AcuantCardType.h"
+		#import "AcuantMobileSDK/AcuantDriversLicenseCard.h"
+		#import "AcuantMobileSDK/AcuantError.h"
+		#import "AcuantMobileSDK/AcuantFacialCaptureDelegate.h"
+		#import "AcuantMobileSDK/AcuantFacialData.h"
+		#import "AcuantMobileSDK/AcuantFacialRecognitionViewController.h"
+		#import "AcuantMobileSDK/AcuantMedicalInsuranceCard.h"
+		#import "AcuantMobileSDK/AcuantMobileSDKController.h"
+		#import "AcuantMobileSDK/AcuantPassaportCard.h"
 
 
 ##  Add AcuantMobileSDK.embeddedframework on each project 
@@ -142,6 +139,8 @@ Add following frameworks.
 
 - QuartzCore.framework.
 
+- CoreMotion.framework
+
 Add following libraries
 
 - libc++.tdb.
@@ -166,20 +165,18 @@ Click on “Build Settings”.
 
 #### Change following targets
 
-> Set “C Language Dialect” with GNU99
->
-> Set “C++ Language Dialect” with Compiler Default
->
-> Set “C++ Standard Library” with Compiler Default
+	Set “C Language Dialect” with GNU99
+	Set “C++ Language Dialect” with Compiler Default
+	Set “C++ Standard Library” with Compiler Default
 
 #### Change following flags
 
-> Add on “GCC\_PREPROCESSOR\_DEFINITIONS” = CVLIB\_IMG\_NOCODEC
+	Add on “GCC_PREPROCESSOR_DEFINITIONS” = CVLIB_IMG_NOCODEC
 
 ## Integration with Objective-C.
 Add the import header in your appDelegate’s header file.
 
-> \#import &lt;AcuantMobileSDK/AcuantMobileSDKController.h&gt;
+	#import <AcuantMobileSDK/AcuantMobileSDKController.h>
 
 ## Integration with Swift
 
@@ -194,11 +191,9 @@ Create this bridge is very simple, after you add an Objective-C file, the Xcode 
 
 In order to activate the license key, use the following method:
 
-> -((IBAction)activateAction:(id)sender {
-> 
-> \[\_instance activateLicenseKey:\_licenseKeyText.text\];
-> 
-> }
+	-((IBAction)activateAction:(id)sender {
+		[_instance activateLicenseKey:_licenseKeyText.text];
+	}
 
 **Note:** The license key only needs to be activated once. Execute this method only one time. Some licensees are issued by Acuant pre-activated and don’t need further actions.
 
@@ -208,9 +203,9 @@ In order to activate the license key, use the following method:
 ## With license key
 In the below call, license key is validated and instance is created. 
 
->//Obtain the main controller instance
->
-> \_instance = \[AcuantMobileSDKController initAcuantMobileSDKWithLicenseKey:@"MyLicensekey" andDelegate:self\];
+	//Obtain the main controller instance
+	_instance = [AcuantMobileSDKController initAcuantMobileSDKWithLicenseKey:@"MyLicensekey"
+	andDelegate:self];
 
 **Note:** This method verifies if the license key is valid and it returns an instance that can be used to reference the methods. We recommend that you create one instance per session in order to optimize your resources.
 
@@ -218,9 +213,10 @@ In the below call, license key is validated and instance is created.
 
 In the below call, license key is validated, the instance is created with the specified cloud address if you are hosting Acuant web services in your own data center. By default, iOS MobileSDK communicates with the Acuant data center. 
 
-> //Obtain the main controller instance
-> 
-> \_instance = \[AcuantMobileSDKController initAcuantMobileSDKWithLicenseKey:@"MyLicensekey" delegate:self andCloudAddress:@"cloud.myAddress.com"\];
+	//Obtain the main controller instance
+	_instance = [AcuantMobileSDKController
+	initAcuantMobileSDKWithLicenseKey:@"MyLicensekey" delegate:self
+	andCloudAddress:@"cloud.myAddress.com"];
 
 
 The cloud Address must not contain “https://”
@@ -231,20 +227,17 @@ Ex: “https://cloud.myAddress.com/” must be written “cloud.myAddress.com”
 
 ## If your instance was created previously
 
-> //Obtain the main controller instance
-> 
-> \_instance = \[AcuantMobileSDKController initAcuantMobileSDK\];
+	//Obtain the main controller instance
+	_instance = [AcuantMobileSDKController initAcuantMobileSDK];
 
 
 ##  Check if the license key validation was successful or not
 
 In order to know if the license key validation has finished or to know if it was successful, use the method below. This method is called after the instance of the MobileSDK has been created.
 
-> -(void)mobileSDKWasValidated:(BOOL)wasValidated{
-> 
->   \_wasValidated = wasValidated;
->   
-> }
+	-(void)mobileSDKWasValidated:(BOOL)wasValidated{
+		_wasValidated = wasValidated;
+	}
 
 # Capturing a card
 
@@ -264,11 +257,12 @@ For AcuantCardTypePassportCard you can choose only manual capture interface.
 
 ### In the header file where you'll be doing the parsing, add the following import.
 
-> \#import &lt;AcuantMobileSDK/AcuantMobileSDKController.h&gt;
+	#import <AcuantMobileSDK/AcuantMobileSDKController.h>
 
 ### In the same header file, implement the AcuantMobileSDKControllerCapturingDelegate.
 
-> @interface ISGViewController () &lt;AcuantMobileSDKControllerCapturingDelegate, AcuantMobileSDKControllerProcessingDelegate&gt;
+	@interface ISGViewController ()<AcuantMobileSDKControllerCapturingDelegate,
+	AcuantMobileSDKControllerProcessingDelegate>
 
 ## Card capture interface methods.
 
@@ -276,28 +270,34 @@ For AcuantCardTypePassportCard you can choose only manual capture interface.
 
 In order to initialize the SDK and show the camera interface in the same step you must use the following method:
 
-> \[AcuantMobileSDKController initAcuantMobileSDKWithLicenseKey:licenseKey AndShowCardCaptureInterfaceInViewController:self delegate:self typeCard:\_cardType region:\_region isBarcodeSide:\_isBarcodeSide\];
+	[AcuantMobileSDKController initAcuantMobileSDKWithLicenseKey:licenseKey
+	AndShowCardCaptureInterfaceInViewController:self delegate:self
+	typeCard:_cardType region:_region isBarcodeSide:_isBarcodeSide];
 
 Note: if you are going to use any customization method, then you should create a previous instance of the SDK in order to set the camera customization.
 
 Ex:
 
-> \_instance = \[AcuantMobileSDKController initAcuantMobileSDK\];
-> 
-> \[\_instance setWidth:1250\];
-> 
-> \[AcuantMobileSDKController initAcuantMobileSDKWithLicenseKey:licenseKey AndShowCardCaptureInterfaceInViewController:self delegate:self typeCard:\_cardType region:\_region isBarcodeSide:\_isBarcodeSide\];
+	_instance = [AcuantMobileSDKController initAcuantMobileSDK];
+	[_instance setWidth:1250];
+	
+	[AcuantMobileSDKController initAcuantMobileSDKWithLicenseKey:licenseKey 
+	AndShowCardCaptureInterfaceInViewController:self 
+	delegate:self
+	typeCard:_cardType region:_region isBarcodeSide:_isBarcodeSide];
 
 
 ### Manual Card capture interface without initialization
 In order to call this function, you will need to initialize the SDK first and create an instance of the SDK to call the function (see point 4)
 
-> \[\_instance showManualCameraInterfaceInViewController:self delegate:self cardType:\_cardType region:\_region andBackSide:YES\];
+	[_instance showManualCameraInterfaceInViewController:self delegate:self 
+	cardType:_cardType region:_region andBackSide:YES];
 
 ### Barcode capture interface without initialization
 In order to call this function, you will need to initialize the SDK first and create an instance of the SDK to call the function (see point 4)
 
-> \[\_instance showBarcodeCameraInterfaceInViewController:self delegate:self cardType:\_cardType region:\_region\];
+	[_instance showBarcodeCameraInterfaceInViewController:self delegate:self 
+	cardType:_cardType region:_region];
 
 ### Methods to set the size of the card. 
 
@@ -330,32 +330,37 @@ If the proper card size is not set, MobileSDK will not be able to process the ca
 Customize the initial message, default implementation says "Align and Tap" or “Tap to Focus”.  
 For Driver License Front side, Driver License Back side, Medical Insurance and Passport
 
-> \[\_instance setInitialMessage:@"Initial Message" frame:CGRectMake(0, 0, 0, 0) backgroundColor:\[UIColor blueColor\] duration:5.0 orientation:AcuantHUDLandscape \];
+	[_instance setInitialMessage:@"Initial Message" frame:CGRectMake(0, 0, 0, 0)
+	backgroundColor:[UIColor blueColor] duration:5.0 
+	orientation:AcuantHUDLandscape];
 
 Customize the capturing message, default implementation says "hold steady".
 For Driver License Front Side and Medical Insurance
 
-> \[\_instance setCapturingMessage:@"Capturing Message" frame:CGRectMake(0, 0, 0, 0) backgroundColor:\[UIColor blueColor\] duration:5.0 orientation:AcuantHUDLandscape\];
+	[_instance setCapturingMessage:@"Capturing Message"
+	frame:CGRectMake(0,0,0, 0) backgroundColor:[UIColor blueColor] duration:5.0 
+	orientation:AcuantHUDLandscape];
 
 ### Optional method to enable cropping of the barcode image. 
 
 By default it is disabled.
 
-> \[\_instance setCanCropBarcode:YES\];
+	[_instance setCanCropBarcode:YES];
 
 Note: The barcode cropped image will be received with the didCaptureImage delegate method.
 
 ### Optional method to enable the initial message on the barcode camera interface. 
 By default it is disabled.
 
-> \[\_instance setCanShowMessage:YES\];
+	[_instance setCanShowMessage:YES];
 
 ###	Optional method to pause the scanning of the barcode camera
 
-> \[\_instance pauseScanningBarcodeCamera\];
+	[_instance pauseScanningBarcodeCamera];
 
 ###	Optional method to resume the scanning of the barcode camera
-> \[\_instance resumeScanningBarcodeCamera\];
+
+	[_instance resumeScanningBarcodeCamera];
 
 
 ## AcuantMobileSDKControllerCapturingDelegate protocol to handle the capturing.
@@ -366,89 +371,55 @@ By default it is disabled.
 
 In order to retrieve the crop image captured by all card capture interface must use the following method:
 
-> -(void)didCaptureCropImage:(UIImage \*)cardImage scanBackSide:(BOOL)scanBackSide{
-> 
-> \_isCameraTouched = NO;
-> 
-> \[\_instance dismissCardCaptureInterface\];
-> 
-> \_isBarcodeSide = scanBackSide;
-> 
-> switch (\_sideTouch) {
-> 
->  case FrontSide:
->  
->   \[\_frontImage setImage:cardImage\];
->   
->   break;
->   
->  case BackSide:
->  
->   \[\_backImage setImage:cardImage\];
->   
->   \[\_frontImageLabel setText:@""\];
->   
->   \[\_backImageLabel setText:@""\];
->   
->   \[self cardHolderPositions\];
->   
->   \_frontImage.layer.masksToBounds = YES;
->   
->   \_frontImage.layer.cornerRadius = 10.0f;
->   
->   \_frontImage.layer.borderWidth = 1.0f;
->   
->   \_backImage.layer.masksToBounds = YES;
->   
->   \_backImage.layer.cornerRadius = 10.0f;
->   
->   \_backImage.layer.borderWidth = 1.0f;
->   
->   \[\_backImage setUserInteractionEnabled:YES\];
->   
->   break;
->   
->  default:
->  
->   break;
->   
-> }
-> 
-> \[\_sendRequestButton setEnabled:YES\];
-> 
-> \[\_sendRequestButton setHidden:NO\];
-> 
-> if (scanBackSide) {
-> 
->  \_sideTouch = BackSide;
->  
->  \[UIAlertController showSimpleAlertWithTitle:@"AcuantiOSMobileSDKSample"
->  
->  Message:@"Scan the backside of the license."
->         
->  FirstButton:ButtonOK
->   
->  SecondButton:nil
->  
->  FirstHandler:^(UIAlertAction \*action) {
->    
->   \_sideTouch = BackSide;
->   
->   \_isCameraTouched = YES;
->   
->   \[self showCameraInterface\];
->        
->   }
->    
->  SecondHandler:nil
->   
->  Tag:1
->             
->  ViewController:self\];
->                               
-> }
-> 
-> }
+	-(void)didCaptureCropImage:(UIImage *)cardImage scanBackSide:(BOOL)scanBackSide{
+		_isCameraTouched = NO;
+		[_instance dismissCardCaptureInterface];
+		_isBarcodeSide = scanBackSide;
+		
+		switch (_sideTouch) {
+			
+			case FrontSide:
+				[_frontImage setImage:cardImage];
+				break;
+			
+			case BackSide:
+				[_backImage setImage:cardImage];
+				[_frontImageLabel setText:@""];
+				[_backImageLabel setText:@""];
+				[self cardHolderPositions];
+				_frontImage.layer.masksToBounds = YES;
+				_frontImage.layer.cornerRadius = 10.0f;
+				_frontImage.layer.borderWidth = 1.0f;
+				_backImage.layer.masksToBounds = YES;
+				_backImage.layer.cornerRadius = 10.0f;
+				_backImage.layer.borderWidth = 1.0f;
+				[_backImage setUserInteractionEnabled:YES];
+				break;
+			
+			default:
+				break;
+		}
+		
+		[_sendRequestButton setEnabled:YES];
+		[_sendRequestButton setHidden:NO];
+		
+		if (scanBackSide) {
+		
+			_sideTouch = BackSide;
+			[UIAlertController showSimpleAlertWithTitle:@"AcuantiOSMobileSDKSample" 
+			Message:@"Scan the backside of the license." 
+			FirstButton:ButtonOK 
+			SecondButton:nil 
+			FirstHandler:^(UIAlertAction *action) {
+				_sideTouch = BackSide;
+				_isCameraTouched = YES;
+				[self showCameraInterface];
+			}
+			SecondHandler:nil
+			Tag:1
+			ViewController:self];
+		}
+	}
 
 Note: For AcuantCardTypeMedicalInsuranceCard capturing backside is optional but for AcuantCardTypeDriverLicenseCard capturing back side is a must.
 
@@ -456,353 +427,280 @@ Note: For AcuantCardTypeMedicalInsuranceCard capturing backside is optional but 
 
 In order to retrieve the original image captured by all card capture interface must use the following method:
 
-> -(void)didCaptureOriginalImage:(UIImage \*)cardImage{
-> 
->    \_originalImage = cardImage;
->    
-> }
+	-(void)didCaptureOriginalImage:(UIImage *)cardImage{
+		_originalImage = cardImage;  
+	}
 
 #### didCaptureData delegate method
 
 In order to retrieve the barcode string by the barcode capture interface for AcuantCardTypeDriverLicenseCard you must use the following method:
 
-> -(void) didCaptureData:(NSString \*)data{
-> 
-> self.barcodeString = data;
-> 
-> }
+	-(void) didCaptureData:(NSString *)data{
+		self.barcodeString = data;
+	}
 
 #### didFailWithError delegate method
 In order to inform that the scan or the process failed. You must use the following method:
 
-> -(void)didFailWithError:(AcuantError \*)error{
-> 
-> NSString \*message;
-> 
-> switch (error.errorType) {
-> 
-> case AcuantErrorTimedOut:
-> 
-> message = error.errorMessage;
-> 
-> break;
-> 
-> case AcuantErrorUnknown:
-> 
-> message = error.errorMessage;
-> 
-> break;
-> 
-> case AcuantErrorUnableToProcess:
-> 
-> message = error.errorMessage;
-> 
-> break;
-> 
-> case AcuantErrorInternalServerError:
-> 
-> message = error.errorMessage;
-> 
-> break;
-> 
-> case AcuantErrorCouldNotReachServer:
->
->if (_isCameraTouched) {
->
->showAlert = NO;
->
->}
-> 
-> message = error.errorMessage;
-> 
-> break;
-> 
-> case AcuantErrorUnableToAuthenticate:
-> 
-> message = error.errorMessage;
-> 
-> break;
-> 
-> case AcuantErrorAutoDetectState:
-> 
-> message = error.errorMessage;
-> 
-> break;
-> 
-> case AcuantErrorWebResponse:
-> 
-> message = error.errorMessage;
-> 
-> break;
-> 
-> case AcuantErrorUnableToCrop:
-> 
-> message = error.errorMessage;
-> 
-> break;
-> 
-> case AcuantErrorInvalidLicenseKey:
-> 
-> message = error.errorMessage;
-> 
-> break;
-> 
-> case AcuantErrorInactiveLicenseKey:
-> 
-> message = error.errorMessage;
-> 
-> break;
-> 
-> case AcuantErrorAccountDisabled:
-> 
-> message = error.errorMessage;
-> 
-> break;
-> 
-> case AcuantErrorOnActiveLicenseKey:
-> 
-> message = error.errorMessage;
-> 
-> break;
-> 
-> case AcuantErrorValidatingLicensekey:
-> 
-> message = error.errorMessage;
-> 
-> break;
-> 
-> case AcuantErrorCameraUnauthorized:
-> 
-> message = error.errorMessage;
-> 
-> break;
-> 
-> default:
-> 
-> break;
-> 
-> }
-> 
-> if (showAlert) {
->  
->  \[UIAlertController showSimpleAlertWithTitle:@"AcuantiOSMobileSDK"
->    
->  Message:message
->      
->  FirstButton:ButtonOK
->  
->  SecondButton:nil
->  
->  FirstHandler:^(UIAlertAction \*action) {
->                                   
->   if (tag == 1) {
->  
->    \_sideTouch = BackSide;
->   
->    \_isCameraTouched = YES;
->   
->    \[self showCameraInterface\];
->      
->   }else if(tag == 7388467) {
->  
->    \[\[UIApplication sharedApplication\] openURL:\[>NSURL URLWithString:UIApplicationOpenSettingsURLString\]>];
->      
->   }
->                                       
->  }
->  
->  SecondHandler:nil
->  
->  Tag:tag
->            
->  ViewController:self\];
->                                 
-> }
->
-> }
+	-(void)didFailWithError:(AcuantError *)error{
+		NSString *message;
+		
+		switch (error.errorType) {
+		
+			case AcuantErrorTimedOut:
+				message = error.errorMessage;
+				break;
+			
+			case AcuantErrorUnknown:
+				message = error.errorMessage;
+				break;
+				
+			case AcuantErrorUnableToProcess:
+				message = error.errorMessage;
+				break;
+				
+			case AcuantErrorInternalServerError:
+				message = error.errorMessage;
+				break;
+				
+			case AcuantErrorCouldNotReachServer:
+			
+			if (_isCameraTouched) {
+				showAlert = NO;
+			}
+			
+			message = error.errorMessage;
+			break;
+			
+			case AcuantErrorUnableToAuthenticate:
+				message = error.errorMessage;
+				break;
+				
+			case AcuantErrorAutoDetectState:
+				message = error.errorMessage;
+				break;
+				
+			case AcuantErrorWebResponse:
+				message = error.errorMessage;
+				break;
+			
+			case AcuantErrorUnableToCrop:
+				message = error.errorMessage;
+				break;
+				
+			case AcuantErrorInvalidLicenseKey:
+				message = error.errorMessage;
+				break;
+				
+			case AcuantErrorInactiveLicenseKey:
+				message = error.errorMessage;
+				break;
+				
+			case AcuantErrorAccountDisabled:
+				message = error.errorMessage;
+				break;
+				
+			case AcuantErrorOnActiveLicenseKey:
+				message = error.errorMessage;
+				break;
+				
+			case AcuantErrorValidatingLicensekey:
+				message = error.errorMessage;
+				break;
+				
+			case AcuantErrorCameraUnauthorized:
+				message = error.errorMessage;
+				break;
+				
+			default:
+				break;
+		}
+		
+		if (showAlert) {
+			[UIAlertController showSimpleAlertWithTitle:@"AcuantiOSMobileSDK" 
+			Message:message 
+			FirstButton:ButtonOK 
+			SecondButton:nil 
+			FirstHandler:^(UIAlertAction *action) {
+				if (tag == 1) {
+					_sideTouch = BackSide;
+					_isCameraTouched = YES;
+					[self showCameraInterface];
+				}else if(tag == 7388467) {
+					[[UIApplication sharedApplication] openURL:[NSURL 
+					URLWithString:UIApplicationOpenSettingsURLString]];
+				}
+			}
+		
+			SecondHandler:nil
+			Tag:tag
+			ViewController:self];
+		}
+	}
 
 ### Optional delegate methods
 
 Call to inform the delegate that the time of the barcode scan expired
-> -(void)barcodeScanTimeOut{
-> 
->     \[self showSimpleAlertWithMessage:message\];
->     
-> }
-> 
+
+		-(void)barcodeScanTimeOut{
+			[self showSimpleAlertWithMessage:message];  
+		}
+
+
 Call to show or not show the iPad brackets on the card capture interface
-> -(BOOL)showiPadBrackets{
-> 
->     return YES;
->     
-> }
-> 
+
+		-(BOOL)showiPadBrackets{
+		    return YES;   
+		}
+
+
 Call to inform the delegate that the user pressed the back button
-> -(void)didPressBackButton{
-> 
->    \[\_instance dismissCardCaptureInterface\];
->     
-> }
-> 
+		
+		-(void)didPressBackButton{
+		   	[_instance dismissCardCaptureInterface];     
+		}
+
 Call to obtain the back button image displayed in the card capture interface
-> -(UIImage\*)imageForBackButton{
-> 
->     UIImage *image = \[UIImage imageNamed:@"BackButton.png"\];
->     
->     return image;
->     
-> }
-> 
+
+
+		-(UIImage*)imageForBackButton{
+			UIImage *image = [UIImage imageNamed:@"BackButton.png"];
+			return image;   
+		}
+		 
 Call to obtain the back button position in the screen.
-> -(CGRect)frameForBackButton{
-> 
->    return CGRectZero;
->     
-> }
-> 
+
+		-(CGRect)frameForBackButton{
+		    return CGRectZero;     
+		}
+
 Call to show or not show the back button in the card capture interface
-> -(BOOL)showBackButton{
-> 
->     return YES;
->     
-> }
-> 
+
+		-(BOOL)showBackButton{
+			return YES;
+		}
+
 These methods control the attributes of the status bar when this view controller is shown.
-> -(BOOL)cameraPrefersStatusBarHidden{
-> 
->     return YES;
->     
-> }
-> 
+
+		-(BOOL)cameraPrefersStatusBarHidden{
+     		return YES;
+     	}
+
 Call to show or not show the flashlight button in the card capture interface
-> -(BOOL)showFlashlightButton{
-> 
->     return YES;
->     
-> }
-> 
+
+	-(BOOL)showFlashlightButton{
+	     return YES;
+	} 
+
+If this method is implemented, then a flashlight will be shown when required 
+based on lighting conditions for ID caputre. This will override the 
+implementation of showFlashlightButton if autoFlashlight returns YES.
+ 		- (BOOL)autoFlashlight{			return YES;		}
+
 Call to obtain the flashlight button position in the screen.
-> -(CGRect)frameForFlashlightButton{
-> 
->    return CGRectZero;
->     
-> }
-> 
+
+ 	-(CGRect)frameForFlashlightButton{
+ 
+    	return CGRectZero;
+     
+	}
 
 Call to obtain the flashlight button image displayed in the card capture interface when camera flash is turned on.
-> -(UIImage\*)imageForFlashlightButton{
->
->     UIImage \*image = [UIImage imageNamed:@"FlashlightButton.png"];
->
->     return image;
->
-> }
->
+	
+	-(UIImage*)imageForFlashlightButton{
+     	UIImage *image = [UIImage imageNamed:@"FlashlightButton.png"];
+     	return image;
+ 	}
+
 Call to obtain the flashlight button image displayed in the card capture interface when camera flash is turned off.
-> -(UIImage\*)imageForFlashlightOffButton{
->
->   UIImage \*image = [UIImage imageNamed:@"FlashlightOffButton.png"];
->
->   return image;
->
-> }
-> 
+
+	-(UIImage*)imageForFlashlightOffButton{
+		UIImage *image = [UIImage imageNamed:@"FlashlightOffButton.png"];
+		return image;
+	}
+
 Call to obtain the help image displayed in the card capture interface
-> -(UIImage\*)imageForHelpImageView{
-> 
->     UIImage \*image = \[UIImage imageNamed:@"PDF417"\];
->     
->     return \[image imageByApplyingAlpha:0.7\];
->     
-> }
-> 
+	
+	-(UIImage*)imageForHelpImageView{
+     	UIImage *image = [UIImage imageNamed:@"PDF417"];   
+		return [image imageByApplyingAlpha:0.7];    
+		
+	}
+
 Call to obtain the help image position in the screen.
-> -(CGRect)frameForHelpImageView{
-> 
->    UIImage \*image = \[UIImage imageNamed:@"PDF417"\];
->     
->    CGRect frame = CGRectMake(self.view.frame.size.width/2 - image.size.width/2, self.view.> frame.size.height/2 - image.size.height/3 , image.size.width, image.size.height);
->     
->    return frame;
->         
-> }
-> 
+
+	-(CGRect)frameForHelpImageView{
+		UIImage *image = [UIImage imageNamed:@"PDF417"]; 
+		CGRect frame = CGRectMake(self.view.frame.size.width/2 -
+		image.size.width/2, self.view.> frame.size.height/2 -
+		image.size.height/3 , image.size.width, image.size.height);
+	   	return frame;         
+	 }
+	 
 Call to obtain the watermark Message displayed in the card capture interface
-> -(NSString \*)stringForWatermarkLabel{
-> 
->    NSString *string = @"Powered by Acuant";
->     
->    return string;
->     
-> }
-> 
+
+	-(NSString*)stringForWatermarkLabel{
+    	NSString *string = @"Powered by Acuant";
+   		return string;  
+ 	}
+ 
 Call to obtain the watermark label position in the screen.
-> -(CGRect)frameForWatermarkImageView{
-> 
->    UIImage \*image = \[UIImage imageNamed:@"Logo.png"\];
->     
->    CGRect frame = CGRectMake(self.view.frame.size.width/2 - image.size.width/2, self.view.> frame.size.height/2 - image.size.height/2 + 20 , image.size.width, image.size.height);
->          
->    return frame;
->     
-> }
-> 
+		
+		-(CGRect)frameForWatermarkImageView{
+			UIImage *image = [UIImage imageNamed:@"Logo.png"];
+			CGRect frame = CGRectMake(self.view.frame.size.width/2-
+			image.size.width/2, self.view.> frame.size.height/2 -
+			image.size.height/2 + 20 , image.size.width, image.size.height);
+			return frame;   
+		}
+
 Call to obtain the barcode error message displayed in the barcode capture interface
-> -(UIDeviceOrientation)orientationForBarcodeErrorMessage{
-> 
->     return UIDeviceOrientationPortrait;
-> 
-> }
-> 
+
+	 -(UIDeviceOrientation)orientationForBarcodeErrorMessage{
+	 		return UIDeviceOrientationPortrait;
+	 }
+
 Call to obtain the barcode error message displayed in the barcode capture interface
-> -(NSString \*)stringForBarcodeErrorMessage{
-> 
->     NSString \*string = @"Unable to scan the barcode?";
->     
->     return string;
->     
-> }
-> 
+
+		-(NSString *)stringForBarcodeErrorMessage{
+			NSString *string = @"Unable to scan the barcode?";
+			return string; 
+		}
+		
 Call to obtain the barcode title error displayed in the barcode capture interface
-> -(NSString \*)stringForBarcodeTitleError{
-> 
->     NSString \*string = @"Title Sample";
->     
->     return string;
->     
-> }
-> 
+
+ 		-(NSString *)stringForBarcodeTitleError{
+     		NSString *string = @"Title Sample";
+     		return string;    
+ 		}
+ 
 Call to obtain the time elapse to appear in the barcode capture interface
-> -(int)timeForBarcodeErrorMessage{
-> 
->     return 10;
->     
-> }
-> 
+
+	-(int)timeForBarcodeErrorMessage{
+	     return 10;   
+	}
+	
+	
 Call to set if the error message is hidden or not.
-> -(BOOL)isHiddenBarcodeErrorMessage{
-> 
->     return YES;
->     
-> }
-> 
+	
+	-(BOOL)isHiddenBarcodeErrorMessage{
+	     return YES;  
+	}
+
 Call to obtain the barcode button text for the second button displayed in the barcode alert.
-> -(NSString \*)stringForBarcodeFirstButton{
-> 
->     NSString \*string = @"Yes";
->     
->     return string;
->     
-> }
-> 
+
+	-(NSString *)stringForBarcodeFirstButton{ 
+     	NSString *string = @"Yes";
+     	return string;
+    } 
+    
+    
 Call to obtain the barcode button text for the second button displayed in the barcode alert.
-> -(NSString \*)stringForBarcodeSecondButton{
-> 
->    NSString *string = @"Try Again";
->     
->    return string;
->     
-> }
+
+	-(NSString *)stringForBarcodeSecondButton{
+		NSString *string = @"Try Again";
+		return string;
+	}
 
 
 # Processing a card
@@ -811,11 +709,12 @@ Call to obtain the barcode button text for the second button displayed in the ba
 
 ### In the header file where you'll be doing the parsing, add the following import.
 
-> \#import &lt;AcuantMobileSDK/AcuantMobileSDKController.h&gt;
+	#import <AcuantMobileSDK/AcuantMobileSDKController.h>
 
 ### In the same header file, implement the AcuantMobileSDKControllerProcessingDelegate.
 
-> @interface ISGViewController () &lt;AcuantMobileSDKControllerCapturingDelegate, AcuantMobileSDKControllerProcessingDelegate&gt;
+	@interface ISGViewController () <AcuantMobileSDKControllerCapturingDelegate,
+	AcuantMobileSDKControllerProcessingDelegate>
 
 ## Card processing method.
 
@@ -823,59 +722,42 @@ Call to obtain the barcode button text for the second button displayed in the ba
 
 In order to setup AcuantCardTypeDriverLicenseCard, set the following values.
 
-> -(IBAction)sendRequest:(id)sender {
-> 
-> self.view.userInteractionEnabled = NO;
-> 
-> \[SVProgressHUD showWithStatus:@"Sending Request"\];
-> 
-> //Obtain the front side of the card image
-> 
-> UIImage \*frontSideImage = \[self frontSideCardImage\];
-> 
-> //Obtain the back side of the card image
-> 
-> UIImage \*backSideImage =\[self backSideCardImage\];
-> 
-> //Obtain the default AcuantCardProcessRequestOptions object for the type of card you want to process (Driver’s License card for this example)
-> 
-> AcuantCardProcessRequestOptions \*options = \[AcuantCardProcessRequestOptions defaultRequestOptionsForCardType: AcuantCardTypeDriversLicenseCard\];
-> 
-> //Optionally, configure the options to the desired value
-> 
-> options.autoDetectState = YES;
-> 
-> options.stateID = -1;
-> 
-> options.reformatImage = YES;
-> 
-> options.reformatImageColor = 0;
-> 
-> options.DPI = 150.0f;
-> 
-> options.cropImage = NO;
-> 
-> options.faceDetection = YES;
-> 
-> options.signatureDetection = YES;
-> 
-> options.region = \_regionID;
-> 
-> options.sourceImage = 101;
-> 
-> // Now, perform the request
-> 
-> \[\_instance processFrontCardImage:frontSideImage
-> 
-> BackCardImage:backSideImage
-> 
-> andStringData:\_barcodeString
-> 
-> withDelegate:self
-> 
-> withOptions:options\];
-> 
-> }
+		-(IBAction)sendRequest:(id)sender {
+			self.view.userInteractionEnabled = NO;
+			[SVProgressHUD showWithStatus:@"Sending Request"];
+			
+			//Obtain the front side of the card image
+			UIImage *frontSideImage = [self frontSideCardImage];
+			
+			//Obtain the back side of the card image
+			UIImage *backSideImage =[self backSideCardImage];
+			
+			//Obtain the default AcuantCardProcessRequestOptions object for the type of 
+			card you want to process (Driver’s License card for this example)
+			
+			AcuantCardProcessRequestOptions *options = [AcuantCardProcessRequestOptions 
+			defaultRequestOptionsForCardType: AcuantCardTypeDriversLicenseCard];
+			
+			//Optionally, configure the options to the desired value
+			
+			options.autoDetectState = YES;
+			options.stateID = -1;
+			options.reformatImage = YES;
+			options.reformatImageColor = 0;
+			options.DPI = 150.0f;
+			options.cropImage = NO;
+			options.faceDetection = YES;
+			options.signatureDetection = YES;
+			options.region = _regionID;
+			options.sourceImage = 101;
+			
+			// Now, perform the request
+			[_instance processFrontCardImage:frontSideImage 
+			BackCardImage:backSideImage 
+			andStringData:_barcodeString 
+			withDelegate:self
+			withOptions:options];
+		}
 
 **Explanation of the parameters:**
 
@@ -919,47 +801,33 @@ MobileSDK – 101
 
 In order to setup AcuantCardTypeMedicalInsuranceCard, just set the following values.
 
-> -(IBAction)sendRequest:(id)sender {
-> 
-> self.view.userInteractionEnabled = NO;
-> 
-> \[SVProgressHUD showWithStatus:@"Sending Request"\];
-> 
-> //Obtain the front side of the card image
-> 
-> UIImage \*frontSideImage = \[self frontSideCardImage\];
-> 
-> //Optionally, Obtain the back side of the image
-> 
-> UIImage \*backSideImage =\[self backSideCardImage\];
-> 
-> //Obtain the default AcuantCardProcessRequestOptions object for the type of card you want to process (Medical Insurance card for this example)
-> 
-> AcuantCardProcessRequestOptions \*options = \[AcuantCardProcessRequestOptions defaultRequestOptionsForCardType: AcuantCardTypeMedicalInsuranceCard\];
-> 
-> //Optionally, configure the options to the desired value
-> 
-> options.reformatImage = YES;
-> 
-> options.reformatImageColor = 0;
-> 
-> options.DPI = 150.0f;
-> 
-> options.cropImage = NO;
-> 
-> // Now, perform the request
-> 
-> \[\_instance processFrontCardImage:frontSideImage
-> 
-> BackCardImage:backSideImage
-> 
-> andStringData:nil
-> 
-> withDelegate:self
-> 
-> withOptions:options\];
-> 
-> }
+	-(IBAction)sendRequest:(id)sender {
+		self.view.userInteractionEnabled = NO;
+		[SVProgressHUD showWithStatus:@"Sending Request"];
+		
+		//Obtain the front side of the card image
+		UIImage *frontSideImage = [self frontSideCardImage];
+		
+		//Optionally, Obtain the back side of the image
+		UIImage *backSideImage =[self backSideCardImage];
+		
+		//Obtain the default AcuantCardProcessRequestOptions object for the type of card 
+		you want to process (Medical Insurance card for this example)
+		
+		AcuantCardProcessRequestOptions *options = [AcuantCardProcessRequestOptions
+		defaultRequestOptionsForCardType: AcuantCardTypeMedicalInsuranceCard];
+		
+		//Optionally, configure the options to the desired value
+		options.reformatImage = YES;
+		options.reformatImageColor = 0;
+		options.DPI = 150.0f;
+		options.cropImage = NO;
+		
+		// Now, perform the request
+		[_instance processFrontCardImage:frontSideImage 
+		BackCardImage:backSideImage andStringData:nil withDelegate:self 
+		withOptions:options];
+	}
 
 **Explanation of the parameters:**
 
@@ -981,49 +849,34 @@ Enhanced Image – 5
 
 In order to setup AcuantCardTypePassportCard, just set the following values.
 
-> -(IBAction)sendRequest:(id)sender {
-
-> self.view.userInteractionEnabled = NO;
-
-> \[SVProgressHUD showWithStatus:@"Sending Request"\];
-
-> //Obtain the front side of the card image
-
-> UIImage \*frontSideImage = \[self frontSideCardImage\];
-
-> //Obtain the default AcuantCardProcessRequestOptions object for the type of card you want to process (Passport card for this example)
-
-> AcuantCardProcessRequestOptions \*options = \[AcuantCardProcessRequestOptions defaultRequestOptionsForCardType: AcuantCardTypePasssportCard\];
-
-> //Optionally, configure the options to the desired value
-
-> options.reformatImage = YES;
-
-> options.reformatImageColor = 0;
-
-> options.DPI = 150.0f;
-
-> options.cropImage = NO;
-
-> options.faceDetection = YES;
-
-> options.signatureDetection = YES;
-
-> options.sourceImage = 101;
-
-> // Now, perform the request
-
-> \[\_instance processFrontCardImage:frontSideImage
-
-> BackCardImage:nil
-
-> andStringData:nil
-
-> withDelegate:self
-
-> withOptions:options\];
-
-> }
+	-(IBAction)sendRequest:(id)sender {
+		self.view.userInteractionEnabled = NO;
+		[SVProgressHUD showWithStatus:@"Sending Request"];
+		
+		//Obtain the front side of the card image
+		UIImage *frontSideImage = [self frontSideCardImage];
+		
+		//Obtain the default AcuantCardProcessRequestOptions object for the type
+		of card you want to process (Passport card for this example)
+		
+		AcuantCardProcessRequestOptions *options =
+		[AcuantCardProcessRequestOptions defaultRequestOptionsForCardType:
+		AcuantCardTypePasssportCard];
+		
+		//Optionally, configure the options to the desired value
+		options.reformatImage = YES;
+		options.reformatImageColor = 0;
+		options.DPI = 150.0f;
+		options.cropImage = NO;
+		options.faceDetection = YES;
+		options.signatureDetection = YES;
+		options.sourceImage = 101;
+		
+		// Now, perform the request
+		
+		[_instance processFrontCardImage:frontSideImage BackCardImage:nil 
+		andStringData:nil withDelegate:self withOptions:options];
+	}
 
 **Explanation of the parameters:**
 
@@ -1239,7 +1092,10 @@ If using the AcuantCardTypeMedicalInsuranceCard, add the following code:
                                            _isCameraTouched = YES;
                                            [self showCameraInterface];
                                        }else if(tag == 7388467) {
-                                           [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+                                           [
+                                           [UIApplication sharedApplication] openURL:											[NSURL 
+                                       URLWithString:UIApplicationOpenSettingsURLString]
+                                           ];
                                        }
                                    }
                                   SecondHandler:nil
@@ -1263,7 +1119,14 @@ If using the AcuantCardTypePassportCard, add the following code:
     UIImage *frontImage;
     UIImage *backImage;
     AcuantPassaportCard *data = (AcuantPassaportCard*)result;
-    message =[NSString stringWithFormat:@"First Name - %@ \nMiddle Name - %@ \nLast Name - %@ \nAuthentication Result - %@ \nAunthentication Summary - %@ \nPassport Number - %@ \nPersonal Number - %@ \nSex - %@ \nCountry Long - %@ \nNationality Long - %@ \nDOB Long - %@ \nIssue Date Long - %@ \nExpiration Date Long - %@ \nPlace of Birth - %@", data.nameFirst, data.nameMiddle, data.nameLast,data.authenticationResult,[self arrayToString:data.authenticationResultSummaryList], data.passportNumber, data.personalNumber, data.sex, data.countryLong, data.nationalityLong, data.dateOfBirth4, data.issueDate4, data.expirationDate4, data.end_POB];
+    message =[NSString stringWithFormat:@"First Name - %@ \nMiddle Name - %@ \nLast Name
+    - %@ \nAuthentication Result - %@ \nAunthentication Summary - %@ \nPassport Number -
+    %@ \nPersonal Number - %@ \nSex - %@ \nCountry Long - %@ \nNationality Long - %@
+    \nDOB Long - %@ \nIssue Date Long - %@ \nExpiration Date Long - %@ \nPlace of Birth -
+    %@", data.nameFirst, data.nameMiddle, data.nameLast,data.authenticationResult,[self
+    arrayToString:data.authenticationResultSummaryList], data.passportNumber,
+    data.personalNumber, data.sex, data.countryLong, data.nationalityLong,
+    data.dateOfBirth4, data.issueDate4, data.expirationDate4, data.end_POB];
         
     faceimage = [UIImage imageWithData:data.faceImage];
     frontImage = [UIImage imageWithData:data.passportImage];
@@ -1334,7 +1197,9 @@ If using the AcuantCardTypePassportCard, add the following code:
                                            _isCameraTouched = YES;
                                            [self showCameraInterface];
                                        }else if(tag == 7388467) {
-                                           [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+                                           [[UIApplication sharedApplication] openURL:
+                                           [NSURL 
+                                      URLWithString:UIApplicationOpenSettingsURLString]];
                                        }
                                    }
                                   SecondHandler:nil
@@ -1368,102 +1233,74 @@ Note : For Driving license and Passport , in order to see AssureID results, plea
 Acuant FRM (Facial Recognition Match) is a person authentication solution for mobile devices based on biometric face recognition.
 
 Acuant FRM 
->
->•	Opens the front camera
->
->•	Ensures the user is correctly placed in front of the camera
->
->•	Detects a live person 
->
->•	Detects spoofing attacks by presenting eye blink challenge 
->
->•	Acquires biometric samples
->
->•	Verifies the identity of a user
->
->•	All the steps are done in real time.
->
+
+-	Opens the front camera
+-	Ensures the user is correctly placed in front of the camera
+-	Detects a live person 
+-	Detects spoofing attacks by presenting eye blink challenge 
+-	Acquires biometric samples
+- Verifies the identity of a user
+- All the steps are done in real time.
+
 
 Benefits of Acuant FRM 
->
->•	Helps in reducing fraud by matching the face biometrics to the face image on the driver’s license or passport.
->
->•	Easy to integrate
->
->•	Secure
->
->•	Fast and convenient
->
->•	Real time checks and processing within seconds
 
-The Acuant FRM performs following checks to recognize a live face and match face biometrics to the face picture on the driver’s license or passport. 
-1)	Face position checks: check that the face is well detected, correctly centered and in a good distance from the camera.
-a)	Distance to person algorithm ensures that person’s face is at optimal distance from the front camera. 
-b)	Ensures that person is only presenting frontal face (Side faces are rejected).
-2)	Tracks eye blinks as an added layer to check for face liveliness and avoid spoofing attacks.
-3)	Captures face biometrics and matches it to the face picture on the driver’s license or passport.
+-	Helps in reducing fraud by matching the face biometrics to the face image on the driver’s license or passport.
+- Easy to integrate
+- Secure
+- Fast and convenient
+- Real time checks and processing within seconds
+
+The Acuant FRM performs following checks to recognize a live face and match face biometrics to the face picture on the driver’s license or passport.
+
+1. Face position checks: check that the face is well detected, correctly centered and in a good distance from the camera.
+
+	a.	Distance to person algorithm ensures that person’s face is at optimal distance from the front camera. 
+	
+	b.	Ensures that person is only presenting frontal face (Side faces are rejected).
+
+2.	Tracks eye blinks as an added layer to check for face liveliness and avoid spoofing attacks.
+3. Captures face biometrics and matches it to the face picture on the driver’s license or passport.
 
 Following are the APIs/Classes to use the Facial Match feature.
 
 ##a.	AcuantFacialCaptureDelegate
-This is the delegate to be used to get the call back from the SDK interface. It has two protocols
 
-i.	-(void)didFinishFacialRecognition:(UIImage*)image;
-This is called when a live face is successfully recognized. The parameter “image” contains the face image recognized by facial recognition.
+This is the delegate to be used to get the call back from the SDK interface. It has two protocols1. This is called when a live face is successfully recognized. The parameter “image” contains the face image recognized by facial recognition.		-(void)didFinishFacialRecognition:(UIImage*)image;2. This is called when the user cancels facial recognition.
+		-(void)didCancelFacialRecognition3. Sets the Facial recognition timeout in seconds.
 
-ii.	-(void)didCancelFacialRecognition
-This is called when the user cancels facial recognition.
+		-(int)facialRecognitionTimeout{			return 20;		}4. Control comes here when user taps on “Yes” on the facial timeout alert. The argument “lastImage” is the last frame image before timeout	
+		-(void)didTimeoutFacialRecognition:(UIImage*)lastImage5. API to provide custom image for Facial screen “Back” button		-(UIImage*)imageForFacialBackButton6. API to display custom message after red rectangle appears.
+
+		-(NSAttributedString*)messageToBeShownAfterFaceRectangleAppears;7. API to specify where messageToBeShownAfterFaceRectangleAppears appears on the camera screen.		
+		-(CGRect)frameWhereMessageToBeShownAfterFaceRectangleAppears;
 
 ##b.	AcuantFacialRecognitionViewController
-This class has the following utility method which can be called to present the facial recognition interface.
+This class has the following utility method which can be called to present the facial recognition interface.		+(id)presentFacialCatureInterfaceWithDelegate
+		(id<AcuantFacialCaptureDelegate>)delegate withSDK:
+		(AcuantMobileSDKController*)sdkController inViewController:
+		(UIViewController*)parentVC withCancelButton:(BOOL)cancelVisible
+		withWatherMark:(NSString* )watermarkText
+		withBlinkMessage:(NSAttributedString*)message
+		inRect:(CGRect)rect;Following are the input parameters:
 
-i.	+(id)presentFacialCatureInterfaceWithDelegate:(id<AcuantFacialCaptureDelegate>)delegate inViewController:(UIViewController*)parentVC withCancelButton:(BOOL)cancelVisible withWatherMark:(NSString* )watermarkText
-withBlinkMessage:(NSString*)message
-inRect:(CGRect)rect 
-andFontSize:(NSUInteger)size;
-
-	Following are the input parameters:
--	(id<AcuantFacialCaptureDelegate>)delegate : Delegate where the control to be returned.
--	(UIViewController*)parentVC : The parent view controller which presents the camera interface.
--	(BOOL)cancelVisible : Whether to show cancel button or not
--	(NSString* )watermarkText : Brand watermark text
--	(NSString*)message : Instruction message (For example “Blink Slowly.”)
--	(CGRect)rect : Frame in which instruction to be shown within the camera interface.
--	(NSUInteger)size : Font size of the instruction
+1.	(id<AcuantFacialCaptureDelegate>)delegate : Delegate where the control to be returned.
+2.	(AcuantMobileSDKController*)sdkController : The SDK controller.3.	(UIViewController*)parentVC : The parent view controller which presents the camera interface.4.	(BOOL)cancelVisible : Whether to show cancel button or not5.	(NSString* )watermarkText : Brand watermark text6.	(NSAttributedString *)message : Instruction message (For example “Blink Slowly.”)7.	(CGRect)rect : Frame in which instruction to be shown within the camera interface.
 
 
 ##c.	Facial Match function call
 
-The facial match function call can be made the same way as the other card processing function calls. Below is an example:
-    
-    //Face Image
-    UIImage *selfiImage = image;
-    //DL Photo
-    UIImage *faceImage =_resultViewController.faceImage;
-    
-    //Obtain the default AcuantCardProcessRequestOptions object for the type of card you want to process (License card for this example)
-    AcuantCardProcessRequestOptions *options = [AcuantCardProcessRequestOptions defaultRequestOptionsForCardType:AcuantCardTypeFacial];
-    
-    [self.instance processFrontCardImage:selfiImage
-                           BackCardImage:faceImage
-                           andStringData:nil
-                            withDelegate:self
-                             withOptions:options];
-
-i.	The first paramerter is the face image returned in the callback -(void)didFinishFacialRecognition:(UIImage*)image;
-ii.	The second parameter is the face image from the ID/Passport against which the face image needs to be matched.
-iii.	The string data has to be nil for this service call
-iv.	Delegate is the web service delegate where the control will be after the function call returns.
-v.	AcuantCardProcessRequestOptions is the last argument which is initialized with card type as AcuantCardTypeFacial as shown above.
+	/** 	Use this method to do facial match. 	@param selfieImage The captured selfie Image. 	@param imageTwo Face Image from ID or Passport card 	@param delegate the delegate of the process request	 @param options the options of the process request. 	@discussion you must always provide a selfieImage and a face image to match 	@discussion use the options object to indicate the type as AcuantCardTypeFacial. Processing will fail if you don't provide this parameter. 	@discussion you're encourage to provide a delegate to be informed about what happened with your processing request. You can change the delegate using the cardProcessingDelegate property of this class. 	@discussion you should call this method only once and wait until your delegate is informed. If you call this method while we're already processing a card, we'll ignore your second call. 	*/	-(void)validatePhotoOne:(UIImage *)selfieImage              withImage:(NSData *)imageTwo           withDelegate:(id<AcuantMobileSDKControllerProcessingDelegate>)delegate            withOptions:(AcuantCardProcessRequestOptions*)option;The facial match function call can be made the same way as the other card processing function calls. Below is an example:        	//Face Image    	UIImage *selfiImage = image;    	//DL/Passport Photo    	NSData *faceImageData =_resultViewController.faceImageData;    		//Obtain the default AcuantCardProcessRequestOptions object for the type 		of card you want to process (License card for this example)		
+		AcuantCardProcessRequestOptions *options = [AcuantCardProcessRequestOptions defaultRequestOptionsForCardType:AcuantCardTypeFacial];    	[self.instance validatePhotoOne:selfieImage withImage:faceImageData withDelegate:<Delegate the control should come back> withOptions:options];1.	The first paramerter is the face image returned in the callback -(void)didFinishFacialRecognition:(UIImage*)image;2.	The second parameter is the face image from the ID/Passport against which the face image needs to be matched.3.	Delegate is the web service delegate where the control will be after the function call returns.4.	AcuantCardProcessRequestOptions is the last argument which is initialized with card type as AcuantCardTypeFacial as shown above.
 
 
 The following delegate method will be called after the function call returns
 
-- (void)didFinishValidatingImageWithResult:(AcuantCardResult*)result{
+	- (void)didFinishValidatingImageWithResult:(AcuantCardResult*)result{
 	- (void)didFinishValidatingImageWithResult:(AcuantCardResult*)cardResult{
-    AcuantFacialData* result =(AcuantFacialData*)cardResult;
+    	AcuantFacialData* result =(AcuantFacialData*)cardResult;
 	
-}
+	}
 
 ##d.	AcuantFacialData
 Following are the parameters.
@@ -1483,38 +1320,69 @@ Following are the parameters.
 
 # Error Types
 
-AcuantErrorCouldNotReachServer = 0, //check internet connection
-AcuantErrorUnableToAuthenticate = 1, //keyLicense are incorrect
-AcuantErrorUnableToProcess = 2, //image received by the server was unreadable, take a new one
-AcuantErrorInternalServerError = 3, //there was an error in our server, try again later
-AcuantErrorUnknown = 4, //there was an error but we were unable to determine the reason, try again later
-AcuantErrorTimedOut = 5, //request timed out, may be because internet connection is too slow
-AcuantErrorAutoDetectState = 6, //Error when try to detect the state
-AcuantErrorWebResponse = 7, //the json was received by the server contain error
-AcuantErrorUnableToCrop = 8, //the received image can't be cropped.
-AcuantErrorInvalidLicenseKey = 9, //Is an invalid license key.
-AcuantErrorInactiveLicenseKey = 10, //Is an inative license key.
-AcuantErrorAccountDisabled = 11, //Is an account disabled.
-AcuantErrorOnActiveLicenseKey = 12, //there was an error on activation key.
-AcuantErrorValidatingLicensekey = 13, //The validation is still in process.
-AcuantErrorCameraUnauthorized = 14, //The privacy settings are preventing us from accessing your camera.
-AcuantErrorOpenCamera = 15 //There are an error when the camera is opened.
+	AcuantErrorCouldNotReachServer = 0, //check internet connection
+	AcuantErrorUnableToAuthenticate = 1, //keyLicense are incorrect
+	AcuantErrorUnableToProcess = 2, /* image received by the server was unreadable, take a
+	new one */
+	AcuantErrorInternalServerError = 3, /* there was an error in our server, try again
+	later */
+	AcuantErrorUnknown = 4, /*there was an error but we were unable to determine the
+	reason, try again later*/
+	AcuantErrorTimedOut = 5, /* request timed out, may be because internet connection is
+	too slow */
+	AcuantErrorAutoDetectState = 6, //Error when try to detect the state
+	AcuantErrorWebResponse = 7, //the json was received by the server contain error
+	AcuantErrorUnableToCrop = 8, //the received image can't be cropped.
+	AcuantErrorInvalidLicenseKey = 9, //Is an invalid license key.
+	AcuantErrorInactiveLicenseKey = 10, //Is an inative license key.
+	AcuantErrorAccountDisabled = 11, //Is an account disabled.
+	AcuantErrorOnActiveLicenseKey = 12, //there was an error on activation key.
+	AcuantErrorValidatingLicensekey = 13, //The validation is still in process.
+	AcuantErrorCameraUnauthorized = 14, /* The privacy settings are preventing us from 	accessing your camera.*/
+	AcuantErrorOpenCamera = 15 //There are an error when the camera is opened.
 
 
 # Miscellaneous
 ## How to check version of the SDK.
 
-Open the AcuantMobileSDK.framework 
-Open the Version folder.
-Open the folder with number version.
-Open the Resources folder 
-Open the Info.plist file inside you can find the version number 
+1.	Open the AcuantMobileSDK.framework 
+2.	Open the Version folder.
+3.	Open the folder with number version.
+4.	Open the Resources folder 
+5.	Open the Info.plist file inside you can find the version number 
 
 # Change Log
 
-Acuant iOS MobileSDK version 4.9.4
-
-Changes:
-
-* Fixed podspec defect
+- Acuant iOS MobileSDK version 4.9.5	Changes:	- Significant improvements done to ID capture interface. 
+		1. Continuous Auto focus.
+		2. Continuous brightness correction.
+		3. Flash turns on automatically in dark lighting and flash icon appears.
+		4. Hotspot and glare detection and correction.
+		5. Shake detection to avoid blurry images.	- Significant improvements done to Facial capture interface. 
+		1.	Continuous Auto focus.
+		2. Continuous brightness correction.
+		3. Improved live person detection.
+		4. Added guidance message to guide the user. 
+		5. Facial liveliness time out functionality if live face is not detected. 	-	Optimized captured image size for faster uploads.	-	Added auto flash for ID capture. 			/**			Called to automatically turn on/off torch in the card capture 
+			interface based on ambient light 			@return turn on or off torch automatically			@discussion If this method is implemented then a flashlight will be 
+			shown when required based on lighing conditions.This will override the 
+			implementation of showFlashlightButton if autoFlashlight returns YES. 			*/			- (BOOL)autoFlashlight{				return YES;			}	-	Added API to provide custom image for Facial screen “Back” button					
+			- (UIImage*)imageForFacialBackButton {
+				UIImage *image = [UIImage imageNamed:@"BackButton.png"];  		 		return image;			}	-	Added  API to display custom message after red rectangle appears on the facial screen.			`-(NSAttributedString*)    messageToBeShownAfterFaceRectangleAppears;`	-	API to specify where messageToBeShownAfterFaceRectangleAppears appears on the camera screen.	 		-(CGRect)frameWhereMessageToBeShownAfterFaceRectangleAppears;	-	Added facial recognition timeout API
+			
+			-(int)facialRecognitionTimeout{				return 20; // Sets the Facial recognition timeout in seconds.			}	-	Added call back method for Facial timeout
+	
+			-(void)didTimeoutFacialRecognition:(UIImage*)lastImage{    			// Control comes here when user taps on “Yes” on the facial timeout alert 				//lastImage contains the last frame image before timeout
+			}	-	Modified the facial capture interface API as below. 		Added the argument 			“withSDK:(AcuantMobileSDKController*)sdkController”		Removed argument
+						andFontSize:(NSUInteger)size		Modified type of argument withBlinkMessage:(NSString*)message to
+			
+			withBlinkMessage:( NSAttributedString *)message		Modified API signature
+	
+			+(id)presentFacialCatureInterfaceWithDelegate
+			(id<AcuantFacialCaptureDelegate>)delegate withSDK:
+			(AcuantMobileSDKController*)sdkController inViewController:
+			(UIViewController*)parentVC withCancelButton:(BOOL)cancelVisible 
+			withWatherMark:(NSString* )watermarkText withBlinkMessage:
+			(NSAttributedString*)message inRect:(CGRect)rect; 	-	Modified Facial Match function signature as below			-(void)validatePhotoOne:(UIImage *)selfieImage              withImage:(NSData *)imageTwo
+         	withDelegate(id<AcuantMobileSDKControllerProcessingDelegate>)delegate            withOptions:(AcuantCardProcessRequestOptions*)option;
 
