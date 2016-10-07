@@ -3,7 +3,7 @@
 Acuant iOS Mobile SDK API
 ==================
 
-Last updated on – 10/06/2016
+Last updated on – 10/07/2016
 
 # Introduction
 
@@ -595,7 +595,10 @@ Call to show or not show the flashlight button in the card capture interface
 If this method is implemented, then a flashlight will be shown when required 
 based on lighting conditions for ID caputre. This will override the 
 implementation of showFlashlightButton if autoFlashlight returns YES.
- 		- (BOOL)autoFlashlight{			return YES;		}
+ 
+		- (BOOL)autoFlashlight{
+			return YES;
+		}
 
 Call to obtain the flashlight button position in the screen.
 
@@ -1266,32 +1269,107 @@ Following are the APIs/Classes to use the Facial Match feature.
 
 ##a.	AcuantFacialCaptureDelegate
 
-This is the delegate to be used to get the call back from the SDK interface. It has two protocols1. This is called when a live face is successfully recognized. The parameter “image” contains the face image recognized by facial recognition.		-(void)didFinishFacialRecognition:(UIImage*)image;2. This is called when the user cancels facial recognition.
-		-(void)didCancelFacialRecognition3. Sets the Facial recognition timeout in seconds.
+This is the delegate to be used to get the call back from the SDK interface. It has two protocols
 
-		-(int)facialRecognitionTimeout{			return 20;		}4. Control comes here when user taps on “Yes” on the facial timeout alert. The argument “lastImage” is the last frame image before timeout	
-		-(void)didTimeoutFacialRecognition:(UIImage*)lastImage5. API to provide custom image for Facial screen “Back” button		-(UIImage*)imageForFacialBackButton6. API to display custom message after red rectangle appears.
+1. This is called when a live face is successfully recognized. The parameter “image” contains the face image recognized by facial recognition.
 
-		-(NSAttributedString*)messageToBeShownAfterFaceRectangleAppears;7. API to specify where messageToBeShownAfterFaceRectangleAppears appears on the camera screen.		
-		-(CGRect)frameWhereMessageToBeShownAfterFaceRectangleAppears;
+		-(void)didFinishFacialRecognition:(UIImage*)image;
+
+
+
+2. This is called when the user cancels facial recognition.
+
+		-(void)didCancelFacialRecognition
+
+
+
+3. Sets the Facial recognition timeout in seconds.
+
+		-(int)facialRecognitionTimeout{
+			return 20;
+		}
+
+
+4. Control comes here when user taps on “Yes” on the facial timeout alert. The argument “lastImage” is the last frame image before timeout
+	
+		-(void)didTimeoutFacialRecognition:(UIImage*)lastImage
+
+
+5. API to provide custom image for Facial screen “Back” button
+
+		-(UIImage*)imageForFacialBackButton
+
+6. API to display custom message after red rectangle appears.
+
+		-(NSAttributedString*)messageToBeShownAfterFaceRectangleAppears;
+
+7. API to specify where messageToBeShownAfterFaceRectangleAppears appears on the camera screen.
+		
+		-(CGRect)frameWhereMessageToBeShownAfterFaceRectangleAppears;
+
+
 
 ##b.	AcuantFacialRecognitionViewController
-This class has the following utility method which can be called to present the facial recognition interface.		+(id)presentFacialCatureInterfaceWithDelegate
+This class has the following utility method which can be called to present the facial recognition interface.
+
+		+(id)presentFacialCatureInterfaceWithDelegate
 		(id<AcuantFacialCaptureDelegate>)delegate withSDK:
 		(AcuantMobileSDKController*)sdkController inViewController:
 		(UIViewController*)parentVC withCancelButton:(BOOL)cancelVisible
 		withWatherMark:(NSString* )watermarkText
 		withBlinkMessage:(NSAttributedString*)message
-		inRect:(CGRect)rect;Following are the input parameters:
+		inRect:(CGRect)rect;
+
+
+Following are the input parameters:
 
 1.	(id<AcuantFacialCaptureDelegate>)delegate : Delegate where the control to be returned.
-2.	(AcuantMobileSDKController*)sdkController : The SDK controller.3.	(UIViewController*)parentVC : The parent view controller which presents the camera interface.4.	(BOOL)cancelVisible : Whether to show cancel button or not5.	(NSString* )watermarkText : Brand watermark text6.	(NSAttributedString *)message : Instruction message (For example “Blink Slowly.”)7.	(CGRect)rect : Frame in which instruction to be shown within the camera interface.
+2.	(AcuantMobileSDKController*)sdkController : The SDK controller.
+3.	(UIViewController*)parentVC : The parent view controller which presents the camera interface.
+4.	(BOOL)cancelVisible : Whether to show cancel button or not
+5.	(NSString* )watermarkText : Brand watermark text
+6.	(NSAttributedString *)message : Instruction message (For example “Blink Slowly.”)
+7.	(CGRect)rect : Frame in which instruction to be shown within the camera interface.
+
 
 
 ##c.	Facial Match function call
 
-	/** 	Use this method to do facial match. 	@param selfieImage The captured selfie Image. 	@param imageTwo Face Image from ID or Passport card 	@param delegate the delegate of the process request	 @param options the options of the process request. 	@discussion you must always provide a selfieImage and a face image to match 	@discussion use the options object to indicate the type as AcuantCardTypeFacial. Processing will fail if you don't provide this parameter. 	@discussion you're encourage to provide a delegate to be informed about what happened with your processing request. You can change the delegate using the cardProcessingDelegate property of this class. 	@discussion you should call this method only once and wait until your delegate is informed. If you call this method while we're already processing a card, we'll ignore your second call. 	*/	-(void)validatePhotoOne:(UIImage *)selfieImage              withImage:(NSData *)imageTwo           withDelegate:(id<AcuantMobileSDKControllerProcessingDelegate>)delegate            withOptions:(AcuantCardProcessRequestOptions*)option;The facial match function call can be made the same way as the other card processing function calls. Below is an example:        	//Face Image    	UIImage *selfiImage = image;    	//DL/Passport Photo    	NSData *faceImageData =_resultViewController.faceImageData;    		//Obtain the default AcuantCardProcessRequestOptions object for the type 		of card you want to process (License card for this example)		
-		AcuantCardProcessRequestOptions *options = [AcuantCardProcessRequestOptions defaultRequestOptionsForCardType:AcuantCardTypeFacial];    	[self.instance validatePhotoOne:selfieImage withImage:faceImageData withDelegate:<Delegate the control should come back> withOptions:options];1.	The first paramerter is the face image returned in the callback -(void)didFinishFacialRecognition:(UIImage*)image;2.	The second parameter is the face image from the ID/Passport against which the face image needs to be matched.3.	Delegate is the web service delegate where the control will be after the function call returns.4.	AcuantCardProcessRequestOptions is the last argument which is initialized with card type as AcuantCardTypeFacial as shown above.
+	/**
+ 	Use this method to do facial match.
+ 	@param selfieImage The captured selfie Image.
+ 	@param imageTwo Face Image from ID or Passport card
+ 	@param delegate the delegate of the process request
+	 @param options the options of the process request.
+ 	@discussion you must always provide a selfieImage and a face image to match
+ 	@discussion use the options object to indicate the type as AcuantCardTypeFacial. Processing will fail if you don't provide this parameter.
+ 	@discussion you're encourage to provide a delegate to be informed about what happened with your processing request. You can change the delegate using the cardProcessingDelegate property of this class.
+ 	@discussion you should call this method only once and wait until your delegate is informed. If you call this method while we're already processing a card, we'll ignore your second call.
+ 	*/
+
+	-(void)validatePhotoOne:(UIImage *)selfieImage
+              withImage:(NSData *)imageTwo
+           withDelegate:(id<AcuantMobileSDKControllerProcessingDelegate>)delegate
+            withOptions:(AcuantCardProcessRequestOptions*)option;
+
+The facial match function call can be made the same way as the other card processing function calls. Below is an example:
+    
+    	//Face Image
+    	UIImage *selfiImage = image;
+    	//DL/Passport Photo
+    	NSData *faceImageData =_resultViewController.faceImageData;
+    
+		//Obtain the default AcuantCardProcessRequestOptions object for the type 		of card you want to process (License card for this example)
+		
+		AcuantCardProcessRequestOptions *options = [AcuantCardProcessRequestOptions defaultRequestOptionsForCardType:AcuantCardTypeFacial];
+    
+	[self.instance validatePhotoOne:selfieImage withImage:faceImageData withDelegate:<Delegate the control should come back> withOptions:options];
+
+1.	The first paramerter is the face image returned in the callback -(void)didFinishFacialRecognition:(UIImage*)image;
+2.	The second parameter is the face image from the ID/Passport against which the face image needs to be matched.
+3.	Delegate is the web service delegate where the control will be after the function call returns.
+4.	AcuantCardProcessRequestOptions is the last argument which is initialized with card type as AcuantCardTypeFacial as shown above.
+
 
 
 The following delegate method will be called after the function call returns
@@ -1353,36 +1431,99 @@ Following are the parameters.
 
 # Change Log
 
-- Acuant iOS MobileSDK version 4.9.5	Changes:	- Significant improvements done to ID capture interface. 
+- Acuant iOS MobileSDK version 4.9.5
+
+	Changes:
+
+	- Significant improvements done to ID capture interface. 
 		1. Continuous Auto focus.
 		2. Continuous brightness correction.
 		3. Flash turns on automatically in dark lighting and flash icon appears.
 		4. Hotspot and glare detection and correction.
-		5. Shake detection to avoid blurry images.	- Significant improvements done to Facial capture interface. 
+		5. Shake detection to avoid blurry images.
+
+	- Significant improvements done to Facial capture interface. 
 		1.	Continuous Auto focus.
 		2. Continuous brightness correction.
 		3. Improved live person detection.
 		4. Added guidance message to guide the user. 
-		5. Facial liveliness time out functionality if live face is not detected. 	-	Optimized captured image size for faster uploads.	-	Added auto flash for ID capture. 			/**			Called to automatically turn on/off torch in the card capture 
-			interface based on ambient light 			@return turn on or off torch automatically			@discussion If this method is implemented then a flashlight will be 
+		5. Facial liveliness time out functionality if live face is not detected. 
+
+	-	Optimized captured image size for faster uploads.
+
+	-	Added auto flash for ID capture. 
+
+			/**
+			Called to automatically turn on/off torch in the card capture 
+			interface based on ambient light
+ 			@return turn on or off torch automatically
+			@discussion If this method is implemented then a flashlight will be 
 			shown when required based on lighing conditions.This will override the 
-			implementation of showFlashlightButton if autoFlashlight returns YES. 			*/			- (BOOL)autoFlashlight{				return YES;			}	-	Added API to provide custom image for Facial screen “Back” button					
+			implementation of showFlashlightButton if autoFlashlight returns YES.
+ 			*/
+			- (BOOL)autoFlashlight{
+				return YES;
+			}
+
+	-	Added API to provide custom image for Facial screen “Back” button
+					
 			- (UIImage*)imageForFacialBackButton {
-				UIImage *image = [UIImage imageNamed:@"BackButton.png"];  		 		return image;			}	-	Added  API to display custom message after red rectangle appears on the facial screen.			`-(NSAttributedString*)    messageToBeShownAfterFaceRectangleAppears;`	-	API to specify where messageToBeShownAfterFaceRectangleAppears appears on the camera screen.	 		-(CGRect)frameWhereMessageToBeShownAfterFaceRectangleAppears;	-	Added facial recognition timeout API
+				UIImage *image = [UIImage imageNamed:@"BackButton.png"];
+  		 		return image;
+			}
+
+	-	Added  API to display custom message after red rectangle appears on the facial screen.
+			`-(NSAttributedString*)    messageToBeShownAfterFaceRectangleAppears;`
+
+
+	-	API to specify where messageToBeShownAfterFaceRectangleAppears appears on the camera screen.
+
+	 		-(CGRect)frameWhereMessageToBeShownAfterFaceRectangleAppears;
+
+
+	-	Added facial recognition timeout API
 			
-			-(int)facialRecognitionTimeout{				return 20; // Sets the Facial recognition timeout in seconds.			}	-	Added call back method for Facial timeout
+			-(int)facialRecognitionTimeout{
+				return 20; // Sets the Facial recognition timeout in seconds.
+			}
+
+	-	Added call back method for Facial timeout
 	
-			-(void)didTimeoutFacialRecognition:(UIImage*)lastImage{    			// Control comes here when user taps on “Yes” on the facial timeout alert 				//lastImage contains the last frame image before timeout
-			}	-	Modified the facial capture interface API as below. 		Added the argument 			“withSDK:(AcuantMobileSDKController*)sdkController”		Removed argument
-						andFontSize:(NSUInteger)size		Modified type of argument withBlinkMessage:(NSString*)message to
+			-(void)didTimeoutFacialRecognition:(UIImage*)lastImage{
+    			// Control comes here when user taps on “Yes” on the facial timeout alert 
+				//lastImage contains the last frame image before timeout
+			}
+
+	-	Modified the facial capture interface API as below. 
+
+		Added the argument 
+
+			“withSDK:(AcuantMobileSDKController*)sdkController”
+
+		Removed argument
 			
-			withBlinkMessage:( NSAttributedString *)message		Modified API signature
+			andFontSize:(NSUInteger)size
+
+		Modified type of argument withBlinkMessage:(NSString*)message to
+			
+			withBlinkMessage:( NSAttributedString *)message
+
+
+		Modified API signature
 	
 			+(id)presentFacialCatureInterfaceWithDelegate
 			(id<AcuantFacialCaptureDelegate>)delegate withSDK:
 			(AcuantMobileSDKController*)sdkController inViewController:
 			(UIViewController*)parentVC withCancelButton:(BOOL)cancelVisible 
 			withWatherMark:(NSString* )watermarkText withBlinkMessage:
-			(NSAttributedString*)message inRect:(CGRect)rect; 	-	Modified Facial Match function signature as below			-(void)validatePhotoOne:(UIImage *)selfieImage              withImage:(NSData *)imageTwo
-         	withDelegate(id<AcuantMobileSDKControllerProcessingDelegate>)delegate            withOptions:(AcuantCardProcessRequestOptions*)option;
+			(NSAttributedString*)message inRect:(CGRect)rect; 
+
+	-	Modified Facial Match function signature as below
+
+			-(void)validatePhotoOne:(UIImage *)selfieImage
+              withImage:(NSData *)imageTwo
+         	withDelegate(id<AcuantMobileSDKControllerProcessingDelegate>)delegate
+            withOptions:(AcuantCardProcessRequestOptions*)option;
+
+
 
