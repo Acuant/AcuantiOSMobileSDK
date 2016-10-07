@@ -62,7 +62,7 @@ After cloning the repository execute the following command to make sure all file
 	
 ## Common Error
 
-If git-lfs is not setup then GitHub doesn't download of large files. Therefore, if the following build error appears while building the iOS app, that means some of the files are missing. 
+If git-lfs is not setup , then GitHub doesn't download of large files. Therefore, if the following build error appears while building the iOS app, that means some of the files are missing. 
 
 	ld: warning: ignoring file ../com.acuant.plugin.AcuantMobileSDK/AcuantMobileSDK.framework/AcuantMobileSDK, file was built for unsupported file format ( 0x76 0x65 0x72 0x73 0x69 0x6F 0x6E 0x20 0x68 0x74 0x74 0x70 0x73 0x3A 0x2F 0x2F ) which is not the architecture being linked (armv7): ../com.acuant.plugin.AcuantMobileSDK/AcuantMobileSDK.framework/AcuantMobileSDK
 	Undefined symbols for architecture armv7:
