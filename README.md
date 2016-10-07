@@ -1430,9 +1430,8 @@ Following are the parameters.
 	- Significant improvements done to ID capture interface. 
 		1. Continuous Auto focus.
 		2. Continuous brightness correction.
-		3. Flash turns on automatically in dark lighting and flash icon appears.
-		4. Hotspot and glare detection and correction.
-		5. Shake detection to avoid blurry images.
+		3. Hotspot and glare detection and correction.
+		4. Shake detection to avoid blurry images.
 
 	- Significant improvements done to Facial capture interface. 
 		1.	Continuous Auto focus.
