@@ -1501,6 +1501,9 @@ Following are the parameters.
               withImage:(NSData *)imageTwo
          	withDelegate(id<AcuantMobileSDKControllerProcessingDelegate>)delegate
             withOptions:(AcuantCardProcessRequestOptions*)option;
+            
+   -	Optimized facial match function. If either live face image or face image from ID 		card is not valid then it won’t make any web service call. The call will return 		successfully with following values
+   			isMatch = NO 	   		faceLivelinessDetection = <Based on if live face detected or not> 			transactionId=nil  			errorMessage=nil			facialMatchConfidenceRating=nil
 
 
 

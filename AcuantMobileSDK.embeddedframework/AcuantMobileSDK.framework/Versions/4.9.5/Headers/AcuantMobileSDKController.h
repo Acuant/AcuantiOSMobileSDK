@@ -417,5 +417,6 @@ typedef enum{
 -(BOOL)isFacialEnabled;
 -(BOOL)isAssureIDAllowed;
 -(void)setLiveFace:(BOOL)liveFace;
+-(BOOL)isLivefaceDetected;
 
 @end
