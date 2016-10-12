@@ -34,6 +34,12 @@ typedef enum{
 - (void)didCaptureCropImage:(UIImage*)cardImage scanBackSide:(BOOL)scanBackSide;
 
 /**
+ Called to inform the delegate that a card image was captured
+ @param cardImage the card image
+ */
+- (void)didCaptureCropImage:(UIImage*)cardImage andData:(NSString*)data scanBackSide:(BOOL)scanBackSide;
+
+/**
  Called to inform the delegate that a barcode image was captured
  @param data the barcode string
  */
@@ -352,6 +358,8 @@ typedef enum{
  @discussion you need to set the height with setHeight:(int)height to crop the image with these values
  */
 -(void)setWidth:(int)width;
+
+-(int)getWidth;
 
 /**
  Use it to enable or disable the barcode Cropping

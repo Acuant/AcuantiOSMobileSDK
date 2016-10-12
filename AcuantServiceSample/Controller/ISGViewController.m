@@ -57,6 +57,7 @@
 @property (nonatomic) BOOL isFacialFlow;
 @property (nonatomic,strong) NSString* TID;
 @property (nonatomic) BOOL frontImageConfirmed;
+@property (nonatomic) BOOL scanningBarcode;
 @end
 
 @implementation ISGViewController
@@ -213,7 +214,12 @@
     if (self.cardType) {
         self.sideTouch = BackSide;
         self.isCameraTouched = YES;
-        [self showCameraInterface];
+        if(self.cardType == AcuantCardTypeDriversLicenseCard && (self.cardRegion == AcuantCardRegionUnitedStates || self.cardRegion == AcuantCardRegionCanada)){
+            _scanningBarcode = YES;
+            [self.instance showBarcodeCameraInterfaceInViewController:self delegate:self cardType:self.cardType andRegion:self.cardRegion];
+        }else{
+            [self showCameraInterface];
+        }
     }
 }
 
@@ -413,6 +419,7 @@
     //Use the following methods to customize the appear and final message.
     //[self.instance setInitialMessage:@"ALING AND TAP" frame:CGRectMake(0, 0, 0, 0) backgroundColor:[UIColor redColor] duration:10.0 orientation: AcuantHUDPortrait];
     //[self.instance setCapturingMessage:@"Capturing Message" frame:CGRectMake(0, 0, 0, 0) backgroundColor:nil duration:10.0 orientation: AcuantHUDLandscape];
+    _scanningBarcode = NO;
     if (self.cardType == AcuantCardTypePassportCard) {
         [self.instance setWidth:1478];
     }else if (self.cardType == AcuantCardTypeMedicalInsuranceCard) {
@@ -615,6 +622,28 @@
     }
 }
 
+-(void)didCaptureCropImage:(UIImage *)cardImage andData:(NSString *)data scanBackSide:(BOOL)scanBackSide{
+    
+    NSString* message;
+    if(self.cardType == AcuantCardTypePassportCard){
+        message = @"Please make sure all the text on the Passport image is readable, otherwise retry.";
+    }else{
+        message = @"Please make sure all the text on the ID image is readable, otherwise retry.";
+    }
+    
+    ConfirmationViewController* confirmVC = [[ConfirmationViewController alloc] initWithImage:cardImage andMessage:message scanBackSide:scanBackSide failed:NO];
+    if ([self presentedViewController]) {
+        [[self presentedViewController] dismissViewControllerAnimated:NO completion:^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self presentViewController:confirmVC animated:YES completion:nil];
+            });
+        }];
+    } else {
+        [self presentViewController:confirmVC animated:YES completion:nil];
+        
+    }
+}
+
 -(void)didFailToCaptureCropImage{
     NSString* message;
     if(self.cardType == AcuantCardTypePassportCard){
@@ -665,7 +694,12 @@
     if(confirmed){
         [self imageCapturedCorrectly:image scanBackSide:scanBackSide];
     }else{
-        [self showCameraInterface];
+        if(_scanningBarcode){
+            _scanningBarcode = YES;
+            [self.instance showBarcodeCameraInterfaceInViewController:self delegate:self cardType:self.cardType andRegion:self.cardRegion];
+        }else{
+            [self showCameraInterface];
+        }
     }
 }
 
@@ -710,8 +744,10 @@
                                            self.isCameraTouched = YES;
                                            self.canShowBackButton = NO;
                                            if (self.cardRegion == AcuantCardRegionUnitedStates || self.cardRegion == AcuantCardRegionCanada) {
+                                               _scanningBarcode = YES;
                                                [self.instance showBarcodeCameraInterfaceInViewController:self delegate:self cardType:self.cardType andRegion:self.cardRegion];
                                            }else{
+                                               _scanningBarcode = NO;
                                                [self.instance showManualCameraInterfaceInViewController:self delegate:self cardType:self.cardType region:self.cardRegion andBackSide:YES];
                                            }
                                        }
