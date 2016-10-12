@@ -439,10 +439,20 @@ In order to retrieve the barcode string by the barcode capture interface for Acu
 		self.barcodeString = data;
 	}
 	
-#### didCaptureCropImage:andData:scanBackSide: delegate methodIn order to retrieve the barcode string and the backside image by the barcode capture interface for AcuantCardTypeDriverLicenseCard you must use the following method:	-(void)didCaptureCropImage:(UIImage *)cardImage andData:(NSString *)data 			scanBackSide:(BOOL)scanBackSide{	
-	}Note: 1)	 This delegate will be called only if canCropBarcode is set to YES ( e.g [self.instance setCanCropBarcode:YES];)
+#### didCaptureCropImage:andData:scanBackSide: delegate method
 
-2)	Don’t implement both delegates, didCaptureData and didCaptureCropImage:andData:scanBackSide:
+In order to retrieve the barcode string and the backside image by the barcode capture interface for AcuantCardTypeDriverLicenseCard you must use the following method:
+
+	-(void)didCaptureCropImage:(UIImage *)cardImage andData:(NSString *)data 			scanBackSide:(BOOL)scanBackSide{
+	
+	}
+
+Note: 
+
+1)	 This delegate will be called only if canCropBarcode is set to YES ( e.g [self.instance setCanCropBarcode:YES];)
+
+2)	Don’t implement both delegates, didCaptureData and didCaptureCropImage:andData:scanBackSide:
+
 
 #### didFailWithError delegate method
 In order to inform that the scan or the process failed. You must use the following method:
@@ -1508,14 +1518,28 @@ Following are the parameters.
             withOptions:(AcuantCardProcessRequestOptions*)option;
             
    -	Optimized facial match function. If either live face image or face image from ID 		card is not valid then it won’t make any web service call. The call will return 		successfully with following values
-   			isMatch = NO 	   		faceLivelinessDetection = <Based on if live face detected or not> 			transactionId=nil  			errorMessage=nil			facialMatchConfidenceRating=nil
+   
+			isMatch = NO
+ 	   		faceLivelinessDetection = <Based on if live face detected or not>
+ 			transactionId=nil
+  			errorMessage=nil
+			facialMatchConfidenceRating=nil
 			
-	-	Added method to retrieve the barcode string and the backside image by the barcode 		capture interface for AcuantCardTypeDriverLicenseCard.			-(void)didCaptureCropImage:(UIImage *)cardImage andData:(NSString *)data 			scanBackSide:(BOOL)scanBackSide{
-			}		Note: 
+	-	Added method to retrieve the barcode string and the backside image by the barcode 
+	        capture interface for AcuantCardTypeDriverLicenseCard.
+
+			-(void)didCaptureCropImage:(UIImage *)cardImage andData:(NSString *)data 
+			scanBackSide:(BOOL)scanBackSide{
+			
+			}
+
+		Note: 
 		
 		1)	This delegate will be called only if canCropBarcode is set to YES ( e.g. 			[self.instance setCanCropBarcode:YES];)
 		
-		2)	Don’t implement both delegates, didCaptureData and 			didCaptureCropImage:andData:scanBackSide:
+		2)	Don’t implement both delegates, didCaptureData and 			didCaptureCropImage:andData:scanBackSide:
+
+
 
 
 
