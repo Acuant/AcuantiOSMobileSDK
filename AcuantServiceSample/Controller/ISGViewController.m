@@ -622,8 +622,8 @@
     }
 }
 
--(void)didCaptureCropImage:(UIImage *)cardImage andData:(NSString *)data scanBackSide:(BOOL)scanBackSide{
-    
+/*-(void)didCaptureCropImage:(UIImage *)cardImage andData:(NSString *)data scanBackSide:(BOOL)scanBackSide{
+    self.barcodeString = data;
     NSString* message;
     if(self.cardType == AcuantCardTypePassportCard){
         message = @"Please make sure all the text on the Passport image is readable, otherwise retry.";
@@ -642,7 +642,7 @@
         [self presentViewController:confirmVC animated:YES completion:nil];
         
     }
-}
+}*/
 
 -(void)didFailToCaptureCropImage{
     NSString* message;
@@ -779,7 +779,7 @@
     [message addAttribute:NSFontAttributeName value:boldFont range:range];
     
     [AcuantFacialRecognitionViewController
- presentFacialCatureInterfaceWithDelegate:self withSDK:_instance inViewController:self withCancelButton:YES withWatherMark:@"Powered by Acuant" withBlinkMessage:message inRect:messageFrame];
+ presentFacialCaptureInterfaceWithDelegate:self withSDK:_instance inViewController:self withCancelButton:YES withWaterMark:@"Powered by Acuant" withBlinkMessage:message inRect:messageFrame];
 }
 
 

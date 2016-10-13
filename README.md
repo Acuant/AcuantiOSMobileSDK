@@ -3,7 +3,7 @@
 Acuant iOS Mobile SDK API
 ==================
 
-Last updated on – 10/07/2016
+Last updated on – 10/13/2016
 
 # Introduction
 
@@ -84,7 +84,7 @@ If git-lfs is not setup , then GitHub doesn't download of large files. Therefore
 		platform :ios, '8.0'
 
 		pod 'AcuantMobileSDK', '~> <version number>' 
-		(example pod 'AcuantMobileSDK', '~> 4.9.5')
+		(example pod 'AcuantMobileSDK', '~> 4.9.5.1')
 
 - Execute 'Pod install' to add the AcuantMobileSDK
 - If it is a Swift project then add the follwoing imports in the Objective-C bridging file
@@ -1319,11 +1319,11 @@ This is the delegate to be used to get the call back from the SDK interface. It 
 ##b.	AcuantFacialRecognitionViewController
 This class has the following utility method which can be called to present the facial recognition interface.
 
-		+(id)presentFacialCatureInterfaceWithDelegate
+		+(id)presentFacialCaptureInterfaceWithDelegate
 		(id<AcuantFacialCaptureDelegate>)delegate withSDK:
 		(AcuantMobileSDKController*)sdkController inViewController:
 		(UIViewController*)parentVC withCancelButton:(BOOL)cancelVisible
-		withWatherMark:(NSString* )watermarkText
+		withWaterMark:(NSString* )watermarkText
 		withBlinkMessage:(NSAttributedString*)message
 		inRect:(CGRect)rect;
 
@@ -1438,108 +1438,22 @@ Following are the parameters.
 
 # Change Log
 
-- Acuant iOS MobileSDK version 4.9.5
+- Acuant iOS MobileSDK version 4.9.5.1
 
 	Changes:
 
-	- Significant improvements done to ID capture interface. 
-		1. Continuous Auto focus.
-		2. Continuous brightness correction.
-		3. Hotspot and glare detection and correction.
-		4. Shake detection to avoid blurry images.
-
-	- Significant improvements done to Facial capture interface. 
-		1.	Continuous Auto focus.
-		2. Continuous brightness correction.
-		3. Improved live person detection.
-		4. Added guidance message to guide the user. 
-		5. Facial liveliness time out functionality if live face is not detected. 
-
-	-	Optimized captured image size for faster uploads.
-
-	-	Added API to provide custom image for Facial screen “Back” button
-					
-			- (UIImage*)imageForFacialBackButton {
-				UIImage *image = [UIImage imageNamed:@"BackButton.png"];
-  		 		return image;
-			}
-
-	-	Added  API to display custom message after red rectangle appears on the facial screen.
-			`-(NSAttributedString*)    messageToBeShownAfterFaceRectangleAppears;`
-
-
-	-	API to specify where messageToBeShownAfterFaceRectangleAppears appears on the camera screen.
-
-	 		-(CGRect)frameWhereMessageToBeShownAfterFaceRectangleAppears;
-
-
-	-	Added facial recognition timeout API
-			
-			-(int)facialRecognitionTimeout{
-				return 20; // Sets the Facial recognition timeout in seconds.
-			}
-
-	-	Added call back method for Facial timeout
+	-	Modified API signature
 	
-			-(void)didTimeoutFacialRecognition:(UIImage*)lastImage{
-    			// Control comes here when user taps on “Yes” on the facial timeout alert 
-				//lastImage contains the last frame image before timeout
-			}
-
-	-	Modified the facial capture interface API as below. 
-
-		Added the argument 
-
-			“withSDK:(AcuantMobileSDKController*)sdkController”
-
-		Removed argument
-			
-			andFontSize:(NSUInteger)size
-
-		Modified type of argument withBlinkMessage:(NSString*)message to
-			
-			withBlinkMessage:( NSAttributedString *)message
-
-
-		Modified API signature
-	
-			+(id)presentFacialCatureInterfaceWithDelegate
+			+(id)presentFacialCaptureInterfaceWithDelegate
 			(id<AcuantFacialCaptureDelegate>)delegate withSDK:
 			(AcuantMobileSDKController*)sdkController inViewController:
 			(UIViewController*)parentVC withCancelButton:(BOOL)cancelVisible 
-			withWatherMark:(NSString* )watermarkText withBlinkMessage:
+			withWaterMark:(NSString* )watermarkText withBlinkMessage:
 			(NSAttributedString*)message inRect:(CGRect)rect; 
 
-	-	Modified Facial Match function signature as below
+	
+	-	Made the following barcode delegate method optional
 
-			-(void)validatePhotoOne:(UIImage *)selfieImage
-              withImage:(NSData *)imageTwo
-         	withDelegate(id<AcuantMobileSDKControllerProcessingDelegate>)delegate
-            withOptions:(AcuantCardProcessRequestOptions*)option;
-            
-   -	Optimized facial match function. If either live face image or face image from ID 		card is not valid then it won’t make any web service call. The call will return 		successfully with following values
-   
-			isMatch = NO
- 	   		faceLivelinessDetection = <Based on if live face detected or not>
- 			transactionId=nil
-  			errorMessage=nil
-			facialMatchConfidenceRating=nil
-			
-	-	Added method to retrieve the barcode string and the backside image by the barcode 
-	        capture interface for AcuantCardTypeDriverLicenseCard.
-
-			-(void)didCaptureCropImage:(UIImage *)cardImage andData:(NSString *)data 
-			scanBackSide:(BOOL)scanBackSide{
-			
-			}
-
-		Note: 
-		
-		1)	This delegate will be called only if canCropBarcode is set to YES ( e.g. 			[self.instance setCanCropBarcode:YES];)
-		
-		2)	Don’t implement both delegates, didCaptureData and 			didCaptureCropImage:andData:scanBackSide:
-
-
-
-
+			-(void)didCaptureCropImage:(UIImage *)cardImage andData:(NSString 
+			*)data scanBackSide:(BOOL)scanBackSide
 

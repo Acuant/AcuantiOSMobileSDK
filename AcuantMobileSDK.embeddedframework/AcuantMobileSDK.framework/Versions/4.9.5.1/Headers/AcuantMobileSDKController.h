@@ -34,12 +34,6 @@ typedef enum{
 - (void)didCaptureCropImage:(UIImage*)cardImage scanBackSide:(BOOL)scanBackSide;
 
 /**
- Called to inform the delegate that a card image was captured
- @param cardImage the card image
- */
-- (void)didCaptureCropImage:(UIImage*)cardImage andData:(NSString*)data scanBackSide:(BOOL)scanBackSide;
-
-/**
  Called to inform the delegate that a barcode image was captured
  @param data the barcode string
  */
@@ -54,6 +48,13 @@ typedef enum{
 - (void)didFailWithError:(AcuantError*)error;
 
 @optional
+
+/**
+ Called to inform the delegate that a card image was captured
+ @param cardImage the card image
+ */
+- (void)didCaptureCropImage:(UIImage*)cardImage andData:(NSString*)data scanBackSide:(BOOL)scanBackSide;
+
 
 /**
  Called to inform the delegate that a card image was captured with some problems
