@@ -1381,10 +1381,8 @@ The facial match function call can be made the same way as the other card proces
 
 The following delegate method will be called after the function call returns
 
-	- (void)didFinishValidatingImageWithResult:(AcuantCardResult*)result{
 	- (void)didFinishValidatingImageWithResult:(AcuantCardResult*)cardResult{
-    	AcuantFacialData* result =(AcuantFacialData*)cardResult;
-	
+    		AcuantFacialData* result =(AcuantFacialData*)cardResult;
 	}
 
 ##d.	AcuantFacialData
