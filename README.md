@@ -1345,7 +1345,7 @@ Following are the input parameters:
 	/**
  	Use this method to do facial match.
  	@param selfieImage The captured selfie Image.
- 	@param imageTwo Face Image from ID or Passport card
+ 	@param IDFaceImage Face Image from ID or Passport card
  	@param delegate the delegate of the process request
 	 @param options the options of the process request.
  	@discussion you must always provide a selfieImage and a face image to match
@@ -1355,7 +1355,7 @@ Following are the input parameters:
  	*/
 
 	-(void)validatePhotoOne:(UIImage *)selfieImage
-              withImage:(NSData *)imageTwo
+              withImage:(NSData *)IDFaceImage
            withDelegate:(id<AcuantMobileSDKControllerProcessingDelegate>)delegate
             withOptions:(AcuantCardProcessRequestOptions*)option;
 
