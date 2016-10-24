@@ -10,11 +10,14 @@
 		138CD3031D023736009CB48D /* AcuantMobileSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 138CD2FC1D023736009CB48D /* AcuantMobileSDK.framework */; };
 		138CD3041D023736009CB48D /* beep-7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 138CD2FE1D023736009CB48D /* beep-7.mp3 */; };
 		138CD3081D023736009CB48D /* shutter.wav in Resources */ = {isa = PBXBuildFile; fileRef = 138CD3021D023736009CB48D /* shutter.wav */; };
+		138E84D51DB6DE70009CF971 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 138E84D41DB6DE70009CF971 /* CoreText.framework */; };
+		138E84D71DB6DE75009CF971 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 138E84D61DB6DE74009CF971 /* Accelerate.framework */; };
 		13958D781CFF5D83008CA3FD /* ConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13958D771CFF5D83008CA3FD /* ConfirmationViewController.m */; };
 		13958D7B1CFF5D8B008CA3FD /* ConfirmationViewController-ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13958D791CFF5D8B008CA3FD /* ConfirmationViewController-ipad.xib */; };
 		13958D7F1CFF606D008CA3FD /* HelpScreenTip_ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 13958D7D1CFF606D008CA3FD /* HelpScreenTip_ipad.png */; };
 		13958D801CFF606D008CA3FD /* HelpScreenTip_iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 13958D7E1CFF606D008CA3FD /* HelpScreenTip_iphone.png */; };
 		139D06161D0F3A73000A6CA5 /* ConfirmationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 139D06151D0F3A73000A6CA5 /* ConfirmationViewController.xib */; };
+		13AEAC6C1DB81AAD00CF6F10 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13AEAC6B1DB81AAD00CF6F10 /* CoreLocation.framework */; };
 		13DDE9441DA5A2E300E4F5EB /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13DDE9431DA5A2E300E4F5EB /* CoreMotion.framework */; };
 		95019F221758F30A001C4F94 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95019F211758F30A001C4F94 /* UIKit.framework */; };
 		989432CB1BAAFA4000C1B95A /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432CA1BAAFA4000C1B95A /* AssetsLibrary.framework */; };
@@ -60,12 +63,15 @@
 		138CD2FC1D023736009CB48D /* AcuantMobileSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AcuantMobileSDK.framework; sourceTree = "<group>"; };
 		138CD2FE1D023736009CB48D /* beep-7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "beep-7.mp3"; sourceTree = "<group>"; };
 		138CD3021D023736009CB48D /* shutter.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shutter.wav; sourceTree = "<group>"; };
+		138E84D41DB6DE70009CF971 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		138E84D61DB6DE74009CF971 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		13958D761CFF5D83008CA3FD /* ConfirmationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmationViewController.h; sourceTree = "<group>"; };
 		13958D771CFF5D83008CA3FD /* ConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmationViewController.m; sourceTree = "<group>"; };
 		13958D791CFF5D8B008CA3FD /* ConfirmationViewController-ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ConfirmationViewController-ipad.xib"; sourceTree = "<group>"; };
 		13958D7D1CFF606D008CA3FD /* HelpScreenTip_ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpScreenTip_ipad.png; sourceTree = "<group>"; };
 		13958D7E1CFF606D008CA3FD /* HelpScreenTip_iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpScreenTip_iphone.png; sourceTree = "<group>"; };
 		139D06151D0F3A73000A6CA5 /* ConfirmationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmationViewController.xib; sourceTree = "<group>"; };
+		13AEAC6B1DB81AAD00CF6F10 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		13DDE9431DA5A2E300E4F5EB /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		95019F1E1758F30A001C4F94 /* AcuantiOSMobileSampleSDK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AcuantiOSMobileSampleSDK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95019F211758F30A001C4F94 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -123,6 +129,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13AEAC6C1DB81AAD00CF6F10 /* CoreLocation.framework in Frameworks */,
+				138E84D71DB6DE75009CF971 /* Accelerate.framework in Frameworks */,
+				138E84D51DB6DE70009CF971 /* CoreText.framework in Frameworks */,
 				13DDE9441DA5A2E300E4F5EB /* CoreMotion.framework in Frameworks */,
 				989432DF1BAAFD8B00C1B95A /* AudioToolbox.framework in Frameworks */,
 				138CD3031D023736009CB48D /* AcuantMobileSDK.framework in Frameworks */,
@@ -181,6 +190,9 @@
 		95019F201758F30A001C4F94 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				13AEAC6B1DB81AAD00CF6F10 /* CoreLocation.framework */,
+				138E84D61DB6DE74009CF971 /* Accelerate.framework */,
+				138E84D41DB6DE70009CF971 /* CoreText.framework */,
 				13DDE9431DA5A2E300E4F5EB /* CoreMotion.framework */,
 				138CD2FB1D023736009CB48D /* AcuantMobileSDK.embeddedframework */,
 				989432DE1BAAFD8B00C1B95A /* AudioToolbox.framework */,

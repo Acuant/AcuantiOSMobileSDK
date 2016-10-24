@@ -75,6 +75,7 @@
     NSString *licenseKey = [[NSUserDefaults standardUserDefaults]valueForKey:@"LICENSEKEY"];
     //Obtain the main controller instance
     self.instance = [AcuantMobileSDKController initAcuantMobileSDKWithLicenseKey:licenseKey andDelegate:self];
+    [self.instance enableLocationTracking];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -289,17 +290,17 @@
     
     switch ([[UIApplication sharedApplication] statusBarOrientation]) {
         case UIInterfaceOrientationPortrait:
-            return UIInterfaceOrientationPortrait;
-            break;
+        return UIInterfaceOrientationPortrait;
+        break;
         case UIInterfaceOrientationLandscapeRight:
-            return UIInterfaceOrientationLandscapeRight;
-            break;
+        return UIInterfaceOrientationLandscapeRight;
+        break;
         case UIInterfaceOrientationLandscapeLeft:
-            return UIInterfaceOrientationLandscapeLeft;
-            break;
+        return UIInterfaceOrientationLandscapeLeft;
+        break;
         default:
-            return UIInterfaceOrientationPortrait;
-            break;
+        return UIInterfaceOrientationPortrait;
+        break;
     }
 }
 
@@ -518,56 +519,56 @@
     int tag = 0;
     switch (error.errorType) {
         case AcuantErrorTimedOut:
-            message = error.errorMessage;
-            break;
+        message = error.errorMessage;
+        break;
         case AcuantErrorUnknown:
-            message = error.errorMessage;
-            break;
+        message = error.errorMessage;
+        break;
         case AcuantErrorUnableToProcess:
-            message = error.errorMessage;
-            break;
+        message = error.errorMessage;
+        break;
         case AcuantErrorInternalServerError:
-            message = error.errorMessage;
-            break;
+        message = error.errorMessage;
+        break;
         case AcuantErrorCouldNotReachServer:
-            message = error.errorMessage;
-            break;
+        message = error.errorMessage;
+        break;
         case AcuantErrorUnableToAuthenticate:
-            message = error.errorMessage;
-            break;
+        message = error.errorMessage;
+        break;
         case AcuantErrorAutoDetectState:
-            message = error.errorMessage;
-            [self.frontImage setImage:self.originalImage];
-            break;
+        message = error.errorMessage;
+        [self.frontImage setImage:self.originalImage];
+        break;
         case AcuantErrorWebResponse:
-            message = error.errorMessage;
-            break;
+        message = error.errorMessage;
+        break;
         case AcuantErrorUnableToCrop:
-            message = error.errorMessage;
-            [self.frontImage setImage:self.originalImage];
-            break;
+        message = error.errorMessage;
+        [self.frontImage setImage:self.originalImage];
+        break;
         case AcuantErrorInvalidLicenseKey:
-            message = error.errorMessage;
-            break;
+        message = error.errorMessage;
+        break;
         case AcuantErrorInactiveLicenseKey:
-            message = error.errorMessage;
-            break;
+        message = error.errorMessage;
+        break;
         case AcuantErrorAccountDisabled:
-            message = error.errorMessage;
-            break;
+        message = error.errorMessage;
+        break;
         case AcuantErrorOnActiveLicenseKey:
-            message = error.errorMessage;
-            break;
+        message = error.errorMessage;
+        break;
         case AcuantErrorValidatingLicensekey:
-            return;
-            break;
+        return;
+        break;
         case AcuantErrorCameraUnauthorized:
-            message = error.errorMessage;
-            tag = 7388467;
-            break;
+        message = error.errorMessage;
+        tag = 7388467;
+        break;
         default:
-            return;
-            break;
+        return;
+        break;
     }
     [UIAlertController showSimpleAlertWithTitle:@"AcuantiOSMobileSDK"
                                         Message:message
@@ -622,7 +623,7 @@
     }
 }
 
-/*-(void)didCaptureCropImage:(UIImage *)cardImage andData:(NSString *)data scanBackSide:(BOOL)scanBackSide{
+-(void)didCaptureCropImage:(UIImage *)cardImage andData:(NSString *)data scanBackSide:(BOOL)scanBackSide{
     self.barcodeString = data;
     NSString* message;
     if(self.cardType == AcuantCardTypePassportCard){
@@ -642,7 +643,7 @@
         [self presentViewController:confirmVC animated:YES completion:nil];
         
     }
-}*/
+}
 
 -(void)didFailToCaptureCropImage{
     NSString* message;
@@ -712,24 +713,24 @@
     self.isBarcodeSide = scanBackSide;
     switch (self.sideTouch) {
         case FrontSide:
-            [self.frontImage setImage:cardImage];
-            break;
+        [self.frontImage setImage:cardImage];
+        break;
         case BackSide:
-            [self.backImage setImage:cardImage];
-            [self.frontImageLabel setText:@""];
-            [self.backImageLabel setText:@""];
-            [self cardHolderPositions];
-            self.frontImage.layer.masksToBounds = YES;
-            self.frontImage.layer.cornerRadius = 10.0f;
-            self.frontImage.layer.borderWidth = 1.0f;
-            
-            self.backImage.layer.masksToBounds = YES;
-            self.backImage.layer.cornerRadius = 10.0f;
-            self.backImage.layer.borderWidth = 1.0f;
-            [self.backImage setUserInteractionEnabled:YES];
-            break;
+        [self.backImage setImage:cardImage];
+        [self.frontImageLabel setText:@""];
+        [self.backImageLabel setText:@""];
+        [self cardHolderPositions];
+        self.frontImage.layer.masksToBounds = YES;
+        self.frontImage.layer.cornerRadius = 10.0f;
+        self.frontImage.layer.borderWidth = 1.0f;
+        
+        self.backImage.layer.masksToBounds = YES;
+        self.backImage.layer.cornerRadius = 10.0f;
+        self.backImage.layer.borderWidth = 1.0f;
+        [self.backImage setUserInteractionEnabled:YES];
+        break;
         default:
-            break;
+        break;
     }
     [self.sendRequestButton setEnabled:YES];
     [self.sendRequestButton setHidden:NO];
@@ -779,7 +780,7 @@
     [message addAttribute:NSFontAttributeName value:boldFont range:range];
     
     [AcuantFacialRecognitionViewController
- presentFacialCaptureInterfaceWithDelegate:self withSDK:_instance inViewController:self withCancelButton:YES withWaterMark:@"Powered by Acuant" withBlinkMessage:message inRect:messageFrame];
+     presentFacialCaptureInterfaceWithDelegate:self withSDK:_instance inViewController:self withCancelButton:YES withWaterMark:@"Powered by Acuant" withBlinkMessage:message inRect:messageFrame];
 }
 
 
@@ -905,9 +906,9 @@
             
             // Now, perform the request
             [self.instance validatePhotoOne:frontSideImage withImage:dlPhoto
-                      withDelegate:self
-                       withOptions:options];
-
+                               withDelegate:self
+                                withOptions:options];
+            
         });
     });
     
@@ -938,7 +939,7 @@
 
 - (void)didFinishValidatingImageWithResult:(AcuantFacialData*)result{
     [SVProgressHUD dismiss];
-     self.view.userInteractionEnabled = YES;
+    self.view.userInteractionEnabled = YES;
     resultMessage = [NSString stringWithFormat:@"%@\nFTID - %@\nTID - %@",resultMessage,result.transactionId,_TID];
     if(result.isFacialEnabled==YES){
         NSLog(@"Success");
@@ -1018,6 +1019,52 @@
     }else{
         _resultViewController = [[ISGResultScreenViewController alloc]initWithNibName:@"CSSNResultScreen_iPad" bundle:nil];
     }
+    
+    if([_instance getDeviceStreetAddress]){
+        resultMessage = [NSString stringWithFormat:@"%@\nDevice Address - %@",resultMessage,[_instance getDeviceStreetAddress]];
+    }
+    if([_instance getDeviceArea]){
+        resultMessage = [NSString stringWithFormat:@"%@\nDevice Area - %@",resultMessage,[_instance getDeviceArea]];
+    }
+    
+    if([_instance getDeviceCity]){
+        resultMessage = [NSString stringWithFormat:@"%@\nDevice City - %@",resultMessage,[_instance getDeviceCity]];
+    }
+    
+    if([_instance getDeviceState]){
+        resultMessage = [NSString stringWithFormat:@"%@\nDevice State - %@",resultMessage,[_instance getDeviceState]];
+    }
+    if([_instance getDeviceCountry]){
+        resultMessage = [NSString stringWithFormat:@"%@\nDevice Country - %@",resultMessage,[_instance getDeviceCountry]];
+    }
+    
+    if([_instance getDeviceCountryCode]){
+        resultMessage = [NSString stringWithFormat:@"%@\nDevice Country Code - %@",resultMessage,[_instance getDeviceCountryCode]];
+    }
+    
+    if([_instance getDeviceZipCode]){
+        resultMessage = [NSString stringWithFormat:@"%@\nDevice Zip Code - %@",resultMessage,[_instance getDeviceZipCode]];
+    }
+    
+    if(result.idLocationStateTestResult!=AcuantDeviceLocationTestNotAvailable){
+        if(result.idLocationStateTestResult==AcuantDeviceLocationTestPassed){
+            resultMessage = [NSString stringWithFormat:@"%@\nLocation State Test - %@",resultMessage,@"Passed"];
+        }else{
+            resultMessage = [NSString stringWithFormat:@"%@\nLocation State Test - %@",resultMessage,@"Failed"];
+        }
+    }
+    
+    if(result.idLocationCountryTestResult!=AcuantDeviceLocationTestNotAvailable){
+        
+        if(result.idLocationCountryTestResult==AcuantDeviceLocationTestPassed){
+            resultMessage = [NSString stringWithFormat:@"%@\nLocation Country Test - %@",resultMessage,@"Passed"];
+        }else{
+            resultMessage = [NSString stringWithFormat:@"%@\nLocation Country Test - %@",resultMessage,@"Failed"];
+        }
+    }
+    
+    
+    
     _resultViewController.result = resultMessage;
     
     _resultViewController.faceImage = faceimage;

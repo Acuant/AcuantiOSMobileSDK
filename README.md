@@ -3,7 +3,7 @@
 Acuant iOS Mobile SDK API
 ==================
 
-Last updated on – 10/13/2016
+Last updated on – 10/24/2016
 
 # Introduction
 
@@ -84,7 +84,7 @@ If git-lfs is not setup , then GitHub doesn't download of large files. Therefore
 		platform :ios, '8.0'
 
 		pod 'AcuantMobileSDK', '~> <version number>' 
-		(example pod 'AcuantMobileSDK', '~> 4.9.5.1')
+		(example pod 'AcuantMobileSDK', '~> 4.9.6')
 
 - Execute 'Pod install' to add the AcuantMobileSDK
 - If it is a Swift project then add the follwoing imports in the Objective-C bridging file
@@ -123,6 +123,7 @@ Expand “Link binary with libraries”.
 Click on plus to add frameworks and libraries.
 
 Add following frameworks.
+
 - AssetsLibrary.framework
 
 - SystemConfiguration.framework. 
@@ -140,6 +141,12 @@ Add following frameworks.
 - QuartzCore.framework.
 
 - CoreMotion.framework
+
+- Accelerate.framework
+
+- CoreText.framework
+
+- CoreLocation.framework
 
 Add following libraries
 
@@ -1237,6 +1244,53 @@ Note : For Driving license and Passport , in order to see AssureID results, plea
  
 “AuthenticationResultSummary” will be empty for Success and Failed results. When “AuthenticationResult” will have value “Attention”, “AuthenticationResultSummary” will contain the reason for “attention’.
 
+# Tracking Capture Location
+
+If it is required to detect the location at which the ID/Passport is captured the location tracking can be enabled on the SDK as below.
+
+		// Initializing AcuantMobileSDKController
+		self.instance = [AcuantMobileSDKController 
+		initAcuantMobileSDKWithLicenseKey:licenseKey andDelegate:self];
+		.
+		.
+		.
+    	// Enabling location tracking
+		[self.instance enableLocationTracking];
+
+Whenever during the capture process the location is required the following  methods will return location details.
+
+			/*	To get the location details*/
+			[_instance getDeviceStreetAddress]// Street address of device location
+			[_instance getDeviceArea] // Area of the device location
+			[_instance getDeviceCity] // City of the device location
+			[_instance getDeviceState] // State of the device location
+			[_instance getDeviceCountry]] // Country of the device location
+			[_instance getDeviceCountryCode]// Country code of the device location
+			[_instance getDeviceZipCode] // zipcode of the device location
+			
+The following enum is introduced for location test results
+
+			typedef enum {
+    			AcuantDeviceLocationTestFailed = 0,  
+    			AcuantDeviceLocationTestPassed = 1,
+    			AcuantDeviceLocationTestNotAvailable = 2,
+			} AcuantDeviceLocationTestResult;
+
+Added new location test fields to the AcuantCardResult class
+			
+			@property (nonatomic) AcuantDeviceLocationTestResult  idLocationStateTestResult;
+			@property (nonatomic) AcuantDeviceLocationTestResult 
+			idLocationCountryTestResult;
+			@property (nonatomic) AcuantDeviceLocationTestResult  idLocationCityTestResult;
+			@property (nonatomic) AcuantDeviceLocationTestResult  idLocationZipcodeTestResult;
+			
+			
+
+Note : If enabling location tracking , then it is required to add a value for the following key in the application .plist file
+
+		NSLocationAlwaysUsageDescription
+		
+
 
 #	Facial Recognition and Match Feature
 
@@ -1437,22 +1491,44 @@ Following are the parameters.
 
 # Change Log
 
-- Acuant iOS MobileSDK version 4.9.5.1
+- Acuant iOS MobileSDK version 4.9.6
 
 	Changes:
 
-	-	Modified API signature
-	
-			+(id)presentFacialCaptureInterfaceWithDelegate
-			(id<AcuantFacialCaptureDelegate>)delegate withSDK:
-			(AcuantMobileSDKController*)sdkController inViewController:
-			(UIViewController*)parentVC withCancelButton:(BOOL)cancelVisible 
-			withWaterMark:(NSString* )watermarkText withBlinkMessage:
-			(NSAttributedString*)message inRect:(CGRect)rect; 
+	-	Improved barcode capture interface.
+	-  Added API to track capture location
+		
+			// Initializing AcuantMobileSDKController
+			self.instance = [AcuantMobileSDKController 
+			initAcuantMobileSDKWithLicenseKey:licenseKey andDelegate:self];
+			.
+			.
+			.
+    		// Enabling location tracking on the AcuantMobileSDKController
+			[self.instance enableLocationTracking];
+			.
+			.
+			.
+			/*	To get the location details*/
+			[_instance getDeviceStreetAddress]// Street address of device location
+			[_instance getDeviceArea] // Area of the device location
+			[_instance getDeviceCity] // City of the device location
+			[_instance getDeviceState] // State of the device location
+			[_instance getDeviceCountry]] // Country of the device location
+			[_instance getDeviceCountryCode]// Country code of the device location
+			[_instance getDeviceZipCode] // zipcode of the device location
+			
+	- Added new location test fields to the AcuantCardResult class
+			@property (nonatomic) AcuantDeviceLocationTestResult  idLocationStateTestResult;
+			@property (nonatomic) AcuantDeviceLocationTestResult 
+			idLocationCountryTestResult;
+			@property (nonatomic) AcuantDeviceLocationTestResult  idLocationCityTestResult;
+			@property (nonatomic) AcuantDeviceLocationTestResult  idLocationZipcodeTestResult;
+			
+	- Added enum for location test result
 
-	
-	-	Made the following barcode delegate method optional
-
-			-(void)didCaptureCropImage:(UIImage *)cardImage andData:(NSString 
-			*)data scanBackSide:(BOOL)scanBackSide
-
+			typedef enum {
+    			AcuantDeviceLocationTestFailed = 0,  
+    			AcuantDeviceLocationTestPassed = 1,
+    			AcuantDeviceLocationTestNotAvailable = 2,
+			} AcuantDeviceLocationTestResult;

@@ -15,6 +15,8 @@
 #import "AcuantDriversLicenseCard.h"
 #import "AcuantPassaportCard.h"
 #import "AcuantCardType.h"
+#import "AcuantDeviceLocationTestResult.h"
+
 //#import "AcuantCardDataRequestError.h"
 
 typedef enum{
@@ -303,6 +305,7 @@ typedef enum{
  */
 - (void)showBarcodeCameraInterfaceInViewController:(UIViewController*)vc delegate:(id<AcuantMobileSDKControllerCapturingDelegate>)delegate cardType:(AcuantCardType)cardType andRegion:(AcuantCardRegion)region;
 
+
 /**
  Use this method to dismiss the card capture interface
  @discussion You cannot use [UIPopOverController dismissPopoverAnimated:] method to dismiss the UIPopOverController
@@ -422,6 +425,15 @@ typedef enum{
               withImage:(NSData *)imageTwo
            withDelegate:(id<AcuantMobileSDKControllerProcessingDelegate>)delegate
             withOptions:(AcuantCardProcessRequestOptions*)option;
+
+-(void)enableLocationTracking;
+-(NSString*)getDeviceStreetAddress;
+-(NSString*)getDeviceState;
+-(NSString*)getDeviceArea;
+-(NSString*)getDeviceCountry;
+-(NSString*)getDeviceCity;
+-(NSString*)getDeviceZipCode;
+-(NSString*)getDeviceCountryCode;
 
 -(BOOL)isFacialEnabled;
 -(BOOL)isAssureIDAllowed;

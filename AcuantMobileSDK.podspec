@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   
   s.name = 'AcuantMobileSDK'
-  s.version = '4.9.5.1'
+  s.version = '4.9.6'
   s.summary = 'AcuantMobileSDK'
   s.homepage = 'http://www.acuantcorp.com'
 
@@ -44,7 +44,7 @@ Pod::Spec.new do |s|
 
   s.source = {
         :git => 'https://github.com/Acuant/AcuantiOSMobileSDK.git', 
-        :tag => 'v4.9.5.1'
+        :tag => 'v4.9.6'
   }
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -55,10 +55,10 @@ Pod::Spec.new do |s|
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   s.ios.deployment_target = '8.0'
-  s.source_files = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.9.5.1/Headers/*.{h}'
+  s.source_files = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.9.6/Headers/*.{h}'
   s.ios.header_dir = 'AcuantMobileSDK'
-  s.public_header_files = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.9.5.1/Headers/*.h'
-  s.resources = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.9.5.1/Resources/*.{strings,wav,png}'
+  s.public_header_files = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.9.6/Headers/*.h'
+  s.resources = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/4.9.6/Resources/*.{strings,wav,png}'
   #s.ios.requires_arc = true
   
   s.ios.xcconfig = { 
@@ -66,7 +66,7 @@ Pod::Spec.new do |s|
         'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/AcuantMobileSDK/AcuantMobileSDK.embeddedframework"'
   }
 
-  s.ios.frameworks = 'AcuantMobileSDK','CoreMotion','SystemConfiguration','AssetsLibrary','AudioToolbox','AVFoundation','CoreMedia','CoreVideo','CoreGraphics','QuartzCore'
+  s.ios.frameworks = 'AcuantMobileSDK','Accelerate','CoreLocation','CoreText','CoreMotion','SystemConfiguration','AssetsLibrary','AudioToolbox','AVFoundation','CoreMedia','CoreVideo','CoreGraphics','QuartzCore'
   s.ios.libraries = 'iconv', 'c++', 'z'
 
 end
