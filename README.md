@@ -3,7 +3,7 @@
 Acuant iOS Mobile SDK API
 ==================
 
-Last updated on – 10/24/2016
+Last updated on – 10/25/2016
 
 # Introduction
 
@@ -1237,16 +1237,25 @@ If using the AcuantCardTypePassportCard, add the following code:
     	}
     	return retStr;
 	}
+	
+	
+# AssureID Authentication
 
-Note : For Driving license and Passport , in order to see AssureID results, please look for these two fields : “AuthenticationResult”, “AuthenticationResultSummary”.
+For Driving license and Passport , in order to see AssureID authentication results, please look for these two fields : “AuthenticationResult”, “AuthenticationResultSummary”.
 
-“AuthenticationResult” can have either of the following values: Success , Failed ,Attention
+AuthenticationResult: can have either of the following values:
+			
+			-  Passed
+			-  Failed
+			-  Attention
  
-“AuthenticationResultSummary” will be empty for Success and Failed results. When “AuthenticationResult” will have value “Attention”, “AuthenticationResultSummary” will contain the reason for “attention’.
+AuthenticationResultSummary: When “AuthenticationResult” will have the value “Attention”, “AuthenticationResultSummary” will contain the reason for “Attention’.
 
-# Tracking Capture Location
+Note: AuthenticationResultSummary will be empty for “Passed” and “Failed” results.
 
-If it is required to detect the location at which the ID/Passport is captured the location tracking can be enabled on the SDK as below.
+# Tracking Capture Device Location
+
+If it is required to detect the location at which the ID/Passport is captured, location tracking can be enabled.
 
 		// Initializing AcuantMobileSDKController
 		self.instance = [AcuantMobileSDKController 
@@ -1256,8 +1265,13 @@ If it is required to detect the location at which the ID/Passport is captured th
 		.
     	// Enabling location tracking
 		[self.instance enableLocationTracking];
+		
+		
+**Note : Add the below key and a value for it in the application .plist file to enable location tracking**
 
-Whenever during the capture process the location is required the following  methods will return location details.
+		NSLocationAlwaysUsageDescription
+
+Whenever during the capture process location is required, the following  methods will return location details.
 
 			/*	To get the location details*/
 			[_instance getDeviceStreetAddress]// Street address of device location
@@ -1276,7 +1290,7 @@ The following enum is introduced for location test results
     			AcuantDeviceLocationTestNotAvailable = 2,
 			} AcuantDeviceLocationTestResult;
 
-Added new location test fields to the AcuantCardResult class
+Below are the location test fields to the AcuantCardResult class
 			
 			@property (nonatomic) AcuantDeviceLocationTestResult  idLocationStateTestResult;
 			@property (nonatomic) AcuantDeviceLocationTestResult 
@@ -1284,13 +1298,6 @@ Added new location test fields to the AcuantCardResult class
 			@property (nonatomic) AcuantDeviceLocationTestResult  idLocationCityTestResult;
 			@property (nonatomic) AcuantDeviceLocationTestResult  idLocationZipcodeTestResult;
 			
-			
-
-Note : If enabling location tracking , then it is required to add a value for the following key in the application .plist file
-
-		NSLocationAlwaysUsageDescription
-		
-
 
 #	Facial Recognition and Match Feature
 
@@ -1495,8 +1502,8 @@ Following are the parameters.
 
 	Changes:
 
-	-	Improved barcode capture interface.
-	-  Added API to track capture location
+	-	Improved 2D barcode capture interface.
+	-  Added API to track device location.
 		
 			// Initializing AcuantMobileSDKController
 			self.instance = [AcuantMobileSDKController 
@@ -1518,7 +1525,8 @@ Following are the parameters.
 			[_instance getDeviceCountryCode]// Country code of the device location
 			[_instance getDeviceZipCode] // zipcode of the device location
 			
-	- Added new location test fields to the AcuantCardResult class
+	- Added new properties for location test to the AcuantCardResult class
+			
 			@property (nonatomic) AcuantDeviceLocationTestResult  idLocationStateTestResult;
 			@property (nonatomic) AcuantDeviceLocationTestResult 
 			idLocationCountryTestResult;
@@ -1532,3 +1540,5 @@ Following are the parameters.
     			AcuantDeviceLocationTestPassed = 1,
     			AcuantDeviceLocationTestNotAvailable = 2,
 			} AcuantDeviceLocationTestResult;
+			
+	-  Fixed camera overexposure issue.
