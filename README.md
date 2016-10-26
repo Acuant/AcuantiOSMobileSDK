@@ -96,6 +96,7 @@ If git-lfs is not setup , then GitHub doesn't download of large files. Therefore
 		#import "AcuantMobileSDK/AcuantCardRegion.h"
 		#import "AcuantMobileSDK/AcuantCardResult.h"
 		#import "AcuantMobileSDK/AcuantCardType.h"
+		#import "AcuantMobileSDK/AcuantDeviceLocationTestResult.h"
 		#import "AcuantMobileSDK/AcuantDriversLicenseCard.h"
 		#import "AcuantMobileSDK/AcuantError.h"
 		#import "AcuantMobileSDK/AcuantFacialCaptureDelegate.h"
