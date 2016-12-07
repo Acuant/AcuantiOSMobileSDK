@@ -3,7 +3,7 @@
 Acuant iOS Mobile SDK API
 ==================
 
-Last updated on – 11/14/2016
+Last updated on – 12/07/2016
 
 # Introduction
 
@@ -148,6 +148,8 @@ Add following frameworks.
 - CoreText.framework
 
 - CoreLocation.framework
+
+- ImageIO.framework
 
 Add following libraries
 
@@ -1499,8 +1501,10 @@ Following are the parameters.
 
 # Change Log
 
-- Acuant iOS MobileSDK version 4.9.7
+- Acuant iOS MobileSDK version 4.9.8
 
 	Changes:
 
-	-	Fixed facial camera issue for dual camera phones.
+	-  Improved facial liveliness detection. 
+
+	Note : This is a pre release and is only available via GitHub. This release is not available in Cocoapod

@@ -31,6 +31,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *backImageLabel;
 @property (strong, nonatomic) IBOutlet UIButton *sendRequestButton;
 @property (strong, nonatomic) IBOutlet UITextField *licenseKeyText;
+//@property (strong, nonatomic) IBOutlet UITextField *livelinesThreholdText;
 @property (strong, nonatomic) IBOutlet UILabel *licenseKeyLabel;
 @property (strong, nonatomic) IBOutlet UIButton *activateButton;
 @property (strong, nonatomic) IBOutlet UIButton *driverLicenseButton;
@@ -457,6 +458,12 @@
     [textField resignFirstResponder];
 }
 
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return YES;
+}
+
 - (IBAction)textFieldDidEndEditing:(id)sender {
     UITextField *textField = (UITextField*)sender;
     if (self.canValidate) {
@@ -779,7 +786,6 @@
     [message addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:range];
     [message addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, message.length)];
     [message addAttribute:NSFontAttributeName value:boldFont range:range];
-    
     [AcuantFacialRecognitionViewController
      presentFacialCaptureInterfaceWithDelegate:self withSDK:_instance inViewController:self withCancelButton:YES withWaterMark:@"Powered by Acuant" withBlinkMessage:message inRect:messageFrame];
 }

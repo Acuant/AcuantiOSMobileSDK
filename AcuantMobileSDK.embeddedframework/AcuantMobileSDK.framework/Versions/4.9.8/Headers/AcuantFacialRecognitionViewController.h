@@ -15,6 +15,6 @@
 
 +(id)presentFacialCaptureInterfaceWithDelegate:(id<AcuantFacialCaptureDelegate>)delegate withSDK:(AcuantMobileSDKController*)sdkController inViewController:(UIViewController*)parentVC withCancelButton:(BOOL)cancelVisible withWaterMark:(NSString* )watermarkText
                             withBlinkMessage:(NSAttributedString*)message
-                                      inRect:(CGRect)rect;
+                                        inRect:(CGRect)rect;
 
 @end
