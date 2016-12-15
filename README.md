@@ -20,9 +20,9 @@ Benefits:
 Acuant Web Services supports data extraction from of drivers licenses, state IDs, other govt issued IDs, custom IDs, driver’s license barcodes, passports, medical insurance cards etc. It also supports document authentication and facial recognition to verify and authenticate the identity. 
 
 
-For IDs from Asia, Australia, Europe, South America, Africa – we are support dd-mm-yyyy date format.
+For IDs from Asia, Australia, Europe, South America, Africa – we return dd-mm-yyyy date format.
 
-For IDs from Canada, USA – we are support mm-dd-yyyy date format.
+For IDs from Canada, USA – we return mm-dd-yyyy date format.
 
 For a complete list of regions, states, and countries supported for ID processing, please see Appendix F of ScanW document - <http://www.id-reader.com/ftp/applications/sdk/docs/ScanW.pdf>
 
@@ -84,7 +84,7 @@ If git-lfs is not setup , then GitHub doesn't download of large files. Therefore
 		platform :ios, '8.0'
 
 		pod 'AcuantMobileSDK', '~> <version number>' 
-		(example pod 'AcuantMobileSDK', '~> 4.9.7')
+		(example pod 'AcuantMobileSDK', '~> 4.9.8')
 
 - Execute 'Pod install' to add the AcuantMobileSDK
 - If it is a Swift project then add the follwoing imports in the Objective-C bridging file
@@ -1506,5 +1506,3 @@ Following are the parameters.
 	Changes:
 
 	-  Improved facial liveliness detection. 
-
-	Note : This is a pre release and is only available via GitHub. This release is not available in Cocoapod
