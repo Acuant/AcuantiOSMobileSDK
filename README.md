@@ -1256,7 +1256,7 @@ AuthenticationResult: can have either of the following values:
  
 AuthenticationResultSummary: When “AuthenticationResult” will have the value “Attention”, “AuthenticationResultSummary” will contain the reason for “Attention’.
 
-Note: AuthenticationResultSummary will be empty for “Passed” and “Failed” results.
+Note: AuthenticationResultSummary will be empty for “Passed”,“Failed”,"Unknown" and "Skipped" results.
 
 # Tracking Capture Device Location
 
