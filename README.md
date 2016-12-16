@@ -1251,6 +1251,8 @@ AuthenticationResult: can have either of the following values:
 			-  Passed
 			-  Failed
 			-  Attention
+			-  Unknown
+			-  Skipped
  
 AuthenticationResultSummary: When “AuthenticationResult” will have the value “Attention”, “AuthenticationResultSummary” will contain the reason for “Attention’.
 
