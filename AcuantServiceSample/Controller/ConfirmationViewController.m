@@ -41,7 +41,11 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
     //[userInfo setObject:_originalImage forKey:@"OriginalImage"];
-    [userInfo setObject:@"NO" forKey:@"scanBackSide"];
+    if(_scanBackSide){
+        [userInfo setObject:@"YES" forKey:@"scanBackSide"];
+    }else{
+        [userInfo setObject:@"NO" forKey:@"scanBackSide"];
+    }
     [userInfo setObject:@"NO" forKey:@"Confirmed"];
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"ConfirmationNotification"

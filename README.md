@@ -3,7 +3,7 @@
 Acuant iOS Mobile SDK API
 ==================
 
-Last updated on – 12/07/2016
+Last updated on – 03/01/2017
 
 # Introduction
 
@@ -84,7 +84,7 @@ If git-lfs is not setup , then GitHub doesn't download of large files. Therefore
 		platform :ios, '8.0'
 
 		pod 'AcuantMobileSDK', '~> <version number>' 
-		(example pod 'AcuantMobileSDK', '~> 4.9.8')
+		(example pod 'AcuantMobileSDK', '~> 5.0')
 
 - Execute 'Pod install' to add the AcuantMobileSDK
 - If it is a Swift project then add the follwoing imports in the Objective-C bridging file
@@ -356,6 +356,14 @@ For Driver License Front Side and Medical Insurance
 By default it is disabled.
 
 	[_instance setCanCropBarcode:YES];
+	
+### Optional delegate method to enable cropping of the barcode image on timesout or cancel is pressed.
+
+By default it is disabled.
+
+	- (BOOL)canCropBarcodeOnBackPressed{
+    	return NO;
+	}	
 
 Note: The barcode cropped image will be received with the didCaptureImage delegate method.
 
@@ -371,6 +379,18 @@ By default it is disabled.
 ###	Optional method to resume the scanning of the barcode camera
 
 	[_instance resumeScanningBarcodeCamera];
+	
+### Optional method to contineously scanning barcodes without user preview 
+
+
+				// To Start Barcode scanning :
+			
+				- (void)startContinousBarcodeCaptureWithDelegate:(UIViewController<AcuantMobileSDKControllerCapturingDelegate>*)
+				delegate;
+
+				// To stop scanning :
+				-(void)StopContinousBarcodeCapture;
+
 
 
 ## AcuantMobileSDKControllerCapturingDelegate protocol to handle the capturing.
@@ -567,8 +587,16 @@ In order to inform that the scan or the process failed. You must use the followi
 
 Call to inform the delegate that the time of the barcode scan expired
 
-		-(void)barcodeScanTimeOut{
+		-(void)barcodeScanTimeOut:(UIImage*)croppedImage andOriginalImage:(UIImage*)originalImage{
 			[self showSimpleAlertWithMessage:message];  
+		}
+		
+
+Call to inform the delegate that the barcode screen has been canceled.For the arguments have the images the delegate must implement -(BOOL)canCropBarcodeOnBackPressed method and must return YES.
+
+		- (void)didCancelToCaptureData:(UIImage*)croppedImage andOriginalImage:
+		(UIImage*)originalImage{
+		
 		}
 
 
@@ -1503,8 +1531,48 @@ Following are the parameters.
 
 # Change Log
 
-- Acuant iOS MobileSDK version 4.9.8
+- Acuant iOS MobileSDK version 5.0
 
 	Changes:
 
-	-  Improved facial liveliness detection. 
+	-  Fixed iPad Pro barcode scanning focus issue.
+	-  Allowed rotation of card capture camera screen in ipads. 
+	-  Modified/Added APIs to capture barcode side on time out or when cancel/back button is pressed.
+
+	
+			//Added the following delegate method to enable cropping of image 
+			on timeout or cancel :
+			
+			- (BOOL)canCropBarcodeOnBackPressed{
+    			return YES;
+			}
+			
+	
+			//Modified the the following callback 
+			
+			//From :
+			
+			-(void)barcodeScanTimeOut{}
+			
+			//to 
+			
+			-(void)barcodeScanTimeOut:(UIImage*)croppedImage andOriginalImage:
+			(UIImage*)originalImage{}
+
+	
+			//Added the following callback method to be called when back/cancel is
+			pressed on Barcode UI :
+		
+			- (void)didCancelToCaptureData:(UIImage*)croppedImage
+				andOriginalImage:(UIImage*)originalImage{}
+				
+	
+	-	Added API to contineously scan Barcode without user preview
+
+				// To Start Barcode scanning :
+			
+				- (void)startContinousBarcodeCaptureWithDelegate:(UIViewController<AcuantMobileSDKControllerCapturingDelegate>*)
+				delegate;
+
+				// To stop scanning :
+				-(void)StopContinousBarcodeCapture;
