@@ -89,6 +89,9 @@ If git-lfs is not setup , then GitHub doesn't download of large files. Therefore
 - Execute 'Pod install' to add the AcuantMobileSDK
 - If it is a Swift project then add the follwoing imports in the Objective-C bridging file
 - *Apple Reference:* <https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html>
+
+		@protocol AcuantFacialCaptureDelegate;
+		@class AcuantMobileSDKController;
  
  		#import <Foundation/Foundation.h>
 		#import <UIKit/UIKit.h>
