@@ -3,7 +3,7 @@
 Acuant iOS Mobile SDK API
 ==================
 
-Last updated on – 03/01/2017
+Last updated on – 04/19/2017
 
 # Introduction
 
@@ -84,7 +84,7 @@ If git-lfs is not setup , then GitHub doesn't download of large files. Therefore
 		platform :ios, '8.0'
 
 		pod 'AcuantMobileSDK', '~> <version number>' 
-		(example pod 'AcuantMobileSDK', '~> 5.0')
+		(example pod 'AcuantMobileSDK', '~> 5.1')
 
 - Execute 'Pod install' to add the AcuantMobileSDK
 - If it is a Swift project then add the follwoing imports in the Objective-C bridging file
@@ -1531,48 +1531,11 @@ Following are the parameters.
 
 # Change Log
 
-- Acuant iOS MobileSDK version 5.0
+- Acuant iOS MobileSDK version 5.1
 
 	Changes:
 
-	-  Fixed iPad Pro barcode scanning focus issue.
-	-  Allowed rotation of card capture camera screen in ipads. 
-	-  Modified/Added APIs to capture barcode side on time out or when cancel/back button is pressed.
-
-	
-			//Added the following delegate method to enable cropping of image 
-			on timeout or cancel :
-			
-			- (BOOL)canCropBarcodeOnBackPressed{
-    			return YES;
-			}
-			
-	
-			//Modified the the following callback 
-			
-			//From :
-			
-			-(void)barcodeScanTimeOut{}
-			
-			//to 
-			
-			-(void)barcodeScanTimeOut:(UIImage*)croppedImage andOriginalImage:
-			(UIImage*)originalImage{}
-
-	
-			//Added the following callback method to be called when back/cancel is
-			pressed on Barcode UI :
-		
-			- (void)didCancelToCaptureData:(UIImage*)croppedImage
-				andOriginalImage:(UIImage*)originalImage{}
-				
-	
-	-	Added API to contineously scan Barcode without user preview
-
-				// To Start Barcode scanning :
-			
-				- (void)startContinousBarcodeCaptureWithDelegate:(UIViewController<AcuantMobileSDKControllerCapturingDelegate>*)
-				delegate;
-
-				// To stop scanning :
-				-(void)StopContinousBarcodeCapture;
+	-  Improved document cropping for IDs and Passports
+	-  Memory optimization
+	-  Fixed : FacialMatchConfidenceRating data type issue
+	-  Fixed : didCaptureOriginalImage returns cropped images instead of original image

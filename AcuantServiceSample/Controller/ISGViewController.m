@@ -63,8 +63,7 @@
 @property (nonatomic,strong) NSString* assureIDUsername;
 @property (nonatomic,strong)  NSString* assureIDPassword;
 @property (nonatomic,strong)  NSString* assureIDSubscription;
-
-
+@property (nonatomic,strong)  NSString* assureIDUrl;
 
 @end
 
@@ -84,6 +83,7 @@
     self.wasValidated = NO;
     //Obtain the main controller instance
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"AssureID_Enable"]) {
+        _assureIDUrl = [[NSUserDefaults standardUserDefaults] stringForKey:@"AssureID_Url"];
         _assureIDUsername = [[NSUserDefaults standardUserDefaults] stringForKey:@"AssureID_Username"];
         _assureIDPassword = [[NSUserDefaults standardUserDefaults] stringForKey:@"AssureID_Password"];
         _assureIDSubscription = [[NSUserDefaults standardUserDefaults] stringForKey:@"AssureID_Subscription"];
@@ -98,7 +98,13 @@
            &&
            
            _assureIDSubscription!=nil && [[_assureIDSubscription stringByTrimmingCharactersInSet:
-                                           [NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""]==NO){
+                                           [NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""]==NO
+           
+           &&
+           
+           _assureIDUrl!=nil && [[_assureIDUrl stringByTrimmingCharactersInSet:
+                                  [NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""]==NO){
+            
             _useAssureIDWebService = YES;
             _isFacialFlow=NO;
             _medicalInsuranceButton.enabled=NO;
@@ -116,10 +122,10 @@
         
     }
     if(_useAssureIDWebService){
-        self.instance = [AcuantMobileSDKController initAcuantMobileSDKWithUsername:_assureIDUsername password:_assureIDPassword subscription:_assureIDSubscription andDelegate:self];
+        self.instance = [AcuantMobileSDKController initAcuantMobileSDKWithUsername:_assureIDUsername password:_assureIDPassword subscription:_assureIDSubscription url:_assureIDUrl andDelegate:self];
     }else{
         NSString *licenseKey = [[NSUserDefaults standardUserDefaults]valueForKey:@"LICENSEKEY"];
-        self.instance = [AcuantMobileSDKController initAcuantMobileSDKWithLicenseKey:licenseKey andDelegate:self];
+        self.instance = [AcuantMobileSDKController initAcuantMobileSDKWithLicenseKey:licenseKey andDelegate:self ];
         
     }
     [self.instance enableLocationTracking];
@@ -680,6 +686,8 @@
         [self presentViewController:confirmVC animated:YES completion:nil];
         
     }
+    
+    
 }
 
 -(void)didCaptureCropImage:(UIImage *)cardImage andData:(NSString *)data scanBackSide:(BOOL)scanBackSide{

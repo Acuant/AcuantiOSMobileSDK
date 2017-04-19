@@ -363,6 +363,7 @@
 				TargetAttributes = {
 					95019F1D1758F30A001C4F94 = {
 						DevelopmentTeam = E67326HC5Q;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -510,13 +511,14 @@
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = E67326HC5Q;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/AcuantMobileSDK.embeddedframework",
-					"$(PROJECT_DIR)/AcuantMobileSDK.embeddedframework/Resources/Frameworks",
+					"$(PROJECT_DIR)/AcuantMobileSDK.embeddedframework/Resources/Frameworks/**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AcuantServiceSample/Main/AcuantMobileSDKSample-Prefix.pch";
@@ -530,6 +532,7 @@
 				PRODUCT_NAME = AcuantiOSMobileSampleSDK;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "$(ARCHS_STANDARD)";
@@ -548,13 +551,14 @@
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = E67326HC5Q;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/AcuantMobileSDK.embeddedframework",
-					"$(PROJECT_DIR)/AcuantMobileSDK.embeddedframework/Resources/Frameworks",
+					"$(PROJECT_DIR)/AcuantMobileSDK.embeddedframework/Resources/Frameworks/**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AcuantServiceSample/Main/AcuantMobileSDKSample-Prefix.pch";
@@ -568,6 +572,7 @@
 				PRODUCT_NAME = AcuantiOSMobileSampleSDK;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "$(ARCHS_STANDARD)";

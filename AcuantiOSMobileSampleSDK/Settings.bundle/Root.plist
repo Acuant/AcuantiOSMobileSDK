@@ -9,12 +9,12 @@
 		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
+			<key>DefaultValue</key>
+			<false/>
 			<key>Title</key>
 			<string>Connect Subscriptions</string>
 			<key>Key</key>
 			<string>AssureID_Enable</string>
-			<key>DefaultValue</key>
-			<false/>
 		</dict>
 		<dict>
 			<key>Type</key>
@@ -23,16 +23,6 @@
 			<string>Subscription</string>
 			<key>Key</key>
 			<string>AssureID_Subscription</string>
-			<key>DefaultValue</key>
-			<string></string>
-			<key>IsSecure</key>
-			<false/>
-			<key>KeyboardType</key>
-			<string>Alphabet</string>
-			<key>AutocapitalizationType</key>
-			<string>None</string>
-			<key>AutocorrectionType</key>
-			<string>No</string>
 		</dict>
 		<dict>
 			<key>Type</key>
@@ -49,6 +39,14 @@
 			<string>Password</string>
 			<key>Key</key>
 			<string>AssureID_Password</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Url</string>
+			<key>Key</key>
+			<string>AssureID_Url</string>
 		</dict>
 	</array>
 </dict>
