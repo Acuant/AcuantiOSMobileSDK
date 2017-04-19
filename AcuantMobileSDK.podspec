@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
   s.license = { 
         :type => 'commercial',
         :text => <<-LICENSE
-                Copyright 2016 Acuant, Inc. All Rights Reserved.
+                Copyright 2017 Acuant, Inc. All Rights Reserved.
                 LICENSE
   }
 
@@ -63,7 +63,7 @@ Pod::Spec.new do |s|
   
   s.ios.xcconfig = { 
         'GCC_PREPROCESSOR_DEFINITIONS' => 'CVLIB_IMG_NOCODEC',
-'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/AcuantMobileSDK/AcuantMobileSDK.embeddedframework/**"'}
+'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/AcuantMobileSDK/AcuantMobileSDK.embeddedframework/**" "$(PODS_ROOT)/AcuantMobileSDK/AcuantMobileSDK.embeddedframework/Resources/Frameworks/**"'}
 
   s.ios.frameworks = 'AcuantMobileSDK','Accelerate','CoreLocation','ImageIO','CoreText','CoreMotion','SystemConfiguration','AssetsLibrary','AudioToolbox','AVFoundation','CoreMedia','CoreVideo','CoreGraphics','QuartzCore'
   s.ios.libraries = 'iconv', 'c++', 'z'
