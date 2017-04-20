@@ -1496,7 +1496,7 @@ Following are the parameters.
 	
 	@property (nonatomic, strong) NSString  *errorMessage; // Any service error description. If the transaction has gone through successfully then this field will be nil.
 	
-	@property (nonatomic, strong) NSString  *facialMatchConfidenceRating; // Confidence level out of 100
+	@property (nonatomic) int  *facialMatchConfidenceRating; // Confidence level out of 100
 
 
 # Error Types
