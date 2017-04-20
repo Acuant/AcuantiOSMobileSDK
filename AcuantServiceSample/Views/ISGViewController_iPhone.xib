@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ISGViewController">
             <connections>
                 <outlet property="activateButton" destination="43" id="7a4-5B-YZO"/>
+                <outlet property="assureIDCaptureButton" destination="Iu7-R2-fqn" id="60A-Wk-0B8"/>
                 <outlet property="backImage" destination="22" id="24"/>
                 <outlet property="backImageLabel" destination="21" id="25"/>
                 <outlet property="driverLicenseButton" destination="10" id="G39-VI-Cu7"/>
@@ -130,6 +131,14 @@
                     </state>
                     <connections>
                         <action selector="capturePassportWithFacial:" destination="-1" eventType="touchUpInside" id="w4M-tq-pig"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Iu7-R2-fqn">
+                    <rect key="frame" x="160" y="83" width="55" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Capture"/>
+                    <connections>
+                        <action selector="captureAssureID:" destination="-1" eventType="touchUpInside" id="Bsh-PD-zFv"/>
                     </connections>
                 </button>
             </subviews>

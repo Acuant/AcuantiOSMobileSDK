@@ -38,6 +38,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *driverLicenseWithFacialButton;
 @property (strong, nonatomic) IBOutlet UIButton *passportButton;
 @property (strong, nonatomic) IBOutlet UIButton *medicalInsuranceButton;
+@property (strong, nonatomic) IBOutlet UIButton *assureIDCaptureButton;
 @property (strong, nonatomic) NSString *barcodeString;
 @property (strong, nonatomic) UIImage *originalImage;
 @property (strong, nonatomic) AcuantMobileSDKController *instance;
@@ -107,19 +108,35 @@
             
             _useAssureIDWebService = YES;
             _isFacialFlow=NO;
-            _medicalInsuranceButton.enabled=NO;
+            _medicalInsuranceButton.hidden=YES;
+            _driverLicenseButton.hidden=YES;
+            _passportButton.hidden=YES;
+            _assureIDCaptureButton.hidden=NO;
             _licenseKeyText.hidden=YES;
             _licenseKeyLabel.hidden=YES;
             _activateButton.hidden=YES;
         }else{
+            _medicalInsuranceButton.hidden=NO;
+            _driverLicenseButton.hidden=NO;
+            _passportButton.hidden=NO;
+            _assureIDCaptureButton.hidden=YES;
             _useAssureIDWebService = NO;
-            _medicalInsuranceButton.enabled=YES;
             _licenseKeyText.hidden=NO;
             _licenseKeyLabel.hidden=NO;
             _activateButton.hidden=NO;
         }
         
         
+    }else{
+        _medicalInsuranceButton.hidden=NO;
+        _driverLicenseButton.hidden=NO;
+        _passportButton.hidden=NO;
+        _assureIDCaptureButton.hidden=YES;
+        _useAssureIDWebService = NO;
+        _licenseKeyText.hidden=NO;
+        _licenseKeyLabel.hidden=NO;
+        _activateButton.hidden=NO;
+
     }
     if(_useAssureIDWebService){
         self.instance = [AcuantMobileSDKController initAcuantMobileSDKWithUsername:_assureIDUsername password:_assureIDPassword subscription:_assureIDSubscription url:_assureIDUrl andDelegate:self];
@@ -161,6 +178,35 @@
 
 #pragma mark -
 #pragma mark IBAction
+
+- (IBAction)captureAssureID:(id)sender {
+    self.cardType = AcuantCardTypeDriversLicenseCard;
+    self.cardRegion = -1;
+    _frontImageConfirmed = NO;
+    resultMessage = @"";
+    _TID = @"";
+    self.isBarcodeSide = NO;
+    _isFacialFlow = NO;
+    [self.backImageLabel setText:@""];
+    [self.backImage setImage:nil];
+    [self.frontImage setImage:nil];
+    [self.frontImageLabel setText:@"Tap to capture ID/Passport"];
+    self.barcodeString = nil;
+    [self cardHolderPositions];
+    [self.sendRequestButton setEnabled:NO];
+    [self.sendRequestButton setHidden:NO];
+    self.frontImage.layer.masksToBounds = YES;
+    self.frontImage.layer.cornerRadius = 10.0f;
+    self.frontImage.layer.borderWidth = 1.0f;
+    
+    self.backImage.layer.masksToBounds = NO;
+    self.backImage.layer.cornerRadius = 10.0f;
+    self.backImage.layer.borderWidth = 0.0f;
+    [self.frontImage setUserInteractionEnabled:YES];
+    [self.backImage setUserInteractionEnabled:NO];
+    
+}
+
 - (IBAction)captureDriverLicense:(id)sender {
     _frontImageConfirmed = NO;
     resultMessage = @"";
@@ -667,8 +713,20 @@
     [self.sendRequestButton setHidden:NO];
 }
 
--(void)didCaptureCropImage:(UIImage *)cardImage scanBackSide:(BOOL)scanBackSide{
+-(void)didCaptureCropImage:(UIImage *)cardImage scanBackSide:(BOOL)scanBackSide andCardType:(AcuantCardType)cardType{
     NSString* message;
+    if(_useAssureIDWebService){
+        self.cardType = cardType;
+        if(self.cardType == AcuantCardTypePassportCard){
+            scanBackSide = NO;
+        }else{
+            if(_frontImageConfirmed){
+                scanBackSide = NO;
+            }else{
+                scanBackSide = YES;
+            }
+        }
+    }
     if(self.cardType == AcuantCardTypePassportCard){
         message = @"Please make sure all the text on the Passport image is readable, otherwise retry.";
     }else{
@@ -944,7 +1002,7 @@
 }
 
 - (BOOL)canCropBarcodeOnBackPressed{
-    return NO;
+    return YES;
 }
 
 -(UIImage *)imageForHelpImageView{

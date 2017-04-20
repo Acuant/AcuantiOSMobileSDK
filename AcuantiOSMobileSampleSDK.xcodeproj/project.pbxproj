@@ -517,8 +517,7 @@
 					"$(inherited)",
 					"$(SRCROOT)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/AcuantMobileSDK.embeddedframework",
-					"$(PROJECT_DIR)/AcuantMobileSDK.embeddedframework/Resources/Frameworks/**",
+					"$(PROJECT_DIR)/AcuantMobileSDK.embeddedframework/**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AcuantServiceSample/Main/AcuantMobileSDKSample-Prefix.pch";
@@ -557,8 +556,7 @@
 					"$(inherited)",
 					"$(SRCROOT)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/AcuantMobileSDK.embeddedframework",
-					"$(PROJECT_DIR)/AcuantMobileSDK.embeddedframework/Resources/Frameworks/**",
+					"$(PROJECT_DIR)/AcuantMobileSDK.embeddedframework/**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AcuantServiceSample/Main/AcuantMobileSDKSample-Prefix.pch";

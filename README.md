@@ -3,7 +3,7 @@
 Acuant iOS Mobile SDK API
 ==================
 
-Last updated on – 04/19/2017
+Last updated on – 04/20/2017
 
 # Introduction
 
@@ -404,7 +404,7 @@ By default it is disabled.
 
 In order to retrieve the crop image captured by all card capture interface must use the following method:
 
-	-(void)didCaptureCropImage:(UIImage *)cardImage scanBackSide:(BOOL)scanBackSide{
+	-(void)didCaptureCropImage:(UIImage *)cardImage scanBackSide:(BOOL)scanBackSide andCardType:(AcuantCardType)cardType{
 		_isCameraTouched = NO;
 		[_instance dismissCardCaptureInterface];
 		_isBarcodeSide = scanBackSide;
@@ -1542,3 +1542,8 @@ Following are the parameters.
 	-  Memory optimization
 	-  Fixed : FacialMatchConfidenceRating data type issue
 	-  Fixed : didCaptureOriginalImage returns cropped images instead of original image
+	-  Modified the cropping delegate method as below
+
+			// Added the parameter cardType
+			-(void)didCaptureCropImage:(UIImage *)cardImage scanBackSide:
+			(BOOL)scanBackSide andCardType:(AcuantCardType)cardType

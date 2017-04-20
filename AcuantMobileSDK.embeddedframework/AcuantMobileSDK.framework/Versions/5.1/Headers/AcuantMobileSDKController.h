@@ -33,7 +33,7 @@ typedef enum{
  Called to inform the delegate that a card image was captured
  @param cardImage the card image
  */
-- (void)didCaptureCropImage:(UIImage*)cardImage scanBackSide:(BOOL)scanBackSide;
+- (void)didCaptureCropImage:(UIImage*)cardImage scanBackSide:(BOOL)scanBackSide andCardType:(AcuantCardType)cardType;
 
 /**
  Called to inform the delegate that a barcode image was captured
