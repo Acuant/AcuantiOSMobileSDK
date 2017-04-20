@@ -1540,7 +1540,7 @@ Following are the parameters.
 
 	-  Improved document cropping for IDs and Passports
 	-  Memory optimization
-	-  Fixed : FacialMatchConfidenceRating data type issue
+	-  Fixed : FacialMatchConfidenceRating data type issue. Data type is now integer.
 	-  Fixed : didCaptureOriginalImage returns cropped images instead of original image
 	-  Modified the cropping delegate method as below
 

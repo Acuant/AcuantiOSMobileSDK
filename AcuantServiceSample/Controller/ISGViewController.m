@@ -1103,7 +1103,7 @@
         resultMessage = [NSString stringWithFormat:@"%@\nFacial Enabled - 1",resultMessage];
         resultMessage = [NSString stringWithFormat:@"%@\nFace Liveness Detection - %@",resultMessage,result.faceLivelinessDetection ? @"1" : @"0"];
         _validatingSelfie = NO;
-        resultMessage = [NSString stringWithFormat:@"%@\nFacial Match Confidence Rating - %@",resultMessage,result.facialMatchConfidenceRating];
+        resultMessage = [NSString stringWithFormat:@"%@\nFacial Match Confidence Rating - %d",resultMessage,result.facialMatchConfidenceRating];
         _validatingSelfie = NO;
         _resultViewController.result = resultMessage;
         [self presentResultView];

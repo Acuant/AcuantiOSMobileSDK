@@ -16,6 +16,6 @@
 @property (nonatomic, assign) BOOL  faceLivelinessDetection;
 @property (nonatomic, strong) NSString  *transactionId;
 @property (nonatomic, strong) NSString  *errorMessage;
-@property (nonatomic, strong) NSString  *facialMatchConfidenceRating;
+@property (nonatomic) int facialMatchConfidenceRating;
 
 @end
