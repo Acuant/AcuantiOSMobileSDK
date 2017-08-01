@@ -3,7 +3,7 @@
 Acuant iOS Mobile SDK API
 ==================
 
-Last updated on – 04/20/2017
+Last updated on – 08/04/2017
 
 # Introduction
 
@@ -84,7 +84,7 @@ If git-lfs is not setup , then GitHub doesn't download of large files. Therefore
 		platform :ios, '8.0'
 
 		pod 'AcuantMobileSDK', '~> <version number>' 
-		(example pod 'AcuantMobileSDK', '~> 5.1')
+		(example pod 'AcuantMobileSDK', '~> 5.2')
 
 - Execute 'Pod install' to add the AcuantMobileSDK
 - If it is a Swift project then add the follwoing imports in the Objective-C bridging file
@@ -170,6 +170,17 @@ Add following libraries
 
 - libz.dylib.
 
+Add the following files to the project.The files can be found at AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/5.2/Resources
+
+- Microblink.bundle
+- Microblink.framework
+
+![](document_images/Setting-1.png)
+
+Select MicroBlink.framework as the embedded Binaries
+
+![](document_images/Setting-2.png)
+
 ### Targets 
 
 Go to the target.
@@ -189,7 +200,7 @@ Click on “Build Settings”.
 ## Integration with Objective-C.
 Add the import header in your appDelegate’s header file.
 
-	#import <AcuantMobileSDK/AcuantMobileSDKController.h>
+	#import <AcuantMobileSDK/AcuantMobileSDKController.h>	
 
 ## Integration with Swift
 
@@ -199,6 +210,26 @@ Create this bridge is very simple, after you add an Objective-C file, the Xcode 
 
 *Apple Reference:* <https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html>
 
+
+# Objective-C Sample App
+
+The Objective-C Sample app is present at the following location :
+
+![](document_images/Objective-C Sample App Location.png)
+
+To run the Sample app a license key is required.Please contact Acuant to obtain a license key.
+
+![](document_images/Setting-License-key-Objective-C.png)
+
+# Swift Sample App
+
+The Swift Sample app is present at the following location :
+
+![](document_images/Swift-Sample App-Location.png)
+
+To run the Sample app a license key is required.Please contact Acuant to obtain a license key.
+
+![](document_images/Swift-Set-LicenseKey.png)
 
 # Activate the license key.
 
@@ -360,6 +391,12 @@ By default it is disabled.
 
 	[_instance setCanCropBarcode:YES];
 	
+### Optional method to enable capturing original image. 
+
+By default it is disabled.
+
+	[_instance setCanCaptureOriginalImage:YES];
+	
 ### Optional delegate method to enable cropping of the barcode image on timesout or cancel is pressed.
 
 By default it is disabled.
@@ -484,7 +521,11 @@ Note:
 
 1)	 This delegate will be called only if canCropBarcode is set to YES ( e.g [self.instance setCanCropBarcode:YES];)
 
-2)	Don’t implement both delegates, didCaptureData and didCaptureCropImage:andData:scanBackSide:
+2)	didCaptureData is required.But didCaptureCropImage:andData:scanBackSide: is options.Therefore don't implement the second delegate method unless it is required to capture the image of barcode side image.
+
+#### didFailToCaptureCropImage
+
+This will be called if the cropping fails. 
 
 
 #### didFailWithError delegate method
@@ -587,6 +628,13 @@ In order to inform that the scan or the process failed. You must use the followi
 	}
 
 ### Optional delegate methods
+
+Call to inform the delegate that the image capture process started.
+
+		-(void)didTakeCardPhoto{
+    			NSLog(@"didTakeCardPhoto");
+    			//Custom code here.
+			}
 
 Call to inform the delegate that the time of the barcode scan expired
 
@@ -725,19 +773,6 @@ Call to obtain the barcode title error displayed in the barcode capture interfac
      		return string;    
  		}
  
-Call to obtain the time elapse to appear in the barcode capture interface
-
-	-(int)timeForBarcodeErrorMessage{
-	     return 10;   
-	}
-	
-	
-Call to set if the error message is hidden or not.
-	
-	-(BOOL)isHiddenBarcodeErrorMessage{
-	     return YES;  
-	}
-
 Call to obtain the barcode button text for the second button displayed in the barcode alert.
 
 	-(NSString *)stringForBarcodeFirstButton{ 
@@ -800,8 +835,6 @@ In order to setup AcuantCardTypeDriverLicenseCard, set the following values.
 			options.faceDetection = YES;
 			options.signatureDetection = YES;
 			options.region = _regionID;
-			options.sourceImage = 101;
-			
 			// Now, perform the request
 			[_instance processFrontCardImage:frontSideImage 
 			BackCardImage:backSideImage 
@@ -845,8 +878,9 @@ Enhanced Image – 5
 
 **cropImage –** Boolean value. When true, cloud will crop the RAW image. Boolean value. Since MobileSDK crops the image, leave this flag to false.
 
-**sourceImage –** Define the source or type of image.
-MobileSDK – 101
+**logtransaction –** Boolean value. If logging is enabled on the license key and logtransaction is set to true then transaction response is saved on the Acuant cloud for future retrieval.
+
+**imageSettings –** The default value for imageSettings is -1. Please set this value to -1 always unless any special instruction is provided.
 
 ### For Medical Insurance Cards
 
@@ -921,8 +955,6 @@ In order to setup AcuantCardTypePassportCard, just set the following values.
 		options.cropImage = NO;
 		options.faceDetection = YES;
 		options.signatureDetection = YES;
-		options.sourceImage = 101;
-		
 		// Now, perform the request
 		
 		[_instance processFrontCardImage:frontSideImage BackCardImage:nil 
@@ -948,9 +980,6 @@ Enhanced Image – 5
 **DPI -** Integer value up to 600. Reformats the image to the provided DPI value. Size of the image will depend on the DPI value. Lower value (150) is recommended to get a smaller image.
 
 **cropImage –** Boolean value. When true, cloud will crop the RAW image. Boolean value. Since MobileSDK crops the image, leave this flag to false.
-
-**sourceImage –** Define the source or type of image.
-MobileSDK – 101
 
 ## AcuantMobileSDKControllerProcessingDelegate protocol to handle the processing.
 
@@ -1488,8 +1517,6 @@ Following are the parameters.
 
 	@property (nonatomic, assign) BOOL  isMatch ; // If both images matched.
 
-	@property (nonatomic, assign) BOOL  isFacialEnabled;// If facial feature is enabled.
-
 	@property (nonatomic, assign) BOOL  faceLivelinessDetection; // If a live face was detected.
 
 	@property (nonatomic, strong) NSString  *transactionId; // Facial match transaction id
@@ -1534,16 +1561,20 @@ Following are the parameters.
 
 # Change Log
 
-- Acuant iOS MobileSDK version 5.1
+- Acuant iOS MobileSDK version 5.2
 
 	Changes:
 
-	-  Improved document cropping for IDs and Passports
-	-  Memory optimization
-	-  Fixed : FacialMatchConfidenceRating data type issue. Data type is now integer.
-	-  Fixed : didCaptureOriginalImage returns cropped images instead of original image
-	-  Modified the cropping delegate method as below
+	-  Removed the sourceImage property from AcuantCardProcessRequestOptions.
+	-  Added logtransaction property to AcuantCardProcessRequestOptions.If logging is enabled on the license key and logtransaction is set to true then transaction response is saved on the Acuant cloud for future retrieval.
+	-  Added the property imageSettings to AcuantCardProcessRequestOptions.The default value for imageSettings is -1. Please set this value to -1 always unless any special instruction is provided.
+	-  Removed "IsFacialEnabled" from the AcuantFacialData.
+	-  Added API to capture original image. By default it is disabled.
+			[_instance setCanCaptureOriginalImage:YES];
+	- Improved passport cropping
+	- Added a delegate callback to capture the begining of image capture event:
 
-			// Added the parameter cardType
-			-(void)didCaptureCropImage:(UIImage *)cardImage scanBackSide:
-			(BOOL)scanBackSide andCardType:(AcuantCardType)cardType
+			-(void)didTakeCardPhoto{
+    			NSLog(@"didTakeCardPhoto");
+    			//Custom code here.
+			}

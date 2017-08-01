@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" colorMatched="YES">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ISGViewController">
             <connections>
-                <outlet property="activateButton" destination="37" id="KBw-CR-bpp"/>
                 <outlet property="assureIDCaptureButton" destination="kTf-Iw-EHy" id="Gzs-qY-hgu"/>
                 <outlet property="backImage" destination="12" id="16"/>
                 <outlet property="backImageLabel" destination="14" id="17"/>
                 <outlet property="driverLicenseButton" destination="6" id="uKq-ZK-0qF"/>
                 <outlet property="frontImage" destination="4" id="15"/>
                 <outlet property="frontImageLabel" destination="13" id="18"/>
-                <outlet property="licenseKeyLabel" destination="33" id="6Ql-OT-GZy"/>
-                <outlet property="licenseKeyText" destination="34" id="oD3-fm-OKs"/>
                 <outlet property="medicalInsuranceButton" destination="7" id="Jyd-IC-O98"/>
                 <outlet property="passportButton" destination="A9U-pd-h6A" id="iBa-aZ-ZgH"/>
                 <outlet property="sendRequestButton" destination="5" id="lWJ-J4-jLx"/>
@@ -103,34 +100,6 @@
                     </state>
                     <connections>
                         <action selector="capturePassportWithFacial:" destination="-1" eventType="touchUpInside" id="EZv-Ka-wD7"/>
-                    </connections>
-                </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="License Key" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="33">
-                    <rect key="frame" x="199" y="35" width="96" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="34">
-                    <rect key="frame" x="318" y="31" width="149" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <action selector="hideTextfield:" destination="-1" eventType="editingDidEndOnExit" id="36"/>
-                        <action selector="textFieldDidEndEditing:" destination="-1" eventType="editingDidEnd" id="35"/>
-                    </connections>
-                </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="37">
-                    <rect key="frame" x="484" y="27" width="84" height="38"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
-                    <state key="normal" title="Activate">
-                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="activateAction:" destination="-1" eventType="touchUpInside" id="38"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kTf-Iw-EHy">

@@ -22,7 +22,7 @@
 
 #define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
 
-@interface ISGViewController () <UITextFieldDelegate,AcuantMobileSDKControllerCapturingDelegate, AcuantMobileSDKControllerProcessingDelegate, ISGRegionViewControllerDelegate,AcuantFacialCaptureDelegate>{
+@interface ISGViewController () <AcuantMobileSDKControllerCapturingDelegate, AcuantMobileSDKControllerProcessingDelegate, ISGRegionViewControllerDelegate,AcuantFacialCaptureDelegate>{
     NSString* resultMessage;
 }
 
@@ -31,9 +31,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *backImage;
 @property (strong, nonatomic) IBOutlet UILabel *backImageLabel;
 @property (strong, nonatomic) IBOutlet UIButton *sendRequestButton;
-@property (strong, nonatomic) IBOutlet UITextField *licenseKeyText;
-@property (strong, nonatomic) IBOutlet UILabel *licenseKeyLabel;
-@property (strong, nonatomic) IBOutlet UIButton *activateButton;
 @property (strong, nonatomic) IBOutlet UIButton *driverLicenseButton;
 @property (strong, nonatomic) IBOutlet UIButton *driverLicenseWithFacialButton;
 @property (strong, nonatomic) IBOutlet UIButton *passportButton;
@@ -112,18 +109,12 @@
             _driverLicenseButton.hidden=YES;
             _passportButton.hidden=YES;
             _assureIDCaptureButton.hidden=NO;
-            _licenseKeyText.hidden=YES;
-            _licenseKeyLabel.hidden=YES;
-            _activateButton.hidden=YES;
         }else{
             _medicalInsuranceButton.hidden=NO;
             _driverLicenseButton.hidden=NO;
             _passportButton.hidden=NO;
             _assureIDCaptureButton.hidden=YES;
             _useAssureIDWebService = NO;
-            _licenseKeyText.hidden=NO;
-            _licenseKeyLabel.hidden=NO;
-            _activateButton.hidden=NO;
         }
         
         
@@ -133,24 +124,24 @@
         _passportButton.hidden=NO;
         _assureIDCaptureButton.hidden=YES;
         _useAssureIDWebService = NO;
-        _licenseKeyText.hidden=NO;
-        _licenseKeyLabel.hidden=NO;
-        _activateButton.hidden=NO;
-
     }
     if(_useAssureIDWebService){
         self.instance = [AcuantMobileSDKController initAcuantMobileSDKWithUsername:_assureIDUsername password:_assureIDPassword subscription:_assureIDSubscription url:_assureIDUrl andDelegate:self];
-    }else{
-        NSString *licenseKey = [[NSUserDefaults standardUserDefaults]valueForKey:@"LICENSEKEY"];
-        self.instance = [AcuantMobileSDKController initAcuantMobileSDKWithLicenseKey:licenseKey andDelegate:self ];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD showWithStatus:@"Validating credentials"];
+        });
         
+    }else{
+        self.instance = [AcuantMobileSDKController initAcuantMobileSDKWithLicenseKey:@"xxxxxxxxxxxx" delegate:self andCloudAddress:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD showWithStatus:@"Validating Key"];
+        });
     }
     [self.instance enableLocationTracking];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.licenseKeyText.text = [[NSUserDefaults standardUserDefaults]valueForKey:@"LICENSEKEY"];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -350,8 +341,8 @@
     options.cropImage = NO;
     options.faceDetection = YES;
     options.signatureDetection = YES;
+    options.logtransaction = NO;
     options.region = self.cardRegion;
-    options.imageSource = 101;
     _capturingData = YES;
     // Now, perform the request
     
@@ -360,6 +351,12 @@
         [_instance processCardWithOptions:options frontImage:frontSideImage backImage:backSideImage barcodeString:self.barcodeString];
         
     }else{
+        //Test code
+        //backSideImage = nil;
+        //self.barcodeString = nil;
+        //options.imageSettings=390;
+        //Test code ends
+        
         [self.instance processFrontCardImage:frontSideImage
                            BackCardImage:backSideImage
                            andStringData:self.barcodeString
@@ -371,26 +368,6 @@
         [self captureSelfie];
     }
     
-}
-
-- (IBAction)activateAction:(id)sender {
-    [self.licenseKeyText resignFirstResponder];
-    self.canValidate = NO;
-    if (![self.licenseKeyText.text isEqualToString:@""]) {
-        [self.instance activateLicenseKey:self.licenseKeyText.text];
-        [self.instance setLicenseKey:self.licenseKeyText.text];
-    }else{
-        [UIAlertController showSimpleAlertWithTitle:@"Error"
-                                            Message:@"The license key cannot be empty."
-                                        FirstButton:ButtonOK
-                                       SecondButton:nil
-                                       FirstHandler:nil
-                                      SecondHandler:nil
-                                                Tag:0
-                                     ViewController:self
-                                        Orientation:UIDeviceOrientationUnknown];
-    }
-    [[NSUserDefaults standardUserDefaults]setObject:self.licenseKeyText.text forKey:@"LICENSEKEY"];
 }
 
 #pragma mark -
@@ -540,11 +517,13 @@
         }else{
             [self.instance setWidth:1250];
         }
+        //[self.instance setWidth:2600];
     }
     self.canShowBackButton = YES;
     //Uncomment to Capture backside image of the Barcode
     //[self.instance setCanCropBarcode:YES];
     //[self.instance setCanShowMessage:YES];
+    [self.instance setCanCaptureOriginalImage:YES];
     if (self.cardType != AcuantCardTypePassportCard) {
         if(!_frontImageConfirmed){
             [self.instance showManualCameraInterfaceInViewController:self delegate:self cardType:self.cardType region:self.cardRegion andBackSide:NO];
@@ -562,22 +541,6 @@
 }
 
 
-#pragma mark -
-#pragma mark UITextFieldDelegate
-- (IBAction)hideTextfield:(id)sender {
-    UITextField *textField = (UITextField*)sender;
-    self.canValidate = YES;
-    [textField resignFirstResponder];
-}
-
-- (IBAction)textFieldDidEndEditing:(id)sender {
-    UITextField *textField = (UITextField*)sender;
-    if (self.canValidate) {
-        self.wasValidated = NO;
-        [[NSUserDefaults standardUserDefaults]setObject:textField.text forKey:@"LICENSEKEY"];
-        [self.instance setLicenseKey:textField.text];
-    }
-}
 #pragma mark -
 #pragma mar Region Delegate
 
@@ -623,6 +586,8 @@
 #pragma mark -
 #pragma mark General Delegates
 -(void)mobileSDKWasValidated:(BOOL)wasValidated{
+    self.view.userInteractionEnabled = YES;
+    [SVProgressHUD dismiss];
     self.wasValidated = wasValidated;
 }
 -(void)didFailWithError:(AcuantError *)error{
@@ -678,6 +643,9 @@
         case AcuantErrorCameraUnauthorized:
             message = error.errorMessage;
             tag = 7388467;
+            break;
+        case AcuantErrorIncorrectDocumentScanned:
+            message = error.errorMessage;
             break;
         default:
             return;
@@ -746,6 +714,10 @@
     }
     
     
+}
+
+-(void)didTakeCardPhoto{
+    NSLog(@"didTakeCardPhoto");
 }
 
 -(void)didCaptureCropImage:(UIImage *)cardImage andData:(NSString *)data scanBackSide:(BOOL)scanBackSide{
@@ -860,6 +832,7 @@
     }
     [self.sendRequestButton setEnabled:YES];
     [self.sendRequestButton setHidden:NO];
+    //scanBackSide = NO;
     if (scanBackSide) {
         self.sideTouch = BackSide;
         [UIAlertController showSimpleAlertWithTitle:@"AcuantiOSMobileSDKSample"
@@ -952,8 +925,6 @@
 - (void)didCancelToCaptureData:(UIImage*)croppedImage andOriginalImage:(UIImage*)originalImage{
     if(croppedImage!=nil){
         [self imageCapturedCorrectly:croppedImage scanBackSide:NO];
-    }else if(originalImage!=nil){
-        [self imageCapturedCorrectly:originalImage scanBackSide:NO];
     }
 }
 
@@ -1002,7 +973,7 @@
 }
 
 - (BOOL)canCropBarcodeOnBackPressed{
-    return YES;
+    return NO;
 }
 
 -(UIImage *)imageForHelpImageView{
@@ -1057,7 +1028,7 @@
             options.faceDetection = YES;
             options.signatureDetection = YES;
             options.region = self.cardRegion;
-            options.imageSource = 101;
+            options.logtransaction = NO;
             
             // Now, perform the request
             [self.instance validatePhotoOne:frontSideImage withImage:dlPhoto
@@ -1096,7 +1067,7 @@
     [SVProgressHUD dismiss];
      self.view.userInteractionEnabled = YES;
     resultMessage = [NSString stringWithFormat:@"%@\nFTID - %@\nTID - %@",resultMessage,result.transactionId,_TID];
-    if(result.isFacialEnabled==YES){
+    if(_instance.isFacialEnabled==YES){
         NSLog(@"Success");
         _selfieMatched = result.isMatch ? @"1" : @"0";
         resultMessage = [NSString stringWithFormat:@"%@\nFacial Matched - %@",resultMessage,_selfieMatched];
