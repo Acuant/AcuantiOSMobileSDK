@@ -169,7 +169,7 @@ Add following libraries
 
 - libz.dylib.
 
-Add the following files to the project.The files can be found at AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/5.2/Resources
+Add the following files to the project.The files can be found at AcuantMobileSDK.embeddedframework/Resources
 
 - Microblink.bundle
 - Microblink.framework
