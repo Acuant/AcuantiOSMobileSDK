@@ -3,7 +3,7 @@
 Acuant iOS Mobile SDK API
 ==================
 
-Last updated on – 08/04/2017
+Last updated on – 08/02/2017
 
 # Introduction
 
