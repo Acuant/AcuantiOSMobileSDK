@@ -25,6 +25,9 @@ Pod::Spec.new do |s|
 
   #s.screenshots  = ['https://github.com/Acuant/AcuantiOSMobileSDK/blob/master/Logo.png']
 
+  # ---  Archs ----
+  s.pod_target_xcconfig = { 'VALID_ARCHS' => 'arm64 armv7' }
+
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   s.license = { 
