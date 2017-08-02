@@ -68,7 +68,7 @@ class ViewController: UIViewController ,AcuantMobileSDKControllerCapturingDelega
         // Create and add the view to the screen.
         progressHUD = ProgressHUD(text: "Validating key")
         self.view.addSubview(progressHUD)
-        instance = AcuantMobileSDKController.initAcuantMobileSDK(withLicenseKey: "XXXXXXXXXXX", andDelegate: self)
+        instance = AcuantMobileSDKController.initAcuantMobileSDK(withLicenseKey: "71F86FD1E789", andDelegate: self)
         self.view.isUserInteractionEnabled = false
     }
     

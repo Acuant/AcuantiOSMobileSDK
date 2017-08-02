@@ -82,10 +82,9 @@ If git-lfs is not setup , then GitHub doesn't download of large files. Therefore
 - Create a Podfile with following lines
 
 		platform :ios, '8.0'
-
-		pod 'AcuantMobileSDK', '~> <version number>' 
-		(example pod 'AcuantMobileSDK', '~> 5.2')
-
+		pod 'PPpdf417', '~> 5.1.0'
+		pod 'AcuantMobileSDK', '~> 5.2'
+		
 - Execute 'Pod install' to add the AcuantMobileSDK
 - If it is a Swift project then add the follwoing imports in the Objective-C bridging file
 - *Apple Reference:* <https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html>
@@ -1578,3 +1577,5 @@ Following are the parameters.
     			NSLog(@"didTakeCardPhoto");
     			//Custom code here.
 			}
+			
+	- Included Swift Sample app

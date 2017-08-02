@@ -58,14 +58,14 @@ Pod::Spec.new do |s|
   s.source_files = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/5.2/Headers/*.{h}'
   s.ios.header_dir = 'AcuantMobileSDK'
   s.public_header_files = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/5.2/Headers/*.h'
-  s.resources = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/5.2/Resources/*.{strings,wav,png}'
+  s.resources = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Resources/*.{strings,wav,png}'
   #s.ios.requires_arc = true
   
   s.ios.xcconfig = { 
         'GCC_PREPROCESSOR_DEFINITIONS' => 'CVLIB_IMG_NOCODEC',
-'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/AcuantMobileSDK/AcuantMobileSDK.embeddedframework/**"'}
+'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/AcuantMobileSDK/AcuantMobileSDK.embeddedframework/"'}
 
-  s.ios.frameworks = 'AcuantMobileSDK','Accelerate','CoreLocation','ImageIO','CoreText','CoreMotion','SystemConfiguration','AssetsLibrary','AudioToolbox','AVFoundation','CoreMedia','CoreVideo','CoreGraphics','QuartzCore'
+  s.ios.frameworks = 'AcuantMobileSDK','Accelerate','CoreLocation','ImageIO','CoreText','CoreMotion','SystemConfiguration','AudioToolbox','AVFoundation','CoreMedia','CoreVideo','CoreGraphics','QuartzCore'
   s.ios.libraries = 'iconv', 'c++', 'z'
 
 end 
