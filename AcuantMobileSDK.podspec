@@ -58,7 +58,7 @@ Pod::Spec.new do |s|
   s.source_files = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/5.2/Headers/*.{h}'
   s.ios.header_dir = 'AcuantMobileSDK'
   s.public_header_files = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Versions/5.2/Headers/*.h'
-  s.resources = 'AcuantMobileSDK.embeddedframework/AcuantMobileSDK.framework/Resources/*.{strings,wav,png}'
+  s.resources = 'AcuantMobileSDK.embeddedframework/Resources/*.{strings,wav,png}'
   #s.ios.requires_arc = true
   
   s.ios.xcconfig = { 
