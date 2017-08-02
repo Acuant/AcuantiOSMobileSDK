@@ -10,7 +10,6 @@
 		13121BE81F31274A000799DC /* MicroBlink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13121BE71F31274A000799DC /* MicroBlink.framework */; };
 		13121BEA1F31278C000799DC /* MicroBlink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 137730781F2AAEF40074F49B /* MicroBlink.framework */; };
 		13121BEB1F31278C000799DC /* MicroBlink.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 137730781F2AAEF40074F49B /* MicroBlink.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		13121BED1F31279C000799DC /* MicroBlink.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 13121BEC1F31279C000799DC /* MicroBlink.bundle */; };
 		1316A4B21F2BA0D40004708C /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1316A4B11F2BA0D40004708C /* ProgressHUD.swift */; };
 		1316A4BA1F2BA6B90004708C /* RegionSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1316A4B91F2BA6B90004708C /* RegionSelectionViewController.swift */; };
 		1316A4BC1F2BD17F0004708C /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1316A4BB1F2BD17F0004708C /* ResultViewController.swift */; };
@@ -305,7 +304,6 @@
 				1377307E1F2AAEF40074F49B /* MicroBlink.bundle in Resources */,
 				1377307C1F2AAEF40074F49B /* beep-7.mp3 in Resources */,
 				137730371F2AA90D0074F49B /* LaunchScreen.storyboard in Resources */,
-				13121BED1F31279C000799DC /* MicroBlink.bundle in Resources */,
 				137730341F2AA90D0074F49B /* Assets.xcassets in Resources */,
 				13BDB40B1F2F9F0A00291190 /* PDF417.png in Resources */,
 				1377307F1F2AAEF40074F49B /* shutter.wav in Resources */,
