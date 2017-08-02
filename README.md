@@ -214,7 +214,7 @@ Create this bridge is very simple, after you add an Objective-C file, the Xcode 
 
 The Objective-C Sample app is present at the following location :
 
-![](document_images/Objective-C Sample App Location.png)
+![](document_images/Objective-C-Sample-App-Location.png)
 
 To run the Sample app a license key is required.Please contact Acuant to obtain a license key.
 
@@ -224,7 +224,7 @@ To run the Sample app a license key is required.Please contact Acuant to obtain 
 
 The Swift Sample app is present at the following location :
 
-![](document_images/Swift-Sample App-Location.png)
+![](document_images/Swift-Sample-App-Location.png)
 
 To run the Sample app a license key is required.Please contact Acuant to obtain a license key.
 
