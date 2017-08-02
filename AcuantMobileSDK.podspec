@@ -27,6 +27,7 @@ Pod::Spec.new do |s|
 
   # ---  Archs ----
   s.pod_target_xcconfig = { 'VALID_ARCHS' => 'arm64 armv7' }
+  s.user_target_xcconfig = { 'VALID_ARCHS' => 'arm64 armv7' }
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
