@@ -34,12 +34,6 @@
 	<string>${PRODUCT_NAME} uses camera</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>${PRODUCT_NAME} tracks location</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>${PRODUCT_NAME} does not use photo gallery.The app only uses camera</string>
-	<key>UIRequiredDeviceCapabilities</key>
-	<array>
-		<string>armv7</string>
-	</array>
 	<key>UIRequiresFullScreen</key>
 	<true/>
 	<key>UISupportedInterfaceOrientations</key>
