@@ -250,6 +250,16 @@ To run the Sample app connect credentials are required.Please contact Acuant to 
 
 ![](document_images/Swift-Connect-Credentials.png)
 
+# Connect Data Capture with Acufil FRM Sample App
+
+This sample app demonstrates data capture using Connect webservices and facial match and recognition using Acufill webservices.The location of this sample app is as shown below :
+
+![](document_images/Connect-DataCapture-AND-Acufill-Facial-Location.png)
+
+To run the Sample app Connect credentials and Acufill license key is required.Please contact Acuant to obtain the details.
+
+![](document_images/Connect-DataCapture-AND-Acufill-Facial-Credentials.png)
+
 # Activate the license key.
 
 In order to activate the license key, use the following method:
