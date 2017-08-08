@@ -11,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ISGViewController">
             <connections>
-                <outlet property="assureIDCaptureButton" destination="Iu7-R2-fqn" id="60A-Wk-0B8"/>
                 <outlet property="backImage" destination="22" id="24"/>
                 <outlet property="backImageLabel" destination="21" id="25"/>
                 <outlet property="driverLicenseButton" destination="10" id="G39-VI-Cu7"/>
@@ -100,14 +99,6 @@
                     </state>
                     <connections>
                         <action selector="capturePassportWithFacial:" destination="-1" eventType="touchUpInside" id="w4M-tq-pig"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Iu7-R2-fqn">
-                    <rect key="frame" x="160" y="83" width="55" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Capture"/>
-                    <connections>
-                        <action selector="captureAssureID:" destination="-1" eventType="touchUpInside" id="Bsh-PD-zFv"/>
                     </connections>
                 </button>
             </subviews>
