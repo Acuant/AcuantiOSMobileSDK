@@ -1,0 +1,503 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		139914D81F3A1EBF00A27BF8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 139914D71F3A1EBF00A27BF8 /* main.m */; };
+		139914DB1F3A1EBF00A27BF8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 139914DA1F3A1EBF00A27BF8 /* AppDelegate.m */; };
+		139914DE1F3A1EC000A27BF8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 139914DD1F3A1EBF00A27BF8 /* ViewController.m */; };
+		139914E11F3A1EC000A27BF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 139914DF1F3A1EC000A27BF8 /* Main.storyboard */; };
+		139914E31F3A1EC000A27BF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 139914E21F3A1EC000A27BF8 /* Assets.xcassets */; };
+		139914E61F3A1EC000A27BF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 139914E41F3A1EC000A27BF8 /* LaunchScreen.storyboard */; };
+		139914F51F3A1EEA00A27BF8 /* AcuantMobileSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139914EE1F3A1EEA00A27BF8 /* AcuantMobileSDK.framework */; };
+		139914F61F3A1EEA00A27BF8 /* beep-7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 139914F01F3A1EEA00A27BF8 /* beep-7.mp3 */; };
+		139914F91F3A1EEA00A27BF8 /* shutter.wav in Resources */ = {isa = PBXBuildFile; fileRef = 139914F41F3A1EEA00A27BF8 /* shutter.wav */; };
+		139914FA1F3A1F0900A27BF8 /* MicroBlink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139914F21F3A1EEA00A27BF8 /* MicroBlink.framework */; };
+		139914FB1F3A1F0900A27BF8 /* MicroBlink.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 139914F21F3A1EEA00A27BF8 /* MicroBlink.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		139914FE1F3A1F2300A27BF8 /* MicroBlink.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 139914FD1F3A1F2300A27BF8 /* MicroBlink.bundle */; };
+		139915011F3A1F9A00A27BF8 /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 139915001F3A1F9A00A27BF8 /* ResultViewController.m */; };
+		139915041F3A1FEA00A27BF8 /* UIImageView+LoadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 139915031F3A1FEA00A27BF8 /* UIImageView+LoadImage.m */; };
+		139915071F3A25EC00A27BF8 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 139915061F3A25EC00A27BF8 /* ProgressHUD.m */; };
+		139915091F3A268B00A27BF8 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 139915081F3A268B00A27BF8 /* ProgressHUD.bundle */; };
+		1399150E1F3A35B400A27BF8 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1399150D1F3A35B400A27BF8 /* AssetsLibrary.framework */; };
+		139915101F3A35B900A27BF8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1399150F1F3A35B900A27BF8 /* SystemConfiguration.framework */; };
+		139915121F3A35C200A27BF8 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139915111F3A35C200A27BF8 /* AudioToolbox.framework */; };
+		139915141F3A35C700A27BF8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139915131F3A35C700A27BF8 /* AVFoundation.framework */; };
+		139915161F3A35CD00A27BF8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139915151F3A35CD00A27BF8 /* CoreMedia.framework */; };
+		139915181F3A35D300A27BF8 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139915171F3A35D300A27BF8 /* CoreVideo.framework */; };
+		1399151A1F3A35D800A27BF8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139915191F3A35D800A27BF8 /* CoreGraphics.framework */; };
+		1399151C1F3A35DE00A27BF8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1399151B1F3A35DE00A27BF8 /* QuartzCore.framework */; };
+		1399151E1F3A35E500A27BF8 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1399151D1F3A35E500A27BF8 /* CoreMotion.framework */; };
+		139915201F3A35FB00A27BF8 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1399151F1F3A35FB00A27BF8 /* Accelerate.framework */; };
+		139915221F3A360000A27BF8 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139915211F3A360000A27BF8 /* CoreText.framework */; };
+		139915241F3A360500A27BF8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139915231F3A360500A27BF8 /* CoreLocation.framework */; };
+		139915261F3A360B00A27BF8 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139915251F3A360B00A27BF8 /* ImageIO.framework */; };
+		139915281F3A361B00A27BF8 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 139915271F3A361B00A27BF8 /* libc++.tbd */; };
+		1399152A1F3A362400A27BF8 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 139915291F3A362400A27BF8 /* libiconv.tbd */; };
+		1399152C1F3A362D00A27BF8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1399152B1F3A362D00A27BF8 /* libz.tbd */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		139914FC1F3A1F0900A27BF8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				139914FB1F3A1F0900A27BF8 /* MicroBlink.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		139914D31F3A1EBF00A27BF8 /* ConnectObjective-CSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ConnectObjective-CSampleApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		139914D71F3A1EBF00A27BF8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		139914D91F3A1EBF00A27BF8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		139914DA1F3A1EBF00A27BF8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		139914DC1F3A1EBF00A27BF8 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		139914DD1F3A1EBF00A27BF8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		139914E01F3A1EC000A27BF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		139914E21F3A1EC000A27BF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		139914E51F3A1EC000A27BF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		139914E71F3A1EC000A27BF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		139914EE1F3A1EEA00A27BF8 /* AcuantMobileSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AcuantMobileSDK.framework; sourceTree = "<group>"; };
+		139914F01F3A1EEA00A27BF8 /* beep-7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "beep-7.mp3"; sourceTree = "<group>"; };
+		139914F21F3A1EEA00A27BF8 /* MicroBlink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MicroBlink.framework; sourceTree = "<group>"; };
+		139914F31F3A1EEA00A27BF8 /* MicroBlink.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MicroBlink.bundle; sourceTree = "<group>"; };
+		139914F41F3A1EEA00A27BF8 /* shutter.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shutter.wav; sourceTree = "<group>"; };
+		139914FD1F3A1F2300A27BF8 /* MicroBlink.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MicroBlink.bundle; path = AcuantMobileSDK.embeddedframework/Resources/MicroBlink.bundle; sourceTree = "<group>"; };
+		139914FF1F3A1F9A00A27BF8 /* ResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultViewController.h; sourceTree = "<group>"; };
+		139915001F3A1F9A00A27BF8 /* ResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultViewController.m; sourceTree = "<group>"; };
+		139915021F3A1FEA00A27BF8 /* UIImageView+LoadImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+LoadImage.h"; sourceTree = "<group>"; };
+		139915031F3A1FEA00A27BF8 /* UIImageView+LoadImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+LoadImage.m"; sourceTree = "<group>"; };
+		139915051F3A25EC00A27BF8 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
+		139915061F3A25EC00A27BF8 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
+		139915081F3A268B00A27BF8 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
+		1399150D1F3A35B400A27BF8 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		1399150F1F3A35B900A27BF8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		139915111F3A35C200A27BF8 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		139915131F3A35C700A27BF8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		139915151F3A35CD00A27BF8 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		139915171F3A35D300A27BF8 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		139915191F3A35D800A27BF8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1399151B1F3A35DE00A27BF8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		1399151D1F3A35E500A27BF8 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		1399151F1F3A35FB00A27BF8 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		139915211F3A360000A27BF8 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		139915231F3A360500A27BF8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		139915251F3A360B00A27BF8 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		139915271F3A361B00A27BF8 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		139915291F3A362400A27BF8 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		1399152B1F3A362D00A27BF8 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		139914D01F3A1EBF00A27BF8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1399152C1F3A362D00A27BF8 /* libz.tbd in Frameworks */,
+				1399152A1F3A362400A27BF8 /* libiconv.tbd in Frameworks */,
+				139915281F3A361B00A27BF8 /* libc++.tbd in Frameworks */,
+				139915261F3A360B00A27BF8 /* ImageIO.framework in Frameworks */,
+				139915241F3A360500A27BF8 /* CoreLocation.framework in Frameworks */,
+				139915221F3A360000A27BF8 /* CoreText.framework in Frameworks */,
+				139915201F3A35FB00A27BF8 /* Accelerate.framework in Frameworks */,
+				1399151E1F3A35E500A27BF8 /* CoreMotion.framework in Frameworks */,
+				1399151C1F3A35DE00A27BF8 /* QuartzCore.framework in Frameworks */,
+				1399151A1F3A35D800A27BF8 /* CoreGraphics.framework in Frameworks */,
+				139915181F3A35D300A27BF8 /* CoreVideo.framework in Frameworks */,
+				139915161F3A35CD00A27BF8 /* CoreMedia.framework in Frameworks */,
+				139915141F3A35C700A27BF8 /* AVFoundation.framework in Frameworks */,
+				139915121F3A35C200A27BF8 /* AudioToolbox.framework in Frameworks */,
+				139915101F3A35B900A27BF8 /* SystemConfiguration.framework in Frameworks */,
+				1399150E1F3A35B400A27BF8 /* AssetsLibrary.framework in Frameworks */,
+				139914FA1F3A1F0900A27BF8 /* MicroBlink.framework in Frameworks */,
+				139914F51F3A1EEA00A27BF8 /* AcuantMobileSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		139914CA1F3A1EBF00A27BF8 = {
+			isa = PBXGroup;
+			children = (
+				139914D51F3A1EBF00A27BF8 /* ConnectObjective-CSampleApp */,
+				139914D41F3A1EBF00A27BF8 /* Products */,
+				1399150C1F3A35B400A27BF8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		139914D41F3A1EBF00A27BF8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				139914D31F3A1EBF00A27BF8 /* ConnectObjective-CSampleApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		139914D51F3A1EBF00A27BF8 /* ConnectObjective-CSampleApp */ = {
+			isa = PBXGroup;
+			children = (
+				1399150B1F3A26AF00A27BF8 /* Resources */,
+				1399150A1F3A269F00A27BF8 /* Utils */,
+				139914ED1F3A1EEA00A27BF8 /* AcuantMobileSDK.embeddedframework */,
+				139914D91F3A1EBF00A27BF8 /* AppDelegate.h */,
+				139914DA1F3A1EBF00A27BF8 /* AppDelegate.m */,
+				139914DC1F3A1EBF00A27BF8 /* ViewController.h */,
+				139914DD1F3A1EBF00A27BF8 /* ViewController.m */,
+				139914FF1F3A1F9A00A27BF8 /* ResultViewController.h */,
+				139915001F3A1F9A00A27BF8 /* ResultViewController.m */,
+				139914DF1F3A1EC000A27BF8 /* Main.storyboard */,
+				139914E21F3A1EC000A27BF8 /* Assets.xcassets */,
+				139914E41F3A1EC000A27BF8 /* LaunchScreen.storyboard */,
+				139914E71F3A1EC000A27BF8 /* Info.plist */,
+				139914D61F3A1EBF00A27BF8 /* Supporting Files */,
+			);
+			path = "ConnectObjective-CSampleApp";
+			sourceTree = "<group>";
+		};
+		139914D61F3A1EBF00A27BF8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				139914D71F3A1EBF00A27BF8 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		139914ED1F3A1EEA00A27BF8 /* AcuantMobileSDK.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				139914EE1F3A1EEA00A27BF8 /* AcuantMobileSDK.framework */,
+				139914EF1F3A1EEA00A27BF8 /* Resources */,
+			);
+			path = AcuantMobileSDK.embeddedframework;
+			sourceTree = "<group>";
+		};
+		139914EF1F3A1EEA00A27BF8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				139914F01F3A1EEA00A27BF8 /* beep-7.mp3 */,
+				139914F11F3A1EEA00A27BF8 /* Frameworks */,
+				139914F31F3A1EEA00A27BF8 /* MicroBlink.bundle */,
+				139914F41F3A1EEA00A27BF8 /* shutter.wav */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		139914F11F3A1EEA00A27BF8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				139914F21F3A1EEA00A27BF8 /* MicroBlink.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		1399150A1F3A269F00A27BF8 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				139915021F3A1FEA00A27BF8 /* UIImageView+LoadImage.h */,
+				139915031F3A1FEA00A27BF8 /* UIImageView+LoadImage.m */,
+				139915051F3A25EC00A27BF8 /* ProgressHUD.h */,
+				139915061F3A25EC00A27BF8 /* ProgressHUD.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		1399150B1F3A26AF00A27BF8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				139915081F3A268B00A27BF8 /* ProgressHUD.bundle */,
+				139914FD1F3A1F2300A27BF8 /* MicroBlink.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		1399150C1F3A35B400A27BF8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1399152B1F3A362D00A27BF8 /* libz.tbd */,
+				139915291F3A362400A27BF8 /* libiconv.tbd */,
+				139915271F3A361B00A27BF8 /* libc++.tbd */,
+				139915251F3A360B00A27BF8 /* ImageIO.framework */,
+				139915231F3A360500A27BF8 /* CoreLocation.framework */,
+				139915211F3A360000A27BF8 /* CoreText.framework */,
+				1399151F1F3A35FB00A27BF8 /* Accelerate.framework */,
+				1399151D1F3A35E500A27BF8 /* CoreMotion.framework */,
+				1399151B1F3A35DE00A27BF8 /* QuartzCore.framework */,
+				139915191F3A35D800A27BF8 /* CoreGraphics.framework */,
+				139915171F3A35D300A27BF8 /* CoreVideo.framework */,
+				139915151F3A35CD00A27BF8 /* CoreMedia.framework */,
+				139915131F3A35C700A27BF8 /* AVFoundation.framework */,
+				139915111F3A35C200A27BF8 /* AudioToolbox.framework */,
+				1399150F1F3A35B900A27BF8 /* SystemConfiguration.framework */,
+				1399150D1F3A35B400A27BF8 /* AssetsLibrary.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		139914D21F3A1EBF00A27BF8 /* ConnectObjective-CSampleApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 139914EA1F3A1EC000A27BF8 /* Build configuration list for PBXNativeTarget "ConnectObjective-CSampleApp" */;
+			buildPhases = (
+				139914CF1F3A1EBF00A27BF8 /* Sources */,
+				139914D01F3A1EBF00A27BF8 /* Frameworks */,
+				139914D11F3A1EBF00A27BF8 /* Resources */,
+				139914FC1F3A1F0900A27BF8 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ConnectObjective-CSampleApp";
+			productName = "ConnectObjective-CSampleApp";
+			productReference = 139914D31F3A1EBF00A27BF8 /* ConnectObjective-CSampleApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		139914CB1F3A1EBF00A27BF8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = Acuant;
+				TargetAttributes = {
+					139914D21F3A1EBF00A27BF8 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = E67326HC5Q;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 139914CE1F3A1EBF00A27BF8 /* Build configuration list for PBXProject "ConnectObjective-CSampleApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 139914CA1F3A1EBF00A27BF8;
+			productRefGroup = 139914D41F3A1EBF00A27BF8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				139914D21F3A1EBF00A27BF8 /* ConnectObjective-CSampleApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		139914D11F3A1EBF00A27BF8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				139915091F3A268B00A27BF8 /* ProgressHUD.bundle in Resources */,
+				139914F61F3A1EEA00A27BF8 /* beep-7.mp3 in Resources */,
+				139914E61F3A1EC000A27BF8 /* LaunchScreen.storyboard in Resources */,
+				139914E31F3A1EC000A27BF8 /* Assets.xcassets in Resources */,
+				139914FE1F3A1F2300A27BF8 /* MicroBlink.bundle in Resources */,
+				139914F91F3A1EEA00A27BF8 /* shutter.wav in Resources */,
+				139914E11F3A1EC000A27BF8 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		139914CF1F3A1EBF00A27BF8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				139915071F3A25EC00A27BF8 /* ProgressHUD.m in Sources */,
+				139914DE1F3A1EC000A27BF8 /* ViewController.m in Sources */,
+				139914DB1F3A1EBF00A27BF8 /* AppDelegate.m in Sources */,
+				139915041F3A1FEA00A27BF8 /* UIImageView+LoadImage.m in Sources */,
+				139914D81F3A1EBF00A27BF8 /* main.m in Sources */,
+				139915011F3A1F9A00A27BF8 /* ResultViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		139914DF1F3A1EC000A27BF8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				139914E01F3A1EC000A27BF8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		139914E41F3A1EC000A27BF8 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				139914E51F3A1EC000A27BF8 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		139914E81F3A1EC000A27BF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		139914E91F3A1EC000A27BF8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		139914EB1F3A1EC000A27BF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = E67326HC5Q;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ConnectObjective-CSampleApp/AcuantMobileSDK.embeddedframework",
+					"$(PROJECT_DIR)/ConnectObjective-CSampleApp/AcuantMobileSDK.embeddedframework/Resources/Frameworks",
+				);
+				INFOPLIST_FILE = "ConnectObjective-CSampleApp/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Acuant.ConnectObjective-CSampleApp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		139914EC1F3A1EC000A27BF8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = E67326HC5Q;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ConnectObjective-CSampleApp/AcuantMobileSDK.embeddedframework",
+					"$(PROJECT_DIR)/ConnectObjective-CSampleApp/AcuantMobileSDK.embeddedframework/Resources/Frameworks",
+				);
+				INFOPLIST_FILE = "ConnectObjective-CSampleApp/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Acuant.ConnectObjective-CSampleApp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		139914CE1F3A1EBF00A27BF8 /* Build configuration list for PBXProject "ConnectObjective-CSampleApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				139914E81F3A1EC000A27BF8 /* Debug */,
+				139914E91F3A1EC000A27BF8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		139914EA1F3A1EC000A27BF8 /* Build configuration list for PBXNativeTarget "ConnectObjective-CSampleApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				139914EB1F3A1EC000A27BF8 /* Debug */,
+				139914EC1F3A1EC000A27BF8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 139914CB1F3A1EBF00A27BF8 /* Project object */;
+}

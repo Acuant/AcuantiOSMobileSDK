@@ -230,6 +230,26 @@ To run the Sample app a license key is required.Please contact Acuant to obtain 
 
 ![](document_images/Swift-Set-LicenseKey.png)
 
+# Connect Objective-C Sample App
+
+The Connect Objective-C Sample app is present at the following location :
+
+![](document_images/Objective-C-Connect-Location.png)
+
+To run the Sample app connect credentials are required.Please contact Acuant to obtain the credentials.
+
+![](document_images/Objective-C-Connect-Credentials.png)
+
+# Connect Swift Sample App
+
+The Connect Swift Sample app is present at the following location :
+
+![](document_images/Swift-Connect-Location.png)
+
+To run the Sample app connect credentials are required.Please contact Acuant to obtain the credentials.
+
+![](document_images/Swift-Connect-Credentials.png)
+
 # Activate the license key.
 
 In order to activate the license key, use the following method:
