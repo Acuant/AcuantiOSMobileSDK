@@ -62,12 +62,12 @@
     _acufillValidated = NO;
     _acufillValidating = NO;
     _capturingData=NO;
-    _username = @"xxxxxxxxx";
-    _password = @"xxxxxxxxx";
-    _subscription = @"xxxxxxxx";
+    _username = @"XXXXXXXXXXXX";
+    _password = @"XXXXXXXXXXXX";
+    _subscription = @"XXXXXXXXXXXX";
     _connectURL = @"https://devconnect.assureid.net/AssureIDService";
     _acufillURL=@"cssnwebservices.com";
-    _acufillLicenseKey=@"xxxxxxx";
+    _acufillLicenseKey=@"XXXXXXXXXXXX";
     
     [self hideFrontUI];
     [self hideUIBack];
