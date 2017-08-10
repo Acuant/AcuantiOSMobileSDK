@@ -405,13 +405,14 @@ typedef enum{
  */
 - (void)activateLicenseKey:(NSString*)key;
 
+-(BOOL)isSDKValidated;
+
 /**
  Use this method to set the width of the cropped image
  @param width the width of the cropped card
  @discussion you need to set the height with setHeight:(int)height to crop the image with these values
  */
 -(void)setWidth:(int)width;
-
 -(int)getWidth;
 
 /**

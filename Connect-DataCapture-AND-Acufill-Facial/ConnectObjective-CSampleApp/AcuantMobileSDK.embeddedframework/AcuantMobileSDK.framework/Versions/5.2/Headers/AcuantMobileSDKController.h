@@ -65,6 +65,7 @@ typedef enum{
 
 /**
  Called to inform the delegate that a card image was captured with some problems
+ @param cardImage the card image
  */
 -(void)didFailToCaptureCropImage;
 
@@ -255,7 +256,7 @@ typedef enum{
 
 /**
  Called to inform delegate that the AssureID request completed succesfully.
- @param json the data parsed from the card image
+ @param result the data parsed from the card image
  */
 - (void)didFinishProcessingCardWithAssureIDResult:(id)json;
 
@@ -325,9 +326,9 @@ typedef enum{
 
 /**
  Use this method to present the manual card capture interface.
- @param vc the UIViewController object from which we'll present the card capture interface
+ @param viewController the UIViewController object from which we'll present the card capture interface
  @param delegate the delegate of the card capture interface
- @param cardType the type of the card capture interface
+ @param typeCard the type of the card capture interface
  @param region the region of the card and type of capture interface
  @discussion a valid viewController is required
  */
@@ -404,13 +405,14 @@ typedef enum{
  */
 - (void)activateLicenseKey:(NSString*)key;
 
+-(BOOL)isSDKValidated;
+
 /**
  Use this method to set the width of the cropped image
  @param width the width of the cropped card
  @discussion you need to set the height with setHeight:(int)height to crop the image with these values
  */
 -(void)setWidth:(int)width;
-
 -(int)getWidth;
 
 /**
