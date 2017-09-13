@@ -57,7 +57,7 @@ This document contains a detailed description of all functions that developers n
 
 **Note** The Framework will not modify the Status bar of the application.
 
-##Revision History
+## Revision History
 
 **Acuant iOS MobileSDK version 5.3:**
 
