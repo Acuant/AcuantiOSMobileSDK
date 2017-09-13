@@ -399,11 +399,6 @@ typedef enum{
  */
 - (void)setCloudAddress:(NSString *)serverBaseURL;
 
-/**
- Use this method to activate the license key
- @param key the license key
- */
-- (void)activateLicenseKey:(NSString*)key;
 
 -(BOOL)isSDKValidated;
 

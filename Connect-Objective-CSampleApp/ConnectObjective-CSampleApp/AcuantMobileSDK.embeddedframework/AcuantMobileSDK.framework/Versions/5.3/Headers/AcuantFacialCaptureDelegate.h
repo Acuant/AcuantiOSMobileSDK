@@ -15,6 +15,7 @@
 -(void)didTimeoutFacialRecognition:(UIImage*)lastImage;
 -(UIImage*)imageForFacialBackButton;
 -(int)facialRecognitionTimeout;
+-(BOOL)shouldShowFacialTimeoutAlert;
 -(NSAttributedString*)messageToBeShownAfterFaceRectangleAppears;
 -(CGRect)frameWhereMessageToBeShownAfterFaceRectangleAppears;
 @end

@@ -35,8 +35,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _username = @"xxxxxxxx";
-    _password = @"xxxxxxxx";
+    _username = @"xxxxxxx";
+    _password = @"xxxxxxx";
     _subscription = @"xxxxxxx";
     _url = @"https://devconnect.assureid.net/AssureIDService";
     

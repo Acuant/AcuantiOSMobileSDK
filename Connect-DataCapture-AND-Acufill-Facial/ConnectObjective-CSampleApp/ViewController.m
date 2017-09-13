@@ -64,7 +64,7 @@
     _capturingData=NO;
     _username = @"XXXXXXXXXXXX";
     _password = @"XXXXXXXXXXXX";
-    _subscription = @"XXXXXXXXXXXX";
+    _subscription = nil;
     _connectURL = @"https://devconnect.assureid.net/AssureIDService";
     _acufillURL=@"cssnwebservices.com";
     _acufillLicenseKey=@"XXXXXXXXXXXX";
@@ -451,8 +451,16 @@
     [self didFinishFacialRecognition:lastImage];
 }
 
+-(BOOL)shouldShowFacialTimeoutAlert{
+    return true;
+}
+
 -(int)facialRecognitionTimeout{
     return 20; // returns timeout in seconds
+}
+
+-(UIImage*)imageForFacialBackButton{
+    return nil;
 }
 
 -(NSAttributedString*)messageToBeShownAfterFaceRectangleAppears{

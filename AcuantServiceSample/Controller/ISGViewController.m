@@ -75,7 +75,7 @@
     _medicalInsuranceButton.hidden=NO;
     _driverLicenseButton.hidden=NO;
     _passportButton.hidden=NO;
-    self.instance = [AcuantMobileSDKController initAcuantMobileSDKWithLicenseKey:@"XXXXXXXXXXXX" delegate:self andCloudAddress:nil];
+    self.instance = [AcuantMobileSDKController initAcuantMobileSDKWithLicenseKey:@"XXXXXXXXXXXXXX" delegate:self andCloudAddress:nil];
     dispatch_async(dispatch_get_main_queue(), ^{
         [SVProgressHUD showWithStatus:@"Validating Key"];
     });
@@ -890,6 +890,10 @@
     return nil;
 }
 
+-(BOOL)shouldShowFacialTimeoutAlert{
+    return true;
+    
+}
 -(void)didFinishFacialRecognition:(UIImage*)image{
     self.view.userInteractionEnabled = NO;
     [SVProgressHUD showWithStatus:@"Capturing Data"];
@@ -952,29 +956,32 @@
 #pragma mark CardProcessing Delegate
 
 - (void)didFinishValidatingImageWithResult:(AcuantFacialData*)result{
-    [SVProgressHUD dismiss];
-    self.view.userInteractionEnabled = YES;
-    resultMessage = [NSString stringWithFormat:@"%@\nFTID - %@\nTID - %@",resultMessage,result.transactionId,_TID];
-    if(_instance.isFacialEnabled==YES){
-        NSLog(@"Success");
-        _selfieMatched = result.isMatch ? @"1" : @"0";
-        resultMessage = [NSString stringWithFormat:@"%@\nFacial Matched - %@",resultMessage,_selfieMatched];
-        resultMessage = [NSString stringWithFormat:@"%@\nFacial Enabled - 1",resultMessage];
-        resultMessage = [NSString stringWithFormat:@"%@\nFace Liveness Detection - %@",resultMessage,result.faceLivelinessDetection ? @"1" : @"0"];
-        _validatingSelfie = NO;
-        resultMessage = [NSString stringWithFormat:@"%@\nFacial Match Confidence Rating - %d",resultMessage,result.facialMatchConfidenceRating];
-        _validatingSelfie = NO;
-        _resultViewController.result = resultMessage;
-        [self presentResultView];
-    }else{
-        _selfieMatched = result.isMatch ? @"1" : @"0";
-        resultMessage = [NSString stringWithFormat:@"%@\nFacial Matched - %@",resultMessage,_selfieMatched];
-        resultMessage = [NSString stringWithFormat:@"%@\nFacial Enabled - 0",resultMessage];
-        resultMessage = [NSString stringWithFormat:@"%@\nFace Liveness Detection - %@",resultMessage,result.faceLivelinessDetection ? @"1" : @"0"];
-        _validatingSelfie = NO;
-        _resultViewController.result = resultMessage;
-        [self presentResultView];
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [SVProgressHUD dismiss];
+        self.view.userInteractionEnabled = YES;
+        resultMessage = [NSString stringWithFormat:@"%@\nFTID - %@\nTID - %@",resultMessage,result.transactionId,_TID];
+        if(_instance.isFacialEnabled==YES){
+            NSLog(@"Success");
+            _selfieMatched = result.isMatch ? @"1" : @"0";
+            resultMessage = [NSString stringWithFormat:@"%@\nFacial Matched - %@",resultMessage,_selfieMatched];
+            resultMessage = [NSString stringWithFormat:@"%@\nFacial Enabled - 1",resultMessage];
+            resultMessage = [NSString stringWithFormat:@"%@\nFace Liveness Detection - %@",resultMessage,result.faceLivelinessDetection ? @"1" : @"0"];
+            _validatingSelfie = NO;
+            resultMessage = [NSString stringWithFormat:@"%@\nFacial Match Confidence Rating - %d",resultMessage,result.facialMatchConfidenceRating];
+            _validatingSelfie = NO;
+            _resultViewController.result = resultMessage;
+            [self presentResultView];
+        }else{
+            _selfieMatched = result.isMatch ? @"1" : @"0";
+            resultMessage = [NSString stringWithFormat:@"%@\nFacial Matched - %@",resultMessage,_selfieMatched];
+            resultMessage = [NSString stringWithFormat:@"%@\nFacial Enabled - 0",resultMessage];
+            resultMessage = [NSString stringWithFormat:@"%@\nFace Liveness Detection - %@",resultMessage,result.faceLivelinessDetection ? @"1" : @"0"];
+            _validatingSelfie = NO;
+            _resultViewController.result = resultMessage;
+            [self presentResultView];
+        }
+    });
+    
     
 }
 
@@ -1028,6 +1035,8 @@
     }else{
         resultMessage =@"Error";
     }
+    
+    
     
     if ([[UIDevice currentDevice]userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         _resultViewController = [[ISGResultScreenViewController alloc]initWithNibName:@"CSSNResultScreen_iPhone" bundle:nil];
