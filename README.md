@@ -3,7 +3,7 @@
 iOS Mobile SDK Programmer’s Guide
 ==================
 
-**Last updated on – 09/13/2017**
+**Last updated on – 11/07/2017**
 
 
 Copyright <sup>©</sup> 2003-2017 Acuant Inc. All rights reserved.
@@ -58,6 +58,10 @@ This document contains a detailed description of all functions that developers n
 **Note** The Framework will not modify the Status bar of the application.
 
 ## Revision History
+
+**Acuant iOS MobileSDK version 5.4:**
+
+-  Added new card type constant **AcuantCardTypeAuto**. If AcuantCardTypeAuto is set, then in **didCaptureCropImage** the last parameter will contain the automatically detected card type.
 
 **Acuant iOS MobileSDK version 5.3:**
 
@@ -154,7 +158,7 @@ If git-lfs is not set up , then GitHub doesn't download large files. Therefore, 
 
 	    platform :ios, '8.0'
 		pod 'PPpdf417', '~> 5.1.0'
-		pod 'AcuantMobileSDK', '~> 5.3'
+		pod 'AcuantMobileSDK', '~> 5.4'
 
 2.  Run `pod install` to add the AcuantMobileSDK.
 
@@ -268,7 +272,7 @@ Add the following import header to your **appDelegate** header file:
 
 ### Objective-C Sample Application
 
-The Objective-C Sample application **AcuantiOSMobileSampleSDK.xcodeproj** is located in AcuantiOSMobileSampleSDK:
+The Objective-C Sample application **AcuantiOSMobileSampleSDK.xcodeproj** is located in Sample-Objective-C-App:
 
 ![](document_images/Objective-C-Sample-App-Location.png)
 
@@ -278,7 +282,7 @@ The Objective-C Sample application **AcuantiOSMobileSampleSDK.xcodeproj** is loc
 
 ### Swift Sample Application
 
-The Swift Sample application is located in AcuantiOSDKSwiftSample.xcodeproj:
+The Swift Sample application is located in Sample-Swift-App:
 
 ![](document_images/Swift-Sample-App-Location.png)
 
@@ -371,6 +375,7 @@ To show the camera interface, select *manual capture interface* or *barcode capt
 - **AcuantCardTypeDriversLicenseCard** -- Manual only or barcode only (based on the [region](#Region_parameter))
 	- **U.S. and Canada** -- Manual only for front; Barcode or Manual for back 
 	- **So. America, Europe, Asia, Australia, and Africa** -- Manual for front and back
+- **AcuantCardTypeAuto** -- If AcuantCardTypeAuto is set, then in **didCaptureCropImage** the last parameter will contain the automatically detected card type. If a card type such as AcuantCardTypeDriversLicenseCard is set and a different card type such as AcuantCardTypePassportCard is detected, then an AcuantErrorIncorrectDocumentScanned error occurs.
 
 #### Configure the SDK for the card capture interface:
 
@@ -1760,4 +1765,7 @@ The privacy settings preventing camera access
 
 ####AcuantErrorOpenCamera = 15
 An error occurred when the camera was opened
+
+####AcuantErrorIncorrectDocumentScanned = 16
+An error occurred when an incorrect document type is scanned
 
