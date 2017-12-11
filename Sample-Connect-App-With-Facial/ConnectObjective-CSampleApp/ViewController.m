@@ -233,7 +233,7 @@
     }
     
     [AcuantFacialRecognitionViewController
-     presentFacialCaptureInterfaceWithDelegate:self withSDK:_acufill_instance inViewController:self withCancelButton:YES withWaterMark:@"Powered by Acuant" withBlinkMessage:message inRect:messageFrame];
+     presentFacialCaptureInterfaceWithDelegate:self withSDK:_acufill_instance inViewController:self withCancelButton:YES withCancelButtonRect:CGRectMake(10, 20, 75, 20) withWaterMark:@"Powered by Acuant" withBlinkMessage:message inRect:messageFrame];
 }
 
 -(void)captureSelfie{

@@ -63,6 +63,17 @@ This document contains a detailed description of all functions that developers n
 
 -  Added new card type constant **AcuantCardTypeAuto**. If AcuantCardTypeAuto is set, then in **didCaptureCropImage** the last parameter will contain the automatically detected card type.
 
+- Added the location parameter **cancelVisible** for the cancel button in the facial API
+
+		+(id)presentFacialCaptureInterfaceWithDelegate
+		(id<AcuantFacialCaptureDelegate>)delegate withSDK:
+		(AcuantMobileSDKController*)sdkController inViewController:
+		(UIViewController*)parentVC withCancelButton:(BOOL)cancelVisible
+		withCancelButtonRect:(CGRect) cancelRect
+		withWaterMark:(NSString* )watermarkText
+		withBlinkMessage:(NSAttributedString*)message
+		inRect:(CGRect)rect;
+
 **Acuant iOS MobileSDK version 5.3:**
 
 -  Added the **-(BOOL)isSDKValidated** API to check whether the SDK controller was validated.
@@ -1599,6 +1610,7 @@ This class contains the following **utility** method, which can be called to pre
 		(id<AcuantFacialCaptureDelegate>)delegate withSDK:
 		(AcuantMobileSDKController*)sdkController inViewController:
 		(UIViewController*)parentVC withCancelButton:(BOOL)cancelVisible
+		withCancelButtonRect:(CGRect) cancelRect
 		withWaterMark:(NSString* )watermarkText
 		withBlinkMessage:(NSAttributedString*)message
 		inRect:(CGRect)rect;
@@ -1617,6 +1629,9 @@ Parent view controller that presents the camera interface
 
 ####(BOOL)cancelVisible
 Indicates whether to show **Cancel** button
+
+####(CGRect) cancelRect
+Indicates location of **Cancel** button
 
 ####(NSString)watermarkText
 Brand watermark text

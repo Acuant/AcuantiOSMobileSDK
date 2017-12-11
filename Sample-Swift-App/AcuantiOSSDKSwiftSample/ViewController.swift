@@ -170,8 +170,7 @@ class ViewController: UIViewController ,AcuantMobileSDKControllerCapturingDelega
             messageFrame = CGRect(x:0,y:50,width:screenHeight,height:20);
             
         }
-        
-        AcuantFacialRecognitionViewController.presentFacialCaptureInterface(with: self, withSDK: instance, in: self, withCancelButton: true, withWaterMark: "Powered by Acuant", withBlinkMessage: message, in: messageFrame);
+        AcuantFacialRecognitionViewController.presentFacialCaptureInterface(with: self, withSDK: instance, in: self, withCancelButton: true,withCancelButtonRect: CGRect.init(x: 10, y: 20, width: 75, height: 20), withWaterMark: "Powered by Acuant", withBlinkMessage: message, in: messageFrame);
     }
     
     
