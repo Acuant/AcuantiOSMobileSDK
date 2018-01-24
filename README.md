@@ -161,6 +161,15 @@ If git-lfs is not set up , then GitHub doesn't download large files. Therefore, 
 		objc-class-ref in AcuantMobileSDK.o
 	ld: symbol(s) not found for architecture armv7
 	clang: error: linker command failed with exit code 1 (use -v to see invocation)
+	
+If the following error(s) occurs when publishing/exporting the app, then in the XCode build setting the architectures are not set correctly. You must either set valid CPU architectures or use the "lipo" command-line tool to remove the unsupported architecture library.
+
+![](document_images/unsupported_architecture.png)
+
+![](document_images/unsupported_architecture_1.png)
+
+	lipo -remove i386 <Path to the file> -o <Output file path>
+	lipo -remove x86_64 <Path to the file> -o <Output file path>
 
 
 #### Create a Podfile:
