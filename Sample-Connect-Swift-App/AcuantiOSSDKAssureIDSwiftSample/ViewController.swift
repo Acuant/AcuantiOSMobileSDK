@@ -258,7 +258,7 @@ class ViewController: UIViewController ,AcuantMobileSDKControllerCapturingDelega
     }
     
     // Capture Callbacks
-    func didCaptureCropImage(_ cardImage: UIImage!, scanBackSide: Bool, andCardType cardType: AcuantCardType) {
+    func didCaptureCropImage(_ cardImage: UIImage!, scanBackSide: Bool, andCardType cardType: AcuantCardType, withImageMetrics imageMetrics: [AnyHashable : Any]!) {
         self.cardType=cardType
         if(cardType == AcuantCardTypeDriversLicenseCard){
             if(side==0){

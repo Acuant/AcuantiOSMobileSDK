@@ -33,7 +33,7 @@ typedef enum{
  Called to inform the delegate that a card image was captured
  @param cardImage the card image
  */
-- (void)didCaptureCropImage:(UIImage*)cardImage scanBackSide:(BOOL)scanBackSide andCardType:(AcuantCardType)cardType;
+- (void)didCaptureCropImage:(UIImage*)cardImage scanBackSide:(BOOL)scanBackSide andCardType:(AcuantCardType)cardType withImageMetrics:(NSDictionary*)imageMetrics;
 
 /**
  Called to inform the delegate that a barcode image was captured
@@ -60,7 +60,7 @@ typedef enum{
  Called to inform the delegate that a card image was captured
  @param cardImage the card image
  */
-- (void)didCaptureCropImage:(UIImage*)cardImage andData:(NSString*)data scanBackSide:(BOOL)scanBackSide;
+- (void)didCaptureCropImage:(UIImage*)cardImage andData:(NSString*)data scanBackSide:(BOOL)scanBackSide withImageMetrics:(NSDictionary*)imageMetrics;
 
 
 /**
@@ -80,7 +80,7 @@ typedef enum{
  @param croppedImage : The cropped Image
  @param originalImage : the original Image
  */
-- (void)barcodeScanTimeOut:(UIImage*)croppedImage andOriginalImage:(UIImage*)originalImage;
+- (void)barcodeScanTimeOut:(UIImage*)croppedImage withImageMetrics:(NSDictionary*)imageMetrics andOriginalImage:(UIImage*)originalImage;
 
 
 /**
@@ -89,7 +89,7 @@ typedef enum{
  @param originalImage : the original Image
  */
 
-- (void)didCancelToCaptureData:(UIImage*)croppedImage andOriginalImage:(UIImage*)originalImage;
+- (void)didCancelToCaptureData:(UIImage*)croppedImage withImageMetrics:(NSDictionary*)imageMetrics andOriginalImage:(UIImage*)originalImage;
 
 /**
  Called to inform the delegate that the user pressed the back button

@@ -10,6 +10,7 @@
 
 @interface AcuantDriversLicenseCard : AcuantCardResult
 
+@property (nonatomic, strong) NSString  *ozoneSavedIdentifier;
 @property (nonatomic, strong) NSString  *dateOfBirth4;
 @property (nonatomic, strong) NSString  *dateOfBirth;
 @property (nonatomic, strong) NSString  *dateOfBirthLocal;

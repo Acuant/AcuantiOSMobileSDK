@@ -581,7 +581,7 @@
     [self.sendRequestButton setHidden:NO];
 }
 
--(void)didCaptureCropImage:(UIImage *)cardImage scanBackSide:(BOOL)scanBackSide andCardType:(AcuantCardType)cardType{
+-(void)didCaptureCropImage:(UIImage *)cardImage scanBackSide:(BOOL)scanBackSide andCardType:(AcuantCardType)cardType withImageMetrics:(NSDictionary *)imageMetrics{
     NSString* message;
     if(self.cardType == AcuantCardTypePassportCard){
         message = @"Please make sure all the text on the Passport image is readable, otherwise retry.";
@@ -590,6 +590,7 @@
     }
     
     ConfirmationViewController* confirmVC = [[ConfirmationViewController alloc] initWithImage:cardImage andMessage:message scanBackSide:scanBackSide failed:NO];
+    confirmVC.imageMetrics = imageMetrics;
     if ([self presentedViewController]) {
         [[self presentedViewController] dismissViewControllerAnimated:NO completion:^{
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -608,7 +609,7 @@
     NSLog(@"didTakeCardPhoto");
 }
 
--(void)didCaptureCropImage:(UIImage *)cardImage andData:(NSString *)data scanBackSide:(BOOL)scanBackSide{
+-(void)didCaptureCropImage:(UIImage *)cardImage andData:(NSString *)data scanBackSide:(BOOL)scanBackSide withImageMetrics:(NSDictionary*)imageMetrics{
     self.barcodeString = data;
     NSString* message;
     if(self.cardType == AcuantCardTypePassportCard){
@@ -618,6 +619,7 @@
     }
     
     ConfirmationViewController* confirmVC = [[ConfirmationViewController alloc] initWithImage:cardImage andMessage:message scanBackSide:scanBackSide failed:NO];
+    confirmVC.imageMetrics = imageMetrics;
     if ([self presentedViewController]) {
         [[self presentedViewController] dismissViewControllerAnimated:NO completion:^{
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -783,7 +785,7 @@
     self.originalImage = cardImage;
 }
 
--(void)barcodeScanTimeOut:(UIImage*)croppedImage andOriginalImage:(UIImage*)originalImage{
+-(void)barcodeScanTimeOut:(UIImage*)croppedImage withImageMetrics:(NSDictionary *)imageMetrics andOriginalImage:(UIImage*)originalImage{
     
     [_instance pauseScanningBarcodeCamera];
     
@@ -810,7 +812,7 @@
                                     Orientation:[UIDevice currentDevice].orientation];
 }
 
-- (void)didCancelToCaptureData:(UIImage*)croppedImage andOriginalImage:(UIImage*)originalImage{
+- (void)didCancelToCaptureData:(UIImage*)croppedImage withImageMetrics:(NSDictionary *)imageMetrics andOriginalImage:(UIImage*)originalImage{
     if(croppedImage!=nil){
         [self imageCapturedCorrectly:croppedImage scanBackSide:NO];
     }

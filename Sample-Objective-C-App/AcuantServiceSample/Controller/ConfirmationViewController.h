@@ -13,7 +13,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *messageLabel;
 @property (strong, nonatomic) IBOutlet UIButton *confirmButton;
 @property (strong, nonatomic) IBOutlet UIButton *retryButton;
-
+@property (strong, nonatomic) NSDictionary *imageMetrics;
 
 - (IBAction)confirmTapped:(id)sender;
 

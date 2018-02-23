@@ -378,7 +378,7 @@ class ViewController: UIViewController ,AcuantMobileSDKControllerCapturingDelega
         }
     }
     // Capture Callbacks
-    func didCaptureCropImage(_ cardImage: UIImage!, scanBackSide: Bool, andCardType cardType: AcuantCardType) {
+    func didCaptureCropImage(_ cardImage: UIImage!, scanBackSide: Bool, andCardType cardType: AcuantCardType, withImageMetrics imageMetrics: [AnyHashable : Any]!) {
         print("didCaptureCropImage");
         if(cardSide==0){
             frontImageViewLabel.isHidden=true;

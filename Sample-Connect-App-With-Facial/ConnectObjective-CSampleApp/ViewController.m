@@ -281,7 +281,9 @@
 
 // Web service callbacks
 -(void) mobileSDKWasValidated:(BOOL)wasValidated{
-    self.view.userInteractionEnabled=YES;
+    dispatch_async(dispatch_get_main_queue(),^{
+        self.view.userInteractionEnabled=YES;
+    });
     if(!wasValidated){
         UIAlertController* alertController = [[UIAlertController alloc] init];
         [alertController setTitle:@"ConnectExample"];
@@ -302,7 +304,9 @@
         return;
     }
     if(_acufillValidated==NO && _acufillValidating==NO){
-        self.view.userInteractionEnabled=NO;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.view.userInteractionEnabled=NO;
+        });
         _acufillValidating=YES;
         _acufill_instance = [AcuantMobileSDKController initAcuantMobileSDKWithLicenseKey:_acufillLicenseKey delegate:self andCloudAddress:_acufillURL];
         return;
@@ -336,7 +340,7 @@
     return YES;
 }
 
--(void) didCaptureCropImage:(UIImage *)cardImage scanBackSide:(BOOL)scanBackSide andCardType:(AcuantCardType)cardType{
+-(void) didCaptureCropImage:(UIImage *)cardImage scanBackSide:(BOOL)scanBackSide andCardType:(AcuantCardType)cardType withImageMetrics:(NSDictionary *)imageMetrics{
     _cardType=cardType;
     if(cardType == AcuantCardTypeDriversLicenseCard){
         if(_side==0){

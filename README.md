@@ -3,25 +3,22 @@
 iOS Mobile SDK Programmer’s Guide
 ==================
 
-**Last updated on – 11/07/2017**
+**Last updated on – 2/22/2018**
 
 
-Copyright <sup>©</sup> 2003-2017 Acuant Inc. All rights reserved.
+Copyright <sup>©</sup> 2003-2018 Acuant Inc. All rights reserved.
 
-This document contains proprietary and confidential technology,
-information, and creative works owned by Acuant and its respective
+This document contains proprietary and confidential 
+information and creative works owned by Acuant and its respective
 licensors, if any. Any use, copying, publication, distribution, display,
 modification, or transmission of such technology in whole or in part in
 any form or by any means without the prior express written permission of
 Acuant is strictly prohibited. Except where expressly provided by Acuant
-in writing, possession of this technology or information shall not be
+in writing, possession of this information shall not be
 construed to confer any license or rights under any Acuant intellectual
 property rights, whether by estoppel, implication, or otherwise.
 
-AssureID and *i-D*entify are trademarks of Acuant Inc.
-
-Other Acuant product or service names or logos referenced this document
-are either trademarks or registered trademarks of Acuant.
+AssureID and *i-D*entify are trademarks of Acuant Inc. Other Acuant product or service names or logos referenced this document are either trademarks or registered trademarks of Acuant.
 
 All 3M trademarks are trademarks of 3M Company.
 
@@ -35,7 +32,7 @@ designation appears in initial capital or all capital letters. However,
 you should contact the appropriate companies for more complete
 information regarding such designations and their registration status.
 
-**August 2017**
+**February 2018**
 
 Acuant Inc.
 
@@ -59,9 +56,25 @@ This document contains a detailed description of all functions that developers n
 
 ## Revision History
 
+**Acuant iOS MobileSDK version 5.5:**
+
+The **ImageMetrics** parameter was added to the following methods:
+
+- **didCaptureCropImage**
+- **barcodeScanTimeOut**
+- **didCancelToCaptureData**
+
+
+The **ImageMetrics** parameter specifies the sharpness of a cropped image. An image with a sharpness grade of 0.4f or above is considered a sharp image. Users may set the threshold based on their requirements.
+
+
+		BOOL isSharp = [[imageMetrics objectForKey:@"IS_SHARP"] boolValue]; 
+		float sharpnessGrade = [[imageMetrics objectForKey:@"SHARPNESS_GRADE"] floatValue]; 
+
+  
 **Acuant iOS MobileSDK version 5.4:**
 
--  Added new card type constant **AcuantCardTypeAuto**. If AcuantCardTypeAuto is set, then in **didCaptureCropImage** the last parameter will contain the automatically detected card type.
+-  Added new card type constant **AcuantCardTypeAuto**. If **AcuantCardTypeAuto** is set, then in **didCaptureCropImage** the last parameter will contain the automatically detected card type.
 
 - Added the location parameter **cancelVisible** for the cancel button in the facial API
 
@@ -178,7 +191,7 @@ If the following error(s) occurs when publishing/exporting the app, then in the 
 
 	    platform :ios, '8.0'
 		pod 'PPpdf417', '~> 5.1.0'
-		pod 'AcuantMobileSDK', '~> 5.4'
+		pod 'AcuantMobileSDK', '~> 5.5'
 
 2.  Run `pod install` to add the AcuantMobileSDK.
 
@@ -542,9 +555,11 @@ This section describes the methods used by the **AcuantMobileSDKControllerCaptur
 
 Use the **didCaptureCropImage** method to configure image cropping.
  
-**Note**  All card capture interfaces must use this method.
+**Note**  All card capture interfaces *must* use this method.
 
-	-(void)didCaptureCropImage:(UIImage *)cardImage scanBackSide:(BOOL)scanBackSide andCardType:(AcuantCardType)cardType{
+	-(void)didCaptureCropImage:(UIImage **)cardImage scanBackSide:(BOOL)scanBackSide andCardType:(AcuantCardType)cardType  withImageMetrics:(NSDictionary )imageMetrics
+
+	{
 		_isCameraTouched = NO;
 		[_instance dismissCardCaptureInterface];
 		_isBarcodeSide = scanBackSide;
@@ -741,21 +756,16 @@ Use the didTakeCardPhoto method to inform the delegate that the image capture pr
 
 Use the **barcodeScanTimeOut** method to inform the delegate that the time of the barcode scan expired:
 
-		-(void)barcodeScanTimeOut:(UIImage*)croppedImage andOriginalImage:(UIImage*)originalImage{
-			[self showSimpleAlertWithMessage:message];  
+		-(void)barcodeScanTimeOut:(UIImage*)croppedImage withImageMetrics:(NSDictionary *)imageMetrics andOriginalImage:(UIImage *)originalImage 
 		}
-		
 
 #### didCancelToCaptureData method
 
 Use the **didCancelToCaptureData** method to inform the delegate that the barcode screen has been canceled:
-**Note** For the arguments have the images the delegate must implement **-(BOOL)canCropBarcodeOnBackPressed** method and must return **Yes**.
+**Note** For arguments that have images, the delegate must implement **-(BOOL)canCropBarcodeOnBackPressed** method and must return **Yes**.
 
-		- (void)didCancelToCaptureData:(UIImage*)croppedImage andOriginalImage:
-		(UIImage*)originalImage{
-		
+		-(void)didCancelToCaptureData:(UIImage*)croppedImage withImageMetrics:(NSDictionary *)imageMetrics andOriginalImage:(UIImage *)originalImage{
 		}
-
 #### showiPadBrackets method
 
 Use the **showiPadBrackets** method to enable or disable displaying the iPad brackets on the card capture interface:

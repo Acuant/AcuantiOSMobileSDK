@@ -39,7 +39,6 @@
     _password = @"XXXXXXXXXXXX";
     _subscription = @"XXXXXXXXXXXX";
     _url = @"https://devconnect.assureid.net/AssureIDService";
-    
     [self hideFrontUI];
     [self hideUIBack];
     [self hideProcessButton];
@@ -197,8 +196,8 @@
 
 // Web service callbacks
 -(void) mobileSDKWasValidated:(BOOL)wasValidated{
-    self.view.userInteractionEnabled=YES;
     dispatch_async(dispatch_get_main_queue(), ^{
+        self.view.userInteractionEnabled=YES;
         [ProgressHUD dismiss];
     });
     if(!wasValidated){
@@ -239,41 +238,42 @@
     return YES;
 }
 
--(void) didCaptureCropImage:(UIImage *)cardImage scanBackSide:(BOOL)scanBackSide andCardType:(AcuantCardType)cardType{
-    _cardType=cardType;
-    if(cardType == AcuantCardTypeDriversLicenseCard){
-        if(_side==0){
+-(void) didCaptureCropImage:(UIImage *)cardImage scanBackSide:(BOOL)scanBackSide andCardType:(AcuantCardType)cardType withImageMetrics:(NSDictionary *)imageMetrics{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _cardType=cardType;
+        if(cardType == AcuantCardTypeDriversLicenseCard){
+            if(_side==0){
+                _frontCardImageView.image=cardImage;
+                _frontImageViewLabel.hidden=YES;
+                UIAlertController* alertController = [[UIAlertController alloc] init];
+                [alertController setTitle:@"ConnectExample"];
+                [alertController setMessage:@"Scan the backside of the drivers license"];
+                UIAlertAction* dismissButton = [UIAlertAction actionWithTitle:@"OK"
+                                                                        style:UIAlertActionStyleDefault
+                                                                      handler:^(UIAlertAction * action)
+                                                {
+                                                    [self showCamera];
+                                                    _side=1;
+                                                    [alertController dismissViewControllerAnimated:YES completion:nil];
+                                                }];
+                
+                [alertController addAction:dismissButton];
+                
+                
+                [self presentViewController:alertController animated:YES completion:nil];
+                
+            }else{
+                [self showBackUI];
+                _backCardImageView.image=cardImage;
+                _backImageViewLabel.hidden=YES;
+                [self showProcessButton];
+            }
+        }else{
             _frontCardImageView.image=cardImage;
             _frontImageViewLabel.hidden=YES;
-            UIAlertController* alertController = [[UIAlertController alloc] init];
-            [alertController setTitle:@"ConnectExample"];
-            [alertController setMessage:@"Scan the backside of the drivers license"];
-            UIAlertAction* dismissButton = [UIAlertAction actionWithTitle:@"OK"
-                                                                    style:UIAlertActionStyleDefault
-                                                                  handler:^(UIAlertAction * action)
-                                            {
-                                                [self showCamera];
-                                                _side=1;
-                                                [alertController dismissViewControllerAnimated:YES completion:nil];
-                                            }];
-            
-            [alertController addAction:dismissButton];
-            
-            
-            [self presentViewController:alertController animated:YES completion:nil];
-            
-        }else{
-            [self showBackUI];
-            _backCardImageView.image=cardImage;
-            _backImageViewLabel.hidden=YES;
             [self showProcessButton];
         }
-    }else{
-        _frontCardImageView.image=cardImage;
-        _frontImageViewLabel.hidden=YES;
-        [self showProcessButton];
-    }
-    
+    });
 }
 
 -(void) didCaptureData:(NSString *)data{

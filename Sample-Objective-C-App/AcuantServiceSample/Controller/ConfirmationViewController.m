@@ -91,7 +91,19 @@
     _retryButton.layer.cornerRadius = 10.0f;
     
     _imagePreview.image = _originalImage;
+    
     _messageLabel.text = _messageText;
+    
+    if(_imageMetrics){
+        if([_imageMetrics objectForKey:@"IS_SHARP"] != nil){
+            bool isSharp = [[_imageMetrics objectForKey:@"IS_SHARP"] boolValue];
+            if(!isSharp){
+                _messageLabel.text = @"Image appears to be blurry.Please retry.";
+            }
+        }
+    }
+    
+    
     
     if(_failed){
         _confirmButton.hidden=YES;
