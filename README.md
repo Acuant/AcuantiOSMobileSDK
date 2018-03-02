@@ -3,7 +3,7 @@
 iOS Mobile SDK Programmer’s Guide
 ==================
 
-**Last updated on – 2/22/2018**
+**Last updated on – 3/2/2018**
 
 
 Copyright <sup>©</sup> 2003-2018 Acuant Inc. All rights reserved.
@@ -32,7 +32,7 @@ designation appears in initial capital or all capital letters. However,
 you should contact the appropriate companies for more complete
 information regarding such designations and their registration status.
 
-**February 2018**
+**March 2018**
 
 Acuant Inc.
 
@@ -48,7 +48,7 @@ Los Angeles, CA 90045
 
 Acuant Web Services supports data extraction from driver’s licenses, state IDs, other government issued IDs, custom IDs, driver’s licenses, barcodes, passports, and medical insurance cards. It also supports document authentication and facial recognition to verify and authenticate the identity.
 
-The Acuant Mobile SDK framework is a Cocoa Framework. CocoaPods is a dependency manager for  Objective-C, which automates and simplifies the process of using third-party libraries like the Acuant Mobile SDK in your projects. See [Installing the SDK with CocoaPods](#_Installing_the_SDK).
+The Acuant Mobile SDK framework is a Cocoa Framework. CocoaPods is a dependency manager for  Objective-C, which automates and simplifies the process of using third-party libraries like the Acuant Mobile SDK in your projects. See Installing the SDK with CocoaPods.
 
 This document contains a detailed description of all functions that developers need to integrate with the Acuant iOS Mobile SDK. The Acuant iOS Mobile SDK requires a valid license key. Contact sales@acuantcorp.com to obtain a license key.
 
@@ -63,6 +63,7 @@ The **ImageMetrics** parameter was added to the following methods:
 - **didCaptureCropImage**
 - **barcodeScanTimeOut**
 - **didCancelToCaptureData**
+- **showiPadBrackets**
 
 
 The **ImageMetrics** parameter specifies the sharpness of a cropped image. An image with a sharpness grade of 0.4f or above is considered a sharp image. Users may set the threshold based on their requirements.
@@ -109,7 +110,7 @@ The **ImageMetrics** parameter specifies the sharpness of a cropped image. An im
 
 -  Improved passport cropping
 
--  Added a delegate callback to capture the begining of image capture event:
+-  Added a delegate callback to capture the beginning of image capture event:
 
         (-(void)didTakeCardPhoto{
                NSLog(@"didTakeCardPhoto");
@@ -146,6 +147,7 @@ and devices:
 
 **Note**  The card image must be taken in acceptable light conditions to avoid glare and overhead lights. The card should preferably be fitted within the brackets on the camera screen to allow the picture to be taken at maximum resolution.
 
+<a name="Installing the SDK"></a>
 ## Installing the SDK with CocoaPods
 
 This section describes how to install the Acuant iOS Mobile SDK using CocoaPods.
@@ -609,6 +611,13 @@ Use the **didCaptureCropImage** method to configure image cropping.
 		}
 	}
 
+
+The **ImageMetrics** parameter specifies the sharpness of a cropped image. An image with a sharpness grade of 0.4f or above is considered a sharp image. Users may set the threshold based on their requirements:
+
+
+		BOOL isSharp = [[imageMetrics objectForKey:@"IS_SHARP"] boolValue]; 
+		float sharpnessGrade = [[imageMetrics objectForKey:@"SHARPNESS_GRADE"] floatValue]; 
+
 **Note** For **AcuantCardTypeMedicalInsuranceCard** capturing the back side is optional, but for **AcuantCardTypeDriverLicenseCard**, capturing the back side is required.
 
 ### didCaptureOriginalImage method
@@ -745,7 +754,7 @@ In order to inform that the scan or the process failed. You must use the followi
 
 #### didTakeCardPhoto method
 
-Use the didTakeCardPhoto method to inform the delegate that the image capture process started:
+Use the **didTakeCardPhoto** method to inform the delegate that the image capture process started:
 
 		-(void)didTakeCardPhoto{
     			NSLog(@"didTakeCardPhoto");
@@ -757,7 +766,14 @@ Use the didTakeCardPhoto method to inform the delegate that the image capture pr
 Use the **barcodeScanTimeOut** method to inform the delegate that the time of the barcode scan expired:
 
 		-(void)barcodeScanTimeOut:(UIImage*)croppedImage withImageMetrics:(NSDictionary *)imageMetrics andOriginalImage:(UIImage *)originalImage 
+
 		}
+
+The **ImageMetrics** parameter specifies the sharpness of a cropped image. An image with a sharpness grade of 0.4f or above is considered a sharp image. Users may set the threshold based on their requirements:
+
+
+		BOOL isSharp = [[imageMetrics objectForKey:@"IS_SHARP"] boolValue]; 
+		float sharpnessGrade = [[imageMetrics objectForKey:@"SHARPNESS_GRADE"] floatValue]; 
 
 #### didCancelToCaptureData method
 
@@ -774,6 +790,12 @@ Use the **showiPadBrackets** method to enable or disable displaying the iPad bra
 		    return YES;   
 		}
 
+
+The **ImageMetrics** parameter specifies the sharpness of a cropped image. An image with a sharpness grade of 0.4f or above is considered a sharp image. Users may set the threshold based on their requirements:
+
+
+		BOOL isSharp = [[imageMetrics objectForKey:@"IS_SHARP"] boolValue]; 
+		float sharpnessGrade = [[imageMetrics objectForKey:@"SHARPNESS_GRADE"] floatValue]; 
 
 #### didPressBackButton method
 
@@ -828,60 +850,60 @@ Use the **showFlashlightButton** method to enable or disable displaying  the fla
 
 Use the **frameForFlashlightButton** method to set the flashlight button position in the screen:Call to set the flashlight button position in the screen:
 
- 	-(CGRect)frameForFlashlightButton{
+		-(CGRect)frameForFlashlightButton{
  
-    	return CGRectZero;
+			return CGRectZero;
      
-	}
+		}
 
 #### imageForFlashlightButton method
 
 Use the **imageForFlashlightButton** method to set the flashlight button image displayed in the card capture interface when camera flash is turned on:
 	
-	-(UIImage*)imageForFlashlightButton{
-     	UIImage *image = [UIImage imageNamed:@"FlashlightButton.png"];
-     	return image;
- 	}
+		-(UIImage*)imageForFlashlightButton{
+     		UIImage *image = [UIImage imageNamed:@"FlashlightButton.png"];
+     		return image;
+		}
 
 #### imageForFlashlightOffButton method
 
 Use the **imageForFlashlightOffButton** method to set the flashlight button image displayed in the card capture interface when camera flash is turned off:
 
-	-(UIImage*)imageForFlashlightOffButton{
-		UIImage *image = [UIImage imageNamed:@"FlashlightOffButton.png"];
-		return image;
-	}
+		-(UIImage*)imageForFlashlightOffButton{
+			UIImage *image = [UIImage imageNamed:@"FlashlightOffButton.png"];
+			return image;
+		}
 
 #### imageForHelpImageView method
 
 Use the **imageForHelpImageView** method to set the help image displayed in the card capture interface:
 	
-	-(UIImage*)imageForHelpImageView{
-     	UIImage *image = [UIImage imageNamed:@"PDF417"];   
-		return [image imageByApplyingAlpha:0.7];    
+		-(UIImage*)imageForHelpImageView{
+     		UIImage *image = [UIImage imageNamed:@"PDF417"];   
+			return [image imageByApplyingAlpha:0.7];    
 		
-	}
+		}
 
 #### frameForHelpImageView method
 
 Use the **frameForHelpImageView** method to set the help image position in the screen:
 
-	-(CGRect)frameForHelpImageView{
-		UIImage *image = [UIImage imageNamed:@"PDF417"]; 
-		CGRect frame = CGRectMake(self.view.frame.size.width/2 -
-		image.size.width/2, self.view.> frame.size.height/2 -
-		image.size.height/3 , image.size.width, image.size.height);
-	   	return frame;         
-	 }
+		-(CGRect)frameForHelpImageView{
+			UIImage *image = [UIImage imageNamed:@"PDF417"]; 
+			CGRect frame = CGRectMake(self.view.frame.size.width/2 -
+			image.size.width/2, self.view.> frame.size.height/2 -
+			image.size.height/3 , image.size.width, image.size.height);
+	   		return frame;         
+	 	}
 	 
 #### stringForWatermarkLabel method
 	 
 Use the **stringForWatermarkLabel** method to set the watermark Message displayed in the card capture interface:
 
-	-(NSString*)stringForWatermarkLabel{
-    	NSString *string = @"Powered by Acuant";
-   		return string;  
- 	}
+		-(NSString*)stringForWatermarkLabel{
+    		NSString *string = @"Powered by Acuant";
+			return string;  
+		}
  
 #### frameForWatermarkImageView method
  
@@ -916,29 +938,29 @@ Use the **stringForBarcodeErrorMessage** method to set the barcode error message
 		
 Use the **stringForBarcodeTitleError** method to set the barcode title error displayed in the barcode capture interface:
 
- 		-(NSString *)stringForBarcodeTitleError{
+		-(NSString *)stringForBarcodeTitleError{
      		NSString *string = @"Title Sample";
      		return string;    
- 		}
+		}
  
 #### timeForBarcodeErrorMessage method
 
 Use the **timeForBarcodeErrorMessage** method to set the time elapse to appear in the barcode capture interface:
 
-	-(NSString *)stringForBarcodeFirstButton{ 
-     	NSString *string = @"Yes";
-     	return string;
-    } 
+		-(NSString *)stringForBarcodeFirstButton{ 
+     		NSString *string = @"Yes";
+     		return string;
+    	} 
     
     
 #### stringForBarcodeSecondButton method
 
 Use the **stringForBarcodeSecondButton** method to set the barcode button text for the second button displayed in the barcode alert:
 
-	-(NSString *)stringForBarcodeSecondButton{
-		NSString *string = @"Try Again";
-		return string;
-	}
+		-(NSString *)stringForBarcodeSecondButton{
+			NSString *string = @"Try Again";
+			return string;
+		}
 
 
 # Card Processing
@@ -1049,7 +1071,7 @@ Boolean value that indicates whether to crop the RAW image. **Values:** True | F
  Boolean value that indicates whether to save the transaction response on the Acuant cloud for future retrieval if logging is enabled on the license key. **Values:** True | False 
 
 ####imageSettings
-The default value for imageSettings is -1. Do not adjust this value unless instructed by Acuant Technical Support.
+The default value for **imageSettings** is -1. Do not adjust this value unless instructed by Acuant Technical Support.
 
 ### Card processing for Medical Insurance Cards
 
@@ -1106,32 +1128,32 @@ Boolean value that indicates whether to crop the RAW image. **Values:** True | F
 
 Use the following values to configure card processing for **AcuantCardTypePassportCard**:
 
-	-(IBAction)sendRequest:(id)sender {
-		self.view.userInteractionEnabled = NO;
-		[SVProgressHUD showWithStatus:@"Sending Request"];
+		-(IBAction)sendRequest:(id)sender {
+			self.view.userInteractionEnabled = NO;
+			[SVProgressHUD showWithStatus:@"Sending Request"];
 		
-		//Obtain the front side of the card image
-		UIImage *frontSideImage = [self frontSideCardImage];
+			//Obtain the front side of the card image
+			UIImage *frontSideImage = [self frontSideCardImage];
 		
-		//Obtain the default AcuantCardProcessRequestOptions object for the type
-		of card you want to process (Passport card for this example)
+			//Obtain the default AcuantCardProcessRequestOptions object for the type
+			of card you want to process (Passport card for this example)
 		
-		AcuantCardProcessRequestOptions *options =
-		[AcuantCardProcessRequestOptions defaultRequestOptionsForCardType:
-		AcuantCardTypePasssportCard];
+			AcuantCardProcessRequestOptions *options =
+			[AcuantCardProcessRequestOptions defaultRequestOptionsForCardType:
+			AcuantCardTypePasssportCard];
 		
-		//Optionally, configure the options to the desired value
-		options.reformatImage = YES;
-		options.reformatImageColor = 0;
-		options.DPI = 150.0f;
-		options.cropImage = NO;
-		options.faceDetection = YES;
-		options.signatureDetection = YES;
-		// Now, perform the request
+			//Optionally, configure the options to the desired value
+			options.reformatImage = YES;
+			options.reformatImageColor = 0;
+			options.DPI = 150.0f;
+			options.cropImage = NO;
+			options.faceDetection = YES;
+			options.signatureDetection = YES;
+			// Now, perform the request
 		
-		[_instance processFrontCardImage:frontSideImage BackCardImage:nil 
-		andStringData:nil withDelegate:self withOptions:options];
-	}
+			[_instance processFrontCardImage:frontSideImage BackCardImage:nil 
+			andStringData:nil withDelegate:self withOptions:options];
+		}
 
 ###Parameters
 
@@ -1170,16 +1192,16 @@ Add the following code for the **AcuantCardTypeDriversLicenseCard**:
 	#pragma mark -
 	#pragma mark CardProcessing Delegate
 
-	-(void)didFinishProcessingCardWithResult:(AcuantCardResult *)result{
-    	self.view.userInteractionEnabled = YES;
-    	[SVProgressHUD dismiss];
-    	NSString *message;
-    	UIImage *faceimage;
-    	UIImage *signatureImage;
-    	UIImage *frontImage;
-    	UIImage *backImage;
-    	AcuantDriversLicenseCard *data = (AcuantDriversLicenseCard*)result;
-    	message [NSString stringWithFormat:@"First Name - %@ \nMiddle Name - %@ \nLast Name - 		%@ 	\nName Suffix - %@ \nAuthentication Result - %@ \nAunthentication Summary - %@ 		\nID - 	%@ 	\nLicense - %@ \nDOB Long - %@ \nDOB Short - %@ \nDate Of Birth Local - %@ 		\nIssue 	Date 	Long - %@ \nIssue Date Short - %@ \nIssue Date Local - %@ 		\nExpiration Date Long - 	%@ 	\nExpiration Date Short - %@ \nEye Color - %@ \nHair 		Color - %@ \nHeight - %@ \nWeight 	- 	%@ \nAddress - %@ \nAddress 2 - %@ \nAddress 3 		- %@ \nAddress 4 - %@ \nAddress 5 - %@ 		\nAddress 6  - %@ \nCity - %@ \nZip - %@ \nState - %@ \nCounty - %@ \nCountry Short - 		%@ 	\nCountry Long - %@ \nClass - %@ \nRestriction - %@ \nSex - %@ \nAudit - %@ 		\nEndorsements 	- %@ \nFee - %@ \nCSC - %@ \nSigNum - %@ \nText1 - %@ \nText2 - %@ 		\nText3 - %@ \nType - 	%@ \nDoc Type - %@ \nFather Name - %@ \nMother Name - %@ 		\nNameFirst_NonMRZ - %@ 	\nNameLast_NonMRZ - %@ \nNameLast1 - %@ \nNameLast2 - %@ 		\nNameMiddle_NonMRZ - %@ 	\nNameSuffix_NonMRZ - %@ \nDocument Detected Name - %@ 		\nDocument Detected Name Short - %@ 	\nNationality - %@ \nOriginal - %@ 		\nPlaceOfBirth - %@ \nPlaceOfIssue - %@ \nSocial 		Security - %@ \nIsAddressCorrected - %d \nIsAddressVerified - %d", data.nameFirst, 		data.nameMiddle, data.nameLast, data.nameSuffix,data.authenticationResult,[self 		arrayToString:data.authenticationResultSummaryList], data.licenceId, data.license, 		data.dateOfBirth4, data.dateOfBirth, data.dateOfBirthLocal, data.issueDate4, 		data.issueDate, data.issueDateLocal, data.expirationDate4, data.expirationDate, 		data.eyeColor, data.hairColor, data.height, data.weight, data.address, data.address2, 		data.address3, data.address4, data.address5, data.address6, data.city, data.zip, 		data.state, data.county, data.countryShort, data.idCountry, data.licenceClass, 		data.restriction, data.sex, data.audit, data.endorsements, data.fee, data.CSC, 		data.sigNum, data.text1, data.text2, data.text3, data.type, data.docType, 		data.fatherName, 	data.motherName, data.nameFirst_NonMRZ, data.nameLast_NonMRZ, 		data.nameLast1, 	data.nameLast2, data.nameMiddle_NonMRZ, data.nameSuffix_NonMRZ, 		data.documentDetectedName, 	data.documentDetectedNameShort, data.nationality, 		data.original, data.placeOfBirth, 	data.placeOfIssue, data.socialSecurity, 		data.isAddressCorrected, data.isAddressVerified];
+		-(void)didFinishProcessingCardWithResult:(AcuantCardResult *)result{
+    		self.view.userInteractionEnabled = YES;
+    		[SVProgressHUD dismiss];
+    		NSString *message;
+    		UIImage *faceimage;
+    		UIImage *signatureImage;
+    		UIImage *frontImage;
+    		UIImage *backImage;
+    		AcuantDriversLicenseCard *data = (AcuantDriversLicenseCard*)result;
+    		message [NSString stringWithFormat:@"First Name - %@ \nMiddle Name - %@ \nLast Name - 		%@ 	\nName Suffix - %@ \nAuthentication Result - %@ \nAunthentication Summary - %@ 		\nID - 	%@ 	\nLicense - %@ \nDOB Long - %@ \nDOB Short - %@ \nDate Of Birth Local - %@ 		\nIssue 	Date 	Long - %@ \nIssue Date Short - %@ \nIssue Date Local - %@ 		\nExpiration Date Long - 	%@ 	\nExpiration Date Short - %@ \nEye Color - %@ \nHair 		Color - %@ \nHeight - %@ \nWeight 	- 	%@ \nAddress - %@ \nAddress 2 - %@ \nAddress 3 		- %@ \nAddress 4 - %@ \nAddress 5 - %@ 		\nAddress 6  - %@ \nCity - %@ \nZip - %@ \nState - %@ \nCounty - %@ \nCountry Short - 		%@ 	\nCountry Long - %@ \nClass - %@ \nRestriction - %@ \nSex - %@ \nAudit - %@ 		\nEndorsements 	- %@ \nFee - %@ \nCSC - %@ \nSigNum - %@ \nText1 - %@ \nText2 - %@ 		\nText3 - %@ \nType - 	%@ \nDoc Type - %@ \nFather Name - %@ \nMother Name - %@ 		\nNameFirst_NonMRZ - %@ 	\nNameLast_NonMRZ - %@ \nNameLast1 - %@ \nNameLast2 - %@ 		\nNameMiddle_NonMRZ - %@ 	\nNameSuffix_NonMRZ - %@ \nDocument Detected Name - %@ 		\nDocument Detected Name Short - %@ 	\nNationality - %@ \nOriginal - %@ 		\nPlaceOfBirth - %@ \nPlaceOfIssue - %@ \nSocial 		Security - %@ \nIsAddressCorrected - %d \nIsAddressVerified - %d", data.nameFirst, 		data.nameMiddle, data.nameLast, data.nameSuffix,data.authenticationResult,[self 		arrayToString:data.authenticationResultSummaryList], data.licenceId, data.license, 		data.dateOfBirth4, data.dateOfBirth, data.dateOfBirthLocal, data.issueDate4, 		data.issueDate, data.issueDateLocal, data.expirationDate4, data.expirationDate, 		data.eyeColor, data.hairColor, data.height, data.weight, data.address, data.address2, 		data.address3, data.address4, data.address5, data.address6, data.city, data.zip, 		data.state, data.county, data.countryShort, data.idCountry, data.licenceClass, 		data.restriction, data.sex, data.audit, data.endorsements, data.fee, data.CSC, 		data.sigNum, data.text1, data.text2, data.text3, data.type, data.docType, 		data.fatherName, 	data.motherName, data.nameFirst_NonMRZ, data.nameLast_NonMRZ, 		data.nameLast1, 	data.nameLast2, data.nameMiddle_NonMRZ, data.nameSuffix_NonMRZ, 		data.documentDetectedName, 	data.documentDetectedNameShort, data.nationality, 		data.original, data.placeOfBirth, 	data.placeOfIssue, data.socialSecurity, 		data.isAddressCorrected, data.isAddressVerified];
 
 
 		if (_region == AcuantCardRegionUnitedStates || _region == AcuantCardRegionCanada) {
@@ -1193,59 +1215,59 @@ Add the following code for the **AcuantCardTypeDriversLicenseCard**:
 
 	}
 
-	-(void)didFailWithError:(AcuantError *)error{
-    	self.view.userInteractionEnabled = YES;
-    	[SVProgressHUD dismiss];
-    	NSString *message;
-    	switch (error.errorType) {
-        	case AcuantErrorTimedOut:
-            	message = error.errorMessage;
-            	break;
-        	case AcuantErrorUnknown:
-            	message = error.errorMessage;
-            	break;
-        	case AcuantErrorUnableToProcess:
-            	message = error.errorMessage;
-            	break;
-        	case AcuantErrorInternalServerError:
-            	message = error.errorMessage;
-            	break;
-        	case AcuantErrorCouldNotReachServer:
-            	message = error.errorMessage;
-            	break;
-        	case AcuantErrorUnableToAuthenticate:
-            	message = error.errorMessage;
-            	break;
-        	case AcuantErrorAutoDetectState:
-            	message = error.errorMessage;
-            	break;
-        	case AcuantErrorWebResponse:
-            	message = error.errorMessage;
-            	break;
-        	case AcuantErrorUnableToCrop:
-            	message = error.errorMessage;
-            	break;
-        	case AcuantErrorInvalidLicenseKey:
-           		message = error.errorMessage;
-            	break;
-        	case AcuantErrorInactiveLicenseKey:
-            	message = error.errorMessage;
-            	break;
-        	case AcuantErrorAccountDisabled:
-            	message = error.errorMessage;
-            	break;
-        	case AcuantErrorOnActiveLicenseKey:
-            	message = error.errorMessage;
-            	break;
-        	case AcuantErrorValidatingLicensekey:
-            	message = error.errorMessage;
-            	break;
-        	case AcuantErrorCameraUnauthorized:
-            	message = error.errorMessage;
-            	break;
-        	default:
-            	break;
-    	}
+		-(void)didFailWithError:(AcuantError *)error{
+    		self.view.userInteractionEnabled = YES;
+    		[SVProgressHUD dismiss];
+    		NSString *message;
+    		switch (error.errorType) {
+        		case AcuantErrorTimedOut:
+            		message = error.errorMessage;
+            		break;
+        		case AcuantErrorUnknown:
+            		message = error.errorMessage;
+            		break;
+        		case AcuantErrorUnableToProcess:
+            		message = error.errorMessage;
+            		break;
+        		case AcuantErrorInternalServerError:
+            		message = error.errorMessage;
+            		break;
+        		case AcuantErrorCouldNotReachServer:
+            		message = error.errorMessage;
+            		break;
+        		case AcuantErrorUnableToAuthenticate:
+            		message = error.errorMessage;
+            		break;
+        		case AcuantErrorAutoDetectState:
+            		message = error.errorMessage;
+            		break;
+        		case AcuantErrorWebResponse:
+            		message = error.errorMessage;
+            		break;
+        		case AcuantErrorUnableToCrop:
+            		message = error.errorMessage;
+            		break;
+        		case AcuantErrorInvalidLicenseKey:
+           			message = error.errorMessage;
+            		break;
+        		case AcuantErrorInactiveLicenseKey:
+            		message = error.errorMessage;
+            		break;
+        		case AcuantErrorAccountDisabled:
+            		message = error.errorMessage;
+            		break;
+        		case AcuantErrorOnActiveLicenseKey:
+            		message = error.errorMessage;
+            		break;
+        		case AcuantErrorValidatingLicensekey:
+            		message = error.errorMessage;
+            		break;
+        		case AcuantErrorCameraUnauthorized:
+            		message = error.errorMessage;
+            		break;
+        		default:
+            		break;
+    		}
     
 
     [UIAlertController showSimpleAlertWithTitle:@"AcuantiOSMobileSDK"
@@ -1468,7 +1490,7 @@ Add the following code for the **AcuantCardTypePassportCard**:
 
 
 	//Function to convert Authentication Summary list to a single NSString object
-	-(NSString*)arrayToString:(NSArray*)array{
+	-(NSString*)*arrayToString:(NSArray*)*array{
     	NSString* retStr = @"";
     	for(NSString* str in array){
         	if([retStr isEqualToString:@""]){
