@@ -3,7 +3,7 @@
 iOS Mobile SDK Programmer’s Guide
 ==================
 
-**Last updated on – 3/2/2018**
+**Last updated on – 3/9/2018**
 
 
 Copyright <sup>©</sup> 2003-2018 Acuant Inc. All rights reserved.
@@ -56,6 +56,16 @@ This document contains a detailed description of all functions that developers n
 
 ## Revision History
 
+**Acuant iOS MobileSDK version 5.6:**
+
+Added glare metrics for captured images. The metrics values can be accessed as follows: 
+
+		BOOL hasGlare = [[_imageMetrics objectForKey:@"HAS_GLARE"] boolValue] 
+		float glareGrade = [[_imageMetrics objectForKey:@"GLARE_GRADE"] floatValue]; 
+
+
+In general, a GLARE_GRADE of 1 means no glare and 0 means there is a high chance of having a glare in the captured image. 
+
 **Acuant iOS MobileSDK version 5.5:**
 
 The **ImageMetrics** parameter was added to the following methods:
@@ -66,11 +76,14 @@ The **ImageMetrics** parameter was added to the following methods:
 - **showiPadBrackets**
 
 
-The **ImageMetrics** parameter specifies the sharpness of a cropped image. An image with a sharpness grade of 0.4f or above is considered a sharp image. Users may set the threshold based on their requirements.
+The **ImageMetrics** parameter specifies the sharpness and glare threshold of a cropped image. An image with a sharpness grade of 0.4f or above is considered a sharp image. In general, a GLARE_GRADE of 1 means no glare and 0 means there is a high chance of having a glare in the captured image. Users may set the threshold based on their requirements.
 
 
 		BOOL isSharp = [[imageMetrics objectForKey:@"IS_SHARP"] boolValue]; 
 		float sharpnessGrade = [[imageMetrics objectForKey:@"SHARPNESS_GRADE"] floatValue]; 
+
+		BOOL hasGlare = [[_imageMetrics objectForKey:@"HAS_GLARE"] boolValue] 
+		float glareGrade = [[_imageMetrics objectForKey:@"GLARE_GRADE"] floatValue]; 
 
   
 **Acuant iOS MobileSDK version 5.4:**
@@ -193,7 +206,7 @@ If the following error(s) occurs when publishing/exporting the app, then in the 
 
 	    platform :ios, '8.0'
 		pod 'PPpdf417', '~> 5.1.0'
-		pod 'AcuantMobileSDK', '~> 5.5'
+		pod 'AcuantMobileSDK', '~> 5.6'
 
 2.  Run `pod install` to add the AcuantMobileSDK.
 
@@ -612,11 +625,14 @@ Use the **didCaptureCropImage** method to configure image cropping.
 	}
 
 
-The **ImageMetrics** parameter specifies the sharpness of a cropped image. An image with a sharpness grade of 0.4f or above is considered a sharp image. Users may set the threshold based on their requirements:
+The **ImageMetrics** parameter specifies the sharpness and glare threshold of a cropped image. An image with a sharpness grade of 0.4f or above is considered a sharp image. In general, a GLARE_GRADE of 1 means no glare and 0 means there is a high chance of having a glare in the captured image. Users may set the threshold based on their requirements:
 
 
 		BOOL isSharp = [[imageMetrics objectForKey:@"IS_SHARP"] boolValue]; 
 		float sharpnessGrade = [[imageMetrics objectForKey:@"SHARPNESS_GRADE"] floatValue]; 
+
+		BOOL hasGlare = [[_imageMetrics objectForKey:@"HAS_GLARE"] boolValue] 
+		float glareGrade = [[_imageMetrics objectForKey:@"GLARE_GRADE"] floatValue]; 
 
 **Note** For **AcuantCardTypeMedicalInsuranceCard** capturing the back side is optional, but for **AcuantCardTypeDriverLicenseCard**, capturing the back side is required.
 
@@ -769,11 +785,14 @@ Use the **barcodeScanTimeOut** method to inform the delegate that the time of th
 
 		}
 
-The **ImageMetrics** parameter specifies the sharpness of a cropped image. An image with a sharpness grade of 0.4f or above is considered a sharp image. Users may set the threshold based on their requirements:
+The **ImageMetrics** parameter specifies the sharpness and glare threshold of a cropped image. An image with a sharpness grade of 0.4f or above is considered a sharp image. In general, a GLARE_GRADE of 1 means no glare and 0 means there is a high chance of having a glare in the captured image. Users may set the threshold based on their requirements:
 
 
 		BOOL isSharp = [[imageMetrics objectForKey:@"IS_SHARP"] boolValue]; 
 		float sharpnessGrade = [[imageMetrics objectForKey:@"SHARPNESS_GRADE"] floatValue]; 
+
+		BOOL hasGlare = [[_imageMetrics objectForKey:@"HAS_GLARE"] boolValue] 
+		float glareGrade = [[_imageMetrics objectForKey:@"GLARE_GRADE"] floatValue]; 
 
 #### didCancelToCaptureData method
 
@@ -791,11 +810,14 @@ Use the **showiPadBrackets** method to enable or disable displaying the iPad bra
 		}
 
 
-The **ImageMetrics** parameter specifies the sharpness of a cropped image. An image with a sharpness grade of 0.4f or above is considered a sharp image. Users may set the threshold based on their requirements:
+The **ImageMetrics** parameter specifies the sharpness and glare threshold of a cropped image. An image with a sharpness grade of 0.4f or above is considered a sharp image. In general, a GLARE_GRADE of 1 means no glare and 0 means there is a high chance of having a glare in the captured image. Users may set the threshold based on their requirements:
 
 
 		BOOL isSharp = [[imageMetrics objectForKey:@"IS_SHARP"] boolValue]; 
 		float sharpnessGrade = [[imageMetrics objectForKey:@"SHARPNESS_GRADE"] floatValue]; 
+
+		BOOL hasGlare = [[_imageMetrics objectForKey:@"HAS_GLARE"] boolValue] 
+		float glareGrade = [[_imageMetrics objectForKey:@"GLARE_GRADE"] floatValue]; 
 
 #### didPressBackButton method
 

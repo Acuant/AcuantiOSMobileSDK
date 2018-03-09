@@ -95,11 +95,20 @@
     _messageLabel.text = _messageText;
     
     if(_imageMetrics){
+        NSLog(@"%@",[_imageMetrics objectForKey:@"SHARPNESS_GRADE"]);
         if([_imageMetrics objectForKey:@"IS_SHARP"] != nil){
             bool isSharp = [[_imageMetrics objectForKey:@"IS_SHARP"] boolValue];
             if(!isSharp){
-                _messageLabel.text = @"Image appears to be blurry.Please retry.";
+                _messageLabel.text = @"Image appears to be blurry.";
+                [_confirmButton setTitle:@"Continue" forState:UIControlStateNormal];
             }
+        }
+        if([[_imageMetrics objectForKey:@"HAS_GLARE"] boolValue]==YES){
+            if([[_imageMetrics objectForKey:@"IS_SHARP"] boolValue]==YES){
+                _messageLabel.text = @"";
+            }
+            _messageLabel.text = [_messageLabel.text stringByAppendingString:@"The image appears to have glare."];
+            [_confirmButton setTitle:@"Continue" forState:UIControlStateNormal];
         }
     }
     
