@@ -64,7 +64,7 @@ Added glare metrics for captured images. The metrics values can be accessed as f
 		float glareGrade = [[_imageMetrics objectForKey:@"GLARE_GRADE"] floatValue]; 
 
 
-In general, a GLARE_GRADE of 1 means no glare and 0 means there is a high chance of having a glare in the captured image. 
+In general, a GLARE_GRADE of 1 means no glare and 0 means there is a high chance of having a glare in the captured image.A glare grade 0.92f and above means there is no glare.
 
 **Acuant iOS MobileSDK version 5.5:**
 
