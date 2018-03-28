@@ -75,7 +75,7 @@
     _medicalInsuranceButton.hidden=NO;
     _driverLicenseButton.hidden=NO;
     _passportButton.hidden=NO;
-    self.instance = [AcuantMobileSDKController initAcuantMobileSDKWithLicenseKey:@"XXXXXXXXXXX" delegate:self andCloudAddress:nil];
+    self.instance = [AcuantMobileSDKController initAcuantMobileSDKWithLicenseKey:@"XXXXXXXXXXXXX" delegate:self andCloudAddress:nil];
     dispatch_async(dispatch_get_main_queue(), ^{
         [SVProgressHUD showWithStatus:@"Validating Key"];
     });

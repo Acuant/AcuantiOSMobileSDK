@@ -3,7 +3,7 @@
 iOS Mobile SDK Programmer’s Guide
 ==================
 
-**Last updated on – 3/9/2018**
+**Last updated on – March 28, 2018**
 
 
 Copyright <sup>©</sup> 2003-2018 Acuant Inc. All rights reserved.
@@ -56,9 +56,13 @@ This document contains a detailed description of all functions that developers n
 
 ## Revision History
 
-**Acuant iOS MobileSDK version 5.6:**
+**Acuant iOS Mobile SDK version 5.7:**
 
-Added glare metrics for captured images. The metrics values can be accessed as follows: 
+- Added support for rotating UI elements while the device is rotated 180 degrees in landscape mode. 
+
+**Acuant iOS Mobile SDK version 5.6:**
+
+-  Added glare metrics for captured images. The metrics values can be accessed as follows: 
 
 		BOOL hasGlare = [[_imageMetrics objectForKey:@"HAS_GLARE"] boolValue] 
 		float glareGrade = [[_imageMetrics objectForKey:@"GLARE_GRADE"] floatValue]; 
@@ -66,7 +70,7 @@ Added glare metrics for captured images. The metrics values can be accessed as f
 
 In general, a GLARE_GRADE of 1 means no glare and 0 means there is a high chance of having a glare in the captured image.A glare grade 0.92f and above means there is no glare.
 
-**Acuant iOS MobileSDK version 5.5:**
+**Acuant iOS Mobile SDK version 5.5:**
 
 The **ImageMetrics** parameter was added to the following methods:
 
@@ -86,7 +90,7 @@ The **ImageMetrics** parameter specifies the sharpness and glare threshold of a 
 		float glareGrade = [[_imageMetrics objectForKey:@"GLARE_GRADE"] floatValue]; 
 
   
-**Acuant iOS MobileSDK version 5.4:**
+**Acuant iOS Mobile SDK version 5.4:**
 
 -  Added new card type constant **AcuantCardTypeAuto**. If **AcuantCardTypeAuto** is set, then in **didCaptureCropImage** the last parameter will contain the automatically detected card type.
 
@@ -101,7 +105,7 @@ The **ImageMetrics** parameter specifies the sharpness and glare threshold of a 
 		withBlinkMessage:(NSAttributedString*)message
 		inRect:(CGRect)rect;
 
-**Acuant iOS MobileSDK version 5.3:**
+**Acuant iOS Mobile SDK version 5.3:**
 
 -  Added the **-(BOOL)isSDKValidated** API to check whether the SDK controller was validated.
 -  Added Swift Sample Application
