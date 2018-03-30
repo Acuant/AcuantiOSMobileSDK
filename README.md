@@ -210,7 +210,7 @@ If the following error(s) occurs when publishing/exporting the app, then in the 
 
 	    platform :ios, '8.0'
 		pod 'PPpdf417', '~> 5.1.0'
-		pod 'AcuantMobileSDK', '~> 5.6'
+		pod 'AcuantMobileSDK', '~> 5.7'
 
 2.  Run `pod install` to add the AcuantMobileSDK.
 
