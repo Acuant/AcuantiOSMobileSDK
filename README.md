@@ -3,7 +3,7 @@
 iOS Mobile SDK Programmer’s Guide
 ==================
 
-**Last updated on – March 28, 2018**
+**Last updated on – March 30, 2018**
 
 
 Copyright <sup>©</sup> 2003-2018 Acuant Inc. All rights reserved.
