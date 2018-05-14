@@ -75,7 +75,7 @@
     _medicalInsuranceButton.hidden=NO;
     _driverLicenseButton.hidden=NO;
     _passportButton.hidden=NO;
-    self.instance = [AcuantMobileSDKController initAcuantMobileSDKWithLicenseKey:@"XXXXXXXXXXXXX" delegate:self andCloudAddress:nil];
+    self.instance = [AcuantMobileSDKController initAcuantMobileSDKWithLicenseKey:@"XXXXXXXXXXXX" delegate:self andCloudAddress:nil];
     dispatch_async(dispatch_get_main_queue(), ^{
         [SVProgressHUD showWithStatus:@"Validating Key"];
     });
@@ -871,12 +871,12 @@
     return  (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone? image : nil);
 }
 
-//-(CGRect)frameForHelpImageView{
-//    UIImage *image = [UIImage imageNamed:@"PDF417.png"];
-//    CGRect frame = CGRectMake(self.view.frame.size.width/2 - image.size.width/2, self.view.frame.size.height/2 - image.size.height/2 + 20 , image.size.width, image.size.height);
-//
-//    return frame;
-//}
+/*-(CGRect)frameForHelpImageView{
+    UIImage *image = [UIImage imageNamed:@"PDF417.png"];
+    CGRect frame = CGRectMake(self.view.frame.size.width/2 - image.size.width/2, self.view.frame.size.height/2 - image.size.height/2 + 20 , image.size.width, image.size.height);
+
+    return frame;
+}*/
 
 -(NSString *)stringForWatermarkLabel{
     NSString *string = @"Powered by Acuant";
