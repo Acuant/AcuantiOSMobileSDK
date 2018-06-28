@@ -3,7 +3,7 @@
 iOS Mobile SDK Programmer’s Guide
 ==================
 
-**Last updated on – March 30, 2018**
+**Last updated on – June 28, 2018**
 
 
 Copyright <sup>©</sup> 2003-2018 Acuant Inc. All rights reserved.
@@ -20,7 +20,7 @@ property rights, whether by estoppel, implication, or otherwise.
 
 AssureID and *i-D*entify are trademarks of Acuant Inc. Other Acuant product or service names or logos referenced this document are either trademarks or registered trademarks of Acuant.
 
-All 3M trademarks are trademarks of 3M Company.
+All 3M trademarks are trademarks of Gemalto Inc.
 
 Windows<sup>®</sup> is a registered trademark of Microsoft Corporation.
 
@@ -32,7 +32,7 @@ designation appears in initial capital or all capital letters. However,
 you should contact the appropriate companies for more complete
 information regarding such designations and their registration status.
 
-**March 2018**
+**June 2018**
 
 Acuant Inc.
 
@@ -55,6 +55,16 @@ This document contains a detailed description of all functions that developers n
 **Note** The Framework will not modify the Status bar of the application.
 
 ## Revision History
+
+**Acuant iOS Mobile SDK version 5.8:**
+
+
+
+- Removed Aspect Ratio check after cropping
+- Resolved an issue with Armenian IDs
+- Resolved the defect of occasionally liveliness being false even after a live face is captured
+- Resolved an issue with SDK validation
+
 
 **Acuant iOS Mobile SDK version 5.7:**
 
@@ -210,7 +220,7 @@ If the following error(s) occurs when publishing/exporting the app, then in the 
 
 	    platform :ios, '8.0'
 		pod 'PPpdf417', '~> 5.1.0'
-		pod 'AcuantMobileSDK', '~> 5.7'
+		pod 'AcuantMobileSDK', '~> 5.8'
 
 2.  Run `pod install` to add the AcuantMobileSDK.
 
