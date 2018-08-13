@@ -253,7 +253,7 @@ If this is a Swift project, then add the following imports to the Objective-C br
 		#import "AcuantMobileSDK/AcuantPassaportCard.h"
 
 
-####Add the AcuantMobileSDK.embeddedframework *(Optional)*:
+#### Add the AcuantMobileSDK.embeddedframework *(Optional)*:####
 If you do not use CocoaPods, then you need to add the AcuantMobileSDK.embeddedframework into each of your projects. 
 
 1. Download the Acuant iOS Mobile SDK and embeddedframework from GitHub at <https://github.com/Acuant/AcuantiOSMobileSDK>.
@@ -267,11 +267,11 @@ If you do not use CocoaPods, then you need to add the AcuantMobileSDK.embeddedfr
 4.  Click the Xcode tool icon **(+)** to add the following frameworks and libraries.
 
 
-#####Frameworks:
+#### Frameworks: ####
 
 - CoreLocation.framework
 
-#####Libraries:
+#### Libraries: ####
 - libc++.tdb
 - libiconv.tdb
 - libz.tdb
@@ -283,7 +283,7 @@ If you do not use CocoaPods, then you need to add the AcuantMobileSDK.embeddedfr
 - libz.dylib
 
 
-####Add the Microblink bundle and framework to the project:
+#### Add the Microblink bundle and framework to the project: ####
 
 1. Download the Microblink.bundle and Microblink.framework files from **AcuantMobileSDK.embeddedframework/Resources**.
 2. Add the files to the project: 
@@ -292,7 +292,7 @@ If you do not use CocoaPods, then you need to add the AcuantMobileSDK.embeddedfr
 	
 	![](document_images/Setting-2.png)
 
-####Change targets in build settings:
+#### Change targets in build settings: ####
 
 1.  Go to the target.
 2.  Click **Build Settings**.
