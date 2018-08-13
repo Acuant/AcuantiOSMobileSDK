@@ -214,7 +214,7 @@ If the following error(s) occurs when publishing/exporting the app, then in the 
 	lipo -remove x86_64 <Path to the file> -o <Output file path>
 
 
-#### Create a Podfile:
+#### Create a Podfile: ####
 
 1.  Create a podfile that includes the following lines:
 
@@ -228,7 +228,7 @@ Check the below video for integration using COCOAPOD :
 
 [![Check the video tutorial](document_images/cocoapod_walkthrough.png)](https://youtu.be/oCOJlkfov0U)
 
-#### Add imports in the Objective-C bridging file *(optional)*:
+#### Add imports in the Objective-C bridging file *(optional)*: ####
 
 If this is a Swift project, then add the following imports to the Objective-C bridging file.
 (*Apple Reference:* <https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html>)
@@ -253,13 +253,13 @@ If this is a Swift project, then add the following imports to the Objective-C br
 		#import "AcuantMobileSDK/AcuantPassaportCard.h"
 
 
-#### Add the AcuantMobileSDK.embeddedframework *(Optional)*:####
+#### Add the AcuantMobileSDK.embeddedframework *(Optional)*: ####
 If you do not use CocoaPods, then you need to add the AcuantMobileSDK.embeddedframework into each of your projects. 
 
 1. Download the Acuant iOS Mobile SDK and embeddedframework from GitHub at <https://github.com/Acuant/AcuantiOSMobileSDK>.
 2. Drag the AcuantMobileSDK.embeddedframework folder into your project's file structure.
 
-####Add native frameworks and libraries:
+#### Add native frameworks and libraries: ####
 
 1.  Go to the target. 
 2.  Click **Build Phases**.
