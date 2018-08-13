@@ -7,16 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		138E84D51DB6DE70009CF971 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 138E84D41DB6DE70009CF971 /* CoreText.framework */; };
-		138E84D71DB6DE75009CF971 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 138E84D61DB6DE74009CF971 /* Accelerate.framework */; };
 		13958D781CFF5D83008CA3FD /* ConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13958D771CFF5D83008CA3FD /* ConfirmationViewController.m */; };
 		13958D7B1CFF5D8B008CA3FD /* ConfirmationViewController-ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13958D791CFF5D8B008CA3FD /* ConfirmationViewController-ipad.xib */; };
 		13958D7F1CFF606D008CA3FD /* HelpScreenTip_ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 13958D7D1CFF606D008CA3FD /* HelpScreenTip_ipad.png */; };
 		13958D801CFF606D008CA3FD /* HelpScreenTip_iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 13958D7E1CFF606D008CA3FD /* HelpScreenTip_iphone.png */; };
 		139D06161D0F3A73000A6CA5 /* ConfirmationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 139D06151D0F3A73000A6CA5 /* ConfirmationViewController.xib */; };
 		13AEAC6C1DB81AAD00CF6F10 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13AEAC6B1DB81AAD00CF6F10 /* CoreLocation.framework */; };
-		13C6C4B31DF8A43100D30E19 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C6C4B21DF8A43100D30E19 /* ImageIO.framework */; };
-		13DDE9441DA5A2E300E4F5EB /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13DDE9431DA5A2E300E4F5EB /* CoreMotion.framework */; };
 		13F4CAC31FB2285E00F3A19D /* AcuantMobileSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F4CABC1FB2285E00F3A19D /* AcuantMobileSDK.framework */; };
 		13F4CAC41FB2285E00F3A19D /* beep-7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 13F4CABE1FB2285E00F3A19D /* beep-7.mp3 */; };
 		13F4CAC71FB2285E00F3A19D /* shutter.wav in Resources */ = {isa = PBXBuildFile; fileRef = 13F4CAC21FB2285E00F3A19D /* shutter.wav */; };
@@ -24,17 +20,9 @@
 		13F4CAD11FB22A4F00F3A19D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13F4CAD01FB22A4F00F3A19D /* Images.xcassets */; };
 		13F4CAD21FB22AB500F3A19D /* MicroBlink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F4CAC01FB2285E00F3A19D /* MicroBlink.framework */; };
 		13F4CAD31FB22AB500F3A19D /* MicroBlink.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 13F4CAC01FB2285E00F3A19D /* MicroBlink.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		95019F221758F30A001C4F94 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95019F211758F30A001C4F94 /* UIKit.framework */; };
 		989432CC1BAAFBF500C1B95A /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432C61BAAF9E200C1B95A /* libc++.tbd */; };
 		989432CD1BAAFBFE00C1B95A /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432C81BAAFA1200C1B95A /* libiconv.tbd */; };
-		989432CF1BAAFC1C00C1B95A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432CE1BAAFC1C00C1B95A /* SystemConfiguration.framework */; };
-		989432D11BAAFC6400C1B95A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432D01BAAFC6400C1B95A /* AVFoundation.framework */; };
-		989432D31BAAFC6C00C1B95A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432D21BAAFC6C00C1B95A /* CoreMedia.framework */; };
-		989432D51BAAFC7200C1B95A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432D41BAAFC7200C1B95A /* CoreVideo.framework */; };
-		989432D71BAAFC7900C1B95A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432D61BAAFC7900C1B95A /* CoreGraphics.framework */; };
-		989432D91BAAFC7E00C1B95A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432D81BAAFC7E00C1B95A /* QuartzCore.framework */; };
 		989432DB1BAAFC8500C1B95A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432DA1BAAFC8500C1B95A /* libz.tbd */; };
-		989432DF1BAAFD8B00C1B95A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989432DE1BAAFD8B00C1B95A /* AudioToolbox.framework */; };
 		98F1508C1B39B8C400CE3F5E /* ISGRegionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F150621B39B8C400CE3F5E /* ISGRegionViewController.m */; };
 		98F1508D1B39B8C400CE3F5E /* ISGResultScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F150641B39B8C400CE3F5E /* ISGResultScreenViewController.m */; };
 		98F1508E1B39B8C400CE3F5E /* ISGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F150661B39B8C400CE3F5E /* ISGViewController.m */; };
@@ -77,8 +65,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		138E84D41DB6DE70009CF971 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		138E84D61DB6DE74009CF971 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		13958D761CFF5D83008CA3FD /* ConfirmationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmationViewController.h; sourceTree = "<group>"; };
 		13958D771CFF5D83008CA3FD /* ConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmationViewController.m; sourceTree = "<group>"; };
 		13958D791CFF5D8B008CA3FD /* ConfirmationViewController-ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ConfirmationViewController-ipad.xib"; sourceTree = "<group>"; };
@@ -86,8 +72,6 @@
 		13958D7E1CFF606D008CA3FD /* HelpScreenTip_iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpScreenTip_iphone.png; sourceTree = "<group>"; };
 		139D06151D0F3A73000A6CA5 /* ConfirmationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmationViewController.xib; sourceTree = "<group>"; };
 		13AEAC6B1DB81AAD00CF6F10 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		13C6C4B21DF8A43100D30E19 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
-		13DDE9431DA5A2E300E4F5EB /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		13F4CABC1FB2285E00F3A19D /* AcuantMobileSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AcuantMobileSDK.framework; sourceTree = "<group>"; };
 		13F4CABE1FB2285E00F3A19D /* beep-7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "beep-7.mp3"; sourceTree = "<group>"; };
 		13F4CAC01FB2285E00F3A19D /* MicroBlink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MicroBlink.framework; sourceTree = "<group>"; };
@@ -96,17 +80,9 @@
 		13F4CACE1FB2297A00F3A19D /* MicroBlink.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MicroBlink.bundle; path = ../../../AcuantMobileSDK.embeddedframework/Resources/MicroBlink.bundle; sourceTree = "<group>"; };
 		13F4CAD01FB22A4F00F3A19D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = SOURCE_ROOT; };
 		95019F1E1758F30A001C4F94 /* AcuantiOSMobileSampleSDK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AcuantiOSMobileSampleSDK.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		95019F211758F30A001C4F94 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		989432C61BAAF9E200C1B95A /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		989432C81BAAFA1200C1B95A /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
-		989432CE1BAAFC1C00C1B95A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		989432D01BAAFC6400C1B95A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		989432D21BAAFC6C00C1B95A /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
-		989432D41BAAFC7200C1B95A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
-		989432D61BAAFC7900C1B95A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		989432D81BAAFC7E00C1B95A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		989432DA1BAAFC8500C1B95A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		989432DE1BAAFD8B00C1B95A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		98F150611B39B8C400CE3F5E /* ISGRegionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISGRegionViewController.h; sourceTree = "<group>"; };
 		98F150621B39B8C400CE3F5E /* ISGRegionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISGRegionViewController.m; sourceTree = "<group>"; };
 		98F150631B39B8C400CE3F5E /* ISGResultScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISGResultScreenViewController.h; sourceTree = "<group>"; };
@@ -149,24 +125,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13C6C4B31DF8A43100D30E19 /* ImageIO.framework in Frameworks */,
 				13AEAC6C1DB81AAD00CF6F10 /* CoreLocation.framework in Frameworks */,
-				138E84D71DB6DE75009CF971 /* Accelerate.framework in Frameworks */,
-				138E84D51DB6DE70009CF971 /* CoreText.framework in Frameworks */,
-				13DDE9441DA5A2E300E4F5EB /* CoreMotion.framework in Frameworks */,
-				989432DF1BAAFD8B00C1B95A /* AudioToolbox.framework in Frameworks */,
 				989432DB1BAAFC8500C1B95A /* libz.tbd in Frameworks */,
 				13F4CAD21FB22AB500F3A19D /* MicroBlink.framework in Frameworks */,
-				989432D91BAAFC7E00C1B95A /* QuartzCore.framework in Frameworks */,
-				989432D71BAAFC7900C1B95A /* CoreGraphics.framework in Frameworks */,
-				989432D51BAAFC7200C1B95A /* CoreVideo.framework in Frameworks */,
-				989432D31BAAFC6C00C1B95A /* CoreMedia.framework in Frameworks */,
-				989432D11BAAFC6400C1B95A /* AVFoundation.framework in Frameworks */,
-				989432CF1BAAFC1C00C1B95A /* SystemConfiguration.framework in Frameworks */,
 				13F4CAC31FB2285E00F3A19D /* AcuantMobileSDK.framework in Frameworks */,
 				989432CD1BAAFBFE00C1B95A /* libiconv.tbd in Frameworks */,
 				989432CC1BAAFBF500C1B95A /* libc++.tbd in Frameworks */,
-				95019F221758F30A001C4F94 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,22 +187,10 @@
 			isa = PBXGroup;
 			children = (
 				13F4CABB1FB2285E00F3A19D /* AcuantMobileSDK.embeddedframework */,
-				13C6C4B21DF8A43100D30E19 /* ImageIO.framework */,
 				13AEAC6B1DB81AAD00CF6F10 /* CoreLocation.framework */,
-				138E84D61DB6DE74009CF971 /* Accelerate.framework */,
-				138E84D41DB6DE70009CF971 /* CoreText.framework */,
-				13DDE9431DA5A2E300E4F5EB /* CoreMotion.framework */,
-				989432DE1BAAFD8B00C1B95A /* AudioToolbox.framework */,
 				989432DA1BAAFC8500C1B95A /* libz.tbd */,
-				989432D81BAAFC7E00C1B95A /* QuartzCore.framework */,
-				989432D61BAAFC7900C1B95A /* CoreGraphics.framework */,
-				989432D41BAAFC7200C1B95A /* CoreVideo.framework */,
-				989432D21BAAFC6C00C1B95A /* CoreMedia.framework */,
-				989432D01BAAFC6400C1B95A /* AVFoundation.framework */,
-				989432CE1BAAFC1C00C1B95A /* SystemConfiguration.framework */,
 				989432C81BAAFA1200C1B95A /* libiconv.tbd */,
 				989432C61BAAF9E200C1B95A /* libc++.tbd */,
-				95019F211758F30A001C4F94 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

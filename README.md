@@ -269,19 +269,7 @@ If you do not use CocoaPods, then you need to add the AcuantMobileSDK.embeddedfr
 
 #####Frameworks:
 
-- AssetsLibrary.framework
-- SystemConfiguration.framework 
-- AudioToolbox.framework
-- AVFoundation.framework
-- CoreMedia.framework
-- CoreVideo.framework
-- CoreGraphics.framework
-- QuartzCore.framework.
-- CoreMotion.framework
-- Accelerate.framework
-- CoreText.framework
 - CoreLocation.framework
-- ImageIO.framework
 
 #####Libraries:
 - libc++.tdb

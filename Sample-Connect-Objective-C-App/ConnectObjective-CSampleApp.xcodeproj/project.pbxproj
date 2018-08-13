@@ -17,19 +17,7 @@
 		139915041F3A1FEA00A27BF8 /* UIImageView+LoadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 139915031F3A1FEA00A27BF8 /* UIImageView+LoadImage.m */; };
 		139915071F3A25EC00A27BF8 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 139915061F3A25EC00A27BF8 /* ProgressHUD.m */; };
 		139915091F3A268B00A27BF8 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 139915081F3A268B00A27BF8 /* ProgressHUD.bundle */; };
-		1399150E1F3A35B400A27BF8 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1399150D1F3A35B400A27BF8 /* AssetsLibrary.framework */; };
-		139915101F3A35B900A27BF8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1399150F1F3A35B900A27BF8 /* SystemConfiguration.framework */; };
-		139915121F3A35C200A27BF8 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139915111F3A35C200A27BF8 /* AudioToolbox.framework */; };
-		139915141F3A35C700A27BF8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139915131F3A35C700A27BF8 /* AVFoundation.framework */; };
-		139915161F3A35CD00A27BF8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139915151F3A35CD00A27BF8 /* CoreMedia.framework */; };
-		139915181F3A35D300A27BF8 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139915171F3A35D300A27BF8 /* CoreVideo.framework */; };
-		1399151A1F3A35D800A27BF8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139915191F3A35D800A27BF8 /* CoreGraphics.framework */; };
-		1399151C1F3A35DE00A27BF8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1399151B1F3A35DE00A27BF8 /* QuartzCore.framework */; };
-		1399151E1F3A35E500A27BF8 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1399151D1F3A35E500A27BF8 /* CoreMotion.framework */; };
-		139915201F3A35FB00A27BF8 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1399151F1F3A35FB00A27BF8 /* Accelerate.framework */; };
-		139915221F3A360000A27BF8 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139915211F3A360000A27BF8 /* CoreText.framework */; };
 		139915241F3A360500A27BF8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139915231F3A360500A27BF8 /* CoreLocation.framework */; };
-		139915261F3A360B00A27BF8 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139915251F3A360B00A27BF8 /* ImageIO.framework */; };
 		139915281F3A361B00A27BF8 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 139915271F3A361B00A27BF8 /* libc++.tbd */; };
 		1399152A1F3A362400A27BF8 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 139915291F3A362400A27BF8 /* libiconv.tbd */; };
 		1399152C1F3A362D00A27BF8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1399152B1F3A362D00A27BF8 /* libz.tbd */; };
@@ -74,19 +62,7 @@
 		139915051F3A25EC00A27BF8 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		139915061F3A25EC00A27BF8 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 		139915081F3A268B00A27BF8 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
-		1399150D1F3A35B400A27BF8 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		1399150F1F3A35B900A27BF8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		139915111F3A35C200A27BF8 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		139915131F3A35C700A27BF8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		139915151F3A35CD00A27BF8 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
-		139915171F3A35D300A27BF8 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
-		139915191F3A35D800A27BF8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		1399151B1F3A35DE00A27BF8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		1399151D1F3A35E500A27BF8 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		1399151F1F3A35FB00A27BF8 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		139915211F3A360000A27BF8 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		139915231F3A360500A27BF8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		139915251F3A360B00A27BF8 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		139915271F3A361B00A27BF8 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		139915291F3A362400A27BF8 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		1399152B1F3A362D00A27BF8 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -105,22 +81,10 @@
 				1399152C1F3A362D00A27BF8 /* libz.tbd in Frameworks */,
 				1399152A1F3A362400A27BF8 /* libiconv.tbd in Frameworks */,
 				139915281F3A361B00A27BF8 /* libc++.tbd in Frameworks */,
-				139915261F3A360B00A27BF8 /* ImageIO.framework in Frameworks */,
 				139915241F3A360500A27BF8 /* CoreLocation.framework in Frameworks */,
-				139915221F3A360000A27BF8 /* CoreText.framework in Frameworks */,
-				139915201F3A35FB00A27BF8 /* Accelerate.framework in Frameworks */,
-				1399151E1F3A35E500A27BF8 /* CoreMotion.framework in Frameworks */,
 				13F4CAF01FB22E2F00F3A19D /* MicroBlink.framework in Frameworks */,
-				1399151C1F3A35DE00A27BF8 /* QuartzCore.framework in Frameworks */,
-				1399151A1F3A35D800A27BF8 /* CoreGraphics.framework in Frameworks */,
-				139915181F3A35D300A27BF8 /* CoreVideo.framework in Frameworks */,
-				139915161F3A35CD00A27BF8 /* CoreMedia.framework in Frameworks */,
 				13F4CAED1FB22DFB00F3A19D /* MicroBlink.framework in Frameworks */,
-				139915141F3A35C700A27BF8 /* AVFoundation.framework in Frameworks */,
 				13F4CAEB1FB22DFB00F3A19D /* AcuantMobileSDK.framework in Frameworks */,
-				139915121F3A35C200A27BF8 /* AudioToolbox.framework in Frameworks */,
-				139915101F3A35B900A27BF8 /* SystemConfiguration.framework in Frameworks */,
-				1399150E1F3A35B400A27BF8 /* AssetsLibrary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,19 +163,7 @@
 				1399152B1F3A362D00A27BF8 /* libz.tbd */,
 				139915291F3A362400A27BF8 /* libiconv.tbd */,
 				139915271F3A361B00A27BF8 /* libc++.tbd */,
-				139915251F3A360B00A27BF8 /* ImageIO.framework */,
 				139915231F3A360500A27BF8 /* CoreLocation.framework */,
-				139915211F3A360000A27BF8 /* CoreText.framework */,
-				1399151F1F3A35FB00A27BF8 /* Accelerate.framework */,
-				1399151D1F3A35E500A27BF8 /* CoreMotion.framework */,
-				1399151B1F3A35DE00A27BF8 /* QuartzCore.framework */,
-				139915191F3A35D800A27BF8 /* CoreGraphics.framework */,
-				139915171F3A35D300A27BF8 /* CoreVideo.framework */,
-				139915151F3A35CD00A27BF8 /* CoreMedia.framework */,
-				139915131F3A35C700A27BF8 /* AVFoundation.framework */,
-				139915111F3A35C200A27BF8 /* AudioToolbox.framework */,
-				1399150F1F3A35B900A27BF8 /* SystemConfiguration.framework */,
-				1399150D1F3A35B400A27BF8 /* AssetsLibrary.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
