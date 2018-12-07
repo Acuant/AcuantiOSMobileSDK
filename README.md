@@ -56,6 +56,14 @@ This document contains a detailed description of all functions that developers n
 
 ## Revision History
 
+**Acuant iOS Mobile SDK version 5.9:**
+
+- Tap to capture barcode : By default the barcode is captured automatically as soon as a barcode is presented infront of the camera. If it is required to capture the barcode only after the user taps on the screen, then the following configuration can be done.
+
+		-(BOOL)startScanningBarcodeAfterTap{
+    		return YES; // Default is NO
+		}
+
 **Acuant iOS Mobile SDK version 5.8:**
 
 
@@ -220,7 +228,7 @@ If the following error(s) occurs when publishing/exporting the app, then in the 
 
 	    platform :ios, '8.0'
 		pod 'PPpdf417', '~> 5.1.0'
-		pod 'AcuantMobileSDK', '~> 5.8'
+		pod 'AcuantMobileSDK', '~> 5.9'
 
 2.  Run `pod install` to add the AcuantMobileSDK.
 
@@ -561,6 +569,14 @@ Use the following optional method to use start or stop continuous scanning witho
 
 	// To stop scanning :
 		-(void)StopContinousBarcodeCapture;
+
+###Tap to capture 2D Barcode:
+
+By default the barcode is captured automatically as soon as a barcode is presented infront of the camera. If it is required to capture the barcode only after the user taps on the screen, then the following configuration can be done.
+
+	-(BOOL)startScanningBarcodeAfterTap{
+    	return YES; // Default is NO
+	}
 
 
 

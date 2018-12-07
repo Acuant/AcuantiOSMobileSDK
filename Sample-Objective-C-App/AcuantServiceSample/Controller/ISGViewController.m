@@ -871,6 +871,10 @@
     return  (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone? image : nil);
 }
 
+- (BOOL)startScanningBarcodeAfterTap{
+    return YES;
+}
+
 /*-(CGRect)frameForHelpImageView{
     UIImage *image = [UIImage imageNamed:@"PDF417.png"];
     CGRect frame = CGRectMake(self.view.frame.size.width/2 - image.size.width/2, self.view.frame.size.height/2 - image.size.height/2 + 20 , image.size.width, image.size.height);

@@ -186,6 +186,8 @@ typedef enum{
  */
 -(BOOL)canCropBarcodeOnBackPressed;
 
+-(BOOL)startScanningBarcodeAfterTap;
+
 /**
  Called to obtain the help image displayed in the card capture interface
  @return the help image
