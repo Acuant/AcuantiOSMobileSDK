@@ -136,8 +136,8 @@ class ViewController: UIViewController ,AcuantMobileSDKControllerCapturingDelega
     func captureSelfie(){
         matchingFace = true;
         facialAlertController = UIAlertController(title: "AcuantSwiftSample", message:
-            "Please position your face in front of the front camera and blink when red rectangle appears.", preferredStyle: UIAlertControllerStyle.alert)
-        facialAlertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: {(alert: UIAlertAction!) in
+            "Please position your face in front of the front camera and blink when red rectangle appears.", preferredStyle: UIAlertController.Style.alert)
+        facialAlertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default,handler: {(alert: UIAlertAction!) in
             self.showSelfiCaptureInterface();
         }))
         
@@ -151,7 +151,7 @@ class ViewController: UIViewController ,AcuantMobileSDKControllerCapturingDelega
         var messageFrame : CGRect = CGRect(x:0,y:50,width:screenWidth,height:20);
         
         let message : NSMutableAttributedString = NSMutableAttributedString.init(string: "Get closer until Red Rectangle appears and Blink");
-        message.addAttribute(NSForegroundColorAttributeName, value:UIColor.white, range: NSMakeRange(0, message.length));
+        message.addAttribute(NSAttributedString.Key.foregroundColor, value:UIColor.white, range: NSMakeRange(0, message.length));
         let range : NSRange = NSMakeRange(17,13) ;
         var font : UIFont =  UIFont.systemFont(ofSize: 13)
         var boldFont : UIFont = UIFont.boldSystemFont(ofSize: 14)
@@ -160,12 +160,12 @@ class ViewController: UIViewController ,AcuantMobileSDKControllerCapturingDelega
             font = UIFont.systemFont(ofSize:11);
             boldFont = UIFont.boldSystemFont(ofSize:12);
         }
-        message.addAttribute(NSForegroundColorAttributeName, value: UIColor.red, range: range)
-        message.addAttribute(NSFontAttributeName,value:font, range: NSMakeRange(0, message.length))
-        message.addAttribute(NSFontAttributeName,value:boldFont, range: range)
+        message.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.red, range: range)
+        message.addAttribute(NSAttributedString.Key.font,value:font, range: NSMakeRange(0, message.length))
+        message.addAttribute(NSAttributedString.Key.font,value:boldFont, range: range)
         
         let orientation : UIDeviceOrientation = UIDevice.current.orientation;
-        if(UIDeviceOrientationIsLandscape(orientation)){
+        if(UIDevice.current.orientation.isLandscape){
             let screenHeight  : CGFloat = screenRect.size.height;
             messageFrame = CGRect(x:0,y:50,width:screenHeight,height:20);
             
@@ -266,8 +266,8 @@ class ViewController: UIViewController ,AcuantMobileSDKControllerCapturingDelega
             
         }else{
             let alertController = UIAlertController(title: "AcuantSwiftSample", message:
-                errorMessage, preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                errorMessage, preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
             
             self.present(alertController, animated: true, completion: nil)
         }
@@ -332,8 +332,8 @@ class ViewController: UIViewController ,AcuantMobileSDKControllerCapturingDelega
             print("valid license key")
         }else{
             let alertController = UIAlertController(title: "AcuantSwiftSample", message:
-                "License key is not valid", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                "License key is not valid", preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
             
             self.present(alertController, animated: true, completion: nil)
         }
@@ -385,8 +385,8 @@ class ViewController: UIViewController ,AcuantMobileSDKControllerCapturingDelega
             frontCardImageView.image=cardImage
             if(cardType==AcuantCardTypeDriversLicenseCard && (cardRegion==AcuantCardRegionUnitedStates || cardRegion==AcuantCardRegionCanada)){
                 let alertController = UIAlertController(title: "AcuantSwiftSample", message:
-                    "Scan the barcode in the backside of the drivers license", preferredStyle: UIAlertControllerStyle.alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler:{(alert: UIAlertAction!) in
+                    "Scan the barcode in the backside of the drivers license", preferredStyle: UIAlertController.Style.alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default,handler:{(alert: UIAlertAction!) in
                     self.showBarcodeCamera()
                     self.cardSide=1
                 }))
@@ -394,8 +394,8 @@ class ViewController: UIViewController ,AcuantMobileSDKControllerCapturingDelega
                 self.present(alertController, animated: true, completion: nil)
             }else if(cardType==AcuantCardTypeDriversLicenseCard){
                 let alertController = UIAlertController(title: "AcuantSwiftSample", message:
-                    "Scan the backside of the drivers license", preferredStyle: UIAlertControllerStyle.alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler:{(alert: UIAlertAction!) in
+                    "Scan the backside of the drivers license", preferredStyle: UIAlertController.Style.alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default,handler:{(alert: UIAlertAction!) in
                     self.showCamera()
                     self.cardSide=1
                 }))
@@ -412,8 +412,8 @@ class ViewController: UIViewController ,AcuantMobileSDKControllerCapturingDelega
     func didFailToCaptureCropImage() {
         DispatchQueue.main.async() {
             let alertController = UIAlertController(title: "AcuantSwiftSample", message:
-                "Failed to capture Image.Please try again", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                "Failed to capture Image.Please try again", preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
             
             self.present(alertController, animated: true, completion: nil)
         }
@@ -461,7 +461,7 @@ class ViewController: UIViewController ,AcuantMobileSDKControllerCapturingDelega
                 let options : AcuantCardProcessRequestOptions = AcuantCardProcessRequestOptions.defaultRequestOptions(for: AcuantCardTypeFacial);
                 
                 // Now, perform the request
-                self.instance.validatePhotoOne(frontSideImage, withImage: dlPhoto as Data!, with: self, with: options);
+                self.instance.validatePhotoOne(frontSideImage, withImage: dlPhoto as Data?, with: self, with: options);
                 
             }
         }
@@ -507,8 +507,8 @@ class ViewController: UIViewController ,AcuantMobileSDKControllerCapturingDelega
     func showErrorAlert(_ error: AcuantError!){
         DispatchQueue.main.async() {
             let alertController = UIAlertController(title: "AcuantSwiftSample", message:
-                error.errorMessage, preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                error.errorMessage, preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
             
             self.present(alertController, animated: true, completion: nil)
         }

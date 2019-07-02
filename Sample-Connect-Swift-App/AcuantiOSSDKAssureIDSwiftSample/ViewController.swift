@@ -185,8 +185,8 @@ class ViewController: UIViewController ,AcuantMobileSDKControllerCapturingDelega
             
         }else{
             let alertController = UIAlertController(title: "AcuantSwiftSample", message:
-                errorMessage, preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                errorMessage, preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
             
             self.present(alertController, animated: true, completion: nil)
         }
@@ -237,8 +237,8 @@ class ViewController: UIViewController ,AcuantMobileSDKControllerCapturingDelega
             print("valid license key")
         }else{
             let alertController = UIAlertController(title: "AcuantSwiftSample", message:
-                "Credntials are not valid", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                "Credntials are not valid", preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
             
             self.present(alertController, animated: true, completion: nil)
         }
@@ -264,8 +264,8 @@ class ViewController: UIViewController ,AcuantMobileSDKControllerCapturingDelega
             if(side==0){
                 frontCardImageView.image=cardImage
                 let alertController = UIAlertController(title: "AcuantSwiftSample", message:
-                    "Scan the backside of the drivers license", preferredStyle: UIAlertControllerStyle.alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler:{(alert: UIAlertAction!) in
+                    "Scan the backside of the drivers license", preferredStyle: UIAlertController.Style.alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default,handler:{(alert: UIAlertAction!) in
                     self.showCamera()
                     self.side=1
                 }))
@@ -291,8 +291,8 @@ class ViewController: UIViewController ,AcuantMobileSDKControllerCapturingDelega
     func didFailToCaptureCropImage() {
         DispatchQueue.main.async() {
             let alertController = UIAlertController(title: "AcuantSwiftSample", message:
-                "Failed to capture Image.Please try again", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                "Failed to capture Image.Please try again", preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
             
             self.present(alertController, animated: true, completion: nil)
         }
@@ -315,8 +315,8 @@ class ViewController: UIViewController ,AcuantMobileSDKControllerCapturingDelega
     func showErrorAlert(_ error: AcuantError!){
         DispatchQueue.main.async() {
             let alertController = UIAlertController(title: "AcuantSwiftSample", message:
-                error.errorMessage, preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                error.errorMessage, preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
             
             self.present(alertController, animated: true, completion: nil)
         }

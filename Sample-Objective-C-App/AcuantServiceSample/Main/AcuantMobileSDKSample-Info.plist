@@ -21,11 +21,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>5.3.4</string>
+	<string>5.9.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>5.3.4</string>
+	<string>5.9.1</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
@@ -33,6 +33,8 @@
 	<key>NSCameraUsageDescription</key>
 	<string>${PRODUCT_NAME} uses camera</string>
 	<key>NSLocationAlwaysUsageDescription</key>
+	<string>${PRODUCT_NAME} tracks location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>${PRODUCT_NAME} tracks location</string>
 	<key>UIRequiresFullScreen</key>
 	<true/>
@@ -42,8 +44,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>${PRODUCT_NAME} tracks location</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
