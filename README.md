@@ -3,7 +3,7 @@
 iOS Mobile SDK Programmer’s Guide
 ==================
 
-**Last updated on – June 28, 2018**
+**Last updated on – July 02, 2019**
 
 
 Copyright <sup>©</sup> 2003-2018 Acuant Inc. All rights reserved.
@@ -32,7 +32,7 @@ designation appears in initial capital or all capital letters. However,
 you should contact the appropriate companies for more complete
 information regarding such designations and their registration status.
 
-**June 2018**
+**July 2019**
 
 Acuant Inc.
 
@@ -53,123 +53,6 @@ The Acuant Mobile SDK framework is a Cocoa Framework. CocoaPods is a dependency 
 This document contains a detailed description of all functions that developers need to integrate with the Acuant iOS Mobile SDK. The Acuant iOS Mobile SDK requires a valid license key. Contact sales@acuantcorp.com to obtain a license key.
 
 **Note** The Framework will not modify the Status bar of the application.
-
-## Revision History
-
-**Acuant iOS Mobile SDK version 5.9:**
-
-- Tap to capture barcode : By default the barcode is captured automatically as soon as a barcode is presented infront of the camera. If it is required to capture the barcode only after the user taps on the screen, then the following configuration can be done.
-
-		-(BOOL)startScanningBarcodeAfterTap{
-    		return YES; // Default is NO
-		}
-
-**Acuant iOS Mobile SDK version 5.8:**
-
-
-
-- Removed Aspect Ratio check after cropping
-- Resolved an issue with Armenian IDs
-- Resolved the defect of occasionally liveliness being false even after a live face is captured
-- Resolved an issue with SDK validation
-
-
-**Acuant iOS Mobile SDK version 5.7:**
-
-- Added support for rotating UI elements while the device is rotated 180 degrees in landscape mode. 
-
-**Acuant iOS Mobile SDK version 5.6:**
-
--  Added glare metrics for captured images. The metrics values can be accessed as follows: 
-
-		BOOL hasGlare = [[_imageMetrics objectForKey:@"HAS_GLARE"] boolValue] 
-		float glareGrade = [[_imageMetrics objectForKey:@"GLARE_GRADE"] floatValue]; 
-
-
-In general, a GLARE_GRADE of 1 means no glare and 0 means there is a high chance of having a glare in the captured image.A glare grade 0.92f and above means there is no glare.
-
-**Acuant iOS Mobile SDK version 5.5:**
-
-The **ImageMetrics** parameter was added to the following methods:
-
-- **didCaptureCropImage**
-- **barcodeScanTimeOut**
-- **didCancelToCaptureData**
-- **showiPadBrackets**
-
-
-The **ImageMetrics** parameter specifies the sharpness and glare threshold of a cropped image. An image with a sharpness grade of 0.4f or above is considered a sharp image. In general, a GLARE_GRADE of 1 means no glare and 0 means there is a high chance of having a glare in the captured image. Users may set the threshold based on their requirements.
-
-
-		BOOL isSharp = [[imageMetrics objectForKey:@"IS_SHARP"] boolValue]; 
-		float sharpnessGrade = [[imageMetrics objectForKey:@"SHARPNESS_GRADE"] floatValue]; 
-
-		BOOL hasGlare = [[_imageMetrics objectForKey:@"HAS_GLARE"] boolValue] 
-		float glareGrade = [[_imageMetrics objectForKey:@"GLARE_GRADE"] floatValue]; 
-
-  
-**Acuant iOS Mobile SDK version 5.4:**
-
--  Added new card type constant **AcuantCardTypeAuto**. If **AcuantCardTypeAuto** is set, then in **didCaptureCropImage** the last parameter will contain the automatically detected card type.
-
-- Added the location parameter **cancelVisible** for the cancel button in the facial API
-
-		+(id)presentFacialCaptureInterfaceWithDelegate
-		(id<AcuantFacialCaptureDelegate>)delegate withSDK:
-		(AcuantMobileSDKController*)sdkController inViewController:
-		(UIViewController*)parentVC withCancelButton:(BOOL)cancelVisible
-		withCancelButtonRect:(CGRect) cancelRect
-		withWaterMark:(NSString* )watermarkText
-		withBlinkMessage:(NSAttributedString*)message
-		inRect:(CGRect)rect;
-
-**Acuant iOS Mobile SDK version 5.3:**
-
--  Added the **-(BOOL)isSDKValidated** API to check whether the SDK controller was validated.
--  Added Swift Sample Application
--  Added Swift AssureID Connect Sample Application
--  Added Objective-C AssureID Connect Sample Application
--  Added Objective-C Sample Application with AssureID Connect Data capture and AcuFill FRM
-
-**Acuant iOS Mobile SDK version 5.2:**
-
--  Removed the sourceImage property from AcuantCardProcessRequestOptions.
-
--  Added logtransaction property to AcuantCardProcessRequestOptions.If logging is enabled on the license key and logtransaction is set to true then transaction response is saved on the Acuant cloud for future retrieval.
-
--  Added the property imageSettings to AcuantCardProcessRequestOptions.The default value for imageSettings is -1. Please set this value to -1 always unless any special instruction is provided.
-
--  Removed "IsFacialEnabled" from the AcuantFacialData.
-
--  Added API to capture original image. By default it is disabled. [_instance setCanCaptureOriginalImage:YES];
-
--  Improved passport cropping
-
--  Added a delegate callback to capture the beginning of image capture event:
-
-        (-(void)didTakeCardPhoto{
-               NSLog(@"didTakeCardPhoto");
-               //Add custom code
-        }
--  Included Swift Sample application
-
-**Acuant iOS Mobile SDK version 5.1:**
-
--  Improved document cropping for IDs and Passports
--  Memory optimization
--  Fixed **FacialMatchConfidenceRating** data type issue. Data type is now integer.
--  Fixed **didCaptureOriginalImage** returns cropped images instead of original image
--  Modified the cropping delegate method
--  Added the **cardType** parameter:
-
-        (void)didCaptureCropImage:(UIImage *)cardImage scanBackSide:(BOOL)scanBackSide andCardType:(AcuantCardType)cardType
-
-#### Check the SDK version:
-1.  Open the AcuantMobileSDK.framework.
-2.  Open the Version folder.
-3.  Open the folder with number version.
-4.  Open the Resources folder.
-5.  Open the Info.plist file (which contains the version number).
 
 
 ##Operating system and device requirements
