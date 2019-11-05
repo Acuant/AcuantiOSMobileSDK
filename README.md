@@ -1,44 +1,11 @@
 ![alt tag](https://github.com/Acuant/AcuantiOSMobileSDKCocoaPods/blob/master/Logo.png)
 
-iOS Mobile SDK Programmer’s Guide
+iOS Mobile SDK v5.9.2
 ==================
 
-**Last updated on – July 02, 2019**
+**November 2019**
 
 
-Copyright <sup>©</sup> 2003-2018 Acuant Inc. All rights reserved.
-
-This document contains proprietary and confidential 
-information and creative works owned by Acuant and its respective
-licensors, if any. Any use, copying, publication, distribution, display,
-modification, or transmission of such technology in whole or in part in
-any form or by any means without the prior express written permission of
-Acuant is strictly prohibited. Except where expressly provided by Acuant
-in writing, possession of this information shall not be
-construed to confer any license or rights under any Acuant intellectual
-property rights, whether by estoppel, implication, or otherwise.
-
-AssureID and *i-D*entify are trademarks of Acuant Inc. Other Acuant product or service names or logos referenced this document are either trademarks or registered trademarks of Acuant.
-
-All 3M trademarks are trademarks of Gemalto Inc.
-
-Windows<sup>®</sup> is a registered trademark of Microsoft Corporation.
-
-Certain product, service, or company designations for companies other
-than Acuant may be mentioned in this document for identification
-purposes only. Such designations are often claimed as trademarks or
-service marks. In all instances where Acuant is aware of a claim, the
-designation appears in initial capital or all capital letters. However,
-you should contact the appropriate companies for more complete
-information regarding such designations and their registration status.
-
-**July 2019**
-
-Acuant Inc.
-
-6080 Center Drive, Suite 850
-
-Los Angeles, CA 90045
 
 
 ==================
@@ -111,7 +78,7 @@ If the following error(s) occurs when publishing/exporting the app, then in the 
 
 	    platform :ios, '8.0'
 		pod 'PPpdf417', '~> 5.1.0'
-		pod 'AcuantMobileSDK', '~> 5.9.1'
+		pod 'AcuantMobileSDK', '~> 5.9.2'
 
 2.  Run `pod install` to add the AcuantMobileSDK.
 
@@ -455,7 +422,7 @@ Use the following optional method to use start or stop continuous scanning witho
 
 ###Tap to capture 2D Barcode:
 
-By default the barcode is captured automatically as soon as a barcode is presented infront of the camera. If it is required to capture the barcode only after the user taps on the screen, then the following configuration can be done.
+By default the barcode is captured automatically as soon as a barcode is presented in front of the camera. If it is required to capture the barcode only after the user taps on the screen, then the following configuration can be done.
 
 	-(BOOL)startScanningBarcodeAfterTap{
     	return YES; // Default is NO
@@ -1748,3 +1715,38 @@ An error occurred when the camera was opened
 ####AcuantErrorIncorrectDocumentScanned = 16
 An error occurred when an incorrect document type is scanned
 
+****
+
+Copyright <sup>©</sup> 2003-2019 Acuant Inc. All rights reserved.
+
+This document contains proprietary and confidential 
+information and creative works owned by Acuant and its respective
+licensors, if any. Any use, copying, publication, distribution, display,
+modification, or transmission of such technology in whole or in part in
+any form or by any means without the prior express written permission of
+Acuant is strictly prohibited. Except where expressly provided by Acuant
+in writing, possession of this information shall not be
+construed to confer any license or rights under any Acuant intellectual
+property rights, whether by estoppel, implication, or otherwise.
+
+AssureID and *i-D*entify are trademarks of Acuant Inc. Other Acuant product or service names or logos referenced this document are either trademarks or registered trademarks of Acuant.
+
+All 3M trademarks are trademarks of Gemalto Inc.
+
+Windows<sup>®</sup> is a registered trademark of Microsoft Corporation.
+
+Certain product, service, or company designations for companies other
+than Acuant may be mentioned in this document for identification
+purposes only. Such designations are often claimed as trademarks or
+service marks. In all instances where Acuant is aware of a claim, the
+designation appears in initial capital or all capital letters. However,
+you should contact the appropriate companies for more complete
+information regarding such designations and their registration status.
+
+**November 2019**
+
+Acuant Inc.
+
+6080 Center Drive, Suite 850
+
+Los Angeles, CA 90045
