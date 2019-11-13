@@ -1,6 +1,6 @@
 ![alt tag](https://github.com/Acuant/AcuantiOSMobileSDKCocoaPods/blob/master/Logo.png)
 
-iOS Mobile SDK v5.9.2
+Acuant iOS Mobile SDK v5.9.3
 ==================
 
 **November 2019**
@@ -78,7 +78,7 @@ If the following error(s) occurs when publishing/exporting the app, then in the 
 
 	    platform :ios, '8.0'
 		pod 'PPpdf417', '~> 5.1.0'
-		pod 'AcuantMobileSDK', '~> 5.9.2'
+		pod 'AcuantMobileSDK', '~> 5.9.3'
 
 2.  Run `pod install` to add the AcuantMobileSDK.
 
