@@ -1,6 +1,6 @@
 ![alt tag](https://github.com/Acuant/AcuantiOSMobileSDKCocoaPods/blob/master/Logo.png)
 
-Acuant iOS Mobile SDK v5.9.3
+Acuant iOS Mobile SDK v5.9.3 [DEPRECATED]
 ==================
 
 **November 2019**
@@ -12,6 +12,8 @@ Acuant iOS Mobile SDK v5.9.3
 
 
 # Introduction
+
+**THIS SDK HAS BEEN DEPRECATED**
 
 Acuant Web Services supports data extraction from driver’s licenses, state IDs, other government issued IDs, custom IDs, driver’s licenses, barcodes, passports, and medical insurance cards. It also supports document authentication and facial recognition to verify and authenticate the identity.
 
