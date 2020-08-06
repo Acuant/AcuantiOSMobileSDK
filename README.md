@@ -6,9 +6,9 @@ Acuant iOS Mobile SDK v5.9.3 [DEPRECATED]
 **November 2019**
 
 
+## License
 
-
-==================
+This software is subject to Acuant's end user license agreement (EULA), which can be found [here](EULA.pdf).
 
 
 # Introduction
